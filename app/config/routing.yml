@@ -1,4 +1,3 @@
 pigalle:
     resource: "@PigalleBundle/Resources/config/routing.yml"
     prefix:   /
-

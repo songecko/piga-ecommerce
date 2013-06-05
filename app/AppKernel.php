@@ -8,17 +8,23 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = array(
-            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
-            new Symfony\Bundle\TwigBundle\TwigBundle(),
-            new Symfony\Bundle\MonologBundle\MonologBundle(),
-            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new JMS\AopBundle\JMSAopBundle(),
-            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
-            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+        	// symfony-standard bundles
+        	new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+        	new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+        	new Symfony\Bundle\TwigBundle\TwigBundle(),
+        	new Symfony\Bundle\MonologBundle\MonologBundle(),
+        	new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+        	new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+        	new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+        	new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+        		        		
+        	//Sylius dependencies bundles
+        	//new FOS\RestBundle\FOSRestBundle(),
+        	//new JMS\SerializerBundle\JMSSerializerBundle($this),
+        	//new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+        		
+        	//Sylius bundles
+        	//new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
         		
         	//Pigalle bundles
             new Gecko\PigalleBundle\PigalleBundle(),
@@ -29,7 +35,7 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
         }
-
+        
         return $bundles;
     }
 
