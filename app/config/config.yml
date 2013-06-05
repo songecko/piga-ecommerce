@@ -2,6 +2,21 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
 
+## SYLIUS CONFIGURATIONS ##
+sylius_product:
+    driver: doctrine/orm # Configure the doctrine orm driver used in documentation.
+    classes:
+        product:
+            model: Gecko\PigalleBundle\Entity\Product # Your product entity.
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true
+            timestampable: true
+
+
+## SYMFONY CONFIGURATIONS ##                        
 framework:
     #esi:             ~
     #translator:      { fallback: %locale% }

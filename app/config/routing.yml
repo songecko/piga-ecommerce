@@ -1,3 +1,6 @@
+sylius_product:
+    resource: @SyliusProductBundle/Resources/config/routing.yml
+    
 pigalle:
     resource: "@PigalleBundle/Resources/config/routing.yml"
     prefix:   /
