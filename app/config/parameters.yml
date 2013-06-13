@@ -1,14 +1,16 @@
 # This file is auto-generated during the composer install
 parameters:
-    database_driver: pdo_mysql
-    database_host: 127.0.0.1
-    database_port: null
-    database_name: pigalle
-    database_user: root
-    database_password: 123456
-    mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
-    locale: es
-    secret: e0631461f8e19d778cee58a93483dc71
+    sylius.database.driver: pdo_mysql
+    sylius.database.host: 127.0.0.1
+    sylius.database.port: null
+    sylius.database.name: pigalle
+    sylius.database.user: root
+    sylius.database.password: 123456
+    sylius.mailer.transport: smtp
+    sylius.mailer.host: 127.0.0.1
+    sylius.mailer.user: null
+    sylius.mailer.password: null
+    sylius.locale: es
+    sylius.secret: d73a220a76ed13d358389b3f7658ecc7
+    sylius.currency: ARS
+    sylius.cache: file_system

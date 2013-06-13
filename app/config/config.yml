@@ -1,80 +1,119 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: sylius.yml }
 
-## SYLIUS CONFIGURATIONS ##
-sylius_product:
-    driver: doctrine/orm # Configure the doctrine orm driver used in documentation.
-    classes:
-        product:
-            model: Gecko\PigalleBundle\Entity\Product # Your product entity.
-
-stof_doctrine_extensions:
-    orm:
-        default:
-            sluggable: true
-            timestampable: true
-
-
-## SYMFONY CONFIGURATIONS ##                        
 framework:
-    #esi:             ~
-    #translator:      { fallback: %locale% }
-    secret:          %secret%
+    translator:      { fallback: %sylius.locale% }
+    secret:          %sylius.secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
-        strict_requirements: ~
-    form:            ~
-    csrf_protection: ~
+        strict_requirements: %kernel.debug%
+    form:            true
+    csrf_protection: true
     validation:      { enable_annotations: true }
-    templating:
-        engines: ['twig']
-        #assets_version: SomeVersionScheme
-    default_locale:  "%locale%"
+    templating:      { engines: ['twig'] }
+    default_locale:  "%sylius.locale%"
     trusted_proxies: ~
     session:         ~
-    fragments:       ~
 
-# Twig Configuration
 twig:
+    form:
+        resources:
+            - 'SyliusWebBundle::forms.html.twig'
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
 
-# Assetic Configuration
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ ]
-    #java: /usr/bin/java
+    bundles:        ['SyliusWebBundle']
     filters:
         cssrewrite: ~
-        #closure:
-        #    jar: %kernel.root_dir%/Resources/java/compiler.jar
-        #yui_css:
-        #    jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
 
-# Doctrine Configuration
 doctrine:
     dbal:
-        driver:   %database_driver%
-        host:     %database_host%
-        port:     %database_port%
-        dbname:   %database_name%
-        user:     %database_user%
-        password: %database_password%
+        driver:   %sylius.database.driver%
+        host:     %sylius.database.host%
+        port:     %sylius.database.port%
+        dbname:   %sylius.database.name%
+        user:     %sylius.database.user%
+        password: %sylius.database.password%
         charset:  UTF8
-        # if using pdo_sqlite as your database driver, add the path in parameters.yml
-        # e.g. database_path: %kernel.root_dir%/data/data.db3
-        # path:     %database_path%
-
     orm:
         auto_generate_proxy_classes: %kernel.debug%
-        auto_mapping: true
+        entity_managers:
+            default:
+                auto_mapping: true
+                filters:
+                    softdeleteable:
+                        class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                        enabled: true
 
-# Swiftmailer Configuration
+stof_doctrine_extensions:
+    default_locale: %sylius.locale%
+    orm:
+        default:
+            tree: true
+            sluggable: true
+            timestampable: true
+            softdeleteable: true
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Sylius\Bundle\CoreBundle\Entity\User
+    profile:
+        form:
+            type: sylius_user_profile
+
 swiftmailer:
-    transport: %mailer_transport%
-    host:      %mailer_host%
-    username:  %mailer_user%
-    password:  %mailer_password%
+    transport: %sylius.mailer.transport%
+    host:      %sylius.mailer.host%
+    username:  %sylius.mailer.user%
+    password:  %sylius.mailer.password%
     spool:     { type: memory }
+
+liip_doctrine_cache:
+    namespaces:
+        sylius_settings:
+            type: %sylius.cache%
+
+knp_gaufrette:
+    adapters:
+        sylius_image:
+            local:
+                directory:  %kernel.root_dir%/../web/media/image
+                create:     true
+    filesystems:
+        sylius_image:
+            adapter: sylius_image
+
+liip_imagine:
+    data_root: %kernel.root_dir%/../web/media/image
+    filter_sets:
+        sylius_16x16:
+            filters:
+                thumbnail: { size: [16, 16], mode: outbound }
+        sylius_50x40:
+            filters:
+                thumbnail: { size: [50, 40], mode: outbound }
+        sylius_90x60:
+            filters:
+                thumbnail: { size: [90, 60], mode: outbound }
+        sylius_200x200:
+            filters:
+                thumbnail: { size: [200, 200], mode: outbound }
+
+        sylius_262x255:
+            filters:
+                thumbnail: { size: [265, 255], mode: outbound }
+        sylius_310x300:
+            filters:
+                thumbnail: { size: [310, 300], mode: outbound }
+        sylius_610x600:
+            filters:
+                thumbnail: { size: [610, 600], mode: outbound }
+        sylius_gallery:
+            filters:
+                thumbnail: { size: [640, 480], mode: outbound }

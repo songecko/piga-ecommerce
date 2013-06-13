@@ -1,0 +1,30 @@
+# This file is part of the Sylius package.
+# (c) Paweł Jędrzejewski
+
+default:
+    filters:
+        tags: "~@javascript"
+    context:
+        class: Sylius\Bundle\WebBundle\Behat\FeatureContext
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: "http://sylius.local/app_test.php"
+            default_session: symfony2
+            selenium2: ~
+        Behat\Symfony2Extension\Extension:
+            kernel:
+                path: app/AppKernel.php
+                class: AppKernel
+            mink_driver: true
+
+frontend:
+    paths:
+        features: features/frontend
+
+backend:
+    paths:
+        features: features/backend
+
+api:
+    paths:
+        features: features/api

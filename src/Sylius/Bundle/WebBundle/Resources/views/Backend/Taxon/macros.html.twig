@@ -1,0 +1,56 @@
+{% macro list(taxonomy, taxons) %}
+
+{% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
+
+{% if taxons|length > 0 %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>{{ 'sylius.taxon.name'|trans }}</th>
+            <th>{{ 'sylius.taxon.image'|trans }}</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ _self.tree(taxonomy, taxons) }}
+    </tbody>
+</table>
+{% else %}
+{{ alerts.info('sylius.taxon.no_results'|trans) }}
+{% endif %}
+
+{% endmacro %}
+
+{% macro tree(taxonomy, taxons) %}
+
+{% import 'SyliusWebBundle:Backend/Macros:buttons.html.twig' as buttons %}
+
+{% for taxon in taxons %}
+<tr>
+    <td>
+        {% for i in 1..taxon.level %}<i class="icon-caret-right"></i>{% if not loop.last %}&nbsp;{% endif %}{% endfor %}
+        {{ taxon.name }}
+    </td>
+    <td>
+        {% if taxon.path|length > 0 %}
+            <div data-toggle="modal-gallery" data-target="#modal-gallery">
+                <a href="{{ taxon.path|imagine_filter('sylius_gallery') }}" data-gallery="gallery" title="{{ taxon.name }}" class="thumbnail thumbnail-image">
+                    <img src="{{ taxon.path|imagine_filter('sylius_50x40') }}" alt="" />
+                </a>
+            </div>
+        {% else %}
+            <span class="badge badge-info">{{ 'sylius.taxon.no_image'|trans }}</span>
+        {% endif %}
+    </td>
+    <td>
+        <div class="pull-right">
+        {{ buttons.edit(path('sylius_backend_taxon_update', {'taxonomyId': taxonomy.id, 'id': taxon.id})) }}
+        {{ buttons.delete(path('sylius_backend_taxon_delete', {'taxonomyId': taxonomy.id, 'id': taxon.id})) }}
+        </div>
+    </td>
+</tr>
+{% if taxon.children|length > 0 %}
+    {{ _self.tree(taxonomy, taxon.children) }}
+{% endif %}
+{% endfor %}
+{% endmacro %}

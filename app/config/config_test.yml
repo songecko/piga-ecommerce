@@ -3,10 +3,9 @@ imports:
 
 framework:
     test: ~
+    default_locale:  "en"
     session:
         storage_id: session.storage.mock_file
-    profiler:
-        enabled: false
 
 web_profiler:
     toolbar: false
@@ -14,3 +13,17 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+doctrine:
+    dbal:
+        dbname:   %sylius.database.name%_test
+
+sylius_money:
+    currency: EUR
+    locale: en
+
+sylius_payments:
+    gateways:
+        cc:     Credit Card
+        test:   Test
+        stripe: Stripe

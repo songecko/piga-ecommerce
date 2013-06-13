@@ -1,9 +1,9 @@
 imports:
     - { resource: config.yml }
 
-#framework:
-#    validation:
-#        cache: apc
+framework:
+    router:
+        strict_requirements: null
 
 #doctrine:
 #    orm:
