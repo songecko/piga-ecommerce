@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{{ 'sylius.backend.meta.title'|trans }}{% endblock %}</title>
+        
+        <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        {# stylesheets... #}
+        {% block stylesheets %}
+        {% stylesheets output='css/compiled/backend.css' filter='cssrewrite'
+            '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css'
+            '//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css'
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
+        {% endblock %}
+    </head>
+    <body>
+    	<div class="navbar">
+  			<div class="navbar-inner">
+      			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>
+      			</a>      			
+    			<a class="brand" href="{{ path('sylius_backend_dashboard') }}">{{ 'sylius.backend.meta.title'|trans }}</a>
+    			<div class="nav-collapse collapse">
+    				{{ knp_menu_render('sylius_backend.menu.main', {'template': 'SyliusBackendBundle::menu_main.html.twig', 'currentClass': 'active'}) }}
+    				
+    				<ul class="nav pull-right">
+  						<li class="dropdown">
+	    					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Cuenta<b class="caret"></b></a>
+		    				<ul class="dropdown-menu pull-right">
+		      					<li><a href="#">Editar</a></li>
+		      					<li><a href="#">Visitar sitio</a></li>
+		      					<li class="divider"></li>
+	      						<li><a href="#">Salir</a></li>
+		    				</ul>
+  						</li>
+					</ul>
+				</div>
+  			</div>
+		</div>
+		
+		<div class="container-fluid">        
+			<ul class="breadcrumb">
+  				<li><a href="{{ path('sylius_backend_dashboard') }}">{{ 'sylius.backend.meta.title'|trans }}</a> <span class="divider">/</span></li>
+			</ul>
+		</div>
+		
+		<div id="content" class="container-fluid">
+			{% for type in ['success', 'error'] %}
+				{% for message in app.session.flashbag.get(type) %}
+				<div class="alert alert-{{ type }}">
+					{{ message }}
+					<a class="close" data-dismiss="alert" href="#">&times;</a>
+				</div>
+				{% endfor %}
+			{% endfor %}
+
+	        {% block content %}{% endblock %}
+		</div>
+
+		<div class="container-fluid">
+			<hr />
+			<footer><p>&copy; <a href="http://www.pigalle.com.ar">Pigalle</a>, 2012 - {{ 'now'|date('Y') }}.</p></footer>
+		</div>
+		
+		{# modal gallery #}
+		{% include 'SyliusBackendBundle::gallery.html.twig' %}
+		
+        {# javascripts... #}
+        {% block javascripts %}
+        {% javascripts output='js/compiled/backend.js'
+            'http://code.jquery.com/jquery-1.10.0.min.js'
+            '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        {% endblock %}
+    </body>
+</html>

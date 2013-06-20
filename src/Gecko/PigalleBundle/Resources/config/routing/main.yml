@@ -1,0 +1,15 @@
+#pigalle_frontend:
+#    resource: @PigalleBundle/Resources/config/routing/frontend/main.yml
+
+#sylius_province_choice_form:
+#    pattern: /province/choice-form
+#    defaults:
+#        _controller: sylius.controller.province:choiceFormAction
+
+#sylius_partial:
+#    resource: @SyliusWebBundle/Resources/config/routing/partial/main.yml
+#    prefix: /_partial
+
+#_imagine:
+#    resource: .
+#    type:     imagine

@@ -25,11 +25,11 @@ class LoadPaymentMethodsData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        $manager->persist($this->createPaymentMethod('Test Credit Card', 'dummy'));
+        /*$manager->persist($this->createPaymentMethod('Test Credit Card', 'dummy'));
         $manager->persist($this->createPaymentMethod('Stripe', 'dummy'));
         $manager->persist($this->createPaymentMethod('Disabled Payment method', 'dummy'), false);
 
-        $manager->flush();
+        $manager->flush();*/
     }
 
     /**

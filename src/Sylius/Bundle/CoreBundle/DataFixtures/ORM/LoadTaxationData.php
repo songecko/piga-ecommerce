@@ -26,14 +26,14 @@ class LoadTaxationData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        $taxableGoods = $this->createTaxCategory('Taxable goods', 'Default taxation category');
+        /*$taxableGoods = $this->createTaxCategory('Taxable goods', 'Default taxation category');
 
         $taxableGoods->addRate($this->createTaxRate('EU VAT', 'EU', 0.23));
         $taxableGoods->addRate($this->createTaxRate('US Sales Tax', 'USA', 0.08));
         $taxableGoods->addRate($this->createTaxRate('No tax', 'Rest of World', 0.00));
 
         $manager->persist($taxableGoods);
-        $manager->flush();
+        $manager->flush();*/
     }
 
     /**

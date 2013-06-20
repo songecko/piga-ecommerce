@@ -1,0 +1,4 @@
+sylius.backend:
+    menu.main:
+      assortment: "Tienda"
+      products:   "Productos"

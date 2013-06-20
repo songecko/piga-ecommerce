@@ -28,7 +28,7 @@ class LoadShippingData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        $regular = $this->createShippingCategory('Regular', 'Regular weight items');
+        /*$regular = $this->createShippingCategory('Regular', 'Regular weight items');
         $heavy = $this->createShippingCategory('Heavy', 'Heavy items');
 
         $manager->persist($regular);
@@ -46,7 +46,7 @@ class LoadShippingData extends DataFixture
         $config =  array('first_item_cost' => 4000, 'additional_item_cost' => 500, 'additional_item_limit' => 10);
         $manager->persist($this->createShippingMethod('FedEx World Shipping', 'Rest of World', DefaultCalculators::FLEXIBLE_RATE, $config));
 
-        $manager->flush();
+        $manager->flush();*/
     }
 
     /**

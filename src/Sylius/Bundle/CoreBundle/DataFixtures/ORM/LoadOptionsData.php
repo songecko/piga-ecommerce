@@ -26,7 +26,7 @@ class LoadOptionsData extends DataFixture
     public function load(ObjectManager $manager)
     {
         // T-Shirt size option.
-        $option = $this->createOption('T-Shirt size', 'Size', array('S', 'M', 'L', 'XL', 'XXL'));
+        /*$option = $this->createOption('T-Shirt size', 'Size', array('S', 'M', 'L', 'XL', 'XXL'));
         $manager->persist($option);
 
         // T-Shirt color option.
@@ -41,7 +41,7 @@ class LoadOptionsData extends DataFixture
         $option = $this->createOption('Mug type', 'Type', array('Medium mug','Double mug','MONSTER mug'));
         $manager->persist($option);
 
-        $manager->flush();
+        $manager->flush();*/
     }
 
     /**

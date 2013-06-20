@@ -30,7 +30,7 @@ class AppKernel extends Kernel
         $bundles = array(
             // Sylius bundles.
             new Sylius\Bundle\CoreBundle\SyliusCoreBundle(),
-            new Sylius\Bundle\WebBundle\SyliusWebBundle(),
+            //new Sylius\Bundle\WebBundle\SyliusWebBundle(),
             new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
 
             new Sylius\Bundle\InstallerBundle\SyliusInstallerBundle(),
@@ -69,10 +69,15 @@ class AppKernel extends Kernel
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new JMS\TranslationBundle\JMSTranslationBundle(),
+        		
+        	//Project Bundles
+            new Gecko\PigalleBundle\PigalleBundle(),
+            new Gecko\SyliusBackendBundle\SyliusBackendBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new \Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
+            $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
         }
 
         return $bundles;

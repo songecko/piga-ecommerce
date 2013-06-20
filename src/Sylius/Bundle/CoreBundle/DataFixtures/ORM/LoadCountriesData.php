@@ -27,7 +27,7 @@ class LoadCountriesData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        $locale = $this->container->getParameter('sylius.locale');
+        /*$locale = $this->container->getParameter('sylius.locale');
         $countryRepository = $this->getCountryRepository();
         $countries = Locale::getDisplayCountries($locale);
 
@@ -44,7 +44,7 @@ class LoadCountriesData extends DataFixture
             $manager->persist($country);
 
             $this->setReference('Sylius.Country.'.$isoName, $country);
-        }
+        }*/
 
         $manager->flush();
     }

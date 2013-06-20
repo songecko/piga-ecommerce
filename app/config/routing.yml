@@ -1,8 +1,20 @@
+pigalle:
+    resource: "@PigalleBundle/Resources/config/routing/main.yml"
+    prefix:   /
+
+sylius_backend_index:
+    path:     /admin
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /admin/dashboard
+        permanent: true
+        
+sylius_backend:
+    resource: "@SyliusBackendBundle/Resources/config/routing/main.yml"
+    prefix:   /admin
+    
 sylius_installer:
     resource: @SyliusInstallerBundle/Resources/config/routing.yml
-
-sylius_web:
-    resource: @SyliusWebBundle/Resources/config/routing/main.yml
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

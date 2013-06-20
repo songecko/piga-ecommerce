@@ -54,14 +54,14 @@ class LoadProductsData extends DataFixture
     {
         $this->productPropertyClass = $this->container->getParameter('sylius.model.product_property.class');
 
-        // T-Shirts...
+        // Products...
         for ($i = 1; $i <= 120; $i++) {
             switch (rand(0, 3)) {
                 case 0:
-                    $manager->persist($this->createTShirt($i));
+                    $manager->persist($this->createShoe($i));
                 break;
 
-                case 1:
+                /*case 1:
                     $manager->persist($this->createSticker($i));
                 break;
 
@@ -71,7 +71,7 @@ class LoadProductsData extends DataFixture
 
                 case 3:
                     $manager->persist($this->createBook($i));
-                break;
+                break;*/
             }
 
             if (0 === $i % 20) {
@@ -94,40 +94,40 @@ class LoadProductsData extends DataFixture
     }
 
     /**
-     * Creates t-shirt product.
+     * Creates show product.
      *
      * @param integer $i
      */
-    private function createTShirt($i)
+    private function createShoe($i)
     {
         $product = $this->createProduct();
 
-        $product->setTaxCategory($this->getTaxCategory('Taxable goods'));
-        $product->setName(sprintf('T-Shirt "%s"', $this->faker->word));
+        //$product->setTaxCategory($this->getTaxCategory('Taxable goods'));
+        $product->setName(sprintf('Zapato "%s"', $this->faker->word));
         $product->setDescription($this->faker->paragraph);
         $product->setShortDescription($this->faker->sentence);
         $product->setVariantSelectionMethod(Product::VARIANT_SELECTION_MATCH);
 
-        $this->addMasterVariant($product);
+        //$this->addMasterVariant($product);
 
-        $this->setTaxons($product, array('T-Shirts', 'SuperTees'));
+        //$this->setTaxons($product, array('T-Shirts', 'SuperTees'));
 
-        // T-Shirt brand.
-        $randomBrand = $this->faker->randomElement(array('Nike', 'Adidas', 'Puma', 'Potato'));
-        $this->addProperty($product, 'T-Shirt brand', $randomBrand);
+        // brand.
+        /*$randomBrand = $this->faker->randomElement(array('Nike', 'Adidas', 'Puma', 'Potato'));
+        $this->addProperty($product, 'Marca', $randomBrand);
 
-        // T-Shirt collection.
-        $randomCollection = sprintf('Symfony2 %s %s', $this->faker->randomElement(array('Summer', 'Winter', 'Spring', 'Autumn')), rand(1995, 2012));
-        $this->addProperty($product, 'T-Shirt collection', $randomCollection);
+        // collection.
+        $randomCollection = sprintf('Temporada %s %s', $this->faker->randomElement(array('Otoño / Invierno', 'Primavera / Verano')), rand(1995, 2012));
+        $this->addProperty($product, 'Temporada', $randomCollection);
 
-        // T-Shirt material.
+        // material.
         $randomMaterial = $this->faker->randomElement(array('Polyester', 'Wool', 'Polyester 10% / Wool 90%', 'Potato 100%'));
-        $this->addProperty($product, 'T-Shirt material', $randomMaterial);
+        $this->addProperty($product, 'Material', $randomMaterial);
+*/
+        //$product->addOption($this->getReference('Sylius.Option.Zapato size'));
+        //$product->addOption($this->getReference('Sylius.Option.Zapato color'));
 
-        $product->addOption($this->getReference('Sylius.Option.T-Shirt size'));
-        $product->addOption($this->getReference('Sylius.Option.T-Shirt color'));
-
-        $this->generateVariants($product);
+        //$this->generateVariants($product);
 
         $this->setReference('Sylius.Product-'.$i, $product);
 

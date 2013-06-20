@@ -27,7 +27,7 @@ class LoadZonesData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        $euCountries = array(
+        /*$euCountries = array(
             'BE', 'BG', 'CZ', 'DK', 'DE', 'EE', 'IE', 'GR', 'ES',
             'FR', 'IT', 'CY', 'LV', 'LV', 'LT', 'LU', 'HU', 'MT',
             'NL', 'AT', 'PL', 'PT', 'RO', 'SI', 'SK', 'FI', 'SE',
@@ -41,7 +41,7 @@ class LoadZonesData extends DataFixture
         $manager->persist($this->createZone('EU + USA', ZoneInterface::TYPE_ZONE, array('EU', 'USA')));
         $manager->persist($this->createZone('Rest of World', ZoneInterface::TYPE_COUNTRY, $restOfWorldCountries));
 
-        $manager->flush();
+        $manager->flush();*/
     }
 
     /**

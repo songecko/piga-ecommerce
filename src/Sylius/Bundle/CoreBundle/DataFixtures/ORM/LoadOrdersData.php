@@ -17,7 +17,7 @@ class LoadOrdersData extends DataFixture
 {
     public function load(ObjectManager $manager)
     {
-        $orderBuilder = $this->get('sylius.builder.order');
+        /*$orderBuilder = $this->get('sylius.builder.order');
 
         for ($i = 1; $i <= 50; $i++) {
             $orderBuilder->create();
@@ -52,7 +52,7 @@ class LoadOrdersData extends DataFixture
             $manager->persist($order);
         }
 
-        $manager->flush();
+        $manager->flush();*/
     }
 
     private function createAddress()
