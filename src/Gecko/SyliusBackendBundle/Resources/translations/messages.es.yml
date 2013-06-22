@@ -1,2 +1,4 @@
 sylius.backend:
     meta.title: "Pigalle Administración"
+    
+sylius.product.index_header: "Productos"

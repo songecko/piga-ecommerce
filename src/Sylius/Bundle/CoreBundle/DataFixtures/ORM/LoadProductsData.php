@@ -108,16 +108,16 @@ class LoadProductsData extends DataFixture
         $product->setShortDescription($this->faker->sentence);
         $product->setVariantSelectionMethod(Product::VARIANT_SELECTION_MATCH);
 
-        //$this->addMasterVariant($product);
+        $this->addMasterVariant($product);
 
         //$this->setTaxons($product, array('T-Shirts', 'SuperTees'));
 
         // brand.
         /*$randomBrand = $this->faker->randomElement(array('Nike', 'Adidas', 'Puma', 'Potato'));
-        $this->addProperty($product, 'Marca', $randomBrand);
+        $this->addProperty($product, 'Marca', $randomBrand);*/
 
         // collection.
-        $randomCollection = sprintf('Temporada %s %s', $this->faker->randomElement(array('Otoño / Invierno', 'Primavera / Verano')), rand(1995, 2012));
+        /*$randomCollection = sprintf('Temporada %s %s', $this->faker->randomElement(array('Otoño / Invierno', 'Primavera / Verano')), rand(1995, 2012));
         $this->addProperty($product, 'Temporada', $randomCollection);
 
         // material.
