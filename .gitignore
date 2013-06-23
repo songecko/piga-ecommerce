@@ -6,6 +6,6 @@ app/config/parameters.yml
 vendor/*
 */logs/*
 */cache/*
-web/uploads/*
 web/bundles/*
 web/media/*
+web/admin/media/cache/*
