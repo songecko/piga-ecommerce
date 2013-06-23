@@ -34,16 +34,16 @@ class ProductType extends BaseProductType
                 'required' => false,
                 'label'    => 'sylius.form.product.short_description'
             ))
-            ->add('taxCategory', 'sylius_tax_category_choice', array(
+            /*->add('taxCategory', 'sylius_tax_category_choice', array(
                 'required'    => false,
                 'empty_value' => '---',
                 'label'       => 'sylius.form.product.tax_category'
-            ))
+            ))*/
             ->add('taxons', 'sylius_taxon_selection')
-            ->add('variantSelectionMethod', 'choice', array(
+            /*->add('variantSelectionMethod', 'choice', array(
                 'label'   => 'sylius.form.product.variant_selection_method',
                 'choices' => Product::getVariantSelectionMethodLabels()
-            ))
+            ))*/
         ;
     }
 }

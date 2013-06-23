@@ -16,6 +16,9 @@
         {% stylesheets output='css/compiled/backend.css' filter='cssrewrite'
             '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css'
             '//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css'
+            '@SyliusBackendBundle/Resources/assets/css/bootstrap-image-gallery.min.css'
+            '@SyliusBackendBundle/Resources/assets/css/select2.css'
+            '@SyliusBackendBundle/Resources/assets/css/backend.css'
         %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
         {% endstylesheets %}
@@ -37,10 +40,10 @@
   						<li class="dropdown">
 	    					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Cuenta<b class="caret"></b></a>
 		    				<ul class="dropdown-menu pull-right">
-		      					<li><a href="#">Editar</a></li>
-		      					<li><a href="#">Visitar sitio</a></li>
+		      					<li><a href="#"><i class="icon-pencil"></i> Editar</a></li>
+		      					<li><a href="#"><i class="icon-eye-open"></i> Visitar sitio</a></li>
 		      					<li class="divider"></li>
-	      						<li><a href="#">Salir</a></li>
+	      						<li><a href="#"><i class="icon-off"></i> Salir</a></li>
 		    				</ul>
   						</li>
 					</ul>
@@ -80,6 +83,12 @@
         {% javascripts output='js/compiled/backend.js'
             'http://code.jquery.com/jquery-1.10.0.min.js'
             '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js'
+            '@SyliusBackendBundle/Resources/assets/js/form-collection.js'
+            '@SyliusBackendBundle/Resources/assets/js/form-spinner.js'
+            '@SyliusBackendBundle/Resources/assets/js/select2.js'
+            '@SyliusBackendBundle/Resources/assets/js/backend.js'            
+            'http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js'
+            '@SyliusBackendBundle/Resources/assets/js/bootstrap-image-gallery.min.js'
         %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}

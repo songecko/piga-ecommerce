@@ -14,16 +14,16 @@ sylius_backend_product:
 #    resource: @SyliusWebBundle/Resources/config/routing/backend/stockable.yml
 #    prefix: /stockables
 
-#sylius_backend_variant:
-#    resource: @SyliusWebBundle/Resources/config/routing/backend/variant.yml
-#    prefix: /products/{productId}/variants
+sylius_backend_variant:
+    resource: @SyliusBackendBundle/Resources/config/routing/variant.yml
+    prefix: /products/{productId}/variants
 
 #sylius_backend_option:
-#    resource: @SyliusWebBundle/Resources/config/routing/backend/option.yml
+#    resource: @SyliusBackendBundle/Resources/config/routing/option.yml
 #    prefix: /options
 
 #sylius_backend_property:
-#    resource: @SyliusWebBundle/Resources/config/routing/backend/property.yml
+#    resource: @SyliusBackendBundle/Resources/config/routing/property.yml
 #    prefix: /properties
 
 #sylius_backend_prototype:
@@ -104,3 +104,7 @@ sylius_backend_product:
 
 #sylius_backend_security:
 #    resource: @SyliusWebBundle/Resources/config/routing/backend/security.yml
+
+_imagine:
+    resource: .
+    type:     imagine

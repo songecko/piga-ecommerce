@@ -102,7 +102,7 @@ class AppKernel extends Kernel
             ini_set('display_errors', 0);
         }
 
-        ini_set('date.timezone', 'UTC');
+        ini_set('date.timezone', 'America/Argentina/Buenos_Aires');
     }
 
     /**

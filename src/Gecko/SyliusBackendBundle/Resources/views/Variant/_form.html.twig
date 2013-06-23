@@ -1,0 +1,13 @@
+<div class="form-container">
+<fieldset>
+    {{ form_errors(form) }}
+    {% if form.options is defined and form.options|length > 0 %}
+        {% for optionForm in form.options %}
+            {{ form_row(optionForm) }}
+        {% endfor %}
+    {% endif %}
+    {{ form_row(form.price) }}
+    {{ form_row(form.onHand) }}
+</fieldset>
+{{ form_widget(form._token) }}
+</div>

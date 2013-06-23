@@ -1,4 +1,70 @@
-sylius.backend:
-    meta.title: "Pigalle Administración"
+sylius:
+    show:             "Ver"
+    edit:             "Editar"
+    create:           "Crear"
+    delete:           "Eliminar"
+    filter:           "Filtrar"
+    save_changes:     "Guardar"
+    cancel:           "Cancelar"
+    yes:              "Si"
+    no:               "No"
     
-sylius.product.index_header: "Productos"
+    alert:
+        success:      "Exito"
+        info:         "Información"
+        error:        "Error"
+        warning:      "Advertencia"
+        
+    backend:
+        meta.title:   "Pigalle Administración"
+    
+    gallery:
+        previous:     "Anterior"
+        next:         "Siguiente"
+        slideshow:    "Reproducir"
+        
+    form:
+        choose_file:  "Seleccionar archivo"
+        image.file:   "Archivo"
+        product_filter:
+            name:     "Nombre"
+            sku:      "SKU"
+        product:
+            short_description: "Descripción corta"
+        variant:
+            on_hand:  "Stock"
+            price:    "Precio"
+      
+    product:
+        index_header: "Productos"
+        create_header: "Crear producto"
+        show_header:  "Vista del producto"
+        update_header: "Editar producto"
+        sku:          "SKU"
+        name:         "Nombre"
+        price:        "Precio"
+        updated_at:   "Actualizado el"
+        create:       "Nuevo producto"
+        no_results:   "No hay productos"
+        manage:       "Administrar productos"
+        categorization: "Categorías"
+        stock:        "Stock"
+        no_taxons:    "Sin categorías"
+        generate_variants: "Generar talles"
+        tabs:
+          product:    "Producto"
+          options:    "Talles"
+          categorization: "Categorías"
+          images:     "Imágenes"
+        
+    variant:
+        create_header: "Crear talle de producto"
+        update_header: "Editar talle de producto"
+        create:       "Crear talle"
+        stock:        "Stock"
+        last_update:  "Última actualización"
+        options:      "Talle"
+        price:        "Precio"
+        no_results:   "No hay talles creados para este producto"
+        add_image:    "Agregar imagen"
+        delete_image: "Eliminar imagen"

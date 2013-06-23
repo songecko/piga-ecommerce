@@ -109,7 +109,7 @@ class LoadProductsData extends DataFixture
     	$product->setName(sprintf('%s "%s"', $shoeType,  $this->faker->word));
     	$product->setDescription($this->faker->paragraph);
     	$product->setShortDescription($this->faker->sentence);
-    	$product->setVariantSelectionMethod(Product::VARIANT_SELECTION_MATCH);
+    	$product->setVariantSelectionMethod(Product::VARIANT_SELECTION_CHOICE);
     	 
     	$this->addMasterVariant($product);
     	
@@ -138,9 +138,9 @@ class LoadProductsData extends DataFixture
         ;
 
         foreach ($product->getVariants() as $variant) {
-            $variant->setAvailableOn($this->faker->dateTime);
-            $variant->setPrice($this->faker->randomNumber(4));
-            $variant->setSku($this->getUniqueSku());
+           /* $variant->setAvailableOn($this->faker->dateTime);
+            $variant->setPrice($product->getMasterVariant()->getPrice());
+            $variant->setSku($this->getUniqueSku());*/
             $variant->setOnHand($this->faker->randomNumber(1));
 
             $this->setReference('Sylius.Variant-'.$this->totalVariants, $variant);

@@ -20,7 +20,7 @@ framework:
 twig:
     form:
         resources:
-            - 'SyliusWebBundle::forms.html.twig'
+            - 'SyliusBackendBundle::forms.html.twig'
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
 

@@ -1,6 +1,6 @@
 {% macro list(products) %}
 
-{#% import 'SyliusWebBundle:Backend/Macros:buttons.html.twig' as buttons %#}
+{% import 'SyliusBackendBundle:Macros:buttons.html.twig' as buttons %}
 {% import 'SyliusBackendBundle:Macros:alerts.html.twig' as alerts %}
 
 {% if products|length > 0 %}
@@ -41,13 +41,9 @@
                 <p>{{ product.shortDescription|truncate(50) }}</p>
             </td>
             <td>
-                {% if not product.hasOptions %}
-                    <span class="label label-success">{{ product.masterVariant.price|sylius_money }}</span>
-                {% else %}
-                    ---
-                {% endif %}
+            	<span class="label label-success">{{ product.masterVariant.price|sylius_money }}</span>
             </td>
-            <td><span class="label label-info">{{ product.updatedAt|date }}</span></td>
+            <td><span class="label label-info">{{ product.updatedAt|date("d/m/Y g:ia") }}</span></td>
             <td>
                 <div class="pull-right">
                 {{ buttons.show(path('sylius_backend_product_show', {'id': product.id})) }}
@@ -60,7 +56,7 @@
     </tbody>
 </table>
 {% else %}
-{{ alerts.info('sylius.product.no_results'|trans) }}
+{{ alerts.info('sylius.no_results'|trans) }}
 {% endif %}
 
 {% endmacro %}

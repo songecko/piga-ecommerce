@@ -26,7 +26,7 @@ class LoadOptionsData extends DataFixture
     public function load(ObjectManager $manager)
     {
         // T-Shirt size option.
-        $option = $this->createOption('Talle', 'Talle', array('36', '37', '38', '39', '40', '41', '42'));
+        $option = $this->createOption('Talle', 'Talle del calzado', array('36', '37', '38', '39', '40', '41', '42'));
         $manager->persist($option);
 
         // T-Shirt color option.

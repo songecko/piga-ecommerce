@@ -22,6 +22,44 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class ProductController extends ResourceController
 {
+	/**
+	 * Create new resource or just display the form.
+	 */
+	public function createAction(Request $request)
+	{
+		$config = $this->getConfiguration();
+	
+		$resource = $this->createNew();
+		
+		$optionRepository = $this->get('sylius.repository.option');
+		$option = $optionRepository->findOneBy(array('name' => 'Talle'));
+		$resource->addOption($option);
+		
+		$form = $this->getForm($resource);
+	
+		if ($request->isMethod('POST') && $form->bind($request)->isValid()) {
+			$this->create($resource);
+			$this->setFlash('success', 'create');
+	
+			return $this->redirectTo($resource);
+		}
+	
+		if ($config->isApiRequest()) {
+			return $this->handleView($this->view($form));
+		}
+	
+		$view = $this
+		->view()
+		->setTemplate($config->getTemplate('create.html'))
+		->setData(array(
+				$config->getResourceName() => $resource,
+				'form'                     => $form->createView()
+		))
+		;
+	
+		return $this->handleView($view);
+	}
+	
     /**
      * List products categorized under given taxon.
      *

@@ -33,9 +33,9 @@ class VariantType extends BaseVariantType
             ->add('price', 'sylius_money', array(
                 'label' => 'sylius.form.variant.price'
             ))
-            ->add('availableOnDemand', 'checkbox', array(
+            /*->add('availableOnDemand', 'checkbox', array(
                 'label' => 'sylius.form.variant.available_on_demand'
-            ))
+            ))*/
             ->add('onHand', 'integer', array(
                 'label' => 'sylius.form.variant.on_hand'
             ))
@@ -46,6 +46,7 @@ class VariantType extends BaseVariantType
                 'by_reference' => false,
                 'label'        => 'sylius.form.variant.images'
             ))
+            ->remove('availableOn')
         ;
     }
 }
