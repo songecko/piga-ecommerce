@@ -12,6 +12,7 @@
 namespace Sylius\Bundle\CoreBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Sylius\Bundle\CoreBundle\Entity\Taxon;
 
 /**
  * Default taxonomies to play with Sylius.
@@ -25,15 +26,15 @@ class LoadTaxonomiesData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        /*$manager->persist($this->createTaxonomy('Category', array(
-            'T-Shirts', 'Stickers', 'Mugs', 'Books'
+        $manager->persist($this->createTaxonomy('Temporada', array(
+            Taxon::TAXON_SEASON_SUMMER, Taxon::TAXON_SEASON_WINTER
         )));
 
-        $manager->persist($this->createTaxonomy('Brand', array(
-            'SuperTees', 'Stickypicky', 'Mugland', 'Bookmania'
+        $manager->persist($this->createTaxonomy('Tipo', array(
+            'Zapatos', 'Botas', 'Sandalias', 'Tacos'
         )));
 
-        $manager->flush();*/
+        $manager->flush();
     }
 
     /**

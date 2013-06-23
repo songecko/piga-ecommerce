@@ -26,11 +26,11 @@ class LoadOptionsData extends DataFixture
     public function load(ObjectManager $manager)
     {
         // T-Shirt size option.
-        /*$option = $this->createOption('T-Shirt size', 'Size', array('S', 'M', 'L', 'XL', 'XXL'));
+        $option = $this->createOption('Talle', 'Talle', array('36', '37', '38', '39', '40', '41', '42'));
         $manager->persist($option);
 
         // T-Shirt color option.
-        $option = $this->createOption('T-Shirt color', 'Color', array('Red', 'Blue', 'Green'));
+        /*$option = $this->createOption('T-Shirt color', 'Color', array('Red', 'Blue', 'Green'));
         $manager->persist($option);
 
         // Sticker size option.
@@ -39,9 +39,9 @@ class LoadOptionsData extends DataFixture
 
         // Mug type option.
         $option = $this->createOption('Mug type', 'Type', array('Medium mug','Double mug','MONSTER mug'));
-        $manager->persist($option);
+        $manager->persist($option);*/
 
-        $manager->flush();*/
+        $manager->flush();
     }
 
     /**

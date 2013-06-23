@@ -71,6 +71,7 @@ class AppKernel extends Kernel
             new JMS\TranslationBundle\JMSTranslationBundle(),
         		
         	//Project Bundles
+        	new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
             new Gecko\PigalleBundle\PigalleBundle(),
             new Gecko\SyliusBackendBundle\SyliusBackendBundle(),
         );

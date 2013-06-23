@@ -15,6 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sylius\Bundle\AssortmentBundle\Model\CustomizableProductInterface;
 use Sylius\Bundle\CoreBundle\Entity\Product;
+use Sylius\Bundle\CoreBundle\Entity\Taxon;
 
 /**
  * Default assortment products to play with Sylius sandbox.
@@ -53,25 +54,25 @@ class LoadProductsData extends DataFixture
     public function load(ObjectManager $manager)
     {
         $this->productPropertyClass = $this->container->getParameter('sylius.model.product_property.class');
-
+	
         // Products...
-        for ($i = 1; $i <= 120; $i++) {
+        for ($i = 1; $i <= 120; $i++) {	        
             switch (rand(0, 3)) {
                 case 0:
-                    $manager->persist($this->createShoe($i));
+                    $manager->persist($this->createProduct('Zapato', $i));
                 break;
 
-                /*case 1:
-                    $manager->persist($this->createSticker($i));
+                case 1:
+                    $manager->persist($this->createProduct('Bota', $i));
                 break;
 
                 case 2:
-                    $manager->persist($this->createMug($i));
+                    $manager->persist($this->createProduct('Sandalia', $i));
                 break;
 
                 case 3:
-                    $manager->persist($this->createBook($i));
-                break;*/
+                    $manager->persist($this->createProduct('Taco', $i));
+                break;
             }
 
             if (0 === $i % 20) {
@@ -94,142 +95,36 @@ class LoadProductsData extends DataFixture
     }
 
     /**
-     * Creates show product.
+     * Create new product instance.
      *
+     * @param string $shoeType
      * @param integer $i
+     * @return ProductInterface
      */
-    private function createShoe($i)
-    {
-        $product = $this->createProduct();
-
-        //$product->setTaxCategory($this->getTaxCategory('Taxable goods'));
-        $product->setName(sprintf('Zapato "%s"', $this->faker->word));
-        $product->setDescription($this->faker->paragraph);
-        $product->setShortDescription($this->faker->sentence);
-        $product->setVariantSelectionMethod(Product::VARIANT_SELECTION_MATCH);
-
-        $this->addMasterVariant($product);
-
-        //$this->setTaxons($product, array('T-Shirts', 'SuperTees'));
-
-        // brand.
-        /*$randomBrand = $this->faker->randomElement(array('Nike', 'Adidas', 'Puma', 'Potato'));
-        $this->addProperty($product, 'Marca', $randomBrand);*/
-
-        // collection.
-        /*$randomCollection = sprintf('Temporada %s %s', $this->faker->randomElement(array('Otoño / Invierno', 'Primavera / Verano')), rand(1995, 2012));
-        $this->addProperty($product, 'Temporada', $randomCollection);
-
-        // material.
-        $randomMaterial = $this->faker->randomElement(array('Polyester', 'Wool', 'Polyester 10% / Wool 90%', 'Potato 100%'));
-        $this->addProperty($product, 'Material', $randomMaterial);
-*/
-        //$product->addOption($this->getReference('Sylius.Option.Zapato size'));
-        //$product->addOption($this->getReference('Sylius.Option.Zapato color'));
-
-        //$this->generateVariants($product);
-
-        $this->setReference('Sylius.Product-'.$i, $product);
-
-        return $product;
+    private function createProduct($shoeType, $i)
+    {    	
+    	$product = $this->getProductRepository()->createNew();
+    	 
+    	//$product->setTaxCategory($this->getTaxCategory('Taxable goods'));
+    	$product->setName(sprintf('%s "%s"', $shoeType,  $this->faker->word));
+    	$product->setDescription($this->faker->paragraph);
+    	$product->setShortDescription($this->faker->sentence);
+    	$product->setVariantSelectionMethod(Product::VARIANT_SELECTION_MATCH);
+    	 
+    	$this->addMasterVariant($product);
+    	
+    	$taxonSeason = $this->faker->randomElement(array(Taxon::TAXON_SEASON_SUMMER, Taxon::TAXON_SEASON_WINTER));
+    	$this->setTaxons($product, array($shoeType.'s', $taxonSeason));
+    	
+    	$product->addOption($this->getReference('Sylius.Option.Talle'));
+    	
+    	$this->generateVariants($product);
+    	
+    	$this->setReference('Sylius.Product-'.$i, $product);    	
+    	 
+    	return $product;
     }
-
-    /**
-     * Create sticker product.
-     *
-     * @param integer $i
-     */
-    private function createSticker($i)
-    {
-        $product = $this->createProduct();
-
-        $product->setTaxCategory($this->getTaxCategory('Taxable goods'));
-        $product->setName(sprintf('Sticker "%s"', $this->faker->word));
-        $product->setDescription($this->faker->paragraph);
-        $product->setShortDescription($this->faker->sentence);
-        $product->setVariantSelectionMethod(Product::VARIANT_SELECTION_MATCH);
-
-        $this->addMasterVariant($product);
-
-        $this->setTaxons($product, array('Stickers', 'Stickypicky'));
-
-        // Sticker resolution.
-        $randomResolution = $this->faker->randomElement(array('Waka waka', 'FULL HD', '300DPI', '200DPI'));
-        $this->addProperty($product, 'Sticker resolution', $randomResolution);
-
-        // Sticker paper.
-        $randomPaper = sprintf('Paper from tree %s', $this->faker->randomElement(array('Wung', 'Yang', 'Lemon-San', 'Me-Gusta')));
-        $this->addProperty($product, 'Sticker paper', $randomPaper);
-
-        $product->addOption($this->getReference('Sylius.Option.Sticker size'));
-
-        $this->generateVariants($product);
-
-        $this->setReference('Sylius.Product.'.$i, $product);
-
-        return $product;
-    }
-
-    /**
-     * Create mug product.
-     *
-     * @param integer $i
-     */
-    private function createMug($i)
-    {
-        $product = $this->createProduct();
-
-        $product->setTaxCategory($this->getTaxCategory('Taxable goods'));
-        $product->setName(sprintf('Mug "%s"', $this->faker->word));
-        $product->setDescription($this->faker->paragraph);
-        $product->setShortDescription($this->faker->sentence);
-
-        $this->addMasterVariant($product);
-
-        $this->setTaxons($product, array('Mugs', 'Mugland'));
-
-        $randomMugMaterial = $this->faker->randomElement(array('Invisible porcelain', 'Banana skin', 'Porcelain', 'Sand'));
-        $this->addProperty($product, 'Mug material', $randomMugMaterial);
-
-        $product->addOption($this->getReference('Sylius.Option.Mug type'));
-
-        $this->generateVariants($product);
-
-        $this->setReference('Sylius.Product.'.$i, $product);
-
-        return $product;
-    }
-
-    /**
-     * Create book product.
-     *
-     * @param integer $i
-     */
-    private function createBook($i)
-    {
-        $product = $this->createProduct();
-
-        $author = $this->faker->name;
-        $isbn = $this->getUniqueISBN();
-
-        $product->setTaxCategory($this->getTaxCategory('Taxable goods'));
-        $product->setName(sprintf('Book "%s" by "%s"', ucfirst($this->faker->word), $author));
-        $product->setDescription($this->faker->paragraph);
-        $product->setShortDescription($this->faker->sentence);
-
-        $this->addMasterVariant($product, $isbn);
-
-        $this->setTaxons($product, array('Books', 'Bookmania'));
-
-        $this->addProperty($product, 'Book author', $author);
-        $this->addProperty($product, 'Book ISBN', $isbn);
-        $this->addProperty($product, 'Book pages', $this->faker->randomNumber(3));
-
-        $this->setReference('Sylius.Product.'.$i, $product);
-
-        return $product;
-    }
-
+    
     /**
      * Generates all possible variants with random prices.
      *
@@ -243,7 +138,7 @@ class LoadProductsData extends DataFixture
         ;
 
         foreach ($product->getVariants() as $variant) {
-            $variant->setAvailableOn($this->faker->dateTimeThisYear);
+            $variant->setAvailableOn($this->faker->dateTime);
             $variant->setPrice($this->faker->randomNumber(4));
             $variant->setSku($this->getUniqueSku());
             $variant->setOnHand($this->faker->randomNumber(1));
@@ -269,7 +164,7 @@ class LoadProductsData extends DataFixture
         $variant->setProduct($product);
         $variant->setPrice($this->faker->randomNumber(4));
         $variant->setSku($sku);
-        $variant->setAvailableOn($this->faker->dateTimeThisYear);
+        $variant->setAvailableOn($this->faker->dateTime);
         $variant->setOnHand($this->faker->randomNumber(1));
 
         $productName = explode(' ', $product->getName());
@@ -356,18 +251,5 @@ class LoadProductsData extends DataFixture
     private function getUniqueISBN()
     {
         return $this->getUniqueSku(13);
-    }
-
-    /**
-     * Create new product instance.
-     *
-     * @return ProductInterface
-     */
-    private function createProduct()
-    {
-        return $this
-            ->getProductRepository()
-            ->createNew()
-        ;
-    }
+    }   
 }

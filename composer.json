@@ -56,7 +56,8 @@
         "fzaninotto/faker":                     "1.1.*",
         "knplabs/knp-menu-bundle":              "2.0.*",
         "liip/imagine-bundle":                  "0.9.*",
-        "athari/yalinqo":                       "*"
+        "athari/yalinqo":                       "*",
+        "raulfraile/ladybug-bundle": 			"dev-master"
     },
     "require-dev": {
         "behat/behat":                       "2.4.*",

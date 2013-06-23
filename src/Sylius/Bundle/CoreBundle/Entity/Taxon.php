@@ -34,6 +34,9 @@ class Taxon extends BaseTaxon implements ImageInterface
      */
     protected $updatedAt;
 
+    const TAXON_SEASON_SUMMER = 'Primavera / Verano 2013';
+    const TAXON_SEASON_WINTER = 'Otoño / Invierno 2014';
+    
     public function __construct()
     {
         parent::__construct();

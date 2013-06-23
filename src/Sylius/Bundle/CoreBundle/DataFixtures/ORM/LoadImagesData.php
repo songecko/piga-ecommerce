@@ -25,7 +25,7 @@ class LoadImagesData extends DataFixture
 {
     public function load(ObjectManager $manager)
     {
-        /*$finder = new Finder();
+        $finder = new Finder();
         $uploader = $this->get('sylius.image_uploader');
 
         $path = $this->container->getParameter('kernel.root_dir').'/../web/fixtures';
@@ -39,7 +39,7 @@ class LoadImagesData extends DataFixture
             $this->setReference('Sylius.Image.'.$img->getBasename('.jpg'), $image);
         }
 
-        $manager->flush();*/
+        $manager->flush();
     }
 
     public function getOrder()

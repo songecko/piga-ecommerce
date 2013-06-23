@@ -25,7 +25,7 @@ class LoadPropertiesData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        /*$property = $this->createProperty('T-Shirt brand', 'Brand');
+        /*$property = $this->createProperty('Temporada', 'Temporada');
         $manager->persist($property);
 
         $property = $this->createProperty('T-Shirt collection', 'Collection');
