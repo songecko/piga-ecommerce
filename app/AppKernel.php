@@ -28,8 +28,6 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = array(
-        		
-        		
             // Sylius bundles.
             new Sylius\Bundle\CoreBundle\SyliusCoreBundle(),
             //new Sylius\Bundle\WebBundle\SyliusWebBundle(),

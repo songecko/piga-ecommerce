@@ -1,0 +1,18 @@
+<div class="tab">Productos Destacados</div>
+<div class="row">
+{% for product in products %}
+	<div class="span3">
+		<div class="imagenProducto">
+			<img src="{{ product.image.path|imagine_filter('sylius_262x255') }}" alt="Producto destacado" />
+		</div>
+		<div class="pull-left descripcionProducto">
+			<h3>{{ product.name }}</h3>
+			<p>{{ product.shortDescription|truncate(50)  }}</p>
+		</div>
+		<div class="pull-right flag">
+			<p>{{ product.masterVariant.price/100 }}</p>
+			<div class="tail">&nbsp;</div>
+		</div>
+	</div>
+{% endfor %}
+</div>

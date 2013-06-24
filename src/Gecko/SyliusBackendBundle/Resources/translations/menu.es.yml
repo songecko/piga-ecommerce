@@ -1,4 +1,5 @@
 sylius.backend:
     menu.main:
+      dashboard:  "Dashboard"
       assortment: "Tienda"
       products:   "Productos"

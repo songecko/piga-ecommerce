@@ -21,6 +21,26 @@ use Sylius\Bundle\TaxonomiesBundle\Model\TaxonInterface;
  */
 class ProductRepository extends CustomizableProductRepository
 {
+	/**
+	 * Find for featured products
+	 * 
+	 * @param number $max
+	 * @return array
+	 */
+	public function findFeaturedProducts($max = null)
+	{
+		$qb =  $this->getQueryBuilder()
+			->groupBy('product.id')
+			->orderBy('product.createdAt', 'DESC');
+		
+		if($max)
+		{
+			$qb->setMaxResults($max);
+		}
+			
+		return $qb->getQuery()->getResult();
+	}
+	
     /**
      * Create paginator for products categorized
      * under given taxon.

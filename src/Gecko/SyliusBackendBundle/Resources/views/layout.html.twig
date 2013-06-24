@@ -41,7 +41,7 @@
 	    					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Cuenta<b class="caret"></b></a>
 		    				<ul class="dropdown-menu pull-right">
 		      					<li><a href="#"><i class="icon-pencil"></i> Editar</a></li>
-		      					<li><a href="#"><i class="icon-eye-open"></i> Visitar sitio</a></li>
+		      					<li><a href="{{ path('pigalle_homepage') }}" target="_blank"><i class="icon-eye-open"></i> Visitar sitio</a></li>
 		      					<li class="divider"></li>
 	      						<li><a href="#"><i class="icon-off"></i> Salir</a></li>
 		    				</ul>
@@ -51,17 +51,23 @@
   			</div>
 		</div>
 		
-		<div class="container-fluid">        
+		{#<div class="container-fluid">        
 			<ul class="breadcrumb">
-  				<li><a href="{{ path('sylius_backend_dashboard') }}">{{ 'sylius.backend.meta.title'|trans }}</a> <span class="divider">/</span></li>
+				{% block breadcrumbs %}
+  				<li><a href="{{ path('sylius_backend_dashboard') }}">{{ 'sylius.backend.menu.main.dashboard'|trans }}</a> <span class="divider">/</span></li>
+  				{% endblock %}
 			</ul>
-		</div>
+		</div>#}
 		
 		<div id="content" class="container-fluid">
 			{% for type in ['success', 'error'] %}
 				{% for message in app.session.flashbag.get(type) %}
 				<div class="alert alert-{{ type }}">
+					{% if type == 'success' %}
+					Operación realizada con éxito
+					{% else %}
 					{{ message }}
+					{% endif %}
 					<a class="close" data-dismiss="alert" href="#">&times;</a>
 				</div>
 				{% endfor %}
