@@ -39,17 +39,8 @@ set :use_sudo,    false
 
 set :keep_releases, 3
 
-before 'symfony:composer:update', 'symfony:copy_vendors'
- 
-namespace :gecko do
-  desc "Customized finalize deploy"
-  task :finalize_deploy do
-  	capifony_pretty_print "--> Finalizing deploy"
-    run "rm -rf #{release_path}/public/my_folder"
-    run "mkdir -p #{shared_path}/my_folder"
-    run "ln -nfs #{shared_path}/my_folder #{release_path}/public/my_folder"
-  end
-end
+
+## TASKS ##
 
 namespace :deploy do
 	task :share_childs, :roles => :app, :except => { :no_release => true } do
@@ -59,7 +50,7 @@ namespace :deploy do
 			shared_children.each do |link|
 				run "#{try_sudo} mkdir -p #{shared_path}/#{link}"
 				run "#{try_sudo} sh -c 'if [ -d #{release_path}/#{link} ] ; then rm -rf #{release_path}/#{link}; fi'"
-				run "#{try_sudo} ln -s #{shared_path}/#{link} #{release_path}/#{link}"
+				run "#{try_sudo} ln -fs #{shared_path}/#{link} #{release_path}/#{link}"
 			end
 
 			capifony_puts_ok
@@ -72,7 +63,7 @@ namespace :deploy do
 				link_dir = File.dirname("#{shared_path}/#{link}")
 				run "#{try_sudo} mkdir -p #{link_dir}"
 				run "#{try_sudo} touch #{shared_path}/#{link}"
-				run "#{try_sudo} ln -s #{shared_path}/#{link} #{release_path}/#{link}"
+				run "#{try_sudo} ln -fs #{shared_path}/#{link} #{release_path}/#{link}"
 			end
 
 			capifony_puts_ok
@@ -113,6 +104,9 @@ namespace :symfony do
 	end
 end
 
-after "deploy:update_code", "symfony:copy_from_previous"
+
+## TASK LISTENERS ##
+
+before "deploy:finalize_update", "symfony:vendor:copy_from_previous"
 after "deploy:update", "deploy:cleanup"
 after "deploy", "deploy:set_permissions"
