@@ -10,7 +10,7 @@
 			<p>{{ product.shortDescription|truncate(50)  }}</p>
 		</div>
 		<div class="pull-right flag">
-			<p>{{ product.masterVariant.price/100 }}</p>
+			<p>{{ product.masterVariant.price|price}}</p>
 			<div class="tail">&nbsp;</div>
 		</div>
 	</div>
