@@ -2,6 +2,13 @@ pigalle_homepage:
     pattern:        /
     defaults:       { _controller: PigalleBundle:Main:index }
 
+pigalle_product_show:
+    pattern:        /p/{slug}
+    _controller:    sylius.controller.product:showAction
+        _sylius:
+            template: PigalleBundle:Product:show.html.twig
+            criteria: {slug: $slug}
+            
 #sylius_province_choice_form:
 #    pattern: /province/choice-form
 #    defaults:
