@@ -4,13 +4,15 @@ logger.level = Logger::MAX_LEVEL
 ## SERVER CONFIGURATION ##
 
 set :application,        "Pigalle"
-set :domain,             "pigalle.com.ar"
-set :deploy_to,          "/var/www/vhosts/pigalle.com.ar/httpdocs"
-set :user,               "pigalle"
-set :password,           "HUcszb5R"
+set :domain,             "54.244.250.134"
+set :deploy_to,          "/var/www"
+set :user,               "ubuntu"
+#set :password,           "HUcszb5R"
+set :ssh_options, { :forward_agent => true }
+ssh_options[:keys] = "/Users/gecko/.ssh/amazon.pem"
 set :app_path,           "app"
 set :web_path,           "web"
-set :use_sudo,            false
+set :use_sudo,            true
 
 ## ROLES ##
 
@@ -22,12 +24,12 @@ role :db,                 domain, :primary => true
 
 set :scm,                 :git
 set :repository,          "https://github.com/songecko/piga-ecommerce.git"
-set :deploy_via,          :copy #:capifony_copy_local #(for the first release)
+set :deploy_via,          :capifony_copy_local #:capifony_copy_local #(for the first release)
 set :copy_dir, 	          "deploy_temp"
 
 ## VENDORS ##
 
-set :use_composer,        false ## true, on first release 
+set :use_composer,        true ## true, on first release 
 set :use_composer_tmp,    true 
 set :composer_options,    "--verbose"
 set :update_vendors,      false
@@ -53,25 +55,25 @@ set :keep_releases,       3
 
 ## TASKS ##
 
-namespace :symfony do
-	namespace :assets do
-		desc "Remember install assets manually"
-		task :install do
-			capifony_pretty_print "--> Remember install assets manually"
-		end
-	end
-	namespace :cache do
-		desc "Remember warmup the cache"
-		task :warmup do
-			capifony_pretty_print "--> Remember warmup the cache"
-		end
-	end
-	namespace :assetic do
-		desc "Remember dump assetic"
-		task :dump do
-			capifony_pretty_print "--> Remember dump assetic"
-		end
-	end
+#namespace :symfony do
+#	namespace :assets do
+#		desc "Remember install assets manually"
+#		task :install do
+#			capifony_pretty_print "--> Remember install assets manually"
+#		end
+#	end
+#	namespace :cache do
+#		desc "Remember warmup the cache"
+#		task :warmup do
+#			capifony_pretty_print "--> Remember warmup the cache"
+#		end
+#	end
+#	namespace :assetic do
+#		desc "Remember dump assetic"
+#		task :dump do
+#			capifony_pretty_print "--> Remember dump assetic"
+#		end
+#	end
 #	namespace :bootstrap do
 #		desc "Build bootstrap.php.cache"
 #		task :build do
@@ -93,12 +95,12 @@ namespace :symfony do
 #    		end
 #  		end
 #	end
-end
+#end
 
 
 ## TASK LISTENERS ##
 
-before "deploy:finalize_update", "symfony:composer:copy_vendors" ## DISABLE ON THE FIRST RELEASE
+#before "deploy:finalize_update", "symfony:composer:copy_vendors" ## DISABLE ON THE FIRST RELEASE
 after "symfony:composer:copy_vendors", "symfony:bootstrap:build"
 after "deploy:update", "deploy:cleanup"
 after "deploy", "deploy:set_permissions"
