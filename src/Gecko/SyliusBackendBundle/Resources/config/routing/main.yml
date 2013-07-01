@@ -18,9 +18,9 @@ sylius_backend_variant:
     resource: @SyliusBackendBundle/Resources/config/routing/variant.yml
     prefix: /products/{productId}/variants
 
-#sylius_backend_option:
-#    resource: @SyliusBackendBundle/Resources/config/routing/option.yml
-#    prefix: /options
+sylius_backend_option:
+    resource: @SyliusBackendBundle/Resources/config/routing/option.yml
+    prefix: /options
 
 #sylius_backend_property:
 #    resource: @SyliusBackendBundle/Resources/config/routing/property.yml
@@ -30,13 +30,13 @@ sylius_backend_variant:
 #    resource: @SyliusWebBundle/Resources/config/routing/backend/prototype.yml
 #    prefix: /prototypes
 
-#sylius_backend_taxonomy:
-#    resource: @SyliusWebBundle/Resources/config/routing/backend/taxonomy.yml
-#    prefix: /taxonomies
+sylius_backend_taxonomy:
+    resource: @SyliusBackendBundle/Resources/config/routing/taxonomy.yml
+    prefix: /taxonomies
 
-#sylius_backend_taxon:
-#    resource: @SyliusWebBundle/Resources/config/routing/backend/taxon.yml
-#    prefix: /taxonomies/{taxonomyId}/taxons
+sylius_backend_taxon:
+    resource: @SyliusBackendBundle/Resources/config/routing/taxon.yml
+    prefix: /taxonomies/{taxonomyId}/taxon
 
 #sylius_backend_order:
 #    resource: @SyliusWebBundle/Resources/config/routing/backend/order.yml

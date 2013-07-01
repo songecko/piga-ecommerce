@@ -32,8 +32,11 @@ sylius:
         product:
             short_description: "Descripción corta"
         variant:
+            sku:      "SKU"
             on_hand:  "Stock"
             price:    "Precio"
+        taxon:
+            parent:        "Categoría padre"
       
     product:
         index_header: "Productos"
@@ -60,11 +63,34 @@ sylius:
     variant:
         create_header: "Crear talle de producto"
         update_header: "Editar talle de producto"
-        create:       "Crear talle"
-        stock:        "Stock"
-        last_update:  "Última actualización"
-        options:      "Talle"
-        price:        "Precio"
-        no_results:   "No hay talles creados para este producto"
-        add_image:    "Agregar imagen"
-        delete_image: "Eliminar imagen"
+        create:        "Crear talle"
+        stock:         "Stock"
+        last_update:   "Última actualización"
+        options:       "Talle"
+        price:         "Precio"
+        no_results:    "No hay talles creados para este producto"
+        add_image:     "Agregar imagen"
+        delete_image:  "Eliminar imagen"
+        
+    taxonomy:
+        index_header:  "Categorización <small>de los productos</small>"
+        update_header: "Editar categoría"
+        show_header:   "Vista de la categoría"        
+        create:        "Crear categoría"
+        name:          "Nombre"
+        
+    taxon:
+        update_header: "Editar valor de categoría"
+        create_header: "Agregar valor de categoría"
+        create:        "Agregar"
+        name:          "Nombre"
+        permalink:     "Permalink"
+    
+    option:
+        index_header:  "Opciones <small>de los productos</small>"
+        update_header: "Editar opción"
+        create:        "Crear"
+        name:          "Nombre"
+        presentation:  "Presentación"
+        values:        "Valores"
+        updated_at:    "Actualizado el"

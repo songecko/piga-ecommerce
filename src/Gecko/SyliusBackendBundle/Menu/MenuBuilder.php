@@ -94,6 +94,37 @@ class MenuBuilder
     }
 
     /**
+     * Builds backend sidebar menu.
+     *
+     * @param Request $request
+     *
+     * @return ItemInterface
+     */
+    public function createDashboardMenu(Request $request)
+    {
+    	$menu = $this->factory->createItem('root', array(
+    		'childrenAttributes' => array(
+    			'class' => 'nav nav-list well'
+    		)
+    	));
+    
+    	$menu->setCurrent($request->getRequestUri());
+    
+    	$childOptions = array(
+    			'childrenAttributes' => array('class' => 'nav nav-list'),
+    			'labelAttributes'    => array('class' => 'nav-header')
+    	);
+    
+    	$this->addAssortmentMenu($menu, $childOptions, 'main');
+    	//$this->addSalesMenu($menu, $childOptions, 'sidebar');
+    	//$this->addCustomersMenu($menu, $childOptions, 'sidebar');
+    	//$this->addConfigurationMenu($menu, $childOptions, 'sidebar');
+        $this->addAccountMenu($menu, $childOptions, 'main');
+    
+    	return $menu;
+    }
+    
+    /**
      * Add assortment menu.
      *
      * @param ItemInterface $menu
@@ -106,14 +137,19 @@ class MenuBuilder
             ->setLabel($this->translate(sprintf('sylius.backend.menu.%s.assortment', $section)))
         ;
 
-        /*$child->addChild('taxonomies', array(
+        $child->addChild('taxonomies', array(
             'route' => 'sylius_backend_taxonomy_index',
             'labelAttributes' => array('icon' => 'icon-tags'),
-        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.taxonomies', $section)));*/
+        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.taxonomies', $section)));
+        
+        $child->addChild('options', array(
+            'route' => 'sylius_backend_option_index',
+            'labelAttributes' => array('icon' => 'icon-th'),
+        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.options', $section)));
 
         $child->addChild('products', array(
             'route' => 'sylius_backend_product_index',
-            'labelAttributes' => array('icon' => 'icon-th-large'),
+            'labelAttributes' => array('icon' => 'icon-certificate'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.products', $section)));
 
         /*$child->addChild('stockables', array(
@@ -121,10 +157,6 @@ class MenuBuilder
             'labelAttributes' => array('icon' => 'icon-signal'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.stockables', $section)));*/
 
-        /*$child->addChild('options', array(
-            'route' => 'sylius_backend_option_index',
-            'labelAttributes' => array('icon' => 'icon-th'),
-        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.options', $section)));*/
 
         /*$child->addChild('properties', array(
             'route' => 'sylius_backend_property_index',
@@ -255,4 +287,34 @@ class MenuBuilder
             'labelAttributes' => array('icon' => 'icon-globe'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.zones', $section)));
     }
+    
+    /**
+     * Add account menu.
+     *
+     * @param ItemInterface $menu
+     * @param array         $childOptions
+     */
+    protected function addAccountMenu(ItemInterface $menu, array $childOptions, $section)
+    {
+    	$child = $menu
+    		->addChild('account', $childOptions)
+    		->setLabel($this->translate(sprintf('sylius.backend.menu.%s.account', $section)))
+    	;
+    
+    	$child->addChild('edit', array(
+    			//'route' => 'sylius_backend_dashboard',
+    			'labelAttributes' => array('icon' => 'icon-pencil'),
+    	))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.account_edit', $section)));
+    
+    	$child->addChild('view_site', array(
+    			'route' => 'pigalle_homepage',
+    			'labelAttributes' => array('icon' => 'icon-eye-open', 'with_divider' => true),
+    	))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.view_site', $section)));
+    
+    	$child->addChild('signout', array(
+    			//'route' => 'sylius_backend_dashboard',
+    			'labelAttributes' => array('icon' => 'icon-off'),
+    	))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.signout', $section)));
+    }
+    
 }
