@@ -30,7 +30,9 @@ class ProductRepository extends CustomizableProductRepository
 	public function findFeaturedProducts($max = null)
 	{
 		$qb =  $this->getQueryBuilder()
-			->groupBy('product.id')
+			->andWhere('variant.master = 1')
+			->andWhere('variant.onHand > 0')
+			->groupBy('product.id')			
 			->orderBy('product.createdAt', 'DESC');
 		
 		if($max)

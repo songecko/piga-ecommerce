@@ -123,6 +123,7 @@ h3 {
 	border-bottom: 1px #000000 solid;
 }
 .descripcionProducto { width: 150px;}
+.descripcionProducto a {color: #333333;}
 
 .flag .tail { 
 	background:url(../images/img-bandera-negra.png) no-repeat;

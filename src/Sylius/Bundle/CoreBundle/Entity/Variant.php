@@ -152,6 +152,11 @@ class Variant extends BaseVariant implements VariantInterface
         return $this->availableOnDemand;
     }
 
+    public function isAvailable()
+    {
+    	return $this->getOnHand() > 0;
+    }
+    
     /**
      * {@inheritdoc}
      */

@@ -4,7 +4,8 @@ pigalle_homepage:
 
 pigalle_product_show:
     pattern:        /p/{slug}
-    _controller:    sylius.controller.product:showAction
+    defaults:
+        _controller:    sylius.controller.product:showAction
         _sylius:
             template: PigalleBundle:Product:show.html.twig
             criteria: {slug: $slug}

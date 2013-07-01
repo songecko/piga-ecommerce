@@ -142,7 +142,8 @@ class LoadProductsData extends DataFixture
             $variant->setPrice($product->getMasterVariant()->getPrice());
             $variant->setSku($this->getUniqueSku());*/
             $variant->setOnHand($this->faker->randomNumber(1));
-
+            $variant->setAvailableOnDemand(false);
+            
             $this->setReference('Sylius.Variant-'.$this->totalVariants, $variant);
             $this->totalVariants++;
         }
@@ -165,6 +166,7 @@ class LoadProductsData extends DataFixture
         $variant->setPrice($this->faker->randomNumber(4));
         $variant->setSku($sku);
         $variant->setAvailableOn($this->faker->dateTime);
+        $variant->setAvailableOnDemand(false);
         $variant->setOnHand($this->faker->randomNumber(1));
 
         $productName = explode(' ', $product->getName());
