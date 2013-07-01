@@ -133,7 +133,6 @@ h3 {
 }
 #footer {
 	margin-top: 70px;
-	padding-bottom: 25px;
 }
 #footer .socaloFooter { 
 	background:url(../images/bg-footer.png) repeat-x;
@@ -142,6 +141,7 @@ h3 {
 #footer .footer { 
 	background:#000000;
 	min-height:175px;
+	padding-bottom: 25px;
 }
 #footer .footer h3, #footer .footer p, #footer .footer p a, #footer .footer li, #footer .footer li a { 
 	color: #FFF;
