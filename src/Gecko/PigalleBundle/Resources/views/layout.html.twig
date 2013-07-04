@@ -15,7 +15,7 @@
         {% block stylesheets %}
         {% stylesheets output='css/compiled/frontend.css' filter='cssrewrite'
             '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css'
-            'http://fonts.googleapis.com/css?family=Raleway:400,300,700'
+            'http://fonts.googleapis.com/css?family=Lato:300,400,700'
             'http://fonts.googleapis.com/css?family=Croissant+One'
             '@SyliusBackendBundle/Resources/assets/css/bootstrap-image-gallery.min.css'
             'bundles/pigalle/css/main.css'
@@ -56,7 +56,35 @@
 			</div>
 		</div>
 		
-		<div id="slider"></div>
+		<div id="slider" class="carousel slide">
+			<!-- Carousel items -->
+			<div class="carousel-inner">
+				<div class="item active" style="background-image:url({{ asset('bundles/pigalle/images/slider_1.png') }});">
+					<div class="container">					
+						<div class="box">
+							<h3>Descubrí la nueva colección!</h3>
+							<p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem. lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem. lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem. lorem ipsum lorem ipsum lorem ipsu m lorem ipsum lorem ipsum lorem lorem ipsum lorem ipsum lorem.</p>
+							<a href="#" class="btn">Descubrila acá!</a>
+						</div>
+					</div>
+				</div>
+				<div class="item" style="background-image:url({{ asset('bundles/pigalle/images/slider_2.jpg') }});"></div>
+				<div class="item" style="background-image:url({{ asset('bundles/pigalle/images/slider_1.png') }});"></div>
+				<div class="item" style="background-image:url({{ asset('bundles/pigalle/images/slider_2.jpg') }});"></div>
+  			</div>
+			<!-- Carousel nav -->
+			<div class="container controls">
+				<ol class="carousel-indicators">
+					<li data-target="#slider" data-slide-to="0" class="active"></li>
+					<li data-target="#slider" data-slide-to="1"></li>
+					<li data-target="#slider" data-slide-to="2"></li>
+					<li data-target="#slider" data-slide-to="3"></li>
+				</ol>
+				
+				<a class="carousel-control left" href="#slider" data-slide="prev">&lsaquo;</a>
+				<a class="carousel-control right" href="#slider" data-slide="next">&rsaquo;</a>
+			</div>
+		</div>
   		<div class="socaloGris"></div>
   
 		<div id="content" class="container">
