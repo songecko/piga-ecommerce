@@ -3,6 +3,70 @@
 {% set form = sylius_cart_form({'product': product}) %}
 
 {% block content %}
+<div class="detalleProducto">
+	<div class="container">
+		<h3 class="titleSection">Online Store</h3>
+		<div class="direction">
+			<a class="pull-left" onclick="history.back();">VOLVER</a>
+			<!-- <a class="pull-right">ANTERIOR / SIGUIENTE</a>  -->
+		</div>
+		<div class="row">
+			<div class="span6 fotoDetalle"><img src="{{ product.image.path|imagine_filter('sylius_360x360') }}" /></div>
+			<div class="span6 datos">
+				<div class="datosProducto">
+					<h3 class="productName">{{ product.name }}</h3>
+					<p class="description">{{ product.description|default('')|raw }}</p>
+					<div class="botonCompras">&nbsp;</div>
+					<div class="flag">
+						<p>{{ product.masterVariant.price|price}}</p>
+						<div class="tail">&nbsp;</div>
+					</div>
+					<ul class="share">
+						<li class="pinterest"><a href="#"><img src="{{ asset('bundles/pigalle/images/pinterest.png') }}" /></a></li>
+						<li class="email"><a href="#"><img src="{{ asset('bundles/pigalle/images/sobre.png') }}" /></a></li>
+						<li class="facebookLike"><div class="fb-like" data-href="{{ url('pigalle_product_show', {'slug': product.slug}) }}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div></li>
+					</ul>
+				</div>				
+				<div class="photos">
+				{% for image in product.images %}
+        			<a href="{{ image.path|imagine_filter('sylius_360x360') }}" title="{{ product.name }}">
+            			<img class="img-polaroid" src="{{ image.path|imagine_filter('sylius_60x60') }}" alt="{{ product.name }}" />
+        			</a>
+    			{% endfor %}
+				</div>
+				<form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post">
+					<div class="talles">
+						<div class="row-fluid">
+							<div class="span2">Talle:</div>
+							<div class="span10">
+								<ul class="talleList">
+									<li>36</li>
+									<li>37</li>
+									<li>38</li>
+									<li>39</li>
+									<li>40</li>
+									<li>41</li>
+									<li>42</li>
+								</ul>							
+							</div>
+						</div>
+						<div class="row-fluid">
+							<div class="span2">Cantidad:</div>
+							<div class="span10">
+								{#{ form_widget(form.variant) }#}								
+								{{ form_widget(form.quantity, {'attr': {'class': 'quantity'}, 'empty_value': '1'}) }}
+            					{{ form_widget(form._token) }}
+							</div>
+						</div>
+					</div>				
+					<button type="submit" class="addToCartButton" href="#">AGREGAR A LA BOLSA DE COMPRAS</button>
+				</form>
+			</div>			
+		</div>
+	</div>
+</div>
+        
+{#  
 <div class="row-fluid">
     <div class="span3">
         <a href="{{ path('pigalle_product_show', {'slug': product.slug}) }}" class="thumbnail">
@@ -26,7 +90,7 @@
 {% endif %}
 <hr>
 <div class="row-fluid">
-    <form action="{#{ path('sylius_cart_item_add', {'id': product.id}) }#}" method="post" class="clearfix">
+    <form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post" class="clearfix">
     <div class="span6">
         {% if product.hasOptions %}
             {% if product.isVariantSelectionMethodChoice %}
@@ -83,5 +147,9 @@
         {% endif %}
     </div>
 </form>
-</div>
+</div>#}
+{% endblock %}
+
+{% block featured_products %}
+{{ render(controller('PigalleBundle:Product:featuredProducts')) }}
 {% endblock %}

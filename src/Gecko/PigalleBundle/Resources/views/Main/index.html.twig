@@ -1,5 +1,37 @@
 {% extends 'PigalleBundle::layout.html.twig' %}
 
+{% block content %}
+<div id="slider" class="carousel slide">
+	<!-- Carousel items -->
+	<div class="carousel-inner">
+		<div class="item active" style="background-image:url({{ asset('bundles/pigalle/images/slider_1.png') }});">
+			<div class="container">					
+				<div class="box">
+					<h3>Descubrí la nueva colección!</h3>
+					<p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem. lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem. lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem. lorem ipsum lorem ipsum lorem ipsu m lorem ipsum lorem ipsum lorem lorem ipsum lorem ipsum lorem.</p>
+					<a href="#" class="btn">Descubrila acá!</a>
+				</div>
+			</div>
+		</div>
+		<div class="item" style="background-image:url({{ asset('bundles/pigalle/images/slider_2.jpg') }});"></div>
+		<div class="item" style="background-image:url({{ asset('bundles/pigalle/images/slider_1.png') }});"></div>
+		<div class="item" style="background-image:url({{ asset('bundles/pigalle/images/slider_2.jpg') }});"></div>
+	</div>
+	<!-- Carousel nav -->
+	<div class="container controls">
+		<ol class="carousel-indicators">
+			<li data-target="#slider" data-slide-to="0" class="active"></li>
+			<li data-target="#slider" data-slide-to="1"></li>
+			<li data-target="#slider" data-slide-to="2"></li>
+			<li data-target="#slider" data-slide-to="3"></li>
+		</ol>
+			
+		<a class="carousel-control left" href="#slider" data-slide="prev">&lsaquo;</a>
+		<a class="carousel-control right" href="#slider" data-slide="next">&rsaquo;</a>
+	</div>
+</div>
+{% endblock %}
+
 {% block featured_products %}
 {{ render(controller('PigalleBundle:Product:featuredProducts')) }}
 {% endblock %}

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% set cart = sylius_cart_get() %}
 <html>
     <head>
         <title>{% block title %}Pigalle{% endblock %}</title>
@@ -25,6 +26,14 @@
         {% endblock %}
     </head>
     <body>
+    	<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=493058447438923";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
 		<div id="header">
 			<div class="container">
 				<ul class="pull-left">
@@ -34,7 +43,7 @@
 				<ul class="pull-right">
 					<li><a>LOGIN</a>  |</li>
 					<li><a>REGISTRARSE</a></li>
-					<li class="count"><a>20</a></li>
+					<li class="count"><a>{{ cart.totalItems }}</a></li>
 				</ul>
 			</div>
 		</div>
@@ -55,39 +64,8 @@
 				</ul>
 			</div>
 		</div>
-		
-		<div id="slider" class="carousel slide">
-			<!-- Carousel items -->
-			<div class="carousel-inner">
-				<div class="item active" style="background-image:url({{ asset('bundles/pigalle/images/slider_1.png') }});">
-					<div class="container">					
-						<div class="box">
-							<h3>Descubrí la nueva colección!</h3>
-							<p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem. lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem. lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem. lorem ipsum lorem ipsum lorem ipsu m lorem ipsum lorem ipsum lorem lorem ipsum lorem ipsum lorem.</p>
-							<a href="#" class="btn">Descubrila acá!</a>
-						</div>
-					</div>
-				</div>
-				<div class="item" style="background-image:url({{ asset('bundles/pigalle/images/slider_2.jpg') }});"></div>
-				<div class="item" style="background-image:url({{ asset('bundles/pigalle/images/slider_1.png') }});"></div>
-				<div class="item" style="background-image:url({{ asset('bundles/pigalle/images/slider_2.jpg') }});"></div>
-  			</div>
-			<!-- Carousel nav -->
-			<div class="container controls">
-				<ol class="carousel-indicators">
-					<li data-target="#slider" data-slide-to="0" class="active"></li>
-					<li data-target="#slider" data-slide-to="1"></li>
-					<li data-target="#slider" data-slide-to="2"></li>
-					<li data-target="#slider" data-slide-to="3"></li>
-				</ol>
-				
-				<a class="carousel-control left" href="#slider" data-slide="prev">&lsaquo;</a>
-				<a class="carousel-control right" href="#slider" data-slide="next">&rsaquo;</a>
-			</div>
-		</div>
-  		<div class="socaloGris"></div>
   
-		<div id="content" class="container">
+		<div id="content">
 			{% block content %}{% endblock %}
 			{% block featured_products %}{% endblock %}
 		</div>
