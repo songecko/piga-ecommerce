@@ -29,19 +29,19 @@ class ProductController extends ResourceController
 	{
 		$config = $this->getConfiguration();
 	
-		$resource = $this->createNew();
+		$product = $this->createNew();
 		
 		$optionRepository = $this->get('sylius.repository.option');
 		$option = $optionRepository->findOneBy(array('name' => 'Talle'));
-		$resource->addOption($option);
+		$product->addOption($option);
 		
-		$form = $this->getForm($resource);
+		$form = $this->getForm($product);
 	
 		if ($request->isMethod('POST') && $form->bind($request)->isValid()) {
-			$this->create($resource);
+			$this->create($product);
 			$this->setFlash('success', 'create');
 	
-			return $this->redirectTo($resource);
+			return $this->redirectTo($product);
 		}
 	
 		if ($config->isApiRequest()) {
@@ -52,7 +52,7 @@ class ProductController extends ResourceController
 		->view()
 		->setTemplate($config->getTemplate('create.html'))
 		->setData(array(
-				$config->getResourceName() => $resource,
+				$config->getResourceName() => $product,
 				'form'                     => $form->createView()
 		))
 		;

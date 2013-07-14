@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% set cart = sylius_cart_get() %}
 <html>
     <head>
         <title>{% block title %}Pigalle{% endblock %}</title>
@@ -15,7 +16,7 @@
         {% block stylesheets %}
         {% stylesheets output='css/compiled/frontend.css' filter='cssrewrite'
             '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css'
-            'http://fonts.googleapis.com/css?family=Raleway:400,300,700'
+            'http://fonts.googleapis.com/css?family=Lato:300,400,700'
             'http://fonts.googleapis.com/css?family=Croissant+One'
             '@SyliusBackendBundle/Resources/assets/css/bootstrap-image-gallery.min.css'
             'bundles/pigalle/css/main.css'
@@ -25,6 +26,14 @@
         {% endblock %}
     </head>
     <body>
+    	<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=493058447438923";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
 		<div id="header">
 			<div class="container">
 				<ul class="pull-left">
@@ -34,7 +43,7 @@
 				<ul class="pull-right">
 					<li><a>LOGIN</a>  |</li>
 					<li><a>REGISTRARSE</a></li>
-					<li class="count"><a>20</a></li>
+					<li class="count"><a>{{ cart.totalItems }}</a></li>
 				</ul>
 			</div>
 		</div>
@@ -55,11 +64,8 @@
 				</ul>
 			</div>
 		</div>
-		
-		<div id="slider"></div>
-  		<div class="socaloGris"></div>
   
-		<div id="content" class="container">
+		<div id="content">
 			{% block content %}{% endblock %}
 			{% block featured_products %}{% endblock %}
 		</div>

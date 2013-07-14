@@ -1,5 +1,11 @@
 sylius.backend:
     menu.main:
-      dashboard:  "Dashboard"
-      assortment: "Tienda"
-      products:   "Productos"
+      dashboard:    "Dashboard"      
+      assortment:   "Tienda"
+      taxonomies:   "Categorización"
+      options:      "Opciones"
+      products:     "Productos"
+      account:      "Cuenta"
+      account_edit: "Editar"
+      view_site:    "Ver Sitio"
+      signout:      "Salir"     

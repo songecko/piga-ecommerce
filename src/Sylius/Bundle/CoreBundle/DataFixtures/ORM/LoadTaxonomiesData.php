@@ -30,7 +30,7 @@ class LoadTaxonomiesData extends DataFixture
             Taxon::TAXON_SEASON_SUMMER, Taxon::TAXON_SEASON_WINTER
         )));
 
-        $manager->persist($this->createTaxonomy('Tipo', array(
+        $manager->persist($this->createTaxonomy('Tipo de calzado', array(
             'Zapatos', 'Botas', 'Sandalias', 'Tacos'
         )));
 
