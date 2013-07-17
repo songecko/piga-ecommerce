@@ -37,29 +37,25 @@
 				<form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post">
 					<div class="talles">
 						<div class="row-fluid">
-							<div class="span2">Talle:</div>
-							<div class="span10">
-								<ul class="talleList">
-									<li>36</li>
-									<li>37</li>
-									<li>38</li>
-									<li>39</li>
-									<li>40</li>
-									<li>41</li>
-									<li>42</li>
-								</ul>							
-							</div>
+							<p class="span2">Talle:</p>
+							<ul class="span10 talleList">
+							{% for variant in product.variants if (variant.available and sylius_inventory_is_available(variant) and variant.options|length > 0) %}
+								<li>
+                                {{ form_widget(form.variant[loop.index0], {'attr': {'class': 'toggle'}}) }}
+								{{ form_label(form.variant[loop.index0], variant.options|first.value) }}
+								</li>
+							{% endfor %}
+							</ul>
 						</div>
 						<div class="row-fluid">
-							<div class="span2">Cantidad:</div>
+							<p class="span2">Cantidad:</p>
 							<div class="span10">
-								{#{ form_widget(form.variant) }#}								
 								{{ form_widget(form.quantity, {'attr': {'class': 'quantity'}, 'empty_value': '1'}) }}
             					{{ form_widget(form._token) }}
 							</div>
 						</div>
 					</div>				
-					<button type="submit" class="addToCartButton" href="#">AGREGAR A LA BOLSA DE COMPRAS</button>
+					<button type="submit" class="button addToCartButton" href="#">AGREGAR A LA BOLSA DE COMPRAS</button>
 				</form>
 			</div>			
 		</div>

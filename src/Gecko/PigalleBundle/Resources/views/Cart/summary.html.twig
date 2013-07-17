@@ -4,53 +4,53 @@
 
 {% block content %}
 <div class="cart">
+	<div class="contentTitle"><h3 class="titleSection container">Bolsa de compras</h3></div>
 	<div class="container">
-		<h3 class="titleSection">Bolsa de compras</h3>
-		{% if not cart.empty %}
+	{% if not cart.empty %}
 		{{ form_errors(form) }}
-
 		<form action="{{ path('sylius_cart_save') }}" method="post" novalidate>
-			<table class="table">
-	    		<thead>
-	        		<tr>
-	            		<th>#</th>
-	            		<th></th>
-			            <th>{{ 'sylius.cart.summary.product'|trans }}</th>
-			            <th>{{ 'sylius.cart.summary.quantity'|trans }}</th>
-			            <th></th>
-			            <th>{{ 'sylius.cart.summary.unit_price'|trans }}</th>
-			            <th style="text-align: right;">{{ 'sylius.cart.summary.total'|trans }}</th>
-	        		</tr>
-	    		</thead>
-	    		<tbody>
-	        	{% for item in cart.items %}
-	            	{% include 'PigalleBundle:Cart:_item.html.twig' %}
-	        	{% endfor %}
-	    		</tbody>
-	    		<tfoot>
-	        		<tr>
-	            		<td colspan="6"></td>
-	            		<td style="text-align: right;">
-	                		<strong>{{ 'sylius.cart.summary.grand_total'|trans }}</strong>: {{ cart.total|sylius_money }}
-	            		</td>
-	        		</tr>
-	    		</tfoot>
+			<table class="table" width="100%">
+	  			<thead>
+	    			<tr>
+	      				<th width="8%">#</th>
+						<th width="48%">MODELO</th>
+						<th width="11%">CANTIDAD</th>
+						<th width="15%">PRECIO UNITARIO</th>
+						<th width="10%">TOTAL</th>
+						<th width="8%">ELIMINAR</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for item in cart.items %}
+		            {% include 'PigalleBundle:Cart:_item.html.twig' %}
+		        {% endfor %}
+				</tbody>
 			</table>
 			{{ form_rest(form) }}
-			<div class="well">
-	    		<button type="submit" class="btn btn-primary btn-large"><i class="icon-save"></i> {{ 'sylius.cart.summary.save'|trans }}</button>
-	    		<div class="pull-right">
-	    			<a href="{{ path('sylius_checkout_start') }}" class="btn btn-success btn-large"><i class="icon-shopping-cart"></i> {{ 'sylius.cart.summary.checkout'|trans }}</a>
-	    			<a href="{{ path('sylius_cart_clear') }}" class="btn btn-danger btn-large"><i class="icon-remove"></i> {{ 'sylius.cart.summary.clear'|trans }}</a>
-	    		</div>
+			<div class="cartActions">
+				<a href="{{ path('sylius_cart_clear') }}" class="button clearCartButton">VACIAR BOLSA DE COMPRAS</a>
+				<button type="submit" class="button saveCartButton">GUARDAR CAMBIOS</button>
+			</div>
+			<div class="cartTotal">
+				<div class="cartCoupon">
+					<p>TENGO CUPON:</p>
+					<input type="text" class="coupon">
+				</div>
+				<div class="total">
+					<p class="title">TOTAL:</p>
+					<div class="flag">
+						<p>{{ cart.total|price }}</p>
+						<div class="tail">&nbsp;</div>
+					</div>
+					<button href="{#{ path('sylius_checkout_start') }#}" class="button checkoutButton" href="#">REALIZAR COMPRA</button>
+				</div>
 			</div>
 		</form>
-		{% else %}
-    	<p>Carrito vacio</p>
-		{% endif %}
+	{% else %}
+    	<p>Bolsa de compras vacia</p>
+	{% endif %}
 	</div>
 </div>
-
 {% endblock %}
 
 {% block sylius_cart_item_row %}

@@ -7,9 +7,10 @@ ul {
 }
 a { 
 	cursor:pointer;
+	color: #000000;
 }
 a:hover { 
-	font-weight:700;
+	font-weight:400;
 }
 p { 
 	font-size:12px;
@@ -23,31 +24,50 @@ h3 {
 #header { 
 	background:#333333;
 	height: 45px;
+	color:#ffdaca;
+	font-size:14px;
+	font-weight:300;
 }
-#header ul { 
-	padding-top:10px;
+#header .newsletter {
+	float:left;
+	padding-top: 14px;
+	font-size:14px;
+}
+#header ul {
+	float:left;
+	padding-top: 12px;
 }
 #header ul li, #menu ul li {
 	list-style:none; 
 	display:inline; 
-	font-size:12px;
+	font-weight:300;
 }
 #header ul li{ 
-	color:#ffdaca;
-	font-weight:700;
-	padding-right:5px;
+	display: inline-block;
+	border-left: 1px solid #ffdaca;
+	margin-left: 5px;
+	padding-left: 5px;
+	width: 88px;
+	text-align: right;
+}
+#header ul li:first-child {
+	border-left:none;
 }
 #header ul li a { 
 	color:#ffdaca;
 }
-#header ul .count { 
+#header .cartItems { 
+	float: right;
 	font-size: 24px;
-	background: url(../images/ico-bolsa.png) no-repeat;
-	padding-right: 44px;
-	background-position-x: 37px;
-	background-position-y: -2px;
+	width: 10px;
+	height: 25px;
+	margin: 7px 0 0 10px;
+	padding: 4px 48px 0px 10px;
 	border-left: 1px solid #ffdaca;
-	padding-left: 5px;
+	color:#ffdaca;
+	background: url(../images/ico-bolsa.png) no-repeat;
+	background-position-x: 42px;
+	background-position-y: -1px;
 }
 #menu { 
 	background:#ffdaca;
@@ -60,19 +80,27 @@ h3 {
 	margin-top:40px;
 }
 #menu ul li{
-	color:#000000;
-	font-weight:300;	
+	color:#000000;	
 }
 #menu ul li a { 
 	color:#000000;
+	display:block;
 }
 #menu .pull-left { text-align: left; width: 40%; }
 #menu .pull-right { text-align: right; width: 40% }
-#menu .pull-left li {
-	padding-right: 38px;
+#menu .pull-left li a {
+	margin-left: 43px;
+	float:left;
 }
-#menu .pull-right li { 
-	padding-left: 38px;
+#menu .pull-left li:first-child a {
+	margin-left: 0px;
+}
+#menu .pull-right li a { 
+	margin-right: 35px;
+	float:right;
+}
+#menu .pull-right li:first-child a {
+	margin-right: 0px;
 }
 #menu .logo {
 	float:left;
@@ -164,6 +192,19 @@ h3 {
 #slider .controls .carousel-control {
 	top: 217px;
 }
+.titleSection {
+	font-family: 'Croissant One';
+	font-size: 18px;
+	padding-top: 32px;
+}
+.contentTitle {
+	background-color: #efeeee;
+}
+.contentTitle .titleSection {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-bottom: 22px;
+}
 .socaloGris { 
 	background: #efeeee;
 	height:15px;
@@ -177,6 +218,18 @@ h3 {
 	height: 50px;
 	display:inline;
 	line-height: 46px;
+}
+.button, .button:hover {
+	display: block;
+ 	height: 35px;
+	background-color: #000;
+	color: #FFF;
+	font-weight: 400;
+	text-align: center;
+	border: 2px outset buttonface;
+	box-sizing: border-box;
+	line-height: 30px;
+	text-decoration: none;
 }
 .flag, .flagOferta { 
 	width: 46px;
@@ -217,13 +270,6 @@ h3 {
 	height:576px; 
 	background-color:#efeeee;
 }
-.titleSection {
-	font-family: 'Croissant One';
-	font-size: 18px;
-	width: 100%;
-	float: left;
-	margin-top: 0;
-}
 .direction {
 	clear: both;
 	height: 23px;
@@ -261,19 +307,21 @@ h3 {
 	margin: 17px 0 0 0;
 	width: 480px;
 }
-.detalleProducto .datos .flag {
+.detalleProducto .datos .flag, .cartTotal .flag {
 	width: 61px;
 	position: absolute;
 	top: 0;
 	right: 11px;
 	margin-right: 0;
 }
-.datosProducto .productName {
+.datosProducto .productName, .datosProducto .productName a {
 	font-family: 'Croissant One';
 	font-size: 18px;	
 	margin-top: 26px;
+	color: #000000;
+	font-weight: 700;
 }
-.datos .flag .tail  { 
+.datos .flag .tail, .cartTotal .flag .tail  { 
 	background:url(../images/img-bandera-negra-grande.png) no-repeat;
 }
 .datos .botonCompras { 
@@ -312,18 +360,36 @@ h3 {
 	padding: 9px 0 0 14px;
 }
 
+.detalleProducto .datos .talles p {
+ 	font-size: 14px;
+ 	padding-top: 8px;
+ 	margin: 0;
+}
+
 .detalleProducto .datos .talles ul.talleList li {
 	float: left;
 	list-style: none;
 	margin-right: 10px;
-	background: black;
-	color: white;
+	background: #000000;
+	color: #FFFFFF;
 	font-weight: bold;
 	font-size: 12px;
 	padding: 2px;
 	width: 20px;
 	text-align: center;
 }
+
+input[type="radio"].toggle {
+    display: none;
+}
+input[type="radio"].toggle:checked + label {
+    background: #FFFFFF;
+    color: #000000;
+}
+input[type="radio"].toggle + label {
+    margin: 0;
+}
+
 .detalleProducto .datos .talles input.quantity {
 	width: 45px;
 	-webkit-border-radius: 0px;
@@ -331,16 +397,128 @@ h3 {
 	border-radius: 0px;
 }
 .detalleProducto .datos .addToCartButton {
-	display: block;
- 	height: 35px;
 	width: 100%;
-	background-color: #000;
-	color: #FFF;
-	font-weight: bold;
-	text-align: center;
 }
 
- 
+/***** CARRITO *****/
+.cart table {
+	margin-top:32px;
+	margin-bottom: 5px;
+	font-size: 12px;
+}
+.cart table thead {
+	background:#000000; 
+	color:#FFFFFF;
+}
+.cart table th {
+	border-right: 1px solid #ffffff;
+	text-align: center;
+	font-weight: 300;
+	padding: 0;
+}
+.cart table th:last-child {
+	border-right: none;
+}
+.cart table thead tr {
+	border-top: 8px solid #000000;
+	border-bottom: 8px solid #000000;
+}
+.cart table tr {
+	border-bottom: solid 2px #000;
+}
+.cart table td { 
+	text-align:center;
+}
+.cart table .detalle { 
+	text-align:left;
+}
+.circle { 
+	width: 10px;
+	height: 10px;
+	font-size: 20px;
+	padding: 15px;
+	line-height: 9px;
+	background: #000000;
+	color: #FFFFFF;
+	-moz-border-radius: 100px;
+	-webkit-border-radius: 100px;
+}
+.cart .circle {
+	margin: 18px;
+	margin-top: 50px;
+}
+.cart .detalle .photo {
+	float: left;
+	border: 1px solid black;
+	margin: 10px 15px 10px 0;
+}
+.cart .detalle .datosProducto .productName {
+	margin-top:13px;
+}
+.cart .detalle .datosProducto .talle {
+	font-weight: 700;
+	font-size: 14px;
+}
+.cart table td.quantity {
+	padding-top: 60px;	
+}
+.cart table td.unitPrice, .cart table td.totalPrice, .cart table td.remove {
+	font-size: 20px;
+	padding-top: 63px;
+}
+
+.cartActions {
+	float: left;
+}
+.cartActions .button {
+	padding: 0 20px;
+}
+.cartActions .clearCartButton {
+	float: left;
+	margin-right: 20px;
+}
+.cartTotal { 
+	float:right; 
+	width:340px; 
+	margin-top:5px;
+}
+.cartTotal p {
+	font-size: 14px;
+}
+.cartTotal .cartCoupon { 
+	width:100%; 
+	border-bottom: 1px solid #000;
+}
+.cartTotal .cartCoupon p {
+	float: left;
+	line-height: 27px;
+}
+.cartTotal .cartCoupon .coupon { 
+	border:1px solid #000 !important; 
+	height:20px;
+	width: 148px;
+	margin-left: 13px;
+}
+.cartTotal .total { 
+	width:100%;
+}
+.cartTotal .total p {
+	padding-top: 20px;
+}
+.cartTotal .total p.title { 
+	float:left; 
+}
+.cartTotal .total .flag {
+	margin-left: 10px; 
+	float:left;
+	position: static;
+}
+.cartTotal .total .checkoutButton {
+	margin: 10px 0px 0px 12px;
+	float: right;
+}
+
+
 /***** FOOTER *****/
 #footer {
 	margin-top: 70px;
@@ -349,20 +527,25 @@ h3 {
 	background:url(../images/bg-footer.png) repeat-x;
 	height:9px;
 }
-#footer .footer { 
+#footer .footerContent { 
 	background:#000000;
 	min-height:175px;
-	padding-bottom: 25px;
+	padding: 25px 0;
 }
-#footer .footer h3, #footer .footer p, #footer .footer p a, #footer .footer li, #footer .footer li a { 
+#footer h3, #footer p, #footer a { 
 	color: #FFF;
 	font-size: 12px;
 	line-height: 19px;
-	font-weight:400;
+	font-weight:300;
 }
-#footer .footer p a {
+#footer h3 {
+	font-weight:700;
+}
+#footer p a {
 	text-decoration:underline;
 }
-#footer .footer li { list-style: none;}
+#footer li { list-style: none; }
 
-#footer .footer .logo {padding-top: 35px;}
+#footer .logo {
+	padding-top: 35px;
+}

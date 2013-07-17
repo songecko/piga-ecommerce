@@ -12,6 +12,8 @@
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        
         {# stylesheets... #}
         {% block stylesheets %}
         {% stylesheets output='css/compiled/frontend.css' filter='cssrewrite'
@@ -34,17 +36,17 @@
 		  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=493058447438923";
 		  fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));</script>
+		
 		<div id="header">
 			<div class="container">
-				<ul class="pull-left">
-					<li>NEWSLETTER:</li>
-					<li>Join us!</li>
-				</ul>
-				<ul class="pull-right">
-					<li><a>LOGIN</a>  |</li>
-					<li><a>REGISTRARSE</a></li>
-					<li class="count"><a>{{ cart.totalItems }}</a></li>
-				</ul>
+				<p class="newsletter">NEWSLETTER: Join us!</p>
+				<div class="pull-right">
+					<ul>
+						<li><a>LOGIN</a></li>
+						<li><a>REGISTRARSE</a></li>
+					</ul>
+					<a class="cartItems">{{ cart.totalItems }}</a>
+				</div>
 			</div>
 		</div>
 		
@@ -57,10 +59,10 @@
 				</ul>
 				<a href="{{ path('pigalle_homepage') }}" class="logo"><img src="{{ asset('bundles/pigalle/images/logo-pigalle.png') }}" alt="Pigalle" /></a>
 				<ul class="pull-right">
-					<li><a>PREVENTA</a></li>
-					<li><a>LOCALES</a></li>
-					<li><a>CONTACTO</a></li>
 					<li><a><img src="{{ asset('bundles/pigalle/images/ico-facebook.png') }}" alt="Facebook" /></a></li>
+					<li><a>CONTACTO</a></li>
+					<li><a>LOCALES</a></li>
+					<li><a>PREVENTA</a></li>
 				</ul>
 			</div>
 		</div>
@@ -72,14 +74,14 @@
 				
 		<div id="footer">
     		<div class="socaloFooter"></div>
-        	<div class="footer">
+        	<div class="footerContent">
             	<div class="container">
 					<div class="row">
 						<div class="span2">
 							<h3>MAPA DEL SITIO</h3>
 							<ul>
 								<li><a>Marca</a></li>
-								<li><a>Coleciones</a></li>
+								<li><a>Colecciones</a></li>
 								<li><a>Online shop</a></li>
 								<li><a>Locales</a></li>
 								<li><a>Bolsa de compras</a></li>
@@ -88,7 +90,7 @@
 							</ul>
 						</div>
 						<div class="span2">
-							<h3>FaQ's</h3>
+							<h3>FAQ's</h3>
 							<ul>
 								<li><a>Lorem ipsum dolor sit?</a></li>
 								<li><a>Lorem ipsum dolor sit?</a></li>
@@ -99,21 +101,17 @@
 						</div>
 						<div class="span2">
 							<h3>TÉRMINOS</h3>
-							<p>El uso de este sitio web implica la aceptación De los <u>TÉRMINOS Y CONDICIONES</u> y de las <u>POLÍTICAS DE PRIVACIDAD</u></p>
-							<p><a>Leer Más</a></p>
-						</div>
-						<div class="span2">
-							<h3>CONTACTO</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, </p>
-							<p><a>Leer Más</a></p>
+							<p>El uso de este sitio web implica la aceptación de los <a href="#"><u>TÉRMINOS Y CONDICIONES</u></a> y de las <a href="#"><u>POLÍTICAS DE PRIVACIDAD</u></a></p>
 						</div>
 						<div class="span2">
 							<h3>DATA FISCAL</h3>
+							<p>PIGALLE ACCESORI SA <br />IVA RESPONSABLE INSCRIPTO <br />Las Heras 670<br /> Ramos Mejía (C.P. 1704)<br /> Buenos Aires</p>
+						</div>
+						<div class="span2">
 							<img src="{{ asset('bundles/pigalle/images/img-qr-data-fiscal.png') }}" alt="Pigalle QR AFIP" />
-							<p><a>Ver Más</a></p>
 						</div>
 						<div class="span2 logo">
-							<a><img src="{{ asset('bundles/pigalle/images/logo-pigalle-copyright.png') }}" alt="Logo Pigalle Copyright" /></a>
+							<img src="{{ asset('bundles/pigalle/images/logo-pigalle-copyright.png') }}" alt="Logo Pigalle Copyright" />
 						</div>
 					</div>
 				</div>
