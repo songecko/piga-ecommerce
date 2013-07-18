@@ -11,8 +11,9 @@
 			<!-- <a class="pull-right">ANTERIOR / SIGUIENTE</a>  -->
 		</div>
 		<div class="row">
-			<div class="span6 fotoDetalle"><img src="{{ product.image.path|imagine_filter('sylius_360x360') }}" /></div>
+			<div class="span6 fotoDetalle"><img src="{{ product.image.path|imagine_filter('product_image_medium') }}" data-zoom-image="{{ product.image.path|imagine_filter('product_image_big') }}" /></div>
 			<div class="span6 datos">
+				<div id="productGalleryZoomContainer"></div>
 				<div class="datosProducto">
 					<h3 class="productName">{{ product.name }}</h3>
 					<p class="description">{{ product.description|default('')|raw }}</p>
@@ -27,10 +28,10 @@
 						<li class="facebookLike"><div class="fb-like" data-href="{{ url('pigalle_product_show', {'slug': product.slug}) }}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div></li>
 					</ul>
 				</div>				
-				<div class="photos">
+				<div class="photos" id="productGallery">
 				{% for image in product.images %}
-        			<a href="{{ image.path|imagine_filter('sylius_360x360') }}" title="{{ product.name }}">
-            			<img class="img-polaroid" src="{{ image.path|imagine_filter('sylius_60x60') }}" alt="{{ product.name }}" />
+        			<a href="#" title="{{ product.name }}" data-image="{{ image.path|imagine_filter('product_image_medium') }}" data-zoom-image="{{ image.path|imagine_filter('product_image_big') }}">
+            			<img class="img-polaroid" src="{{ image.path|imagine_filter('product_image_small') }}" alt="{{ product.name }}" />
         			</a>
     			{% endfor %}
 				</div>
