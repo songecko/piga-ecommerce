@@ -21,6 +21,9 @@ h3 {
 	font-weight:700;
 	line-height:14px;
 }
+h3 a {
+	font-weight:400;
+}
 #header { 
 	background:#333333;
 	height: 45px;
