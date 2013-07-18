@@ -107,11 +107,11 @@
 							<h3>DATA FISCAL</h3>
 							<p>PIGALLE ACCESORI SA <br />IVA RESPONSABLE INSCRIPTO <br />Las Heras 670<br /> Ramos Mejía (C.P. 1704)<br /> Buenos Aires</p>
 						</div>
-						<div class="span2">
-							<img src="{{ asset('bundles/pigalle/images/img-qr-data-fiscal.png') }}" alt="Pigalle QR AFIP" />
+						<div class="span2 dataFiscal">
+							<img src="{{ asset('bundles/pigalle/images/data-fiscal.png') }}" alt="Pigalle QR AFIP" />
 						</div>
 						<div class="span2 logo">
-							<img src="{{ asset('bundles/pigalle/images/logo-pigalle-copyright.png') }}" alt="Logo Pigalle Copyright" />
+							<img src="{{ asset('bundles/pigalle/images/pigalle-copyright.png') }}" alt="Logo Pigalle Copyright" />
 						</div>
 					</div>
 				</div>
@@ -128,6 +128,7 @@
             '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js'
             '@SyliusBackendBundle/Resources/assets/js/load-image.js'
             '@SyliusBackendBundle/Resources/assets/js/bootstrap-image-gallery.min.js'
+            '@PigalleBundle/Resources/assets/js/jquery.elevateZoom-2.6.0.min.js'
             '@PigalleBundle/Resources/assets/js/main.js'            
         %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
