@@ -45,7 +45,7 @@
 						<li><a>LOGIN</a></li>
 						<li><a>REGISTRARSE</a></li>
 					</ul>
-					<a class="cartItems">{{ cart.totalItems }}</a>
+					<a href="{{ path('sylius_cart_summary') }}" class="cartItems">{{ cart.totalItems }}</a>
 				</div>
 			</div>
 		</div>

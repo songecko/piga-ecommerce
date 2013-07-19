@@ -24,6 +24,14 @@ h3 {
 h3 a {
 	font-weight:400;
 }
+div.hr {
+  height: 10px;
+  background: url(../images/circle-line.png) repeat-x scroll center;
+}
+div.hr hr {
+  display: none;
+}
+
 #header { 
 	background:#333333;
 	height: 45px;
@@ -506,6 +514,7 @@ input[type="radio"].toggle + label {
 }
 .cartTotal .total p {
 	padding-top: 20px;
+	padding-bottom: 15px;
 }
 .cartTotal .total p.title { 
 	float:left; 
@@ -519,7 +528,25 @@ input[type="radio"].toggle + label {
 	margin: 10px 0px 0px 12px;
 	float: right;
 }
-
+.cart .emptyCart {
+	text-align:center;
+}
+.cart .emptyCart h2 {
+	font-family: 'Croissant One';
+	font-size: 24px;	
+	margin: 90px 0 50px 0;
+}
+.cart .emptyCart div.hr {
+	width: 480px;
+	margin: 0 auto;
+}
+.cart .emptyCart p {
+	font-size: 18px;	
+	margin: 60px 0 300px 0;
+}
+.cart .emptyCart a {
+	text-decoration:underline;
+}
 
 /***** FOOTER *****/
 #footer {

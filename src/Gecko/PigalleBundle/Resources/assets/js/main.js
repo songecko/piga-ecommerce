@@ -10,7 +10,7 @@ $(document).ready(function()
 	$(".detalleProducto .fotoDetalle img").elevateZoom({
 		zoomWindowPosition: "productGalleryZoomContainer",
 		zoomWindowHeight: 460, 
-		//zoomWindowWidth:200, 
+		zoomWindowWidth:460, 
 		borderSize: 1,
 		gallery:'productGallery', 
 		cursor: 'pointer', 
