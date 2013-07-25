@@ -34,6 +34,9 @@ class ProductType extends BaseProductType
                 'required' => false,
                 'label'    => 'sylius.form.product.short_description'
             ))
+            ->add('priceWithoutDiscount', 'sylius_money', array(
+                'label' => 'sylius.form.product.price_without_discount'
+            ))
             /*->add('taxCategory', 'sylius_tax_category_choice', array(
                 'required'    => false,
                 'empty_value' => '---',

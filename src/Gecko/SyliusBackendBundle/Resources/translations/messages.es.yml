@@ -31,6 +31,7 @@ sylius:
             sku:      "SKU"
         product:
             short_description: "Descripción corta"
+            price_without_discount: "Precio sin oferta"
         variant:
             sku:      "SKU"
             on_hand:  "Stock"
@@ -54,10 +55,12 @@ sylius:
         stock:        "Stock"
         no_taxons:    "Sin categorías"
         generate_variants: "Generar talles"
+        add_property: "Agregar propiedad"
         tabs:
           product:    "Producto"
           options:    "Talles"
           categorization: "Categorías"
+          properties: "Propiedades"
           images:     "Imágenes"
         
     variant:
@@ -88,6 +91,7 @@ sylius:
     
     option:
         index_header:  "Opciones <small>de los productos</small>"
+        create_header: "Nueva opción"
         update_header: "Editar opción"
         create:        "Crear"
         name:          "Nombre"

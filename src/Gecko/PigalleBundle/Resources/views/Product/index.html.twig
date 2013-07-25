@@ -1,0 +1,23 @@
+{% extends 'PigalleBundle::layout.html.twig' %}
+
+{% from 'PigalleBundle:Macros:misc.html.twig' import pagination %}
+{% from 'PigalleBundle:Product:macros.html.twig' import grid %}
+
+{% block content %}
+<div class="shop">
+	<div class="contentTitle"><h3 class="titleSection container">Online Store</h3></div>
+	<div class="container content">
+		<div class="row-fluid">
+			<div class="filters span3">
+				{{ render(controller('PigalleBundle:Product:filters', { 'request' : app.request } )) }}
+			</div>
+			<div class="products span9">
+				{{ pagination(products) }}				
+				{{ grid(products) }}
+				{{ pagination(products) }}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

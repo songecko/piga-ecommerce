@@ -10,9 +10,12 @@
 			<div class="pull-left descripcionProducto">
 				<h3><a href="{{ path('pigalle_product_show', {'slug': product.slug}) }}">{{ product.name }}</a></h3>
 				<p>{{ product.shortDescription|truncate(50)  }}</p>
-			</div>
-			<div class="pull-right flag">
+			</div>			
+			<div class="pull-right {{ (product.isOffer)?'flagOferta':'flag' }}">
 				<p>{{ product.masterVariant.price|price}}</p>
+				{%  if(product.isOffer) %}
+            	<p class="oferta">{{ product.priceWithoutDiscount|price}}</p>
+            	{% endif %}
 				<div class="tail">&nbsp;</div>
 			</div>
 		</div>

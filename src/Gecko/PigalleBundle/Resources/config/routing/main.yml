@@ -2,31 +2,11 @@ pigalle_homepage:
     pattern:        /
     defaults:       { _controller: PigalleBundle:Main:index }
 
-pigalle_product_show:
-    pattern:        /p/{slug}
-    defaults:
-        _controller:    sylius.controller.product:showAction
-        _sylius:
-            template: PigalleBundle:Product:show.html.twig
-            criteria: {slug: $slug}
+sylius_product:
+    resource: @PigalleBundle/Resources/config/routing/product.yml
 
 sylius_cart:
-    resource: @SyliusCartBundle/Resources/config/routing.yml
-    prefix:   /cart
-                
-sylius_cart_summary:
-    pattern: /cart
-    defaults:
-        _controller: sylius.controller.cart:summaryAction
-        _sylius:
-            template: PigalleBundle:Cart:summary.html.twig
-            
-sylius_cart_save:
-    pattern: /cart/save
-    defaults:
-        _controller: sylius.controller.cart:saveAction
-        _sylius:
-            template: PigalleBundle:Cart:summary.html.twig
+    resource: @PigalleBundle/Resources/config/routing/cart.yml
             
 #sylius_province_choice_form:
 #    pattern: /province/choice-form

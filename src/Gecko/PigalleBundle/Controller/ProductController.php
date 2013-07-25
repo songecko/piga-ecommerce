@@ -3,6 +3,7 @@
 namespace Gecko\PigalleBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class ProductController extends Controller
 {
@@ -14,5 +15,18 @@ class ProductController extends Controller
         return $this->render('PigalleBundle:Product:featuredProducts.html.twig', array(
         	'products' => $products		
         ));
+    }
+    
+    public function filtersAction(Request $request)
+	{
+		$filters = $request->query->get('f');
+		
+    	$taxonomyRepository = $this->get('sylius.repository.taxonomy');    	 
+    	$taxonomies = $taxonomyRepository->findAll();
+    	
+    	return $this->render('PigalleBundle:Product:filters.html.twig', array(
+    			'filters' => $filters,
+    			'taxonomies' => $taxonomies
+    	));
     }
 }

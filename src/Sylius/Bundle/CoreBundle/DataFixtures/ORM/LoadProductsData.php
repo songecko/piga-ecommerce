@@ -116,6 +116,11 @@ class LoadProductsData extends DataFixture
     	$taxonSeason = $this->faker->randomElement(array(Taxon::TAXON_SEASON_SUMMER, Taxon::TAXON_SEASON_WINTER));
     	$this->setTaxons($product, array($shoeType.'s', $taxonSeason));
     	
+    	if($i % 5 == 0)
+    	{
+    		$this->setPriceWithoutDiscount($product);	
+    	}
+    	
     	$product->addOption($this->getReference('Sylius.Option.Talle'));
     	
     	$this->generateVariants($product);
@@ -227,6 +232,20 @@ class LoadProductsData extends DataFixture
         return $this->getReference('Sylius.TaxCategory.'.ucfirst($name));
     }
 
+    private function setPriceWithoutDiscount($product)
+    {
+    	$variant = $product->getMasterVariant();
+    	
+    	if($variant)
+    	{
+	    	do {
+	    		$price = $this->faker->randomNumber(4);
+	    	} while ($price <= $variant->getPrice());
+	    	
+	    	$product->setPriceWithoutDiscount($price);
+    	}
+    }
+    
     /**
      * Get unique SKU.
      *

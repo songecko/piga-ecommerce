@@ -13,6 +13,7 @@ namespace Sylius\Bundle\CoreBundle\Repository;
 
 use Sylius\Bundle\AssortmentBundle\Entity\CustomizableProductRepository;
 use Sylius\Bundle\TaxonomiesBundle\Model\TaxonInterface;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * Product repository.
@@ -51,9 +52,9 @@ class ProductRepository extends CustomizableProductRepository
      *
      * @return PagerfantaInterface
      */
-    public function createByTaxonPaginator(TaxonInterface $taxon)
+    public function createByTaxonPaginator(TaxonInterface $taxon, $criteria = array(), $sorting = array())
     {
-        $queryBuilder = $this->getCollectionQueryBuilder();
+        $queryBuilder = $this->createFilterQueryBuilder($criteria, $sorting);
 
         $queryBuilder
             ->innerJoin('product.taxons', 'taxon')
@@ -74,36 +75,54 @@ class ProductRepository extends CustomizableProductRepository
      */
     public function createFilterPaginator($criteria = array(), $sorting = array())
     {
-        $queryBuilder = parent::getCollectionQueryBuilder()
-            ->select('product, variant')
-            ->leftJoin('product.variants', 'variant')
-        ;
-
-        if (!empty($criteria['name'])) {
-            $queryBuilder
-                ->andWhere('product.name LIKE :name')
-                ->setParameter('name', '%'.$criteria['name'].'%')
-            ;
-        }
-        if (!empty($criteria['sku'])) {
-            $queryBuilder
-                ->andWhere('variant.sku = :sku')
-                ->setParameter('sku', $criteria['sku'])
-            ;
-        }
-
-        if (empty($sorting)) {
-            if (!is_array($sorting)) {
-                $sorting = array();
-            }
-            $sorting['updatedAt'] = 'desc';
-        }
-
-        $this->applySorting($queryBuilder, $sorting);
-
-        return $this->getPaginator($queryBuilder);
+        return $this->getPaginator($this->createFilterQueryBuilder($criteria, $sorting));
     }
 
+    /**
+     * Create filter query builder.
+     *
+     * @param array $criteria
+     * @param array $sorting
+     *
+     * @return QueryBuilder
+     */
+    public function createFilterQueryBuilder($criteria = array(), $sorting = array())
+    {
+    	$queryBuilder = $this->getCollectionQueryBuilder()
+    		->select('product, variant')
+    		->leftJoin('product.variants', 'variant')
+    	;
+    
+    	if (!empty($criteria['name'])) {
+    		$queryBuilder
+    		->andWhere('product.name LIKE :name')
+    		->setParameter('name', '%'.$criteria['name'].'%')
+    		;
+    	}
+    	if (!empty($criteria['sku'])) {
+    		$queryBuilder
+    		->andWhere('variant.sku = :sku')
+    		->setParameter('sku', $criteria['sku'])
+    		;
+    	}
+    	if (!empty($criteria['only_offer']) && $criteria['only_offer'] == true) {
+    		$queryBuilder
+    		->andWhere('product.priceWithoutDiscount > 0')
+    		;
+    	}
+    
+    	if (empty($sorting)) {
+    		if (!is_array($sorting)) {
+    			$sorting = array();
+    		}
+    		$sorting['updatedAt'] = 'desc';
+    	}
+    
+    	$this->applySorting($queryBuilder, $sorting);
+    
+    	return $queryBuilder;
+    }
+    
     /**
      * Find X recently added products.
      *

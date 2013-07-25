@@ -24,7 +24,7 @@
 <div class="well" data-toggle="modal-gallery" data-target="#modal-gallery">
 	{% for image in product.images %}
 	<a href="{{ image.path|imagine_filter('sylius_gallery') }}" data-gallery="gallery" title="{{ product.name }}">
-		<img class="img-polaroid" src="{{ image.path|imagine_filter('sylius_90x60') }}" alt="{{ product.name }}" />
+		<img class="img-polaroid" src="{{ image.path|imagine_filter('product_image_small') }}" alt="{{ product.name }}" />
 	</a>
 	{% endfor %}
 </div>
@@ -61,10 +61,18 @@
                 {% endif %}
             </td>
             <td><span class="badge badge-{{ product.masterVariant.inStock ? 'success' : 'important' }}">{{ product.masterVariant.onHand }}</span></td>
-            <td>{{ product.masterVariant.price|sylius_money }}</td>
+            <td>
+            	{%  if(product.isOffer) %}
+            	<span class="label label-warning">{{ product.masterVariant.price|sylius_money }}</span>
+            	<span class="label label-success linethrough">{{ product.getPriceWithoutDiscount|sylius_money }}</span>
+            	{% else %}
+            	<span class="label label-success">{{ product.masterVariant.price|sylius_money }}</span>
+            	{% endif %}
+            </td>
         </tr>
     </tbody>
 </table>
+
 {% if product.hasOptions %}
 <hr>
 <h3>Talles del producto</h3>

@@ -8,7 +8,7 @@
                 <div class="controls">
                     {% if image.path|length > 0 %}
                     <a href="{{ image.path|imagine_filter('sylius_gallery') }}"  data-gallery="gallery">
-                        <img class="img-polaroid" src="{{ image.path|imagine_filter('sylius_90x60') }}" alt="" />
+                        <img class="img-polaroid" src="{{ image.path|imagine_filter('product_image_small') }}" alt="" />
                     </a>
                     {% endif %}
                     &nbsp;

@@ -41,7 +41,12 @@
                 <p>{{ product.shortDescription|truncate(50) }}</p>
             </td>
             <td>
+            	{%  if(product.isOffer) %}
+            	<span class="label label-warning">{{ product.masterVariant.price|sylius_money }}</span>
+            	<span class="label label-success linethrough">{{ product.getPriceWithoutDiscount|sylius_money }}</span>
+            	{% else %}
             	<span class="label label-success">{{ product.masterVariant.price|sylius_money }}</span>
+            	{% endif %}
             </td>
             <td><span class="label label-info">{{ product.updatedAt|date("d/m/Y g:ia") }}</span></td>
             <td>
