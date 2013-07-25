@@ -60,6 +60,35 @@ class ProductController extends ResourceController
 		return $this->handleView($view);
 	}
 	
+	/**
+	 * List products.
+	 *
+	 * @param Request $request
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+	 */
+	public function indexAction(Request $request)
+	{
+		$config = $this->getConfiguration();
+	
+		$filter = $request->query->get('f');
+		if (!$filter)
+			$filter = array();
+	
+		 
+		$paginator = $this
+		->getRepository()
+		->createFilterPaginator($filter)
+		;
+	
+		$paginator->setCurrentPage($request->query->get('page', 1));
+		$paginator->setMaxPerPage($config->getPaginationMaxPerPage());
+	
+		return $this->renderResponse('index.html', array(
+			'products' => $paginator,
+		));
+	}
+	
     /**
      * List products categorized under given taxon.
      *
@@ -79,9 +108,14 @@ class ProductController extends ResourceController
             throw new NotFoundHttpException('Requested taxon does not exist');
         }
 
+        $filter = $request->query->get('f');
+        if (!$filter)
+        	$filter = array();
+        
+         
         $paginator = $this
             ->getRepository()
-            ->createByTaxonPaginator($taxon)
+            ->createByTaxonPaginator($taxon, $filter)
         ;
 
         $paginator->setCurrentPage($request->query->get('page', 1));

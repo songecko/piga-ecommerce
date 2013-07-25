@@ -45,6 +45,13 @@ class Product extends BaseProduct implements TaxableInterface
     protected $shortDescription;
 
     /**
+     * Price without discount (offer).
+     *
+     * @var float
+     */
+    protected $priceWithoutDiscount;
+    
+    /**
      * Variant selection method.
      *
      * @var string
@@ -102,7 +109,7 @@ class Product extends BaseProduct implements TaxableInterface
 
         return $this;
     }
-
+       
     /**
      * Get the variant selection method.
      *
@@ -195,6 +202,35 @@ class Product extends BaseProduct implements TaxableInterface
         return $this;
     }
 
+    /**
+     * Get product price without discount (offer).
+     *
+     * @return float
+     */
+    public function getPriceWithoutDiscount()
+    {
+    	return $this->priceWithoutDiscount;
+    }
+    
+    /**
+     * Set product price without discount (offer).
+     *
+     * @param float $price
+     *
+     * @return Product
+     */
+    public function setPriceWithoutDiscount($price)
+    {
+    	$this->priceWithoutDiscount = $price;
+    
+    	return $this;
+    }
+    
+    public function isOffer()
+    {
+    	return $this->getPriceWithoutDiscount();
+    }
+    
     /**
      * Get product short description.
      *

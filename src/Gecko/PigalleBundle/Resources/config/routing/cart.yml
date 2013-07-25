@@ -1,0 +1,17 @@
+sylius_cart:
+    resource: @SyliusCartBundle/Resources/config/routing.yml
+    prefix:   /cart
+                
+sylius_cart_summary:
+    pattern: /cart
+    defaults:
+        _controller: sylius.controller.cart:summaryAction
+        _sylius:
+            template: PigalleBundle:Cart:summary.html.twig
+            
+sylius_cart_save:
+    pattern: /cart/save
+    defaults:
+        _controller: sylius.controller.cart:saveAction
+        _sylius:
+            template: PigalleBundle:Cart:summary.html.twig

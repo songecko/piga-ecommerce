@@ -1,0 +1,22 @@
+pigalle_product_index:
+    pattern: /online-shop
+    defaults:
+        _controller: sylius.controller.product:indexAction
+        _sylius:
+            paginate: 9
+            template: PigalleBundle:Product:index.html.twig
+            
+pigalle_product_index_by_taxon:
+    pattern: /online-shop/t/{permalink}
+    defaults:
+        _controller: sylius.controller.product:indexByTaxonAction
+        _sylius:
+            template: PigalleBundle:Product:index.html.twig
+
+pigalle_product_show:
+    pattern:        /online-shop/p/{slug}
+    defaults:
+        _controller:    sylius.controller.product:showAction
+        _sylius:
+            template: PigalleBundle:Product:show.html.twig
+            criteria: {slug: $slug}

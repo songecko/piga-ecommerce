@@ -24,10 +24,10 @@ security:
             anonymous: true
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/registro, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/administration/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/administration/login-check, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: "/administration.*", role: ROLE_SYLIUS_ADMIN }
-        - { path: "/account.*", role: ROLE_USER }
+        - { path: ^/admins/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admins/login-check, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: "/admins.*", role: ROLE_SYLIUS_ADMIN }
+        - { path: "/cuenta.*", role: ROLE_USER }
         - { path: "/_partial.*", ip: 127.0.0.1 }

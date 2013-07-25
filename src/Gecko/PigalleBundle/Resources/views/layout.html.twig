@@ -43,7 +43,7 @@
 				<div class="pull-right">
 					<ul>
 						<li><a>LOGIN</a></li>
-						<li><a>REGISTRARSE</a></li>
+						<li><a href="{#{ path('fos_user_registration_register') }#}">REGISTRARSE</a></li>
 					</ul>
 					<a href="{{ path('sylius_cart_summary') }}" class="cartItems">{{ cart.totalItems }}</a>
 				</div>
@@ -55,7 +55,7 @@
 				<ul class="pull-left">
 					<li><a>LA MARCA</a></li>
 					<li><a>COLECCIONES</a></li>
-					<li><a>ONLINE SHOP</a></li>
+					<li><a href="{{ path('pigalle_product_index') }}">ONLINE SHOP</a></li>
 				</ul>
 				<a href="{{ path('pigalle_homepage') }}" class="logo"><img src="{{ asset('bundles/pigalle/images/logo-pigalle.png') }}" alt="Pigalle" /></a>
 				<ul class="pull-right">
@@ -82,9 +82,9 @@
 							<ul>
 								<li><a>Marca</a></li>
 								<li><a>Colecciones</a></li>
-								<li><a>Online shop</a></li>
+								<li><a href="{{ path('pigalle_product_index') }}">Online shop</a></li>
 								<li><a>Locales</a></li>
-								<li><a>Bolsa de compras</a></li>
+								<li><a href="{{ path('sylius_cart_summary') }}">Bolsa de compras</a></li>
 								<li><a>Login</a></li>
 								<li><a>Contacto</a></li>
 							</ul>

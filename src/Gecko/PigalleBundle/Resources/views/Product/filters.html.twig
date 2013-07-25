@@ -1,0 +1,21 @@
+<form method="get">
+	{% for taxonomy in taxonomies %}
+	<div class="filter filterAccordion">
+		<a class="accordionHeader collapsed" data-toggle="collapse" href="#filterAccordionBody{{ loop.index }}">{{ taxonomy.name }}</a>
+		<ul id="filterAccordionBody{{ loop.index }}" class="collapse">
+			{% for taxon in taxonomy.taxons %}
+			<li><a href="{{ path('pigalle_product_index_by_taxon', { 'permalink': taxon.permalink }) }}">{{ taxon.name }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+	{% endfor %}
+
+	<div class="filter">
+		<p>
+			<label for="filterOferta">Solo ofertas</label>
+			<input type="checkbox" id="filterOferta" name="f[only_offer]"{{ (filters and filters.only_offer)?' checked="checked"':'' }} />
+		</p>
+	</div>
+
+	<button type="submit" class="button">Buscar</button>
+</form>
