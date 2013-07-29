@@ -22,6 +22,7 @@
             'http://fonts.googleapis.com/css?family=Croissant+One'
             '@SyliusBackendBundle/Resources/assets/css/bootstrap-image-gallery.min.css'
             'bundles/pigalle/css/main.css'
+            'bundles/pigalle/css/sections.css'
         %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
         {% endstylesheets %}
@@ -29,13 +30,13 @@
     </head>
     <body>
     	<div id="fb-root"></div>
-		<script>(function(d, s, id) {
+		<script>/*(function(d, s, id) {
 		  var js, fjs = d.getElementsByTagName(s)[0];
 		  if (d.getElementById(id)) return;
 		  js = d.createElement(s); js.id = id;
 		  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=493058447438923";
 		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
+		}(document, 'script', 'facebook-jssdk'));*/</script>
 		
 		<div id="header">
 			<div class="container">
@@ -51,19 +52,10 @@
 		</div>
 		
 		<div id="menu">
-			<div class="container">			
-				<ul class="pull-left">
-					<li><a>LA MARCA</a></li>
-					<li><a>COLECCIONES</a></li>
-					<li><a href="{{ path('pigalle_product_index') }}">ONLINE SHOP</a></li>
-				</ul>
+			<div class="container">		
+				{{ knp_menu_render('pigalle.menu.main_left', {'currentClass': 'active'}) }}
 				<a href="{{ path('pigalle_homepage') }}" class="logo"><img src="{{ asset('bundles/pigalle/images/logo-pigalle.png') }}" alt="Pigalle" /></a>
-				<ul class="pull-right">
-					<li><a><img src="{{ asset('bundles/pigalle/images/ico-facebook.png') }}" alt="Facebook" /></a></li>
-					<li><a>CONTACTO</a></li>
-					<li><a>LOCALES</a></li>
-					<li><a>PREVENTA</a></li>
-				</ul>
+				{{ knp_menu_render('pigalle.menu.main_right', {'currentClass': 'active'}) }}
 			</div>
 		</div>
   

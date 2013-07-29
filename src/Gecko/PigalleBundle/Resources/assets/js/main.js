@@ -3,7 +3,7 @@ $(document).ready(function()
 	//Menu width fix
 	$('#menu ul li a').each(function() 
 	{
-		$(this).css('width', $(this).width() + 10);
+		//$(this).css('width', $(this).width() + 10);
 	});
 	
 	//Zoom image on gallery

@@ -1,8 +1,30 @@
 parameters:
-#    pigalle.example.class: Gecko\PigalleBundle\Example
+    pigalle.menu_builder.class: Gecko\PigalleBundle\Menu\MenuBuilder
 
 services:
     pigalle.twig.price_extension:
         class: Gecko\PigalleBundle\Twig\PriceExtension
         tags:
             - { name: twig.extension }
+            
+    pigalle.menu_builder:
+        class: %pigalle.menu_builder.class%
+        arguments: [@knp_menu.factory, @security.context, @translator]
+        
+    pigalle.menu.main_left:
+        class: Knp\Menu\MenuItem
+        factory_service: pigalle.menu_builder
+        factory_method: createMainMenuLeft
+        scope: request
+        arguments: [@request]
+        tags:
+            -  { name: knp_menu.menu, alias: pigalle.menu.main_left }
+            
+    pigalle.menu.main_right:
+        class: Knp\Menu\MenuItem
+        factory_service: pigalle.menu_builder
+        factory_method: createMainMenuRight
+        scope: request
+        arguments: [@request]
+        tags:
+            -  { name: knp_menu.menu, alias: pigalle.menu.main_right }

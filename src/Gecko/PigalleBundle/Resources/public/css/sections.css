@@ -1,0 +1,340 @@
+/*** DETALLE PRODUCTO ***/
+#content .imagenProducto { 
+	padding: 60px 30px 40px 30px;
+	border-bottom: 1px #000000 solid;
+}
+.descripcionProducto { width: 150px;}
+.descripcionProducto a {color: #333333;}
+
+.detalleProducto { 
+	height:576px; 
+	background-color:#efeeee;
+}
+.direction {
+	clear: both;
+	height: 23px;
+	padding-top: 10px;
+}
+.direction a {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 400;
+	color:#adadad;
+	text-decoration:underline;
+	font-size:10px;
+}
+.fotoDetalle { 
+	border: 1px solid #000000; 
+	background-color:#FFF;
+	text-align: center;
+	box-sizing:border-box;
+  	-moz-box-sizing:border-box;
+  	-webkit-box-sizing:border-box;
+}
+.detalleProducto .datos { 
+}
+.detalleProducto .datos .datosProducto { 
+	width: 100%;
+	height: 252px;
+	border-top: 2px solid #000;
+	border-bottom: 2px solid #000;
+	position: relative;
+}
+.datosProducto p.description {
+	margin: 17px 0 0 0;
+	width: 385px;
+}
+#productGalleryZoomContainer {
+}
+.detalleProducto .datos .flag, .detalleProducto .datos .flagOferta, .cartTotal .flag, .cartTotal .flagOferta {
+	width: 61px;
+	position: absolute;
+	top: 0;
+	right: 11px;
+	margin-right: 0;
+}
+.datosProducto .productName, .datosProducto .productName a {
+	font-family: 'Croissant One';
+	font-size: 18px;	
+	margin-top: 26px;
+	color: #000000;
+	font-weight: 700;
+}
+.datos .flagOferta .tail, .cartTotal .flagOferta .tail  {
+	background:url(../images/img-bandera-roja-grande.png) no-repeat;
+}
+.datos .flag .tail, .cartTotal .flag .tail  { 
+	background:url(../images/img-bandera-negra-grande.png) no-repeat;
+}
+.datos .botonCompras { 
+	background:url(../images/flag-compra.png) no-repeat;
+	height: 127px;
+	width: 61px;
+	position: absolute;
+	top: 0;
+	right: 11px;
+}
+.datos .share {
+	width: 100%;
+	position: absolute;
+	bottom: 10px;
+	right: 0;
+	padding-right: 11px;
+}
+.datos .share li {
+	float: right;
+	margin-left: 23px;
+	list-style: none;
+}
+.detalleProducto .datos .photos { 
+ 	border-bottom: 2px solid #000;
+ 	width: 100%
+}
+.detalleProducto .datos .photos a:hover {
+	text-decoration:none;
+}
+.detalleProducto .datos .photos img {
+	margin: 10px 5px;
+	border: 1px solid black;
+}
+.detalleProducto .datos .talles {
+ 	font-weight: bold;
+	padding: 9px 0 0 14px;
+}
+
+.detalleProducto .datos .talles p {
+ 	font-size: 14px;
+ 	padding-top: 8px;
+ 	margin: 0;
+}
+
+.detalleProducto .datos .talles ul.talleList li {
+	float: left;
+	list-style: none;
+	margin-right: 10px;
+	background: #000000;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 12px;
+	padding: 2px;
+	width: 20px;
+	text-align: center;
+}
+
+input[type="radio"].toggle {
+    display: none;
+}
+input[type="radio"].toggle:checked + label {
+    background: #FFFFFF;
+    color: #000000;
+}
+input[type="radio"].toggle + label {
+    margin: 0;
+}
+
+.detalleProducto .datos .talles input.quantity {
+	width: 45px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+}
+.detalleProducto .datos .addToCartButton {
+	width: 100%;
+}
+
+/*** CARRITO ***/
+.cart table {
+	margin-top:32px;
+	margin-bottom: 5px;
+	font-size: 12px;
+}
+.cart table thead {
+	background:#000000; 
+	color:#FFFFFF;
+}
+.cart table th {
+	border-right: 1px solid #ffffff;
+	text-align: center;
+	font-weight: 300;
+	padding: 0;
+}
+.cart table th:last-child {
+	border-right: none;
+}
+.cart table thead tr {
+	border-top: 8px solid #000000;
+	border-bottom: 8px solid #000000;
+}
+.cart table tr {
+	border-bottom: solid 2px #000;
+}
+.cart table td { 
+	text-align:center;
+}
+.cart table .detalle { 
+	text-align:left;
+}
+.circle { 
+	width: 10px;
+	height: 10px;
+	font-size: 20px;
+	padding: 15px;
+	line-height: 9px;
+	background: #000000;
+	color: #FFFFFF;
+	-moz-border-radius: 100px;
+	-webkit-border-radius: 100px;
+}
+.cart .circle {
+	margin: 18px;
+	margin-top: 50px;
+}
+.cart .detalle .photo {
+	float: left;
+	border: 1px solid black;
+	margin: 10px 15px 10px 0;
+}
+.cart .detalle .datosProducto .productName {
+	margin-top:13px;
+}
+.cart .detalle .datosProducto .talle {
+	font-weight: 700;
+	font-size: 14px;
+}
+.cart table td.quantity {
+	padding-top: 60px;	
+}
+.cart table td.unitPrice, .cart table td.totalPrice, .cart table td.remove {
+	font-size: 20px;
+	padding-top: 63px;
+}
+
+.cartActions {
+	float: left;
+}
+.cartActions .button {
+	padding: 0 20px;
+}
+.cartActions .clearCartButton {
+	float: left;
+	margin-right: 20px;
+}
+.cartTotal { 
+	float:right; 
+	width:340px; 
+	margin-top:5px;
+}
+.cartTotal p {
+	font-size: 14px;
+}
+.cartTotal .cartCoupon { 
+	width:100%; 
+	border-bottom: 1px solid #000;
+}
+.cartTotal .cartCoupon p {
+	float: left;
+	line-height: 27px;
+}
+.cartTotal .cartCoupon .coupon { 
+	border:1px solid #000 !important; 
+	height:20px;
+	width: 148px;
+	margin-left: 13px;
+}
+.cartTotal .total { 
+	width:100%;
+}
+.cartTotal .total p {
+	padding-top: 20px;
+	padding-bottom: 15px;
+}
+.cartTotal .total p.title { 
+	float:left; 
+}
+.cartTotal .total .flag {
+	margin-left: 10px; 
+	float:left;
+	position: static;
+}
+.cartTotal .total .checkoutButton {
+	margin: 10px 0px 0px 12px;
+	float: right;
+}
+.cart .emptyCart {
+	text-align:center;
+}
+.cart .emptyCart h2 {
+	font-family: 'Croissant One';
+	font-size: 24px;	
+	margin: 90px 0 50px 0;
+}
+.cart .emptyCart div.hr {
+	width: 480px;
+	margin: 0 auto;
+}
+.cart .emptyCart p {
+	font-size: 18px;	
+	margin: 60px 0 300px 0;
+}
+.cart .emptyCart a {
+	text-decoration:underline;
+}
+
+/***** ONLINE SHOP ******/
+.shop .content {
+	padding-top: 26px;
+}
+
+.shop .filters button {
+	width: 100%;	
+}
+
+.shop .filter {
+	background: #efeeee;
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+.shop .filter a, .shop .filter p {
+	padding: 6px 0;
+	text-decoration: none;
+	margin: 0 11px;
+	display: block;
+}
+
+.shop .filter label {
+	float: left;
+	font-weight: bold;
+	margin-right: 15px;
+	color: #000000;
+}
+
+.shop .filter input[type="checkbox"] {
+	outline: 2px solid #000000;
+}
+
+.shop .filter a:hover {
+	color: #000000;
+}
+
+.shop .filterAccordion .accordionHeader
+{
+	font-weight: bold;
+	border-bottom: 1px solid #000000;	
+	background-image: url(../../../bundles/pigalle/images/arrow_down.png);
+	background-repeat: no-repeat;
+	background-position:  226px 11px;
+}
+
+.shop .filterAccordion .accordionHeader.collapsed {
+	background-image: url(../../../bundles/pigalle/images/arrow_up.png);
+}
+
+.shop .products .pagination {
+	margin: 0 0 20px 0;
+	text-align: right;
+}
+
+.shop .products .grid {
+	margin: 0 0 24px 0;
+}
