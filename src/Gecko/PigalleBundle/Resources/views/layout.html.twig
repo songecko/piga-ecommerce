@@ -42,10 +42,18 @@
 			<div class="container">
 				<p class="newsletter">NEWSLETTER: Join us!</p>
 				<div class="pull-right">
-					<ul>
-						<li><a>LOGIN</a></li>
-						<li><a href="{#{ path('fos_user_registration_register') }#}">REGISTRARSE</a></li>
+					{% if is_granted('ROLE_USER') %}
+					<ul class="granted">
+						<li><a href="{#{ path('sylius_account_homepage') }#}#">mi cuenta</a></li>
+						<li class="logout"><a href="{{ path('fos_user_security_logout') }}">salir</a></li>
+						<li class="user">Hola {{ app.user }}!</li>
 					</ul>
+					{% else %}
+					<ul>
+						<li><a href="{{ path('fos_user_registration_register') }}">LOGIN</a></li>
+						<li><a href="{{ path('fos_user_registration_register') }}">REGISTRARSE</a></li>
+					</ul>
+					{% endif %}
 					<a href="{{ path('sylius_cart_summary') }}" class="cartItems">{{ cart.totalItems }}</a>
 				</div>
 			</div>

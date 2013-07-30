@@ -1,12 +1,10 @@
-{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+{% extends 'PigalleBundle::layout.html.twig' %}
 
 {% block content %}
-<div class="page-header">
-    <h1>Welcome <small>Your registration was successful</small></h1>
-</div>
-
-<hr />
-<div class="alert alert-success">
-    Thank you for sign up! You are now logged in the store
+<div class="security">
+	<div class="contentTitle"><h3 class="titleSection container">Registro</h3></div>
+	<div class="container content">
+		<p>El registro se realizó correctamente. Ahora puede empezar a realizar compras en el sitio.</p>
+	</div>
 </div>
 {% endblock %}

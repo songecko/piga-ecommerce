@@ -74,6 +74,7 @@ class AppKernel extends Kernel
         	new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
             new Gecko\PigalleBundle\PigalleBundle(),
             new Gecko\SyliusBackendBundle\SyliusBackendBundle(),
+            new Gecko\UserBundle\GeckoUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

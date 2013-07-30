@@ -312,7 +312,7 @@ class MenuBuilder
     	))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.view_site', $section)));
     
     	$child->addChild('signout', array(
-    			//'route' => 'sylius_backend_dashboard',
+    			'route' => 'fos_user_security_logout',
     			'labelAttributes' => array('icon' => 'icon-off'),
     	))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.signout', $section)));
     }

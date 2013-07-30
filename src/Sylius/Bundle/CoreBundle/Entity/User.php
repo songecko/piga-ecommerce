@@ -42,6 +42,12 @@ class User extends BaseUser implements TimestampableInterface
 
         parent::__construct();
     }
+    
+    public function setEmail($email)
+    {
+    	parent::setEmail($email);
+    	$this->setUsername($email);
+    }
 
     /**
      * Get orders

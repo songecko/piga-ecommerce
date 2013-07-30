@@ -8,7 +8,15 @@ sylius_product:
 
 sylius_cart:
     resource: @PigalleBundle/Resources/config/routing/cart.yml
-            
+        
+sylius_account:
+    resource: @PigalleBundle/Resources/config/routing/account.yml
+    prefix: /account
+    
+sylius_checkout:
+    resource: @PigalleBundle/Resources/config/routing/checkout.yml
+    prefix: /checkout
+
 #sylius_province_choice_form:
 #    pattern: /province/choice-form
 #    defaults:

@@ -377,3 +377,50 @@ input[type="radio"].toggle + label {
 .shop .products .grid {
 	margin: 0 0 24px 0;
 }
+
+
+/*** SECURITY ***/
+.security .content {
+	margin-top: 40px; 
+}
+.security .span6 {
+	height: 376px;
+}
+
+.security .register {
+	border-left: 1px solid #000000;
+	margin-left: 10px;
+}
+
+.security h2 {
+	font-size: 18px;
+	text-align: center;
+	margin-bottom: 36px;
+}
+
+.security form {
+	width: 220px;
+}
+
+.security form label {
+	font-size: 12px;
+}
+
+.security form input {
+	width: 200px;
+	height: 22px;
+	border: 1px solid #000 !important;
+}
+
+.security fieldset {
+	margin-bottom: 30px;	
+}
+
+.security .login form {
+	float:right;
+	margin-right: 60px;
+}
+
+.security .register form {
+	margin-left: 60px;
+}
