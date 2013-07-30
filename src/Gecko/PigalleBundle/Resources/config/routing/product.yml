@@ -1,5 +1,5 @@
 pigalle_product_index:
-    pattern: /online-shop
+    pattern: /
     defaults:
         _controller: sylius.controller.product:indexAction
         _sylius:
@@ -7,7 +7,7 @@ pigalle_product_index:
             template: PigalleBundle:Product:index.html.twig
             
 pigalle_product_index_by_taxon:
-    pattern: /online-shop/t/{permalink}
+    pattern: /t/{permalink}
     defaults:
         _controller: sylius.controller.product:indexByTaxonAction
         _sylius:
@@ -15,9 +15,18 @@ pigalle_product_index_by_taxon:
             template: PigalleBundle:Product:index.html.twig
 
 pigalle_product_show:
-    pattern:        /online-shop/p/{slug}
+    pattern:        /p/{slug}
     defaults:
         _controller:    sylius.controller.product:showAction
         _sylius:
             template: PigalleBundle:Product:show.html.twig
             criteria: {slug: $slug}
+            
+pigalle_product_quickview:
+    pattern:        /p/quickview/id
+    defaults:
+        _controller:    sylius.controller.product:quickviewAction
+        _sylius:
+            template: PigalleBundle:Product:quickview.html.twig
+    requirements:
+        id:  \d+

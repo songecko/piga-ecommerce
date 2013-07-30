@@ -8,12 +8,13 @@ use Knp\Menu\FactoryInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use JMS\TranslationBundle\Annotation\Ignore;
+use Symfony\Component\DependencyInjection\ContainerAware;
 
 /**
  * Main menu builder.
  *
  */
-class MenuBuilder
+class MenuBuilder extends ContainerAware
 {
 	/**
 	 * Menu factory.
@@ -133,8 +134,8 @@ class MenuBuilder
     	$menu->addChild('facebook', array(
     		'uri' => '#'
     	))
-    	->setExtra('safe_label', false)
-    	->setLabel('<img src="{{ asset(\'bundles/pigalle/images/ico-facebook.png\') }}" alt="Facebook" />');
+    	->setExtra('safe_label', true)
+    	->setLabel('<img src="'.$this->container->get('templating.helper.assets')->getUrl('bundles/pigalle/images/ico-facebook.png').'" alt="Facebook" />');
     	
     	$menu->addChild('contacto', array(
     		//'route' => 'sylius_backend_taxonomy_index',

@@ -100,29 +100,33 @@ liip_imagine:
                 thumbnail: { size: [50, 40], mode: outbound }
         sylius_60x60:
             filters:
-                thumbnail: { size: [60, 60], mode: outbound }
-        product_image_small:
-            filters:
-                thumbnail: { size: [90, 60], mode: outbound }
+                thumbnail: { size: [60, 60], mode: outbound }        
         sylius_138x138:
             filters:
                 thumbnail: { size: [138, 138], mode: outbound }
         sylius_200x200:
             filters:
                 thumbnail: { size: [200, 200], mode: outbound }
-
         sylius_262x255:
             filters:
-                thumbnail: { size: [265, 255], mode: outbound }
-        product_image_medium:
-            filters:
-                thumbnail: { size: [460, 460], mode: outbound }
+                thumbnail: { size: [265, 255], mode: outbound }        
         sylius_610x600:
             filters:
                 thumbnail: { size: [610, 600], mode: outbound }
         sylius_gallery:
             filters:
                 thumbnail: { size: [640, 480], mode: outbound }
-        product_image_big:
+                
+                
+        pigalle_60x60:
+            filters:
+                thumbnail: { size: [60, 60], mode: outbound }
+        pigalle_220x220:
+            filters:
+                thumbnail: { size: [220, 220], mode: outbound }
+        pigalle_460x460:
+            filters:
+                thumbnail: { size: [460, 460], mode: outbound }                
+        pigalle_900x900:
             filters:
                 thumbnail: { size: [900, 900], mode: outbound }

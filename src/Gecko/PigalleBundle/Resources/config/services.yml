@@ -10,6 +10,8 @@ services:
     pigalle.menu_builder:
         class: %pigalle.menu_builder.class%
         arguments: [@knp_menu.factory, @security.context, @translator]
+        calls:
+          - [ setContainer, ["@service_container"] ]
         
     pigalle.menu.main_left:
         class: Knp\Menu\MenuItem

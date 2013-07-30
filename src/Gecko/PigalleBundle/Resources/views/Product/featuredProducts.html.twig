@@ -1,11 +1,11 @@
 <div class="socaloGris"></div>
-<div class="container">
+<div class="container featuredProducts">
 	<div class="tab">Productos Destacados</div>
 	<div class="row">
 	{% for product in products %}
 		<div class="span3">
 			<div class="imagenProducto">
-				<a href="{{ path('pigalle_product_show', {'slug': product.slug}) }}"><img src="{{ product.image.path|imagine_filter('sylius_262x255') }}" alt="Producto destacado" /></a>
+				<a href="{{ path('pigalle_product_show', {'slug': product.slug}) }}"><img src="{{ product.image.path|imagine_filter('pigalle_220x220') }}" alt="Producto destacado" /></a>
 			</div>
 			<div class="pull-left descripcionProducto">
 				<h3><a href="{{ path('pigalle_product_show', {'slug': product.slug}) }}">{{ product.name }}</a></h3>

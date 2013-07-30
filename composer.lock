@@ -685,7 +685,7 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Johannes Schmitt",
+                    "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
                     "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -735,7 +735,7 @@
             ],
             "authors": [
                 {
-                    "name": "Guilherme Blanco",
+                    "name": "Christoph Dorn",
                     "email": "guilhermeblanco@gmail.com",
                     "homepage": "http://www.instaclick.com"
                 },
@@ -744,9 +744,9 @@
                     "email": "roman@code-factory.org"
                 },
                 {
-                    "name": "Johannes Schmitt",
+                    "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -830,22 +830,22 @@
         },
         {
             "name": "friendsofsymfony/rest",
-            "version": "dev-master",
+            "version": "0.8.0",
             "target-dir": "FOS/Rest",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRest.git",
-                "reference": "b836af42daef72117b1694934a77fffa9d4a82a8"
+                "reference": "0.8.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRest/zipball/b836af42daef72117b1694934a77fffa9d4a82a8",
-                "reference": "b836af42daef72117b1694934a77fffa9d4a82a8",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRest/zipball/0.8.0",
+                "reference": "0.8.0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "symfony/http-foundation": "~2.0"
+                "symfony/http-foundation": ">=2.0,<3.0"
             },
             "type": "library",
             "extra": {
@@ -877,7 +877,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2013-07-24 18:23:56"
+            "time": "2013-03-02 20:35:05"
         },
         {
             "name": "friendsofsymfony/rest-bundle",
@@ -1126,12 +1126,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/l3pp4rd/DoctrineExtensions.git",
-                "reference": "9662cee48b2abe5d3805e52f8973718c7144c0c9"
+                "reference": "33cd84cd10ae2887698bd82bbbc016149cdd53ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/9662cee48b2abe5d3805e52f8973718c7144c0c9",
-                "reference": "9662cee48b2abe5d3805e52f8973718c7144c0c9",
+                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/33cd84cd10ae2887698bd82bbbc016149cdd53ed",
+                "reference": "33cd84cd10ae2887698bd82bbbc016149cdd53ed",
                 "shasum": ""
             },
             "require": {
@@ -1198,7 +1198,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2013-07-21 15:51:21"
+            "time": "2013-07-28 08:06:50"
         },
         {
             "name": "guzzle/common",
@@ -1399,7 +1399,7 @@
             "time": "2013-06-27 00:50:43"
         },
         {
-            "name": "imagine/imagine",
+            "name": "imagine/Imagine",
             "version": "v0.4.1",
             "source": {
                 "type": "git",
@@ -1801,7 +1801,7 @@
             "version": "0.11.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/schmittjoh/serializer.git",
+                "url": "git://github.com/schmittjoh/serializer",
                 "reference": "0.11.0"
             },
             "dist": {
@@ -2492,12 +2492,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "050bb52fd803e4184f43629cc61df1057cea74c4"
+                "reference": "1.6.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/050bb52fd803e4184f43629cc61df1057cea74c4",
-                "reference": "050bb52fd803e4184f43629cc61df1057cea74c4",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1.6.0",
+                "reference": "1.6.0",
                 "shasum": ""
             },
             "require": {
@@ -2546,7 +2546,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2013-07-17 16:11:27"
+            "time": "2013-07-28 22:38:30"
         },
         {
             "name": "nikic/php-parser",

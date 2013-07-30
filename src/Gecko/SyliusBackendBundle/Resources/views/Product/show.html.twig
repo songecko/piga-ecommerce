@@ -24,7 +24,7 @@
 <div class="well" data-toggle="modal-gallery" data-target="#modal-gallery">
 	{% for image in product.images %}
 	<a href="{{ image.path|imagine_filter('sylius_gallery') }}" data-gallery="gallery" title="{{ product.name }}">
-		<img class="img-polaroid" src="{{ image.path|imagine_filter('product_image_small') }}" alt="{{ product.name }}" />
+		<img class="img-polaroid" src="{{ image.path|imagine_filter('pigalle_60x60') }}" alt="{{ product.name }}" />
 	</a>
 	{% endfor %}
 </div>

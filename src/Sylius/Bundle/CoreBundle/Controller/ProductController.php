@@ -60,6 +60,20 @@ class ProductController extends ResourceController
 		return $this->handleView($view);
 	}
 	
+	public function quickviewAction()
+	{
+		$config = $this->getConfiguration();
+	
+		$view =  $this
+		->view()
+		->setTemplate($config->getTemplate('quickview.html'))
+		->setTemplateVar($config->getResourceName())
+		->setData($this->findOr404())
+		;
+	
+		return $this->handleView($view);
+	}
+	
 	/**
 	 * List products.
 	 *

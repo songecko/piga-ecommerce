@@ -4,6 +4,7 @@ pigalle_homepage:
 
 sylius_product:
     resource: @PigalleBundle/Resources/config/routing/product.yml
+    prefix:   /online-store
 
 sylius_cart:
     resource: @PigalleBundle/Resources/config/routing/cart.yml

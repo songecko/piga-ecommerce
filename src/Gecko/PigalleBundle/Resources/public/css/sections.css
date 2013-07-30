@@ -1,10 +1,27 @@
 /*** DETALLE PRODUCTO ***/
-#content .imagenProducto { 
-	padding: 60px 30px 40px 30px;
+.featuredProducts .imagenProducto, .product-box .imagenProducto { 
+	padding: 30px;
 	border-bottom: 1px #000000 solid;
+	position: relative;
 }
-.descripcionProducto { width: 150px;}
-.descripcionProducto a {color: #333333;}
+.featuredProducts .descripcionProducto, .product-box .descripcionProducto { width: 150px; }
+.featuredProducts .descripcionProducto a, .product-box .descripcionProducto a {
+	text-transform: uppercase;
+	font-weight: 700;
+}
+
+.quickviewButton {
+	display: block;
+	width: 215px;
+	height: 215px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: center;
+	line-height: 215px;
+	padding: 30px;
+	display: none;
+}
 
 .detalleProducto { 
 	height:576px; 
@@ -31,84 +48,76 @@
   	-moz-box-sizing:border-box;
   	-webkit-box-sizing:border-box;
 }
-.detalleProducto .datos { 
+.productDetails .datos { 
 }
-.detalleProducto .datos .datosProducto { 
+.productDetails .datos .datosProducto { 
 	width: 100%;
 	height: 252px;
-	border-top: 2px solid #000;
-	border-bottom: 2px solid #000;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
 	position: relative;
 }
-.datosProducto p.description {
+.productDetails .datosProducto p.description {
 	margin: 17px 0 0 0;
 	width: 385px;
 }
 #productGalleryZoomContainer {
 }
-.detalleProducto .datos .flag, .detalleProducto .datos .flagOferta, .cartTotal .flag, .cartTotal .flagOferta {
-	width: 61px;
+.productDetails .datos .flag, .productDetails .datos .flagOferta, .cartTotal .flag, .cartTotal .flagOferta {
 	position: absolute;
 	top: 0;
 	right: 11px;
 	margin-right: 0;
 }
-.datosProducto .productName, .datosProducto .productName a {
+.productDetails .datosProducto .productName, .productDetails .datosProducto .productName a, .cart .detalle .datosProducto .productName {
 	font-family: 'Croissant One';
 	font-size: 18px;	
 	margin-top: 26px;
 	color: #000000;
-	font-weight: 700;
 }
-.datos .flagOferta .tail, .cartTotal .flagOferta .tail  {
-	background:url(../images/img-bandera-roja-grande.png) no-repeat;
-}
-.datos .flag .tail, .cartTotal .flag .tail  { 
-	background:url(../images/img-bandera-negra-grande.png) no-repeat;
-}
-.datos .botonCompras { 
+.productDetails .datos .botonCompras { 
 	background:url(../images/flag-compra.png) no-repeat;
 	height: 127px;
 	width: 61px;
 	position: absolute;
 	top: 0;
 	right: 11px;
+	cursor: pointer;
 }
-.datos .share {
+.productDetails .datos .share {
 	width: 100%;
 	position: absolute;
 	bottom: 10px;
-	right: 0;
-	padding-right: 11px;
+	right: 11px;
 }
-.datos .share li {
+.productDetails .datos .share li {
 	float: right;
 	margin-left: 23px;
 	list-style: none;
 }
-.detalleProducto .datos .photos { 
- 	border-bottom: 2px solid #000;
+.productDetails .datos .photos { 
+ 	border-bottom: 1px solid #000;
  	width: 100%
 }
-.detalleProducto .datos .photos a:hover {
+.productDetails .datos .photos a:hover {
 	text-decoration:none;
 }
-.detalleProducto .datos .photos img {
+.productDetails .datos .photos img {
 	margin: 10px 5px;
 	border: 1px solid black;
 }
-.detalleProducto .datos .talles {
+.productDetails .datos .talles {
  	font-weight: bold;
-	padding: 9px 0 0 14px;
+	padding: 11px 0 0 14px;
 }
 
-.detalleProducto .datos .talles p {
+.productDetails .datos .talles p {
  	font-size: 14px;
  	padding-top: 8px;
  	margin: 0;
 }
 
-.detalleProducto .datos .talles ul.talleList li {
+.productDetails .datos .talles ul.talleList li {
 	float: left;
 	list-style: none;
 	margin-right: 10px;
@@ -132,14 +141,44 @@ input[type="radio"].toggle + label {
     margin: 0;
 }
 
-.detalleProducto .datos .talles input.quantity {
+.productDetails .datos .talles input.quantity {
 	width: 45px;
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
 	border-radius: 0px;
 }
-.detalleProducto .datos .addToCartButton {
+.productDetails .datos .addToCartButton {
 	width: 100%;
+}
+
+
+#quickviewModal {
+	width: 846px;
+	height: 429px;
+	margin-left: -423px;
+}
+
+
+#quickviewModal .modal-body {
+	height: 385px;
+	overflow: hidden;
+	padding: 22px 28px;
+}
+
+#quickviewModal .productDetails .datosProducto p.description {
+	width: 300px;
+}
+
+#quickviewModal .productDetails .datos .datosProducto {
+	height: 174px;
+}
+
+#quickviewModal .productDetails .datos .share {
+	right: 87px;
+}
+
+#quickviewModal .productDetails .fotoDetalle {
+	height: 385px;
 }
 
 /*** CARRITO ***/
@@ -155,7 +194,6 @@ input[type="radio"].toggle + label {
 .cart table th {
 	border-right: 1px solid #ffffff;
 	text-align: center;
-	font-weight: 300;
 	padding: 0;
 }
 .cart table th:last-child {
@@ -240,6 +278,7 @@ input[type="radio"].toggle + label {
 	height:20px;
 	width: 148px;
 	margin-left: 13px;
+	float:right;
 }
 .cartTotal .total { 
 	width:100%;
