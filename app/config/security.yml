@@ -11,7 +11,7 @@ security:
         main:
             form_login:
                 provider: fos_userbundle
-                login_path: /registro
+                login_path: /login
                 check_path: /login_check
                 use_referer: true
             remember_me:
@@ -30,8 +30,7 @@ security:
         - { path: ^/registro, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/login-check, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: "/admin/media.*", role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: "/admin.*", role: ROLE_SYLIUS_ADMIN }
         - { path: "/cuenta.*", role: ROLE_USER }
         - { path: "/_partial.*", ip: 127.0.0.1 }

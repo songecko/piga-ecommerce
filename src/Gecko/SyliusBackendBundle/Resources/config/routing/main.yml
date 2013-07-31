@@ -104,7 +104,3 @@ sylius_backend_taxon:
 
 #sylius_backend_security:
 #    resource: @SyliusWebBundle/Resources/config/routing/backend/security.yml
-
-_imagine:
-    resource: .
-    type:     imagine
