@@ -5,6 +5,8 @@ sylius.backend:
       taxonomies:   "Categorización"
       options:      "Opciones"
       products:     "Productos"
+      customer:     "Clientes"
+      users:        "Usuarios"
       account:      "Cuenta"
       account_edit: "Editar"
       view_site:    "Ver Sitio"

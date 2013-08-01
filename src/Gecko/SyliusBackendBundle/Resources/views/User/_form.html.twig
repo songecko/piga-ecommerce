@@ -1,0 +1,10 @@
+<div class="form-container">
+<fieldset>
+    {{ form_errors(form) }}
+    {{ form_row(form.first_name) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.enabled) }}
+    {{ form_rest(form) }}    
+</fieldset>
+{{ form_widget(form._token) }}
+</div>

@@ -2,9 +2,9 @@ sylius_backend_dashboard:
     pattern: /dashboard
     defaults: { _controller: sylius_backend.controller.dashboard:mainAction }
 
-#sylius_backend_user:
-#    resource: @SyliusWebBundle/Resources/config/routing/backend/user.yml
-#    prefix: /users
+sylius_backend_user:
+    resource: @SyliusBackendBundle/Resources/config/routing/user.yml
+    prefix: /users
 
 sylius_backend_product:
     resource: @SyliusBackendBundle/Resources/config/routing/product.yml

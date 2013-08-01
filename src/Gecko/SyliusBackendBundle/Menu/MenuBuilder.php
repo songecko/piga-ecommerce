@@ -87,6 +87,7 @@ class MenuBuilder
         );
 
         $this->addAssortmentMenu($menu, $childOptions, 'main');
+        $this->addCustomersMenu($menu, $childOptions, 'main');
         //$this->addSalesMenu($menu, $childOptions, 'main');
         //$this->addConfigurationMenu($menu, $childOptions, 'main');
 

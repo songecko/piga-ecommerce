@@ -45,8 +45,11 @@
 					{% if is_granted('ROLE_USER') %}
 					<ul class="granted">
 						<li class="account"><a href="{#{ path('sylius_account_homepage') }#}#">mi cuenta</a></li>
+						{% if is_granted('ROLE_SYLIUS_ADMIN') %}
+						<li class="admin"><a href="{{ path('sylius_backend_index') }}" target="_blank">administrador</a></li>
+						{% endif %}
 						<li class="logout"><a href="{{ path('fos_user_security_logout') }}">salir</a></li>
-						<li class="user">Hola {{ app.user }}!</li>
+						<li class="user">Hola {{ app.user.getShortedName }}!</li>
 					</ul>
 					{% else %}
 					<ul>

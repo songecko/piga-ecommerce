@@ -198,4 +198,17 @@ class User extends BaseUser implements TimestampableInterface
     {
         $this->updatedAt = $updatedAt;
     }
+    
+    public function getShortedName()
+    {
+    	$name = $this->getFirstName();
+    	
+    	if(!$name)
+    	{
+    		$arr = explode("@", $this->getEmail());
+    		$name = $arr[0];
+    	}
+    	
+    	return $name;
+    }
 }

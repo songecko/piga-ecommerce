@@ -75,7 +75,7 @@ div.hr hr {
 #header ul.granted li.account {
 	font-weight: 700;
 }
-#header ul.granted li.logout {
+#header ul.granted li.logout, #header ul.granted li.admin {
 	border-left: 1px solid #ffdaca;
 }
 #header ul.granted li.user {

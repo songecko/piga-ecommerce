@@ -32,6 +32,10 @@ sylius:
         product:
             short_description: "Descripción corta"
             price_without_discount: "Precio sin oferta"
+        user:
+            first_name: "Nombre" 
+            email:    "Email"
+            enabled:  "Activo?"
         variant:
             sku:      "SKU"
             on_hand:  "Stock"
@@ -62,6 +66,19 @@ sylius:
           categorization: "Categorías"
           properties: "Propiedades"
           images:     "Imágenes"
+        
+    user:
+        index_header:  "Usuarios"
+        show_header:   "Vista del usuario"
+        update_header: "Editar usuario"
+        filter:
+          all:         "Mostrar todos"
+          unconfirmed: "Mostrar cuentas inactivas"
+        id:            "ID"
+        email:         "Email"
+        enabled:       "Activo?"
+        general_info:  "Información general"
+        orders:        "Pedidos realizados"
         
     variant:
         create_header: "Crear talle de producto"
