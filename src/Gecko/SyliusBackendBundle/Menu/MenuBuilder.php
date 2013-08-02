@@ -93,7 +93,35 @@ class MenuBuilder
 
         return $menu;
     }
-
+	
+    /**
+     * Builds backend main menu account.
+     *
+     * @param Request $request
+     *
+     * @return ItemInterface
+     */
+    public function createMainMenuAccount(Request $request)
+    {
+    	$menu = $this->factory->createItem('root', array(
+    			'childrenAttributes' => array(
+    					'class' => 'nav pull-right'
+    			)
+    	));
+    
+    	$menu->setCurrent($request->getRequestUri());
+    
+    	$childOptions = array(
+    			'attributes'         => array('class' => 'dropdown'),
+    			'childrenAttributes' => array('class' => 'dropdown-menu'),
+    			'labelAttributes'    => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'href' => '#')
+    	);
+    	
+    	$this->addAccountMenu($menu, $childOptions, 'main');
+    
+    	return $menu;
+    }
+    
     /**
      * Builds backend sidebar menu.
      *
@@ -117,8 +145,8 @@ class MenuBuilder
     	);
     
     	$this->addAssortmentMenu($menu, $childOptions, 'main');
+    	$this->addCustomersMenu($menu, $childOptions, 'main');
     	//$this->addSalesMenu($menu, $childOptions, 'sidebar');
-    	//$this->addCustomersMenu($menu, $childOptions, 'sidebar');
     	//$this->addConfigurationMenu($menu, $childOptions, 'sidebar');
         $this->addAccountMenu($menu, $childOptions, 'main');
     
@@ -302,13 +330,17 @@ class MenuBuilder
     		->setLabel($this->translate(sprintf('sylius.backend.menu.%s.account', $section)))
     	;
     
+    	$user = $this->securityContext->getToken()->getUser();
+    	
     	$child->addChild('edit', array(
-    			//'route' => 'sylius_backend_dashboard',
+    			'route' => 'sylius_backend_user_update',
+    			'routeParameters' => array('id' => $user->getId()),
     			'labelAttributes' => array('icon' => 'icon-pencil'),
     	))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.account_edit', $section)));
     
     	$child->addChild('view_site', array(
     			'route' => 'pigalle_homepage',
+    			'linkAttributes' => array('target' => '_blank'),
     			'labelAttributes' => array('icon' => 'icon-eye-open', 'with_divider' => true),
     	))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.view_site', $section)));
     

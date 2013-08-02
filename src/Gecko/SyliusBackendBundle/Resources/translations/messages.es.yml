@@ -79,6 +79,7 @@ sylius:
         enabled:       "Activo?"
         general_info:  "Información general"
         orders:        "Pedidos realizados"
+        manage:        "Administrar usuarios"
         
     variant:
         create_header: "Crear talle de producto"

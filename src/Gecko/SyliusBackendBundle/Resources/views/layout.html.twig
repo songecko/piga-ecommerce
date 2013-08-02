@@ -35,18 +35,7 @@
     			<a class="brand" href="{{ path('sylius_backend_dashboard') }}">{{ 'sylius.backend.meta.title'|trans }}</a>
     			<div class="nav-collapse collapse">
     				{{ knp_menu_render('sylius_backend.menu.main', {'template': 'SyliusBackendBundle::menu_main.html.twig', 'currentClass': 'active'}) }}
-    				
-    				<ul class="nav pull-right">
-  						<li class="dropdown">
-	    					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Cuenta<b class="caret"></b></a>
-		    				<ul class="dropdown-menu pull-right">
-		      					<li><a href="#"><i class="icon-pencil"></i> Editar</a></li>
-		      					<li><a href="{{ path('pigalle_homepage') }}" target="_blank"><i class="icon-eye-open"></i> Visitar sitio</a></li>
-		      					<li class="divider"></li>
-	      						<li><a href="#"><i class="icon-off"></i> Salir</a></li>
-		    				</ul>
-  						</li>
-					</ul>
+    				{{ knp_menu_render('sylius_backend.menu.main_account', {'template': 'SyliusBackendBundle::menu_main.html.twig', 'currentClass': 'active'}) }}
 				</div>
   			</div>
 		</div>

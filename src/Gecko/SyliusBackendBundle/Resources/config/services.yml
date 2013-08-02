@@ -25,7 +25,16 @@ services:
         arguments: [@request]
         tags:
             -  { name: knp_menu.menu, alias: sylius_backend.menu.main }
-            
+    
+    sylius_backend.menu.main_account:
+        class: Knp\Menu\MenuItem
+        factory_service: sylius_backend.menu_builder
+        factory_method: createMainMenuAccount
+        scope: request
+        arguments: [@request]
+        tags:
+            -  { name: knp_menu.menu, alias: sylius_backend.menu.main_account }
+                    
     sylius_backend.menu.dashboard:
         class: Knp\Menu\MenuItem
         factory_service: sylius_backend.menu_builder

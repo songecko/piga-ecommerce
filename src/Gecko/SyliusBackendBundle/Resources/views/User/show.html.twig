@@ -1,8 +1,16 @@
 {% extends 'SyliusBackendBundle::layout.html.twig' %}
 
+{% import 'SyliusBackendBundle:Macros:buttons.html.twig' as buttons %}
+
 {% block content %}
 <div class="page-header">
     <h1>{{ 'sylius.user.show_header'|trans|raw }}</h1>
+</div>
+
+<div class="well well-small">
+    {{ buttons.manage(path('sylius_backend_user_index'), 'sylius.user.manage'|trans) }}
+    {{ buttons.edit(path('sylius_backend_user_update', {'id': user.id})) }}
+    {{ buttons.delete(path('sylius_backend_user_delete', {'id': user.id})) }}
 </div>
 
 <table class="table table-bordered">
