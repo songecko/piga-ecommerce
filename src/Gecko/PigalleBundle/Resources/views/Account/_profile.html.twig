@@ -1,0 +1,6 @@
+<form action="{{ path('sylius_account_profile') }}" {{ form_enctype(form) }} method="POST" class="form-horizontal">
+    <fieldset>
+        {{ form_widget(form) }}
+    </fieldset>
+    {{ form_rest(form) }}
+</form>

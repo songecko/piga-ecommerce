@@ -6,7 +6,13 @@ services:
         class: Gecko\PigalleBundle\Twig\PriceExtension
         tags:
             - { name: twig.extension }
-            
+
+    pigalle.profile.form.type:
+        class: Gecko\PigalleBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: sylius_user_profile }
+                        
     pigalle.menu_builder:
         class: %pigalle.menu_builder.class%
         arguments: [@knp_menu.factory, @security.context, @translator]
@@ -30,3 +36,12 @@ services:
         arguments: [@request]
         tags:
             -  { name: knp_menu.menu, alias: pigalle.menu.main_right }
+            
+    pigalle.menu.account:
+        class: Knp\Menu\MenuItem
+        factory_service: pigalle.menu_builder
+        factory_method: createAccountMenu
+        scope: request
+        arguments: [@request]
+        tags:
+            -  { name: knp_menu.menu, alias: pigalle.menu.account }

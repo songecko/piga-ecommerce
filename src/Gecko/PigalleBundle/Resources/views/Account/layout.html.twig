@@ -1,0 +1,19 @@
+{% extends 'PigalleBundle::layout.html.twig' %}
+
+{% block content %}
+<div class="account">
+	<div class="contentTitle"><h3 class="titleSection container">Cuenta de usuario</h3></div>
+	<div class="container content">
+		<div class="accountHeader clearfix">
+			<h3 class="pull-left">Hola {{ app.user.getShortedName }}!</h3>
+			<a href="{{ path('fos_user_security_logout') }}" class="pull-right button logout">Cerrar sesión</a>
+		</div>
+		<div class="accountContent">
+			{{ knp_menu_render('pigalle.menu.account', {'currentClass': 'active'}) }}
+			<div class="details">
+				{% block account_content %}{% endblock %}
+			</div>
+		</div>	
+	</div>
+</div>
+{% endblock  %}

@@ -44,7 +44,7 @@
 				<div class="pull-right">
 					{% if is_granted('ROLE_USER') %}
 					<ul class="granted">
-						<li class="account"><a href="{#{ path('sylius_account_homepage') }#}#">mi cuenta</a></li>
+						<li class="account"><a href="{{ path('sylius_account_profile') }}">mi cuenta</a></li>
 						{% if is_granted('ROLE_SYLIUS_ADMIN') %}
 						<li class="admin"><a href="{{ path('sylius_backend_index') }}" target="_blank">administrador</a></li>
 						{% endif %}

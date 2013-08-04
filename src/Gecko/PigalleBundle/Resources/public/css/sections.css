@@ -424,3 +424,44 @@ input[type="radio"].toggle + label {
 .security .register form {
 	margin-left: 60px;
 }
+
+
+/*** Account ***/
+.account .accountHeader {
+	margin: 33px 0 0 10px;
+	border-bottom: 2px solid black;
+	padding-bottom: 15px;
+}
+
+.account .accountHeader h3 {
+	font-size: 18px;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+
+.account .accountHeader .logout {
+	width: 122px;
+	background-color: #efeeee;
+	color: #000000;
+	font-weight: 700;
+}
+
+.account .accountContent {
+	margin: 25px 0 0 10px;
+}
+
+.account .accountMenu {
+	float: left;
+	width: 180px;
+	border-right: 2px solid black;
+	padding-bottom: 80px;
+}
+
+.account .accountMenu li {
+	list-style: none;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+.account .accountMenu li.active {
+	font-weight: 700;
+}

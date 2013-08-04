@@ -105,6 +105,32 @@ class MenuBuilder extends ContainerAware
     }
     
     /**
+     * Creates user account menu
+     *
+     * @param Request $request
+     *
+     * @return ItemInterface
+     */
+    public function createAccountMenu(Request $request)
+    {
+    	$menu = $this->factory->createItem('root', array(
+    			'childrenAttributes' => array('class' => 'accountMenu')    		
+    	));
+        	
+    	$menu->addChild('email', array(
+    			'route' => 'sylius_account_profile',
+    	))->setLabel("E-mail");
+    	
+    	$menu->addChild('password', array(
+    			'route' => 'sylius_account_change_password',
+    	))->setLabel("Contraseña");
+    	
+    	$menu->setCurrent($request->getRequestUri());
+    	
+    	return $menu;
+    }
+    
+    /**
      * Add main menu left.
      *
      * @param ItemInterface $menu

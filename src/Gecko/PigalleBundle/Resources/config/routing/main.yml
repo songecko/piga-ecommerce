@@ -11,7 +11,7 @@ sylius_cart:
         
 sylius_account:
     resource: @PigalleBundle/Resources/config/routing/account.yml
-    prefix: /account
+    prefix: /mi-cuenta
     
 sylius_checkout:
     resource: @PigalleBundle/Resources/config/routing/checkout.yml
