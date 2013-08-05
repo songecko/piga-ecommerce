@@ -117,9 +117,9 @@ class MenuBuilder extends ContainerAware
     			'childrenAttributes' => array('class' => 'accountMenu')    		
     	));
         	
-    	$menu->addChild('email', array(
+    	$menu->addChild('profile', array(
     			'route' => 'sylius_account_profile',
-    	))->setLabel("E-mail");
+    	))->setLabel("Perfil");
     	
     	$menu->addChild('password', array(
     			'route' => 'sylius_account_change_password',

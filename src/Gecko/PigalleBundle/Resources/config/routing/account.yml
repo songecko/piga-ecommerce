@@ -1,7 +1,7 @@
 sylius_account_profile:
     pattern:  /
-    defaults: { _controller: FOSUserBundle:Profile:edit }
+    defaults: { _controller: GeckoUserBundle:Profile:edit }
     
 sylius_account_change_password:
     pattern:  /password
-    defaults: { _controller: FOSUserBundle:ChangePassword:changePassword }
+    defaults: { _controller: GeckoUserBundle:ChangePassword:changePassword }

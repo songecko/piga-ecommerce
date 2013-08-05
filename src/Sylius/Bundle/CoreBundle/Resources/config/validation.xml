@@ -80,7 +80,7 @@
                 </option>
             </constraint>
         </property>
-        <property name="lastName">
+        <!-- <property name="lastName">
             <constraint name="NotBlank">
                 <option name="message">sylius.user.last_name.not_blank</option>
                 <option name="groups">
@@ -96,7 +96,7 @@
                     <value>Profile</value>
                 </option>
             </constraint>
-        </property>
+        </property> -->
     </class>
 
 </constraint-mapping>

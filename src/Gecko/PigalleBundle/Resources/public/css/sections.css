@@ -429,7 +429,7 @@ input[type="radio"].toggle + label {
 /*** Account ***/
 .account .accountHeader {
 	margin: 33px 0 0 10px;
-	border-bottom: 2px solid black;
+	border-bottom: 2px solid #000000;
 	padding-bottom: 15px;
 }
 
@@ -453,7 +453,6 @@ input[type="radio"].toggle + label {
 .account .accountMenu {
 	float: left;
 	width: 180px;
-	border-right: 2px solid black;
 	padding-bottom: 80px;
 }
 
@@ -464,4 +463,31 @@ input[type="radio"].toggle + label {
 }
 .account .accountMenu li.active {
 	font-weight: 700;
+}
+.account .accountContent .details {
+	padding-left: 60px;
+	float: left;
+	border-left: 2px solid #000000;
+}
+.account .accountContent .details form {	
+	margin: 0;
+}
+.account .accountContent .details .form-group label {
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.account .accountContent .details fieldset {
+	margin-bottom: 30px;
+}
+.account .accountContent .details .form-group input {
+	color: #000000;
+	border: 1px solid #000000;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.account .accountContent .details button {
+	padding: 0 15px;
 }
