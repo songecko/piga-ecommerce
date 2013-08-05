@@ -5,6 +5,8 @@ pigalle_product_index:
         _sylius:
             paginate: 9
             template: PigalleBundle:Product:index.html.twig
+            arguments: 
+              spPageTemplate: PigalleBundle:Product:indexSpPage.html.twig
             
 pigalle_product_index_by_taxon:
     pattern: /t/{permalink}
@@ -13,6 +15,8 @@ pigalle_product_index_by_taxon:
         _sylius:
             paginate: 9
             template: PigalleBundle:Product:index.html.twig
+            arguments: 
+              spPageTemplate: PigalleBundle:Product:indexSpPage.html.twig
 
 pigalle_product_show:
     pattern:        /p/{slug}

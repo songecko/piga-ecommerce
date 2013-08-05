@@ -11,9 +11,10 @@
 			<div class="filters span3">
 				{{ render(controller('PigalleBundle:Product:filters', { 'request' : app.request } )) }}
 			</div>
-			<div class="products span9">
-				{{ pagination(products) }}				
-				{{ grid(products) }}
+			<div class="products scrollPagination span9" data-sp-total-pages="{{ products.getNbPages }}" data-sp-load-url="{{ app.request.getUri }}">
+				<div class="grid spContent">			
+					{{ grid(products) }}
+				</div>
 				{{ pagination(products) }}
 			</div>
 		</div>

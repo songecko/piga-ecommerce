@@ -1,0 +1,34 @@
+<div id="quickviewCart" class="hide">
+	{% if not cart.empty %}
+	<div class="products clearfix">
+		{% for item in cart.getItems() %}
+		{% set productCart = item.variant.product %}
+		<div class="product">
+			<div class="photo">
+				<a href="{{ path('pigalle_product_show', {'slug': productCart.slug}) }}">
+					<img src="{{ productCart.image.path|imagine_filter('pigalle_60x60') }}" alt="" />
+				</a>
+			</div>
+			<div class="datosProducto">
+				<h3 class="productName"><a href="{{ path('pigalle_product_show', {'slug': productCart.slug}) }}">{{ productCart.name }}</a></h3>
+				<p class="talle">Talle: <span>{{ item.variant.options|first.value }}</span></p>
+				<p class="unitPrice">Precio unitario: <span>{{ item.unitPrice|price }}</span></p>
+				<p class="quantity">Cantidad: <span>{{ item.quantity }}</span></p>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	<div class="foot clearfix">
+		<p class="title">TOTAL:</p>
+		<div class="flag">
+			<p>{{ cart.total|price }}</p>
+			<div class="tail">&nbsp;</div>
+		</div>
+		<button href="{#{ path('sylius_checkout_start') }#}" class="button checkoutButton" href="#">REALIZAR COMPRA</button>
+	</div>
+	{% else %}
+	<div class="emptyCart">
+    	<h2>&iexcl;Tu bolsa de compras se encuentra vacia!</h2>
+    </div>
+	{% endif %}
+</div>

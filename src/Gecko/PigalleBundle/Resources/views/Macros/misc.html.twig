@@ -1,5 +1,5 @@
 {% macro pagination(paginator) %}
 {% if paginator.haveToPaginate() %}
-{{ pagerfanta(paginator, 'twitter_bootstrap_translated') }}
+<button class="button spLoadMoreButton">Mostrar más</button>
 {% endif %}
 {% endmacro %}

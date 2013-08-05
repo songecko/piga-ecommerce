@@ -57,8 +57,13 @@
 						<li><a href="{{ path('fos_user_registration_register') }}">REGISTRARSE</a></li>
 					</ul>
 					{% endif %}
-					<a href="{{ path('sylius_cart_summary') }}" class="cartItems">{{ cart.totalItems }}</a>
+					<div class="cartItems">
+						<a href="{{ path('sylius_cart_summary') }}">{{ cart.totalItems }}</a>
+					</div>
 				</div>
+				
+				{# quickview cart #}
+				{% include 'PigalleBundle:Cart:quickviewCart.html.twig' %}
 			</div>
 		</div>
 		
@@ -133,6 +138,7 @@
             'http://code.jquery.com/jquery-1.10.0.min.js'
             '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js'
             '@PigalleBundle/Resources/assets/js/jquery.elevateZoom-2.6.0.min.js'
+            '@PigalleBundle/Resources/assets/js/jquery.scrollPagination.js'
             '@PigalleBundle/Resources/assets/js/main.js'            
         %}
         <script type="text/javascript" src="{{ asset_url }}"></script>

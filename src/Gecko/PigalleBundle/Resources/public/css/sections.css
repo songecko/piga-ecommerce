@@ -369,13 +369,12 @@ input[type="radio"].toggle + label {
 	background-image: url(../../../bundles/pigalle/images/arrow_up.png);
 }
 
-.shop .products .pagination {
-	margin: 0 0 20px 0;
-	text-align: right;
+.shop .products .spLoadMoreButton {
+	width: 100%;
 }
 
 .shop .products .grid {
-	margin: 0 0 24px 0;
+	margin: 0 0 60px 0;
 }
 
 

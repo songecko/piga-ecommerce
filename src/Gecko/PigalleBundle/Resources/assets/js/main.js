@@ -23,6 +23,8 @@ var setupProductDetailsGallery = function(withZoom)
 	{
 		$('.addToCartButton').click();
 	});
+	
+	$(".scrollPagination").scrollPagination();
 };
 
 $(document).ready(function()
@@ -39,6 +41,7 @@ $(document).ready(function()
 		$(this).children('.quickviewButton').hide();
 	});
 	
+	
 	$('#quickviewModal').on('hidden', function ()
 	{
 		$(".productDetails .fotoDetalle img").removeData('elevateZoom');
@@ -46,5 +49,14 @@ $(document).ready(function()
 		
 		$('#quickviewModal').children('.modal-body').children().remove();
 		$(this).removeData('modal');
+	});
+	
+	//Quickview cart
+	$("#quickviewCart, .cartItems").hover(function() //mouseover
+	{
+		$("#quickviewCart").show();
+	}, function() //mouseout
+	{
+		$("#quickviewCart").hide();
 	});
 });

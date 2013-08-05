@@ -95,12 +95,21 @@ class ProductController extends ResourceController
 		->createFilterPaginator($filter)
 		;
 	
-		$paginator->setCurrentPage($request->query->get('page', 1));
 		$paginator->setMaxPerPage($config->getPaginationMaxPerPage());
+		$paginator->setCurrentPage($request->query->get('page', 1));
 	
-		return $this->renderResponse('index.html', array(
+		$params = array(
 			'products' => $paginator,
-		));
+		);
+		
+		if($request->isXmlHttpRequest())
+		{
+			$arguments = $config->getArguments();
+			$spPageTemplate = $arguments['spPageTemplate'];
+			return $this->render($spPageTemplate, $params);
+		}
+		
+		return $this->renderResponse('index.html', $params);
 	}
 	
     /**
@@ -132,13 +141,22 @@ class ProductController extends ResourceController
             ->createByTaxonPaginator($taxon, $filter)
         ;
 
-        $paginator->setCurrentPage($request->query->get('page', 1));
         $paginator->setMaxPerPage($config->getPaginationMaxPerPage());
-
-        return $this->renderResponse('indexByTaxon.html', array(
-            'taxon'    => $taxon,
-            'products' => $paginator,
-        ));
+        $paginator->setCurrentPage($request->query->get('page', 1));
+		
+        $params = array(
+        	'taxon'    => $taxon,
+        	'products' => $paginator,
+        );
+        
+        if($request->isXmlHttpRequest())
+        {
+        	$arguments = $config->getArguments();
+        	$spPageTemplate = $arguments['spPageTemplate'];
+        	return $this->render($spPageTemplate, $params);
+        }
+        
+        return $this->renderResponse('indexByTaxon.html', $params);
     }
 
     /**
