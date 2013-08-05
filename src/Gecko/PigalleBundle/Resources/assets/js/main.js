@@ -23,8 +23,6 @@ var setupProductDetailsGallery = function(withZoom)
 	{
 		$('.addToCartButton').click();
 	});
-	
-	$(".scrollPagination").scrollPagination();
 };
 
 $(document).ready(function()
@@ -59,4 +57,7 @@ $(document).ready(function()
 	{
 		$("#quickviewCart").hide();
 	});
+	
+	//Product scroll pagination
+	$(".scrollPagination").scrollPagination();
 });
