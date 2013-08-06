@@ -1,6 +1,3 @@
-# This file is part of the Sylius package.
-# (c) Paweł Jędrzejewski
-
 sylius_checkout_start:
     pattern: /
     defaults: { _controller: sylius.controller.process:startAction, scenarioAlias: 'sylius_checkout' }

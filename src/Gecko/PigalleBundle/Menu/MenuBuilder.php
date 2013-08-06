@@ -105,6 +105,30 @@ class MenuBuilder extends ContainerAware
     }
     
     /**
+     * Creates user menu
+     *
+     * @param Request $request
+     *
+     * @return ItemInterface
+     */
+    public function createUserMenu(Request $request)
+    {
+    	if($this->securityContext->isGranted('ROLE_USER'))
+    	{
+	    	$menu = $this->factory->createItem('root', array(
+	    		'childrenAttributes' => array('class' => 'granted')
+	    	));
+	    	$this->addGrantedUserMenu($menu);
+    	}else 
+    	{
+    		$menu = $this->factory->createItem('root');
+    		$this->addNotGrantedUserMenu($menu);
+    	}
+    	 
+    	return $menu;
+    }
+    
+    /**
      * Creates user account menu
      *
      * @param Request $request
@@ -127,6 +151,55 @@ class MenuBuilder extends ContainerAware
     	
     	$menu->setCurrent($request->getRequestUri());
     	
+    	return $menu;
+    }
+    
+    /**
+     * Create footer menu.
+     *
+     * @param Request $request
+     * @return ItemInterface
+     */
+    public function createFooterMenu(Request $request)
+    {
+    	$menu = $this->factory->createItem('root');
+    	 
+    	$menu->addChild('la_marca', array(
+    			//'route' => 'sylius_backend_taxonomy_index',
+    	))->setLabel('Marca');
+    
+    	$menu->addChild('colecciones', array(
+    			//'route' => 'sylius_backend_taxonomy_index',
+    	))->setLabel('Colecciones');
+    
+    	$menu->addChild('online_store', array(
+    			'route' => 'pigalle_product_index',
+    	))->setLabel('Online store');
+    	 
+    	$menu->addChild('locales', array(
+    			//'route' => 'pigalle_product_index',
+    	))->setLabel('Locales');
+    	 
+    	$menu->addChild('cart', array(
+    			'route' => 'sylius_cart_summary',
+    	))->setLabel('Bolsa de compras');
+    	 
+    	if($this->securityContext->isGranted('ROLE_USER'))
+    	{
+    		$menu->addChild('account', array(
+    				'route' => 'sylius_account_profile',
+    		))->setLabel('Mi cuenta');
+    	}else
+    	{
+    		$menu->addChild('login', array(
+    				'route' => 'fos_user_security_login',
+    		))->setLabel('Login');
+    	}
+    
+    	$menu->addChild('contacto', array(
+    			//'route' => 'sylius_backend_taxonomy_index',
+    	))->setLabel('Contacto');
+    	 
     	return $menu;
     }
     
@@ -171,8 +244,68 @@ class MenuBuilder extends ContainerAware
     		//'route' => 'sylius_backend_taxonomy_index',
     	))->setLabel('LOCALES');
     
-    	$menu->addChild('preventa', array(
+    	$menu->addChild('mayorista', array(
     		//'route' => 'pigalle_product_index',
-    	))->setLabel('PREVENTA');
+    	))->setLabel('Mayorista');
+    }
+   
+    /**
+     * Add granted user menu
+     *
+     * @param ItemInterface $menu
+     */
+    protected function addGrantedUserMenu(ItemInterface $menu)
+    {
+    	$user = $this->securityContext->getToken()->getUser();
+    	
+    	$menu->addChild('account', array(
+    		'route' => 'sylius_account_profile',
+    		'attributes' => array(
+    			'class' => 'account'
+    		)
+    	))->setLabel("mi cuenta");
+    	
+    	if($this->securityContext->isGranted('ROLE_SYLIUS_ADMIN'))
+    	{
+	    	$menu->addChild('admin', array(
+	    			'route' => 'sylius_backend_index',
+	    			'attributes' => array(
+	    					'class' => 'admin'
+	    			),
+	    			'linkAttributes' => array(
+	    				'target' => '_blank'
+	    			)
+	    	))->setLabel("administrador");
+    	}
+    	
+    	$menu->addChild('logout', array(
+    			'route' => 'fos_user_security_logout',
+    			'attributes' => array(
+    					'class' => 'logout'
+    			)
+    	))->setLabel("salir");
+    	
+    	$menu->addChild('user', array(
+    			'route' => 'sylius_account_profile',
+    			'attributes' => array(
+    					'class' => 'user'
+    			)
+    	))->setLabel("Hola ".$user->getShortedName()."!");
+    }
+    
+    /**
+     * Add not granted user menu
+     *
+     * @param ItemInterface $menu
+     */
+    protected function addNotGrantedUserMenu(ItemInterface $menu)
+    {
+    	$menu->addChild('login', array(
+    			'route' => 'fos_user_security_login'
+    	))->setLabel("LOGIN");
+    	 
+    	$menu->addChild('register', array(
+    			'route' => 'fos_user_registration_register'
+    	))->setLabel("REGISTRARSE");
     }
 }

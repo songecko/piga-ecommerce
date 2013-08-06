@@ -42,21 +42,7 @@
 			<div class="container">
 				<p class="newsletter">NEWSLETTER: Join us!</p>
 				<div class="pull-right">
-					{% if is_granted('ROLE_USER') %}
-					<ul class="granted">
-						<li class="account"><a href="{{ path('sylius_account_profile') }}">mi cuenta</a></li>
-						{% if is_granted('ROLE_SYLIUS_ADMIN') %}
-						<li class="admin"><a href="{{ path('sylius_backend_index') }}" target="_blank">administrador</a></li>
-						{% endif %}
-						<li class="logout"><a href="{{ path('fos_user_security_logout') }}">salir</a></li>
-						<li class="user">Hola {{ app.user.getShortedName }}!</li>
-					</ul>
-					{% else %}
-					<ul>
-						<li><a href="{{ path('fos_user_security_login') }}">LOGIN</a></li>
-						<li><a href="{{ path('fos_user_registration_register') }}">REGISTRARSE</a></li>
-					</ul>
-					{% endif %}
+					{{ knp_menu_render('pigalle.menu.user') }}
 					<div class="cartItems">
 						<a href="{{ path('sylius_cart_summary') }}">{{ cart.totalItems }}</a>
 					</div>
@@ -87,15 +73,7 @@
 					<div class="row">
 						<div class="span2">
 							<h3>MAPA DEL SITIO</h3>
-							<ul>
-								<li><a>Marca</a></li>
-								<li><a>Colecciones</a></li>
-								<li><a href="{{ path('pigalle_product_index') }}">Online shop</a></li>
-								<li><a>Locales</a></li>
-								<li><a href="{{ path('sylius_cart_summary') }}">Bolsa de compras</a></li>
-								<li><a>Login</a></li>
-								<li><a>Contacto</a></li>
-							</ul>
+							{{ knp_menu_render('pigalle.menu.footer') }}
 						</div>
 						<div class="span2">
 							<h3>FAQ's</h3>

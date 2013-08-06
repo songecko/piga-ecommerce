@@ -45,3 +45,21 @@ services:
         arguments: [@request]
         tags:
             -  { name: knp_menu.menu, alias: pigalle.menu.account }
+  
+    pigalle.menu.user:
+        class: Knp\Menu\MenuItem
+        factory_service: pigalle.menu_builder
+        factory_method: createUserMenu
+        scope: request
+        arguments: [@request]
+        tags:
+            -  { name: knp_menu.menu, alias: pigalle.menu.user }
+            
+    pigalle.menu.footer:
+        class: Knp\Menu\MenuItem
+        factory_service: pigalle.menu_builder
+        factory_method: createFooterMenu
+        scope: request
+        arguments: [@request]
+        tags:
+            -  { name: knp_menu.menu, alias: pigalle.menu.footer }

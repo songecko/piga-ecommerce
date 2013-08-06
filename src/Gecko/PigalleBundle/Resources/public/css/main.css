@@ -395,7 +395,7 @@ div.hr hr {
 	min-height:175px;
 	padding: 25px 0;
 }
-#footer h3, #footer p, #footer a { 
+#footer h3, #footer p, #footer a, #footer span { 
 	color: #FFF;
 	font-size: 12px;
 	line-height: 19px;
