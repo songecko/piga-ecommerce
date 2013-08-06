@@ -121,6 +121,11 @@ class LoadProductsData extends DataFixture
     		$this->setPriceWithoutDiscount($product);	
     	}
     	
+    	if($i % 12 == 0)
+    	{
+    		$product->setIsFeatured(true);
+    	}
+    	
     	$product->addOption($this->getReference('Sylius.Option.Talle'));
     	
     	$this->generateVariants($product);

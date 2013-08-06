@@ -32,6 +32,7 @@ sylius:
         product:
             short_description: "Descripción corta"
             price_without_discount: "Precio sin oferta"
+            is_featured: "Es destacado?"
         user:
             first_name: "Nombre" 
             email:    "Email"
@@ -51,6 +52,7 @@ sylius:
         sku:          "SKU"
         name:         "Nombre"
         price:        "Precio"
+        is_featured:  "Es destacado?"
         updated_at:   "Actualizado el"
         create:       "Nuevo producto"
         no_results:   "No hay productos"

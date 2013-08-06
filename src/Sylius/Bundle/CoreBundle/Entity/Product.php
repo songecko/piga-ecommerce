@@ -45,6 +45,13 @@ class Product extends BaseProduct implements TaxableInterface
     protected $shortDescription;
 
     /**
+     * if is a featured product
+     *
+     * @var boolean
+     */
+    protected $isFeatured;
+    
+    /**
      * Price without discount (offer).
      *
      * @var float
@@ -90,6 +97,8 @@ class Product extends BaseProduct implements TaxableInterface
         $this->taxons = new ArrayCollection();
 
         $this->variantSelectionMethod = self::VARIANT_SELECTION_CHOICE;
+        
+        $this->isFeatured = false;
     }
 
     /**
@@ -202,6 +211,39 @@ class Product extends BaseProduct implements TaxableInterface
         return $this;
     }
 
+    /**
+     * Set if is a featured product
+     * 
+     * @param boolean $isFeatured
+     * @return Product
+     */
+    public function setIsFeatured($isFeatured)
+    {
+    	$this->isFeatured = $isFeatured;
+    	
+    	return $this;
+    }
+    
+    /**
+     * Get if is a featured product
+     * 
+     * @return boolean
+     */
+    public function getIsFeatured()
+    {
+    	return $this->isFeatured();
+    }
+    
+    /**
+     * Get if is a featured product
+     *
+     * @return boolean
+     */
+    public function isFeatured()
+    {
+    	return $this->isFeatured;
+    }
+    
     /**
      * Get product price without discount (offer).
      *
