@@ -11,57 +11,10 @@
 		{% endif %}
 		<div class="row-fluid">
 			<div class="span6 login">
-				<form action="{{ path('fos_user_security_check') }}" method="post">
-					<h2>TENGO CUENTA</h2>
-					
-					<fieldset>
-	    				<div class="control-group">
-	        				<label for="username" class="control-label">E-MAIL:</label>
-	        				<div class="controls">
-	            				<input type="text" id="username" name="_username" value="{{ last_username }}" />
-	        				</div>
-	    				</div>
-	    				<div class="control-group">
-	        				<label for="password" class="control-label">CONTRASEÑA:</label>
-	        				<div class="controls">
-	            				<input type="password" id="password" name="_password" />
-	        				</div>
-	    				</div>
-					</fieldset>
-	    			<button type="submit" class="button" name="login">Iniciar Sesion</button>
-				</form>
+				{% include 'GeckoUserBundle:Security:_loginForm.html.twig' with {'last_username': last_username} %}
 			</div>
 			<div class="span6 register">
-				<form action="{{ path('fos_user_registration_register') }}" method="post" novalidate {{ form_enctype(form) }}>
-					<h2>NUEVO CLIENTE</h2>			
-					
-	 				<fieldset>
-	    				<div class="control-group">
-	    					{{ form_label(form.email, 'E-MAIL:') }}
-	        				<div class="controls">
-	        					{#{ form_errors(form.email) }#}
-    							{{ form_widget(form.email) }}
-	        				</div>
-	    				</div>
-	    				<div class="control-group">
-	    					{{ form_label(form.plainPassword.first, 'CONTRASEÑA:') }}
-	        				<div class="controls">
-	        					{#{ form_errors(form.plainPassword.first) }#}
-    							{{ form_widget(form.plainPassword.first) }}
-	        				</div>
-	    				</div>
-	    				<div class="control-group">
-	    					{{ form_label(form.plainPassword.second, 'REPETIR CONTRASEÑA:') }}
-	        				<div class="controls">
-	        					{#{ form_errors(form.plainPassword.second) }#}
-    							{{ form_widget(form.plainPassword.second) }}
-	        				</div>
-	    				</div>
-	    				{{ form_rest(form) }}
-					</fieldset>
-	 
-					<button type="submit" class="button" name="register">Registrar</button>
-				</form>
+				{% include 'GeckoUserBundle:Registration:_registerForm.html.twig' with {'form': form} %}
 			</div>
 		</div>
 	</div>

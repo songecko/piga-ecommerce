@@ -69,7 +69,7 @@ class SecurityStep extends CheckoutStep
      */
     private function renderStep(ProcessContextInterface $context, FormInterface $registrationForm)
     {
-        return $this->render('SyliusWebBundle:Frontend/Checkout/Step:security.html.twig', array(
+        return $this->render('PigalleBundle:Checkout/Step:security.html.twig', array(
             'context'           => $context,
             'registration_form' => $registrationForm->createView(),
         ));

@@ -13,6 +13,7 @@ namespace Sylius\Bundle\CoreBundle\Checkout\Step;
 
 use Sylius\Bundle\FlowBundle\Process\Context\ProcessContextInterface;
 use Symfony\Component\Form\FormInterface;
+use Gecko\PigalleBundle\Entity\Address;
 
 /**
  * The addressing step of checkout.
@@ -22,6 +23,8 @@ use Symfony\Component\Form\FormInterface;
  */
 class AddressingStep extends CheckoutStep
 {
+	private $defaultCountry;
+	
     /**
      * {@inheritdoc}
      */
@@ -52,7 +55,7 @@ class AddressingStep extends CheckoutStep
 
     private function renderStep(ProcessContextInterface $context, FormInterface $form)
     {
-        return $this->render('SyliusWebBundle:Frontend/Checkout/Step:addressing.html.twig', array(
+        return $this->render('PigalleBundle:Checkout/Step:addressing.html.twig', array(
             'form'    => $form->createView(),
             'context' => $context
         ));
@@ -60,7 +63,44 @@ class AddressingStep extends CheckoutStep
     }
 
     private function createCheckoutAddressingForm()
-    {
+    {       	
+    	$cart = $this->getCurrentCart();
+    	
+    	$shippingAddress = $this->checkOrCreateDefaultCountry($cart->getShippingAddress());    	 	
+    	$cart->setShippingAddress($shippingAddress);
+    	
+    	$billingAddress = $this->checkOrCreateDefaultCountry($cart->getBillingAddress());
+    	$cart->setBillingAddress($billingAddress);    	
+    	
         return $this->createForm('sylius_checkout_addressing', $this->getCurrentCart());
+    }
+    
+    private function checkOrCreateDefaultCountry($address)
+    {
+    	$country = $this->getDefaultCountry();
+    	return $this->checkOrCreateCountry($address, $country);
+    }
+    
+    private function checkOrCreateCountry($address, $country)
+    {    	
+    	if(!$address)
+    	{
+    		$address = new Address();
+    	}    	
+    	
+    	if(!$address->getCountry($country))
+    	{
+    		$address->setCountry($country);   		
+    	}
+
+    	return $address;
+    }
+    
+    private function getDefaultCountry()
+    {
+    	if(!$this->defaultCountry)
+    		$this->defaultCountry = $this->get('sylius.repository.country')->findOneByIsoName('AR');
+    	
+    	return $this->defaultCountry;
     }
 }

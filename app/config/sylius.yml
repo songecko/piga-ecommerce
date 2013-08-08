@@ -87,6 +87,10 @@ sylius_payments:
 
 sylius_addressing:
     driver: doctrine/orm
+    classes:
+        address:
+            model: Gecko\PigalleBundle\Entity\Address
+            form: Gecko\PigalleBundle\Form\Type\AddressType
 
 sylius_sales:
     driver: doctrine/orm

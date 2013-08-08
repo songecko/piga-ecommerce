@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="cart">
-	<div class="contentTitle"><h3 class="titleSection container">Bolsa de compras</h3></div>
+	<div class="contentTitle"><h3 class="titleSection container">Mis compras</h3></div>
 	<div class="container">
 	{% if not cart.empty %}
 		{{ form_errors(form) }}
@@ -42,7 +42,7 @@
 						<p>{{ cart.total|price }}</p>
 						<div class="tail">&nbsp;</div>
 					</div>
-					<button href="{#{ path('sylius_checkout_start') }#}" class="button checkoutButton" href="#">REALIZAR COMPRA</button>
+					<a href="{{ path('sylius_checkout_start') }}" class="button checkoutButton">REALIZAR COMPRA</a>
 				</div>
 			</div>
 		</form>

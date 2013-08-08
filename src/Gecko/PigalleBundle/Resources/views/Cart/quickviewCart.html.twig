@@ -24,7 +24,7 @@
 			<p>{{ cart.total|price }}</p>
 			<div class="tail">&nbsp;</div>
 		</div>
-		<button href="{#{ path('sylius_checkout_start') }#}" class="button checkoutButton" href="#">REALIZAR COMPRA</button>
+		<a href="{{ path('sylius_checkout_start') }}" class="button checkoutButton">REALIZAR COMPRA</a>
 	</div>
 	{% else %}
 	<div class="emptyCart">

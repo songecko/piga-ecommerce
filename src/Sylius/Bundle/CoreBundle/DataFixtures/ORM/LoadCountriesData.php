@@ -27,7 +27,7 @@ class LoadCountriesData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        /*$locale = $this->container->getParameter('sylius.locale');
+        $locale = $this->container->getParameter('sylius.locale');
         $countryRepository = $this->getCountryRepository();
         $countries = Locale::getDisplayCountries($locale);
 
@@ -39,12 +39,15 @@ class LoadCountriesData extends DataFixture
 
             if ('US' === $isoName) {
                 $this->addUsStates($country);
+            }elseif ('AR' === $isoName) 
+            {
+            	$this->addArProvinces($country);
             }
 
             $manager->persist($country);
 
             $this->setReference('Sylius.Country.'.$isoName, $country);
-        }*/
+        }
 
         $manager->flush();
     }
@@ -110,18 +113,61 @@ class LoadCountriesData extends DataFixture
             'WY' => 'Wyoming'
         );
 
-        $provinceRepository = $this->getProvinceRepository();
-
-        foreach ($states as $isoName => $name) {
-            $province = $provinceRepository->createNew();
-            $province->setName($name);
-
-            $country->addProvince($province);
-
-            $this->setReference('Sylius.Province.'.$isoName, $province);
-        }
+        $this->addProvinces($country, $states);        
     }
 
+    /**
+     * Adds all Argentina provinces to given country.
+     *
+     * @param CountryInterface $country
+     */
+    private function addArProvinces(CountryInterface $country)
+    {
+    	$provinces = array(
+    			'AR-A' => 'Salta',
+    			'AR-B' => 'Buenos Aires',
+    			'AR-C' => 'Capital Federal',
+    			'AR-D' => 'San Luis',
+    			'AR-E' => 'Entre Ríos',
+    			'AR-F' => 'La Rioja',
+    			'AR-G' => 'Santiago del Estero',
+    			'AR-H' => 'Chaco',
+    			'AR-J' => 'San Juan',
+    			'AR-K' => 'Catamarca',
+    			'AR-L' => 'La Pampa',
+    			'AR-M' => 'Mendoza',
+    			'AR-N' => 'Misiones',
+    			'AR-P' => 'Formosa',
+    			'AR-Q' => 'Neuquén',
+    			'AR-R' => 'Río Negro',
+    			'AR-S' => 'Santa Fe',
+    			'AR-T' => 'Tucumán',
+    			'AR-U' => 'Chubut',
+    			'AR-V' => 'Tierra del Fuego',
+    			'AR-W' => 'Corrientes',
+    			'AR-X' => 'Córdoba',
+    			'AR-Y' => 'Jujuy',
+    			'AR-Z' => 'Santa Cruz'
+    	);
+    
+    	$this->addProvinces($country, $provinces);
+    }
+    
+    public function addProvinces($country, $provinces)
+    {
+    	$provinceRepository = $this->getProvinceRepository();
+    	
+    	foreach ($provinces as $isoName => $name) 
+    	{
+    		$province = $provinceRepository->createNew();
+    		$province->setName($name);
+    	
+    		$country->addProvince($province);
+    	
+    		$this->setReference('Sylius.Province.'.$isoName, $province);
+    	}    	
+    }
+    
     /**
      * {@inheritdoc}
      */

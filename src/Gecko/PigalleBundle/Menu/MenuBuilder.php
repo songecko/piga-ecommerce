@@ -246,7 +246,7 @@ class MenuBuilder extends ContainerAware
     
     	$menu->addChild('mayorista', array(
     		//'route' => 'pigalle_product_index',
-    	))->setLabel('Mayorista');
+    	))->setLabel('MAYORISTA');
     }
    
     /**

@@ -298,6 +298,7 @@ input[type="radio"].toggle + label {
 .cartTotal .total .checkoutButton {
 	margin: 10px 0px 0px 12px;
 	float: right;
+	padding: 0 16px;
 }
 .cart .emptyCart {
 	text-align:center;
@@ -489,4 +490,134 @@ input[type="radio"].toggle + label {
 
 .account .accountContent .details button {
 	padding: 0 15px;
+}
+
+/*** CHECKOUT ***/
+.checkout .content {
+	margin-top: 40px; 
+}
+
+.checkout .span4 {
+	height: 400px;
+}
+
+.checkout .message {
+	text-align: center;
+}
+
+.checkout .message .circle {
+	display: inline-block;
+	margin-top: 82px;
+}
+
+.checkout .message h3 {
+	font-family: 'Croissant One';
+	font-size: 24px;
+	line-height: 28px;
+	margin-bottom: 24px;
+	margin-top: 40px;
+}
+
+.checkout .row-fluid .login,  .checkout .row-fluid .shipping {
+	border-left: 1px solid #000000;
+}
+
+.checkout .row-fluid .login form {
+	margin: 0 auto;
+	float: none;
+}
+
+.checkout .row-fluid .register form {
+	margin: 0 auto;
+	float: none;
+}
+
+.checkoutProgress {
+	width: 100%;
+	margin-bottom: 40px;
+}
+
+.checkoutProgress li {
+	float: left;
+	width: 20%;
+	list-style: none;
+	height: 34px;
+	text-align: center;
+}
+
+.checkoutProgress li a {
+	line-height: 34px;
+	background: url(../../../bundles/pigalle/images/flag-right-black.png) no-repeat #000000;
+	background-position: left 0px top;
+	display: block;
+	color: #FFFFFF;
+	text-transform: uppercase;
+}
+
+.checkoutProgress li.login a {
+	background: #000000;
+}
+
+.checkoutProgress li.active a {
+	background: url(../../../bundles/pigalle/images/flag-right-pink.png) no-repeat #ffdaca;
+}
+
+.checkoutProgress li.active + li a {
+	background-image: url(../../../bundles/pigalle/images/flag-right-pink.png);
+}
+
+.checkoutProgress li.login.active a {
+	background: #ffdaca;
+}
+
+/*** ADDRESSING ***/
+
+.checkout.addressing .span4 {
+	height: 600px;
+}
+
+.addressing h2 {
+	font-size: 18px;
+	text-align: center;
+	margin-bottom: 36px;
+	text-transform: uppercase;
+}
+
+.addressing form label {
+	font-size: 12px;
+	text-transform: uppercase;
+}
+
+.addressing form input { 
+	width: 200px;
+	height: 22px;
+	border: 1px solid #000 !important;
+}
+
+.addressing form select {
+	border: 1px solid #000 !important;
+}
+	
+.addressing fieldset {
+	margin: 0 auto;
+	width: 200px;
+}
+
+.addressing .streetOptions .span4 {
+	float: left;
+	height: 70px;
+}
+
+.addressing .streetOptions .span4 input {
+	width: 50px;
+}
+
+.addressing .differentBillingAddress input {
+	width: auto;
+	margin-right: 8px;
+	float: left;
+}
+
+.addressing .differentBillingAddress label {
+	line-height: 16px;
 }

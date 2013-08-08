@@ -1,0 +1,31 @@
+{% if(route is defined and stepName is defined) %}
+<form action="{{ path(route, { 'stepName': stepName }) }}" method="post" novalidate {{ form_enctype(form) }}>
+{% else %}
+<form action="{{ path('fos_user_registration_register') }}" method="post" novalidate {{ form_enctype(form) }}>
+{% endif %}
+	<h2>NUEVO CLIENTE</h2>			
+				
+	<fieldset>
+		<div class="control-group">
+			{{ form_label(form.email, 'E-MAIL:') }}
+			<div class="controls">
+				{{ form_widget(form.email) }}
+			</div>
+		</div>
+		<div class="control-group">
+    		{{ form_label(form.plainPassword.first, 'CONTRASEÑA:') }}
+        	<div class="controls">
+    			{{ form_widget(form.plainPassword.first) }}
+        	</div>
+    	</div>
+    	<div class="control-group">
+    		{{ form_label(form.plainPassword.second, 'REPETIR CONTRASEÑA:') }}
+        	<div class="controls">
+				{{ form_widget(form.plainPassword.second) }}
+			</div>
+		</div>
+		{{ form_rest(form) }}
+	</fieldset>
+ 
+	<button type="submit" class="button" name="register">Registrar</button>
+</form>

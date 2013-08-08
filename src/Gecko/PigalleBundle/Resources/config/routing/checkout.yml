@@ -11,21 +11,21 @@ sylius_checkout_forward:
     defaults: { _controller: sylius.controller.process:forwardAction, scenarioAlias: 'sylius_checkout' }
 
 sylius_checkout_security:
-    pattern: /security
-    defaults: { _controller: sylius.controller.process:displayAction, scenarioAlias: 'sylius_checkout', 'stepName': 'security' }
+    pattern: /login
+    defaults: { _controller: sylius.controller.process:displayAction, scenarioAlias: 'sylius_checkout', 'stepName': 'login' }
 
 sylius_checkout_addressing:
-    pattern: /addressing
-    defaults: { _controller: sylius.controller.process:displayAction, scenarioAlias: 'sylius_checkout', 'stepName': 'addressing' }
+    pattern: /direccion
+    defaults: { _controller: sylius.controller.process:displayAction, scenarioAlias: 'sylius_checkout', 'stepName': 'direccion' }
 
 sylius_checkout_shipping:
-    pattern: /shipping
-    defaults: { _controller: sylius.controller.process:displayAction, scenarioAlias: 'sylius_checkout', 'stepName': 'shipping' }
+    pattern: /envio
+    defaults: { _controller: sylius.controller.process:displayAction, scenarioAlias: 'sylius_checkout', 'stepName': 'envio' }
 
 sylius_checkout_payment:
-    pattern: /payment
-    defaults: { _controller: sylius.controller.process:displayAction, scenarioAlias: 'sylius_checkout', 'stepName': 'payment' }
+    pattern: /metodos-de-pago
+    defaults: { _controller: sylius.controller.process:displayAction, scenarioAlias: 'sylius_checkout', 'stepName': 'metodos-de-pago' }
 
 sylius_checkout_finalize:
-    pattern: /finalize
-    defaults: { _controller: sylius.controller.process:displayAction, scenarioAlias: 'sylius_checkout', 'stepName': 'finalize' }
+    pattern: /resumen
+    defaults: { _controller: sylius.controller.process:displayAction, scenarioAlias: 'sylius_checkout', 'stepName': 'resumen' }

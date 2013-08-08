@@ -47,11 +47,11 @@ class CheckoutProcessScenario implements ProcessScenarioInterface
         $cart = $this->getCurrentCart();
 
         $builder
-            ->add('security', 'sylius_checkout_security')
-            ->add('addressing', 'sylius_checkout_addressing')
-            ->add('shipping', 'sylius_checkout_shipping')
-            ->add('payment', 'sylius_checkout_payment')
-            ->add('finalize', 'sylius_checkout_finalize')
+            ->add('login', 'sylius_checkout_security')
+            ->add('direccion', 'sylius_checkout_addressing')
+            ->add('envio', 'sylius_checkout_shipping')
+            ->add('metodos-de-pago', 'sylius_checkout_payment')
+            ->add('resumen', 'sylius_checkout_finalize')
         ;
 
         $builder

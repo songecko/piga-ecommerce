@@ -1,0 +1,54 @@
+Gecko\PigalleBundle\Entity\Address:
+    type: entity
+    table: sylius_address
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        firstName:
+            column: first_name
+            type: string
+        lastName:
+            column: last_name
+            type: string
+        street:
+            column: street
+            type: string
+        floor:
+            column: floor
+            type: string
+        department:
+            column: department
+            type: string
+        city:
+            column: city
+            type: string
+        postcode:
+            column: postcode
+            type: string
+        createdAt:
+            column: created_at
+            type: datetime
+            gedmo:
+              timestampable:
+                on: create
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: true
+            gedmo:
+              timestampable:
+                on: update
+    manyToOne:
+        country:
+            targetEntity: Sylius\Bundle\AddressingBundle\Model\CountryInterface
+            joinColumn:
+                name: country_id
+                referencedColumnName: id
+        province:
+            targetEntity: Sylius\Bundle\AddressingBundle\Model\ProvinceInterface
+            joinColumn:
+                name: province_id
+                referencedColumnName: id

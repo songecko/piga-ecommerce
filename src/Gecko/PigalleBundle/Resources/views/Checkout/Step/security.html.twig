@@ -1,0 +1,30 @@
+{% extends 'PigalleBundle::layout.html.twig' %}
+
+{% block content %}
+<div class="checkout security step1">
+	<div class="contentTitle"><h3 class="titleSection container">Proceso de compra - Login</h3></div>
+	<div class="container content">
+		{% include 'PigalleBundle:Checkout:_progressBar.html.twig' with {'step': 1 } %}
+		
+		{% if error is defined or registration_form.email.vars.errors|length or registration_form.plainPassword.vars.errors|length %}
+		<div class="alert alert-error">
+    		Error. Verifique los datos ingresados.
+		</div>
+		{% endif %}
+		
+		<div class="row-fluid">
+			<div class="span4 message step1Message">
+				<span class="circle">1</span>
+				<h3>Inicia sesión para continuar o crea una cuenta!</h3>
+				<img src="{{ asset('bundles/pigalle/images/login-ico-big.png') }}" alt="Inicia sesion" />
+			</div>
+			<div class="span4 login">
+				{% include 'GeckoUserBundle:Security:_loginForm.html.twig' %}
+			</div>
+			<div class="span4 register">
+				{% include 'GeckoUserBundle:Registration:_registerForm.html.twig' with {'form': registration_form, 'route': 'sylius_checkout_forward', 'stepName': context.currentStep.name} %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

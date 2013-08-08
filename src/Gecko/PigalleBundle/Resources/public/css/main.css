@@ -124,14 +124,14 @@ div.hr hr {
 #menu .pull-left { text-align: left; width: 40%; }
 #menu .pull-right { text-align: right; width: 40% }
 #menu .pull-left li {
-	margin-left: 54px;
+	margin-left: 50px;
 	float:left;
 }
 #menu .pull-left li:first-child {
 	margin-left: 0px;
 }
 #menu .pull-right li {
-	margin-left: 54px;
+	margin-left: 50px;
 	float: right;
 }
 #menu .pull-right li:first-child {
@@ -265,6 +265,7 @@ div.hr hr {
 	border: 0;	
 	line-height: 35px;
 	text-transform: uppercase;
+	padding: 0 10px;
 }
 .button:hover {
 	text-decoration: underline;
