@@ -1,13 +1,14 @@
+{% set widgetAttributes = widgetAttributes is defined?widgetAttributes:{} %}
 <div class="control-group">
 	{{ form_label(form.firstName, 'Nombre y apellido:') }}
 	<div class="controls">
-		{{ form_widget(form.firstName) }}
+		{{ form_widget(form.firstName, widgetAttributes) }}
 	</div>
 </div>
 <div class="control-group">
 	{{ form_label(form.street, 'Dirección:') }}
 	<div class="controls">
-		{{ form_widget(form.street) }}
+		{{ form_widget(form.street, widgetAttributes) }}
 	</div>
 </div>
 <div class="control-group streetOptions">
@@ -15,19 +16,19 @@
 		<div class="span4">
 			{{ form_label(form.floor, 'Piso:') }}
 			<div class="controls">
-				{{ form_widget(form.floor) }}
+				{{ form_widget(form.floor, widgetAttributes) }}
 			</div>
 		</div>
 		<div class="span4">
 			{{ form_label(form.department, 'Depto:') }}
 			<div class="controls">
-				{{ form_widget(form.department) }}
+				{{ form_widget(form.department, widgetAttributes) }}
 			</div>
 		</div>
 		<div class="span4">
 			{{ form_label(form.postcode, 'CP.:') }}
 			<div class="controls">
-				{{ form_widget(form.postcode) }}
+				{{ form_widget(form.postcode, widgetAttributes) }}
 			</div>
 		</div>
 	</div>
@@ -36,14 +37,14 @@
 	{% if form.province is defined %}
 	{{ form_label(form.province, 'Provincia:') }}
 	<div class="controls">
-		{{ form_widget(form.province, {'attr': {'class': 'select2'}}) }}
+		{{ form_widget(form.province, widgetAttributes) }}
 	</div>
 	{% endif %}
 </div>
 <div class="control-group">
 	{{ form_label(form.city, 'Localidad:') }}
 	<div class="controls">
-		{{ form_widget(form.city) }}
+		{{ form_widget(form.city, widgetAttributes) }}
 	</div>
 </div>
 <div style="display:none;">

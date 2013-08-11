@@ -32,20 +32,19 @@
 						{% include 'PigalleBundle:Form:_address.html.twig' with {'form': form.shippingAddress} %}
 						<div class="control-group differentBillingAddress">
 							{{ form_widget(form.differentBillingAddress) }}
-							{{ form_label(form.differentBillingAddress, "Usar la misma dirección para facturación", {'attr': {'class': 'sylius-different-billing-address-trigger'}}) }}
+							{{ form_label(form.differentBillingAddress, "Usar una dirección diferente para facturación", {'attr': {'class': 'sylius-different-billing-address-trigger'}}) }}
 						</div>
 					</fieldset>
 				</div>
-				<div class="span4 billing">
+				<div class="span4 billing" id="sylius-billing-address-container">
 					<h2>Dirección de facturación</h2>
-					<fieldset>
-						{% include 'PigalleBundle:Form:_address.html.twig' with {'form': form.billingAddress} %}
+					<fieldset class="disabled">
+						{% include 'PigalleBundle:Form:_address.html.twig' with {'form': form.billingAddress, 'widgetAttributes': {'attr': {'disabled': 'disabled'}} } %}
 					</fieldset>
 				</div>
 			</div>
-			<div class="form-actions">
-				<button type="submit" class="button">Siguiente</button>
-			</div>
+			
+			<button type="submit" class="button nextButton">Siguiente</button>
 		</form>
 	</div>
 </div>

@@ -1,0 +1,3 @@
+sylius:        
+    form:
+        province.select:  "Seleccionar una"

@@ -532,6 +532,14 @@ input[type="radio"].toggle + label {
 	float: none;
 }
 
+.checkout .nextButton {
+	float: right;
+	margin-top: 25px;
+	background: url(../../../bundles/pigalle/images/flag-right-black_white.png) no-repeat #000000;
+	background-position: right 0px top;
+	padding-right: 20px;
+}
+
 .checkoutProgress {
 	width: 100%;
 	margin-bottom: 40px;
@@ -573,7 +581,7 @@ input[type="radio"].toggle + label {
 /*** ADDRESSING ***/
 
 .checkout.addressing .span4 {
-	height: 600px;
+	height: 530px;
 }
 
 .addressing h2 {
@@ -591,11 +599,11 @@ input[type="radio"].toggle + label {
 .addressing form input { 
 	width: 200px;
 	height: 22px;
-	border: 1px solid #000 !important;
+	border: 1px solid #000;
 }
 
 .addressing form select {
-	border: 1px solid #000 !important;
+	border: 1px solid #000;
 }
 	
 .addressing fieldset {
@@ -620,4 +628,26 @@ input[type="radio"].toggle + label {
 
 .addressing .differentBillingAddress label {
 	line-height: 16px;
+}
+
+.addressing .billing {
+	border-left: 1px solid #000000;
+}
+
+.addressing form .disabled {
+	color: #d1d1d1;
+}
+
+.addressing form .disabled input {
+	border: 1px solid #d1d1d1;
+	color: #d1d1d1;
+}
+
+.addressing form .disabled select {
+	border: 1px solid #d1d1d1;
+	color: #d1d1d1;
+}
+
+.addressing .message .circle {
+	margin-top: 150px;
 }

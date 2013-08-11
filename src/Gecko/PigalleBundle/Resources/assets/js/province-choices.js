@@ -1,12 +1,3 @@
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 (function ( $ ) {
     'use strict';
 
@@ -43,7 +34,15 @@
 
         var billingAddressCheckbox = $('input[type="checkbox"][name$="[differentBillingAddress]"]');
         var toggleBillingAddress = function() {
-            $('#sylius-billing-address-container').toggle('checked' === billingAddressCheckbox.attr('checked'));
+        	if(billingAddressCheckbox.is(':checked'))
+        	{
+        		$('.addressing form .disabled input, .addressing form .disabled select').removeAttr('disabled');
+        		$('#sylius-billing-address-container fieldset').removeClass('disabled');
+        	}else
+        	{
+        		$('#sylius-billing-address-container fieldset').addClass('disabled'); 
+        		$('.addressing form .disabled input, .addressing form .disabled select').attr('disabled', 'disabled');
+        	}
         };
         toggleBillingAddress();
         billingAddressCheckbox.on('change', toggleBillingAddress);

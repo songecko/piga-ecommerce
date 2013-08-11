@@ -13,6 +13,7 @@ Gecko\PigalleBundle\Entity\Address:
         lastName:
             column: last_name
             type: string
+            nullable: true
         street:
             column: street
             type: string
@@ -22,6 +23,7 @@ Gecko\PigalleBundle\Entity\Address:
         department:
             column: department
             type: string
+            nullable: true
         city:
             column: city
             type: string
