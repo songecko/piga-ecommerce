@@ -10,10 +10,6 @@ Gecko\PigalleBundle\Entity\Address:
         firstName:
             column: first_name
             type: string
-        lastName:
-            column: last_name
-            type: string
-            nullable: true
         street:
             column: street
             type: string

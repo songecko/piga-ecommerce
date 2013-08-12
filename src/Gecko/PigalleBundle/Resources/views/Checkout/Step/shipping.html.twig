@@ -1,29 +1,45 @@
-{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+{% extends 'PigalleBundle::layout.html.twig' %}
 
 {% block content %}
-<div class="page-header">
-    <h1>{{ 'sylius.checkout.shipping.header'|trans|raw }}</h1>
+<div class="checkout shipping step3">
+	<div class="contentTitle"><h3 class="titleSection container">Proceso de compra - Envío</h3></div>
+	<div class="container content">
+		{% include 'PigalleBundle:Checkout:_progressBar.html.twig' with {'step': 3 } %}
+
+		{% if error is defined or form.vars.errors|length or form.vars.errors|length %}
+		<div class="alert alert-error">
+    		Verifique los datos ingresados. Todos los campos son obligatorios.
+		</div>
+		{% endif %}
+		
+		{#<form method="post" action="{{ path('sylius_checkout_forward', {'stepName': context.currentStep.name}) }}" novalidate="novalidate">#}
+		<form method="post" action="#" novalidate="novalidate">
+			<div class="row-fluid">
+				<div class="span6 message step2Message">
+					<span class="circle">3</span>
+					<h3>Decinos como quieres recibir tu pedido</h3>
+					<img src="{{ asset('bundles/pigalle/images/shipping-ico-big.png') }}" alt="Envio" />
+				</div>
+				<div class="span6 shipping">
+					<h2>Método de envio</h2>
+					<fieldset>
+						{% for shippingMethodForm in form.shippingMethod %}
+						<div class="control-group">
+							{{ form_label(shippingMethodForm) }}
+							<div class="controls">
+								{{ form_widget(shippingMethodForm) }}
+							</div>
+						</div>
+						{% endfor %}
+					</fieldset>
+				</div>
+				<div style="display:none">
+					{{ form_rest(form) }}
+				</div>
+			</div>
+			
+			<button type="submit" class="button nextButton">Siguiente</button>
+		</form>
+	</div>
 </div>
-
-{% include 'SyliusWebBundle:Frontend/Checkout:_progressBar.html.twig' %}
-
-<form method="post" action="{{ path('sylius_checkout_forward', {'stepName': context.currentStep.name}) }}" class="form-horizontal" novalidate>
-
-{{ form_errors(form.shippingMethod) }}
-
-{{ form_label(form.shippingMethod) }}
-<fieldset>
-    {% for shippingMethodForm in form.shippingMethod %}
-        {{ form_row(shippingMethodForm) }}
-    {% endfor %}
-</fieldset>
-
-{{ form_widget(form._token) }}
-
-<div class="form-actions">
-    <a href="{{ path('sylius_checkout_display', {'stepName': context.previousStep.name}) }}" class="btn btn-large"><i class="icon-chevron-left"></i> {{ 'sylius.checkout.back'|trans }}</a> &nbsp;
-    <button type="submit" class="btn btn-primary btn-large">{{ 'sylius.checkout.forward'|trans }} <i class="icon-chevron-right"></i></button>
-</div>
-
-</form>
 {% endblock %}

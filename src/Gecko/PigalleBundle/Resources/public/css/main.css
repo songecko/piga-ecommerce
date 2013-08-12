@@ -41,17 +41,17 @@ div.hr hr {
 	font-size:14px;
 }
 #header .container {
-	height: 45px;
+	height: 36px;
 	position: relative;
 }
 #header .newsletter {
 	float:left;
-	padding-top: 14px;
+	padding-top: 12px;
 	font-size:14px;
 }
 #header ul {
 	float:left;
-	padding-top: 12px;
+	padding-top: 9px;
 	margin-right: 8px;
 }
 #header ul li, #menu ul li {
@@ -87,29 +87,29 @@ div.hr hr {
 }
 #header .cartItems {
 	float: right;
-	height: 45px;
+	height: 36px;
 }
 
 #header .cartItems a { 
 	float: right;
-	font-size: 24px;
+	font-size: 20px;
 	width: 10px;
-	height: 25px;
+	height: 22px;
 	margin: 7px 0 0 10px;
-	padding: 4px 48px 0px 10px;
+	padding: 1px 36px 0px 10px;
 	border-left: 1px solid #ffdaca;
 	color:#ffdaca;
 	background: url(../images/ico-bolsa.png) no-repeat scroll 100% 0%;
 }
 #menu { 
 	background:#ffdaca;
-	height:115px;
+	height:95px;
 }
 #menu ul { 
 	border-top: 1px solid #000000;
 	border-bottom: 1px solid #000000;
 	padding: 5px 0px;
-	margin-top:40px;
+	margin-top:30px;
 }
 #menu ul li{
 	color:#000000;	
@@ -144,13 +144,16 @@ div.hr hr {
 
 #menu .logo {
 	float:left;
-	margin-top: -32px;
+	margin-top: -22px;
 	width: 20%;
 	text-align: center;
 	position: relative;
 	z-index: 20;
 }
-
+#menu .logo img {
+	height: 142px;
+}
+	
 .titleSection {
 	font-family: 'Croissant One';
 	font-size: 18px;
@@ -168,7 +171,7 @@ div.hr hr {
 
 /*** SLIDER ***/
 #slider { 
-	height:400px;
+	height:335px;
 	margin: 0;
 }
 #slider .carousel-inner {
@@ -190,9 +193,9 @@ div.hr hr {
 }
 #slider .item .box {
 	width: 262px;
-	height: 300px;
+	height: 260px;
 	position: absolute;
-	top: 60px;
+	top: 40px;
 	right: 110px;	
 	background: rgb(255, 255, 255); /* Fallback for web browsers that doesn't support RGBa */
 	background: rgba(255, 255, 255, 0.7);
@@ -236,7 +239,7 @@ div.hr hr {
 	cursor: pointer;
 }
 #slider .controls .carousel-control {
-	top: 217px;
+	top: 162px;
 }
 
 
@@ -315,7 +318,7 @@ div.hr hr {
 
 #quickviewCart {
 	position: absolute;
-	top: 45px;
+	top: 36px;
 	right: 0;
 	width:336px;
 	background: #FFFFFF;

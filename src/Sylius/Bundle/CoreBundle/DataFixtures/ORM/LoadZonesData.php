@@ -34,14 +34,16 @@ class LoadZonesData extends DataFixture
             'GB'
         );
 
-        $restOfWorldCountries = array_diff(Locale::getCountries(), $euCountries + array('US'));
+        $restOfWorldCountries = array_diff(Locale::getCountries(), $euCountries + array('US'));*/
 
-        $manager->persist($this->createZone('EU', ZoneInterface::TYPE_COUNTRY, $euCountries));
-        $manager->persist($this->createZone('USA', ZoneInterface::TYPE_COUNTRY, array('US')));
-        $manager->persist($this->createZone('EU + USA', ZoneInterface::TYPE_ZONE, array('EU', 'USA')));
-        $manager->persist($this->createZone('Rest of World', ZoneInterface::TYPE_COUNTRY, $restOfWorldCountries));
+        //$manager->persist($this->createZone('EU', ZoneInterface::TYPE_COUNTRY, $euCountries));
+        //$manager->persist($this->createZone('USA', ZoneInterface::TYPE_COUNTRY, array('US')));
+        //$manager->persist($this->createZone('EU + USA', ZoneInterface::TYPE_ZONE, array('EU', 'USA')));
+        //$manager->persist($this->createZone('Rest of World', ZoneInterface::TYPE_COUNTRY, $restOfWorldCountries));
 
-        $manager->flush();*/
+    	$manager->persist($this->createZone('Argentina', ZoneInterface::TYPE_COUNTRY, array('AR')));
+    	
+        $manager->flush();
     }
 
     /**

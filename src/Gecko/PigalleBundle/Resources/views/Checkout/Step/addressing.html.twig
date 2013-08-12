@@ -15,11 +15,11 @@
 
 		{% if error is defined or form.vars.errors|length or form.vars.errors|length %}
 		<div class="alert alert-error">
-    		Error. Verifique los datos ingresados.
+    		Verifique los datos ingresados. Todos los campos son obligatorios.
 		</div>
 		{% endif %}
 		
-		<form method="post" action="{{ path('sylius_checkout_forward', {'stepName': context.currentStep.name}) }}" novalidate>
+		<form method="post" action="{{ path('sylius_checkout_forward', {'stepName': context.currentStep.name}) }}" novalidate="novalidate">
 			<div class="row-fluid">
 				<div class="span4 message step2Message">
 					<span class="circle">2</span>
@@ -41,6 +41,9 @@
 					<fieldset class="disabled">
 						{% include 'PigalleBundle:Form:_address.html.twig' with {'form': form.billingAddress, 'widgetAttributes': {'attr': {'disabled': 'disabled'}} } %}
 					</fieldset>
+				</div>
+				<div style="display:none">
+					{{ form_rest(form) }}
 				</div>
 			</div>
 			

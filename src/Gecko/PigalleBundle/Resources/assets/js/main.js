@@ -6,7 +6,9 @@ var setupProductDetailsGallery = function(withZoom)
 		borderSize: 1,
 		gallery:'productGallery', 
 		cursor: 'pointer', 
-		galleryActiveClass: 'active'
+		galleryActiveClass: 'active',
+		zoomLevel: 0.5,
+		scrollZoom: true
 	};
 	
 	if(withZoom)

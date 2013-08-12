@@ -1,6 +1,6 @@
 /*** DETALLE PRODUCTO ***/
 .featuredProducts .imagenProducto, .product-box .imagenProducto { 
-	padding: 30px;
+	padding: 10px;
 	border-bottom: 1px #000000 solid;
 	position: relative;
 }
@@ -12,13 +12,13 @@
 
 .quickviewButton {
 	display: block;
-	width: 215px;
-	height: 215px;
+	width: 163px;
+	height: 163px;
 	position: absolute;
 	top: 0;
 	left: 0;
 	text-align: center;
-	line-height: 215px;
+	line-height: 163px;
 	padding: 30px;
 	display: none;
 }
@@ -567,6 +567,7 @@ input[type="radio"].toggle + label {
 }
 
 .checkoutProgress li.active a {
+	color: #000000;
 	background: url(../../../bundles/pigalle/images/flag-right-pink.png) no-repeat #ffdaca;
 }
 

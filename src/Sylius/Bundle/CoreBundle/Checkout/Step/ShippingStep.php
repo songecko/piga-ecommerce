@@ -53,7 +53,7 @@ class ShippingStep extends CheckoutStep
 
     private function renderStep(ProcessContextInterface $context, FormInterface $form)
     {
-        return $this->render('SyliusWebBundle:Frontend/Checkout/Step:shipping.html.twig', array(
+        return $this->render('PigalleBundle:Checkout/Step:shipping.html.twig', array(
             'form'    => $form->createView(),
             'context' => $context
         ));
