@@ -1,4 +1,4 @@
-var setupProductDetailsGallery = function(withZoom)
+var setupProductDetails = function(withZoom)
 {
 	withZoom = typeof withZoom !== 'undefined' ? withZoom : true;
 	
@@ -25,23 +25,40 @@ var setupProductDetailsGallery = function(withZoom)
 	{
 		$('.addToCartButton').click();
 	});
+	
+	$('.addToCartButton').click(function(e)
+	{
+		if(!$(this).siblings(".talles").find("input[name='sylius_cart_item[variant]']:radio").is(':checked')) 
+		{  
+			$(this).siblings(".talles").popover('show'); 
+			
+			e.preventDefault();
+		} 
+		
+	});
+};
+
+var setupQuickviewButtons = function()
+{
+	$(".product-box .imagenProducto").hover(function() //mouseover
+	{
+		$(this).children('.quickviewButton').show();
+		$(this).children('img').fadeTo(0, 0.4);
+	}, function() //mouseout
+	{
+		$(this).children('.quickviewButton').hide();
+		$(this).children('img').fadeTo(0, 1);
+	});
 };
 
 $(document).ready(function()
 {	
-	//Zoom image on gallery
-	setupProductDetailsGallery();	
+	//Setup the products details
+	setupProductDetails();	
 	
 	//Quickview
-	$(".product-box .imagenProducto").hover(function() //mouseover
-	{
-		$(this).children('.quickviewButton').show();
-	}, function() //mouseout
-	{
-		$(this).children('.quickviewButton').hide();
-	});
-	
-	
+	setupQuickviewButtons();
+		
 	$('#quickviewModal').on('hidden', function ()
 	{
 		$(".productDetails .fotoDetalle img").removeData('elevateZoom');
@@ -61,5 +78,10 @@ $(document).ready(function()
 	});
 	
 	//Product scroll pagination
-	$(".scrollPagination").scrollPagination();
+	$(".scrollPagination").scrollPagination({
+		afterLoad: function(data)
+		{
+			setupQuickviewButtons();
+		}
+	});
 });

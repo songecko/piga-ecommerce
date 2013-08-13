@@ -3,6 +3,7 @@ body {
 	font-family: 'Lato', sans-serif;
 	font-weight:400;
 	color: #000000;
+	font-size: 12px;
 }
 ul { 
 	margin:0px;
@@ -38,7 +39,7 @@ div.hr hr {
 #header { 
 	background:#000000;
 	color:#ffdaca;
-	font-size:14px;
+	font-size:12px;
 }
 #header .container {
 	height: 36px;
@@ -47,7 +48,7 @@ div.hr hr {
 #header .newsletter {
 	float:left;
 	padding-top: 12px;
-	font-size:14px;
+	font-size:12px;
 }
 #header ul {
 	float:left;
@@ -92,7 +93,7 @@ div.hr hr {
 
 #header .cartItems a { 
 	float: right;
-	font-size: 20px;
+	font-size: 18px;
 	width: 10px;
 	height: 22px;
 	margin: 7px 0 0 10px;
@@ -110,6 +111,7 @@ div.hr hr {
 	border-bottom: 1px solid #000000;
 	padding: 5px 0px;
 	margin-top:30px;
+	font-size: 13px;
 }
 #menu ul li{
 	color:#000000;	
@@ -124,14 +126,14 @@ div.hr hr {
 #menu .pull-left { text-align: left; width: 40%; }
 #menu .pull-right { text-align: right; width: 40% }
 #menu .pull-left li {
-	margin-left: 50px;
+	margin-left: 60px;
 	float:left;
 }
 #menu .pull-left li:first-child {
 	margin-left: 0px;
 }
 #menu .pull-right li {
-	margin-left: 50px;
+	margin-left: 56px;
 	float: right;
 }
 #menu .pull-right li:first-child {
@@ -156,8 +158,8 @@ div.hr hr {
 	
 .titleSection {
 	font-family: 'Croissant One';
-	font-size: 18px;
-	padding-top: 32px;
+	font-size: 16px;
+	padding-top: 25px;
 }
 .contentTitle {
 	background-color: #efeeee;
@@ -165,7 +167,7 @@ div.hr hr {
 .contentTitle .titleSection {
 	margin-top: 0;
 	margin-bottom: 0;
-	padding-bottom: 22px;
+	padding-bottom: 15px;
 }
 
 
@@ -214,7 +216,7 @@ div.hr hr {
 	line-height: 24px;
 }
 #slider .item .box p {
-	margin-top: 13px;
+	margin-top: 8px;
 	margin-bottom: 13px;
 }
 #slider .item .box a {
@@ -240,8 +242,18 @@ div.hr hr {
 }
 #slider .controls .carousel-control {
 	top: 162px;
+	background: none;
+	font-size: 94px;
+	border: none;
 }
 
+#slider .controls .carousel-control.left {
+	left: 0;
+}
+
+#slider .controls .carousel-control.right {
+	right: 0;
+}
 
 /*** BASE ELEMENTS ***/
 .socaloGris { 
@@ -250,9 +262,9 @@ div.hr hr {
 }
 .tab { 
 	background:#efeeee;
- 	padding: 10px;
+ 	padding: 12px;
 	font-family: 'Croissant One';
-	font-size:18px;
+	font-size:16px;
 	text-align: center;
 	height: 50px;
 	display:inline;
@@ -260,13 +272,14 @@ div.hr hr {
 }
 .button, .button:hover {
 	display: block;
- 	height: 35px;
+ 	height: 30px;
+ 	font-size: 12px;
 	background-color: #000;
 	color: #FFF;
 	font-weight: 400;
 	text-align: center;
 	border: 0;	
-	line-height: 35px;
+	line-height: 30px;
 	text-transform: uppercase;
 	padding: 0 10px;
 }

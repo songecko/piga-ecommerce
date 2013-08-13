@@ -21,6 +21,7 @@
 	line-height: 163px;
 	padding: 30px;
 	display: none;
+	z-index: 999;
 }
 
 .detalleProducto { 
@@ -71,7 +72,7 @@
 }
 .productDetails .datosProducto .productName, .productDetails .datosProducto .productName a, .cart .detalle .datosProducto .productName {
 	font-family: 'Croissant One';
-	font-size: 18px;	
+	font-size: 16px;	
 	margin-top: 26px;
 	color: #000000;
 }
@@ -112,7 +113,7 @@
 }
 
 .productDetails .datos .talles p {
- 	font-size: 14px;
+ 	font-size: 12px;
  	padding-top: 8px;
  	margin: 0;
 }
@@ -181,6 +182,10 @@ input[type="radio"].toggle + label {
 	height: 385px;
 }
 
+#quickviewModal .productDetails .fotoDetalle img {
+	height: 100%;
+}
+
 /*** CARRITO ***/
 .cart table {
 	margin-top:32px;
@@ -200,8 +205,8 @@ input[type="radio"].toggle + label {
 	border-right: none;
 }
 .cart table thead tr {
-	border-top: 8px solid #000000;
-	border-bottom: 8px solid #000000;
+	border-top: 6px solid #000000;
+	border-bottom: 6px solid #000000;
 }
 .cart table tr {
 	border-bottom: solid 2px #000;
@@ -215,7 +220,7 @@ input[type="radio"].toggle + label {
 .circle { 
 	width: 10px;
 	height: 10px;
-	font-size: 20px;
+	font-size: 18px;
 	padding: 15px;
 	line-height: 9px;
 	background: #000000;
@@ -224,7 +229,7 @@ input[type="radio"].toggle + label {
 	-webkit-border-radius: 100px;
 }
 .cart .circle {
-	margin: 18px;
+	margin: 16px;
 	margin-top: 50px;
 }
 .cart .detalle .photo {
@@ -243,19 +248,16 @@ input[type="radio"].toggle + label {
 	padding-top: 60px;	
 }
 .cart table td.unitPrice, .cart table td.totalPrice, .cart table td.remove {
-	font-size: 20px;
+	font-size: 16px;
 	padding-top: 63px;
 }
 
 .cartActions {
 	float: left;
 }
-.cartActions .button {
-	padding: 0 20px;
-}
 .cartActions .clearCartButton {
 	float: left;
-	margin-right: 20px;
+	margin-right: 12px;
 }
 .cartTotal { 
 	float:right; 
@@ -313,7 +315,7 @@ input[type="radio"].toggle + label {
 	margin: 0 auto;
 }
 .cart .emptyCart p {
-	font-size: 18px;	
+	font-size: 16px;	
 	margin: 60px 0 300px 0;
 }
 .cart .emptyCart a {
@@ -393,7 +395,7 @@ input[type="radio"].toggle + label {
 }
 
 .security h2 {
-	font-size: 18px;
+	font-size: 16px;
 	text-align: center;
 	margin-bottom: 36px;
 }
@@ -434,7 +436,7 @@ input[type="radio"].toggle + label {
 }
 
 .account .accountHeader h3 {
-	font-size: 18px;
+	font-size: 16px;
 	text-transform: uppercase;
 	font-weight: 700;
 }
@@ -512,10 +514,10 @@ input[type="radio"].toggle + label {
 
 .checkout .message h3 {
 	font-family: 'Croissant One';
-	font-size: 24px;
+	font-size: 22px;
 	line-height: 28px;
 	margin-bottom: 24px;
-	margin-top: 40px;
+	margin-top: 25px;
 }
 
 .checkout .row-fluid .login,  .checkout .row-fluid .shipping {
@@ -586,7 +588,7 @@ input[type="radio"].toggle + label {
 }
 
 .addressing h2 {
-	font-size: 18px;
+	font-size: 16px;
 	text-align: center;
 	margin-bottom: 36px;
 	text-transform: uppercase;

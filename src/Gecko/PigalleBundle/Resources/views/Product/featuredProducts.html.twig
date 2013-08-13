@@ -1,24 +1,7 @@
+{% from 'PigalleBundle:Product:macros.html.twig' import grid %}
+
 <div class="socaloGris"></div>
 <div class="container featuredProducts">
 	<div class="tab">Productos Destacados</div>
-	<div class="row">
-	{% for product in products %}
-		<div class="span3">
-			<div class="imagenProducto">
-				<a href="{{ path('pigalle_product_show', {'slug': product.slug}) }}"><img src="{{ product.image.path|imagine_filter('pigalle_220x220') }}" alt="Producto destacado" /></a>
-			</div>
-			<div class="pull-left descripcionProducto">
-				<h3><a href="{{ path('pigalle_product_show', {'slug': product.slug}) }}">{{ product.name }}</a></h3>
-				<p>{{ product.shortDescription|truncate(50)  }}</p>
-			</div>			
-			<div class="pull-right {{ (product.isOffer)?'flagOferta':'flag' }}">
-				<p>{{ product.masterVariant.price|price}}</p>
-				{%  if(product.isOffer) %}
-            	<p class="oferta">{{ product.priceWithoutDiscount|price}}</p>
-            	{% endif %}
-				<div class="tail">&nbsp;</div>
-			</div>
-		</div>
-	{% endfor %}
-	</div>
+	{{ grid(products, 4) }}
 </div>

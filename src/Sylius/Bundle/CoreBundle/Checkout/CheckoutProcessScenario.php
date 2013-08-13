@@ -58,9 +58,9 @@ class CheckoutProcessScenario implements ProcessScenarioInterface
             ->setDisplayRoute('sylius_checkout_display')
             ->setForwardRoute('sylius_checkout_forward')
             ->setRedirect('sylius_homepage')
-            /*->validate(function () use ($cart) {
+            ->validate(function () use ($cart) {
                 return !$cart->isEmpty();
-            })*/
+            })
         ;
     }
 
