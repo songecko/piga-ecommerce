@@ -72,7 +72,7 @@
 }
 .productDetails .datosProducto .productName, .productDetails .datosProducto .productName a, .cart .detalle .datosProducto .productName {
 	font-family: 'Croissant One';
-	font-size: 16px;	
+	font-size: 14px;	
 	margin-top: 26px;
 	color: #000000;
 }
@@ -140,6 +140,7 @@ input[type="radio"].toggle:checked + label {
 }
 input[type="radio"].toggle + label {
     margin: 0;
+    font-size: 12px;
 }
 
 .productDetails .datos .talles input.quantity {
@@ -220,8 +221,8 @@ input[type="radio"].toggle + label {
 .circle { 
 	width: 10px;
 	height: 10px;
-	font-size: 18px;
-	padding: 15px;
+	font-size: 16px;
+	padding: 13px;
 	line-height: 9px;
 	background: #000000;
 	color: #FFFFFF;
@@ -242,7 +243,7 @@ input[type="radio"].toggle + label {
 }
 .cart .detalle .datosProducto .talle {
 	font-weight: 700;
-	font-size: 14px;
+	font-size: 12px;
 }
 .cart table td.quantity {
 	padding-top: 60px;	

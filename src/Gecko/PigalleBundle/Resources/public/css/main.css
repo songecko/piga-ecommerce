@@ -39,7 +39,7 @@ div.hr hr {
 #header { 
 	background:#000000;
 	color:#ffdaca;
-	font-size:12px;
+	font-size:10px;
 }
 #header .container {
 	height: 36px;
@@ -48,7 +48,7 @@ div.hr hr {
 #header .newsletter {
 	float:left;
 	padding-top: 12px;
-	font-size:12px;
+	font-size:10px;
 }
 #header ul {
 	float:left;
@@ -111,7 +111,7 @@ div.hr hr {
 	border-bottom: 1px solid #000000;
 	padding: 5px 0px;
 	margin-top:30px;
-	font-size: 13px;
+	font-size: 12px;
 }
 #menu ul li{
 	color:#000000;	
@@ -209,7 +209,7 @@ div.hr hr {
 }
 #slider .item .box h3 {
 	font-family: 'Croissant One';
-	font-size: 22px;
+	font-size: 18px;
 	border-bottom: 1px solid black;
 	padding-bottom: 13px;
 	margin-bottom: 0;
@@ -221,7 +221,7 @@ div.hr hr {
 }
 #slider .item .box a {
 	font-family: 'Croissant One';
-	font-size: 18px;
+	font-size: 16px;
 	margin-top: 0;
 	margin-bottom: 5px;
 	color: #ffffff;
@@ -264,7 +264,7 @@ div.hr hr {
 	background:#efeeee;
  	padding: 12px;
 	font-family: 'Croissant One';
-	font-size:16px;
+	font-size:15px;
 	text-align: center;
 	height: 50px;
 	display:inline;
