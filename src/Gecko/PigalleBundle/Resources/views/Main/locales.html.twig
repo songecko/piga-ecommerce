@@ -1,0 +1,52 @@
+{% extends 'PigalleBundle::layout.html.twig' %}
+
+{% block content %}
+<div id="slider" class="carousel slide">
+	<!-- Carousel items -->
+	<div class="carousel-inner">
+		<div class="item active" style="background-image:url({{ asset('bundles/pigalle/images/slider4.jpg') }});"></div>
+	</div>
+</div>
+<div class="socaloGris"></div>
+<div class="container locales">
+	<div class="tab">Locales</div>
+	<div class="list">
+		<h2>Gran Buenos Aires</h2>
+		<div class="local featured">
+			<p class="name">Showroom y local Pigalle</p>
+			<p>Las Heras 674, Ramos Mejía</p>
+			<p>011 4658 5137</p>
+			<p><a href="mailto:ventas@pigalle.com.ar">ventas@pigalle.com.ar</a></p>
+		</div>
+		{% for i in 1..10 %}
+		<div class="local">
+			<p class="name">Ornella costani</p>
+			<p>Hidalgo 26-C1405BBB</p>
+			<p>Caballito - CABA</p>
+			<p>011 4567 6789</p>
+			<p><a href="mailto:ventas@pigalle.com.ar">ventas@pigalle.com.ar</a></p>
+		</div>
+		{% endfor %}
+		<h2>Provincias</h2>
+		{% for i in 1..10 %}
+		<div class="local">
+			<p class="name">Ornella costani</p>
+			<p>Hidalgo 26-C1405BBB</p>
+			<p>Caballito - CABA</p>
+			<p>011 4567 6789</p>
+			<p><a href="mailto:ventas@pigalle.com.ar">ventas@pigalle.com.ar</a></p>
+		</div>
+		{% endfor %}
+		<h2>Paises limítrofes</h2>
+		{% for i in 1..2 %}
+		<div class="local">
+			<p class="name">Ornella costani</p>
+			<p>Hidalgo 26-C1405BBB</p>
+			<p>Caballito - CABA</p>
+			<p>011 4567 6789</p>
+			<p><a href="mailto:ventas@pigalle.com.ar">ventas@pigalle.com.ar</a></p>
+		</div>
+		{% endfor %}
+	</div>	
+</div>
+{% endblock %}

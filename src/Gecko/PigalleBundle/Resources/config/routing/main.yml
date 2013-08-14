@@ -2,6 +2,14 @@ pigalle_homepage:
     pattern:        /
     defaults:       { _controller: PigalleBundle:Main:index }
 
+pigalle_la_marca:
+    pattern:        /la-marca
+    defaults:       { _controller: PigalleBundle:Main:laMarca }
+
+pigalle_locales:
+    pattern:        /locales
+    defaults:       { _controller: PigalleBundle:Main:locales }
+        
 sylius_product:
     resource: @PigalleBundle/Resources/config/routing/product.yml
     prefix:   /online-store

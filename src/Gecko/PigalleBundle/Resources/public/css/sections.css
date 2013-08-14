@@ -720,3 +720,72 @@ input[type="radio"].toggle + label {
  	height: 330px;
 	border-left: 1px solid #000000;
  }
+ 
+ /*** LA MARCA ***/
+ .laMarca .description {
+ 	font-size: 14px;
+ 	margin: 40px 0;
+ 	line-height: 20px;
+ }
+ 
+ .laMarca ul {
+ 	margin-top: 50px;
+ }
+ 
+ .laMarca ul li {
+ 	float: left;
+	list-style: none;
+	width: 25%;
+	text-align: center;
+ }
+ 
+.laMarca ul li h3 {
+	font-size: 14px;
+	font-family: 'Croissant One';
+	margin: 20px 10%;
+	line-height: 20px;
+}
+
+.laMarca ul li h3 a {
+	text-decoration: underline;
+}
+
+.locales .list {
+	-moz-column-count: 4;
+	-webkit-column-count: 4;
+	column-count: 4;
+	margin-top: 20px;
+}
+
+.locales .list h2 {
+	font-size: 16px;
+	font-family: 'Croissant One';
+	font-weight: 300;
+	border-top: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	display: inline-block;
+	margin: 25px 0 25px 15px;
+}
+
+.locales .list h2:first-of-type {
+	margin-top: 0;
+}
+
+.locales .list .local {
+	margin-bottom: 25px;
+	padding-left: 15px;
+}
+
+.locales .list .local.featured {
+	background: #efeeee;
+	padding: 15px;
+}
+
+.locales .list .local p {
+	font-size: 14px;
+	line-height: 12px;
+}
+
+.locales .list .local p.name {
+	font-weight: bold;
+}

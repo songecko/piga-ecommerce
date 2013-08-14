@@ -165,7 +165,7 @@ class MenuBuilder extends ContainerAware
     	$menu = $this->factory->createItem('root');
     	 
     	$menu->addChild('la_marca', array(
-    			//'route' => 'sylius_backend_taxonomy_index',
+    		'route' => 'pigalle_la_marca',
     	))->setLabel('Marca');
     
     	$menu->addChild('colecciones', array(
@@ -173,11 +173,11 @@ class MenuBuilder extends ContainerAware
     	))->setLabel('Colecciones');
     
     	$menu->addChild('online_store', array(
-    			'route' => 'pigalle_product_index',
+    		'route' => 'pigalle_product_index',
     	))->setLabel('Online store');
     	 
     	$menu->addChild('locales', array(
-    			//'route' => 'pigalle_product_index',
+    		'route' => 'pigalle_locales',
     	))->setLabel('Locales');
     	 
     	$menu->addChild('cart', array(
@@ -211,7 +211,7 @@ class MenuBuilder extends ContainerAware
     protected function addMainMenuLeft(ItemInterface $menu)
     {
         $menu->addChild('la_marca', array(
-            //'route' => 'sylius_backend_taxonomy_index',
+            'route' => 'pigalle_la_marca',
         ))->setLabel('LA MARCA');
         
         $menu->addChild('colecciones', array(
@@ -241,7 +241,7 @@ class MenuBuilder extends ContainerAware
     	))->setLabel('CONTACTO');
     
     	$menu->addChild('locales', array(
-    		//'route' => 'sylius_backend_taxonomy_index',
+    		'route' => 'pigalle_locales',
     	))->setLabel('LOCALES');
     
     	$menu->addChild('mayorista', array(

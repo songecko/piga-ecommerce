@@ -1,0 +1,52 @@
+{% extends 'PigalleBundle::layout.html.twig' %}
+
+{% block content %}
+<div id="slider" class="carousel slide">
+	<!-- Carousel items -->
+	<div class="carousel-inner">
+		<div class="item active" style="background-image:url({{ asset('bundles/pigalle/images/slider4.jpg') }});"></div>
+		<div class="item" style="background-image:url({{ asset('bundles/pigalle/images/slider2.jpg') }});"></div>
+		<div class="item" style="background-image:url({{ asset('bundles/pigalle/images/slider3.jpg') }});"></div>
+	</div>
+	<!-- Carousel nav -->
+	<div class="container controls">
+		<ol class="carousel-indicators">
+			<li data-target="#slider" data-slide-to="0" class="active"></li>
+			<li data-target="#slider" data-slide-to="1"></li>
+			<li data-target="#slider" data-slide-to="2"></li>
+		</ol>
+			
+		<a class="carousel-control left" href="#slider" data-slide="prev">&lsaquo;</a>
+		<a class="carousel-control right" href="#slider" data-slide="next">&rsaquo;</a>
+	</div>
+</div>
+<div class="socaloGris"></div>
+<div class="container laMarca">
+	<div class="tab">La Marca</div>
+	<p class="description">Pigalle es una empresa dedicada a la fabricacion de zapatos para mujer. Pigalle es una empresa dedicada a la fabricacion de zapatos 
+	para mujer. Pigalle es una empresa dedicada a la fabricacion de zapatos para mujer. Pigalle es una empresa dedicada a la fabricacion 
+	de zapatos para mujer. Pigalle es una empresa dedicada a la fabricacion de zapatos para mujer. Pigalle es una empresa dedicada a la 
+	fabricacion de zapatos para mujer. Pigalle es una empresa dedicada a la fabricacion de zapatos para mujer. Pigalle es una empresa 
+	dedicada a la fabricacion de zapatos para mujer. Pigalle es una empresa dedicada a la fabricacion de zapatos para mujer. Pigalle es 
+	una empresa dedicada a la fabricacion de zapatos para mujer.</p>
+	<div class="hr"><hr /></div>
+	<ul>
+		<li>
+			<img src="{{ asset('bundles/pigalle/images/marca_objetivo.png') }}" />
+			<h3>Nuestro objetivo principal es excelencia de servicio</h3>
+		</li>
+		<li>
+			<img src="{{ asset('bundles/pigalle/images/marca_principios.png') }}" />
+			<h3>Nuestros principios:<br>- Transparencia<br>- Experiencia<br>- Compromiso</h3>
+		</li>
+		<li>
+			<img src="{{ asset('bundles/pigalle/images/marca_compras.png') }}" />
+			<h3>Comprá nuestros productos <a href="{{ path('pigalle_product_index') }}">acá</a> o averiguá <a href="{{ path('pigalle_locales') }}">locales</a> que te quedan mas cerca!</h3>
+		</li>
+		<li>
+			<img src="{{ asset('bundles/pigalle/images/marca_facebook.png') }}" />
+			<h3>Hacete nuestro amigo y seguinos en facebook! <br> <a href="http://facebook.com/pigalle" target="_blank">facebook.com/PIGALLE</a></h3>
+		</li>
+	</ul>
+</div>
+{% endblock %}

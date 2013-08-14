@@ -10,4 +10,14 @@ class MainController extends Controller
     {
         return $this->render('PigalleBundle:Main:index.html.twig');
     }
+    
+    public function laMarcaAction()
+    {
+    	return $this->render('PigalleBundle:Main:laMarca.html.twig');
+    }
+    
+    public function localesAction()
+    {
+    	return $this->render('PigalleBundle:Main:locales.html.twig');
+    }
 }
