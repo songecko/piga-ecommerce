@@ -50,14 +50,14 @@ class CheckoutProcessScenario implements ProcessScenarioInterface
             ->add('login', 'sylius_checkout_security')
             ->add('direccion', 'sylius_checkout_addressing')
             ->add('envio', 'sylius_checkout_shipping')
-            ->add('metodos-de-pago', 'sylius_checkout_payment')
+            ->add('metodo-de-pago', 'sylius_checkout_payment')
             ->add('resumen', 'sylius_checkout_finalize')
         ;
 
         $builder
             ->setDisplayRoute('sylius_checkout_display')
             ->setForwardRoute('sylius_checkout_forward')
-            ->setRedirect('sylius_homepage')
+            ->setRedirect('pigalle_homepage')
             ->validate(function () use ($cart) {
                 return !$cart->isEmpty();
             })

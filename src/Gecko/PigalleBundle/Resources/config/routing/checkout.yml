@@ -23,8 +23,8 @@ sylius_checkout_shipping:
     defaults: { _controller: sylius.controller.process:displayAction, scenarioAlias: 'sylius_checkout', 'stepName': 'envio' }
 
 sylius_checkout_payment:
-    pattern: /metodos-de-pago
-    defaults: { _controller: sylius.controller.process:displayAction, scenarioAlias: 'sylius_checkout', 'stepName': 'metodos-de-pago' }
+    pattern: /metodo-de-pago
+    defaults: { _controller: sylius.controller.process:displayAction, scenarioAlias: 'sylius_checkout', 'stepName': 'metodo-de-pago' }
 
 sylius_checkout_finalize:
     pattern: /resumen

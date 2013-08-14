@@ -1,29 +1,46 @@
-{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+{% extends 'PigalleBundle::layout.html.twig' %}
 
 {% block content %}
-<div class="page-header">
-    <h1>{{ 'sylius.checkout.payment.header'|trans|raw }}</h1>
+<div class="checkout payment step4">
+	<div class="contentTitle"><h3 class="titleSection container">Proceso de compra - Método de pago</h3></div>
+	<div class="container content">
+		{% include 'PigalleBundle:Checkout:_progressBar.html.twig' with {'step': 4 } %}
+
+		{% if error is defined or form.paymentMethod.vars.errors|length or form.paymentMethod.vars.errors|length %}
+		<div class="alert alert-error">
+    		Debe seleccionar un método de pago.
+		</div>
+		{% endif %}
+		
+		{#<form method="post" action="{{ path('sylius_checkout_forward', {'stepName': context.currentStep.name}) }}" novalidate="novalidate">#}
+		<form method="post" action="#" novalidate="novalidate">
+			<div class="row-fluid">
+				<div class="span6 message step4Message">
+					<span class="circle">4</span>
+					<h3>Ya casi terminamos.<br>Decinos como te gustaria pagar por tu pedido.</h3>
+					<img src="{{ asset('bundles/pigalle/images/payment-ico-big.png') }}" alt="Pago" />
+				</div>
+				<div class="span6 pay">
+					<h2>Método de pago</h2>
+					<fieldset>
+						{% for paymentMethodForm in form.paymentMethod %}
+						<div class="paymentOption clearfix">
+							{{ form_widget(paymentMethodForm) }}
+							{{ form_label(paymentMethodForm) }}
+						</div>
+						{% endfor %}
+					</fieldset>
+				</div>
+				<div style="display:none">
+					{{ form_rest(form) }}
+				</div>
+			</div>
+			
+			<div class="stepActions">
+				<a href="{{ path('sylius_checkout_shipping') }}" class="button prevButton">Anterior</a>
+				<button type="submit" class="button nextButton">Siguiente</button>
+			</div>
+		</form>
+	</div>
 </div>
-
-{% include 'SyliusWebBundle:Frontend/Checkout:_progressBar.html.twig' %}
-
-<form method="post" action="{{ path('sylius_checkout_forward', {'stepName': context.currentStep.name}) }}" class="form-horizontal" novalidate>
-
-{{ form_errors(form) }}
-
-{{ form_label(form.paymentMethod) }}
-<fieldset>
-    {% for paymentMethodForm in form.paymentMethod %}
-        {{ form_row(paymentMethodForm) }}
-    {% endfor %}
-</fieldset>
-
-{{ form_widget(form._token) }}
-
-<div class="form-actions">
-    <a href="{{ path('sylius_checkout_display', {'stepName': context.previousStep.name}) }}" class="btn btn-large"><i class="icon-chevron-left"></i> {{ 'sylius.checkout.back'|trans }}</a> &nbsp;
-    <button type="submit" class="btn btn-primary btn-large">{{ 'sylius.checkout.forward'|trans }} <i class="icon-chevron-right"></i></button>
-</div>
-
-</form>
 {% endblock %}

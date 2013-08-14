@@ -1,33 +1,19 @@
 {% set variant = item.sellable %}
 {% set product = variant.product %}
 <tr>
-    <td>{{ loop.index }}</td>
-    <td>
-        <a href="{{ path('sylius_product_show', {'slug': product.slug}) }}" class="thumbnail pull-left" style="width: 90px; margin-right: 15px;">
-            <img src="{{ product.image.path|default('http://placehold.it/90x60')|imagine_filter('sylius_90x60') }}" alt="" />
-        </a>
-        <div>
-            <p>
-                <a href="{{ path('sylius_product_show', {'slug': product.slug}) }}">{{ product.name }}</a>
-            </p>
-            {% if product.hasOptions %}
-            <ul class="unstyled">
-                {% for option in variant.options %}
-                <li><strong>{{ option.presentation }}</strong>: {{ option.value }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-        </div>
-    </td>
-    <td>{{ item.quantity }}</td>
-    <td>
-        <span class="pull-right">
-        {{ item.unitPrice|sylius_money }}
-        </span>
-    </td>
-    <td>
-        <span class="pull-right">
-        {{ item.total|sylius_money }}
-        </span>
-    </td>
+	<td class="detalle">
+		<div class="photo">
+			<a href="{{ path('pigalle_product_show', {'slug': product.slug}) }}">
+            	<img src="{{ product.image.path|imagine_filter('sylius_138x138') }}" alt="" />
+        	</a>
+		</div>
+		<div class="datosProducto">
+			<h3 class="productName"><a href="{{ path('pigalle_product_show', {'slug': product.slug}) }}">{{ product.name }}</a></h3>
+			<p class="productDescription">{{ product.description|default('')|raw }}</p>
+			<p class="talle">Talle: <span>{{ variant.options|first.value }}</span></p>
+		</div>
+	</td>
+	<td class="quantity">{{ item.quantity }}</td>
+	<td class="unitPrice">{{ item.unitPrice|price }}</td>
+	<td class="totalPrice">{{ item.total|price }}</td>
 </tr>

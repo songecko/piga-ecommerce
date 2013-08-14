@@ -52,7 +52,7 @@ class PaymentStep extends CheckoutStep
 
     private function renderStep(ProcessContextInterface $context, FormInterface $form)
     {
-        return $this->render('SyliusWebBundle:Frontend/Checkout/Step:payment.html.twig', array(
+        return $this->render('PigalleBundle:Checkout/Step:payment.html.twig', array(
             'form'    => $form->createView(),
             'context' => $context
         ));

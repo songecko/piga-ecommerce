@@ -520,7 +520,7 @@ input[type="radio"].toggle + label {
 	margin-top: 25px;
 }
 
-.checkout .row-fluid .login,  .checkout .row-fluid .shipping {
+.checkout .row-fluid .login,  .checkout .row-fluid .ship {
 	border-left: 1px solid #000000;
 }
 
@@ -534,9 +534,20 @@ input[type="radio"].toggle + label {
 	float: none;
 }
 
+.checkout .stepActions {
+	margin-top: 25px;	
+}
+
+.checkout .prevButton {
+	float: left;
+	background: url(../../../bundles/pigalle/images/flag-left-gray_white.png) no-repeat #efeeee;
+	background-position: left 0px top;
+	padding-left: 20px;
+	color: #000000;
+}
+
 .checkout .nextButton {
-	float: right;
-	margin-top: 25px;
+	float: right;	
 	background: url(../../../bundles/pigalle/images/flag-right-black_white.png) no-repeat #000000;
 	background-position: right 0px top;
 	padding-right: 20px;
@@ -609,6 +620,10 @@ input[type="radio"].toggle + label {
 	border: 1px solid #000;
 }
 	
+.addressing .shippingAddress {
+	border-left: 1px solid #000000;	
+}
+
 .addressing fieldset {
 	margin: 0 auto;
 	width: 200px;
@@ -654,3 +669,53 @@ input[type="radio"].toggle + label {
 .addressing .message .circle {
 	margin-top: 150px;
 }
+
+/*** SHIPPING AND PAYMENT ***/
+.shipping h2, .payment h2 {
+	font-size: 16px;
+	text-align: center;
+	margin-bottom: 36px;
+	text-transform: uppercase;
+}
+
+.shipping fieldset, .payment fieldset {
+	margin-left: 90px;
+}
+
+.shipping .shippingOption, .payment .paymentOption {
+	margin-bottom: 20px;
+}
+
+.shipping .shippingOption:last-of-type {
+	margin-bottom: 10px;
+}
+
+.shipping .shippingOption input, .payment .paymentOption input {
+	float: left;
+}
+
+.shipping .shippingOption label, .payment .paymentOption label {
+	text-transform: uppercase;
+	margin-left: 18px;
+	float: left;
+}
+
+.shipping .shippingOption img {
+	margin-left: 30px;
+}
+
+.shipping .personalShippingDescription {
+	font-size: 14px;
+	margin-left: 30px;
+	font-weight: 300;
+	line-height: 18px;
+}
+
+.checkout.payment .message .circle {
+	margin-top: 40px;
+}
+
+ .payment .pay {
+ 	height: 330px;
+	border-left: 1px solid #000000;
+ }

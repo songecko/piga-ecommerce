@@ -6,30 +6,39 @@
 	<div class="container content">
 		{% include 'PigalleBundle:Checkout:_progressBar.html.twig' with {'step': 3 } %}
 
-		{% if error is defined or form.vars.errors|length or form.vars.errors|length %}
+		{% if error is defined or form.shippingMethod.vars.errors|length or form.shippingMethod.vars.errors|length %}
 		<div class="alert alert-error">
-    		Verifique los datos ingresados. Todos los campos son obligatorios.
+    		Debe seleccionar un método de envio.
 		</div>
 		{% endif %}
 		
-		{#<form method="post" action="{{ path('sylius_checkout_forward', {'stepName': context.currentStep.name}) }}" novalidate="novalidate">#}
-		<form method="post" action="#" novalidate="novalidate">
+		<form method="post" action="{{ path('sylius_checkout_forward', {'stepName': context.currentStep.name}) }}" novalidate="novalidate">
 			<div class="row-fluid">
 				<div class="span6 message step2Message">
 					<span class="circle">3</span>
 					<h3>Decinos como quieres recibir tu pedido</h3>
 					<img src="{{ asset('bundles/pigalle/images/shipping-ico-big.png') }}" alt="Envio" />
 				</div>
-				<div class="span6 shipping">
+				<div class="span6 ship">
 					<h2>Método de envio</h2>
 					<fieldset>
 						{% for shippingMethodForm in form.shippingMethod %}
-						<div class="control-group">
+						<div class="shippingOption clearfix">
+							{{ form_widget(shippingMethodForm) }}
 							{{ form_label(shippingMethodForm) }}
-							<div class="controls">
-								{{ form_widget(shippingMethodForm) }}
-							</div>
+							{% if loop.index < 3 %}
+							<img alt="Oca Logo" src="{{ asset('bundles/pigalle/images/oca-shipping-logo.png') }}">
+							{% endif %}
 						</div>
+						{% if loop.last %}
+						<p class="personalShippingDescription">
+							Todos los pedidos se pueden retirar en nuestro local 48hs después de finalización del pedido. <br><br>
+							Estamos en: <br>
+							Las Heras 674, Ramos Mejia <br>
+							011 4658 5137 <br>
+							ventas@pigalle.com.ar
+						</p>
+						{% endif %}
 						{% endfor %}
 					</fieldset>
 				</div>
@@ -38,7 +47,10 @@
 				</div>
 			</div>
 			
-			<button type="submit" class="button nextButton">Siguiente</button>
+			<div class="stepActions">
+				<a href="{{ path('sylius_checkout_addressing') }}" class="button prevButton">Anterior</a>
+				<button type="submit" class="button nextButton">Siguiente</button>
+			</div>
 		</form>
 	</div>
 </div>

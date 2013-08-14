@@ -50,7 +50,7 @@ class FinalizeStep extends CheckoutStep
 
     private function renderStep(ProcessContextInterface $context, OrderInterface $order)
     {
-        return $this->render('SyliusWebBundle:Frontend/Checkout/Step:finalize.html.twig', array(
+        return $this->render('PigalleBundle:Checkout/Step:finalize.html.twig', array(
             'context' => $context,
             'order'   => $order
         ));

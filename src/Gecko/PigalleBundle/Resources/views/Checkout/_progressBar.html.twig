@@ -2,6 +2,6 @@
    <li class="login{{ context.progress >= 20?' active':'' }}"><a href="{{ context.progress > 20?path('sylius_cart_summary'):'#' }}">1. Login</a></li>
    <li class="address{{ context.progress >= 40?' active':'' }}"><a href="{{ context.progress > 40?path('sylius_checkout_addressing'):'#' }}">2. Direccion</a></li>
    <li class="shipping{{ context.progress >= 60?' active':'' }}"><a href="{{ context.progress > 60?path('sylius_checkout_shipping'):'#' }}">3. Envio</a></li>
-   <li class="payment{{ context.progress >= 80?' active':'' }}"><a href="{{ context.progress > 80?path('sylius_checkout_payment'):'#' }}">4. Métodos de pago</a></li>
+   <li class="payment{{ context.progress >= 80?' active':'' }}"><a href="{{ context.progress > 80?path('sylius_checkout_payment'):'#' }}">4. Método de pago</a></li>
    <li class="finalize{{ context.progress == 100?' active':'' }}"><a href="#">5. Resumen</a></li>
 </ul>

@@ -28,12 +28,11 @@ class LoadShippingData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
-        $regular = $this->createShippingCategory('Regular', 'Regular');
-
+        $regular = $this->createShippingCategory('regular', 'Regular');
         $manager->persist($regular);
-
+        
         //$config = array('first_item_cost' => 1000, 'additional_item_cost' => 500, 'additional_item_limit' => 0);
-        $config = array();
+        $config = array('amount' => 0);
         $manager->persist($this->createShippingMethod('Correo "Puerta a Puerta"', 'Argentina', DefaultCalculators::FLAT_RATE, $config));
         $manager->persist($this->createShippingMethod('Retiro por sucursal oca', 'Argentina', DefaultCalculators::FLAT_RATE, $config));
         $manager->persist($this->createShippingMethod('Retiro personalmente', 'Argentina', DefaultCalculators::FLAT_RATE, $config));
