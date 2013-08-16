@@ -40,7 +40,11 @@
 		
 		<div id="header">
 			<div class="container">
-				<p class="newsletter">NEWSLETTER: Join us!</p>
+				<p class="newsletter">
+					<span class="title">NEWSLETTER:</span> 
+					<input type="text" placeholder="INGRESA E-MAIL" /> 
+					<button>ENVIAR</button>
+				</p>
 				<div class="pull-right">
 					{{ knp_menu_render('pigalle.menu.user') }}
 					<div class="cartItems">
@@ -94,7 +98,7 @@
 							<p>PIGALLE ACCESORI SA <br />IVA RESPONSABLE INSCRIPTO <br />Las Heras 670<br /> Ramos Mejía (C.P. 1704)<br /> Buenos Aires</p>
 						</div>
 						<div class="span2 dataFiscal">
-							<img src="{{ asset('bundles/pigalle/images/data-fiscal.png') }}" alt="Pigalle QR AFIP" />
+							<a href="http://qr.afip.gob.ar/?qr=ap0Wygcx_4LZycOiAxiZLg,," target="_F960AFIPInfo"><img src="http://www.afip.gob.ar/images/f960/DATAWEB.jpg" border="0"></a>
 						</div>
 						<div class="span2 logo">
 							<img src="{{ asset('bundles/pigalle/images/pigalle-copyright.png') }}" alt="Logo Pigalle Copyright" />

@@ -293,8 +293,8 @@ input[type="radio"].toggle + label {
 .cartTotal .total p.title { 
 	float:left; 
 }
-.cartTotal .total .flag {
-	margin-left: 10px; 
+.cartTotal .total .flagOferta {
+	margin-left: 25px; 
 	float:left;
 	position: static;
 }
@@ -302,6 +302,7 @@ input[type="radio"].toggle + label {
 	margin: 10px 0px 0px 12px;
 	float: right;
 	padding: 0 16px;
+	background: #de1b37;
 }
 .cart .emptyCart {
 	text-align:center;
