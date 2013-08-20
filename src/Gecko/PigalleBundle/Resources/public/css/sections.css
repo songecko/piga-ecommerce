@@ -801,3 +801,44 @@ input[type="radio"].toggle + label {
 	border-bottom: 1px solid #000000;
 	padding-bottom: 10px;
 }
+.collection .filters {
+	margin-bottom: 20px;
+}
+.collection .filter {
+	float: left;
+	width: 225px;
+}
+.collection .filter ul {
+	z-index: 999;
+	position: absolute;
+	background-color: #efeeee;
+	width: 225px;
+}
+.collection .image {
+	width: 100%;
+	background: #ffffff;
+	text-align: center;
+}
+.collection .socalo {
+	height: 56px;
+	background: black;
+	color: white;
+	text-align: center;
+}
+.collection .socalo .productName {
+	font-family: 'Croissant One';
+}
+.collection .socalo p {
+	font-size: 14px;
+	margin: 7px 0 0 0;
+}
+.collection .socalo p.productName {
+	font-family: 'Croissant One';
+	font-size: 16px;
+	margin: 0;
+	padding-top: 12px;
+}
+.collection .carousel .carousel-control {
+	color: #000000;
+	top: 43%;
+}

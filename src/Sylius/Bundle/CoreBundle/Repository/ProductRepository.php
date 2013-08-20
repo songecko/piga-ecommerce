@@ -45,6 +45,19 @@ class ProductRepository extends CustomizableProductRepository
 		return $qb->getQuery()->getResult();
 	}
 	
+	public function getByTaxonQueryBuilder(TaxonInterface $taxon, $criteria = array(), $sorting = array())
+	{
+		$queryBuilder = $this->createFilterQueryBuilder($criteria, $sorting);
+		
+		$queryBuilder
+			->innerJoin('product.taxons', 'taxon')
+			->andWhere('taxon = :taxon')
+			->setParameter('taxon', $taxon)
+		;
+		
+		return $queryBuilder;
+	}
+	
     /**
      * Create paginator for products categorized
      * under given taxon.
@@ -55,13 +68,7 @@ class ProductRepository extends CustomizableProductRepository
      */
     public function createByTaxonPaginator(TaxonInterface $taxon, $criteria = array(), $sorting = array())
     {
-        $queryBuilder = $this->createFilterQueryBuilder($criteria, $sorting);
-
-        $queryBuilder
-            ->innerJoin('product.taxons', 'taxon')
-            ->andWhere('taxon = :taxon')
-            ->setParameter('taxon', $taxon)
-        ;
+        $queryBuilder = $this->getByTaxonQueryBuilder($taxon, $criteria, $sorting);
 
         return $this->getPaginator($queryBuilder);
     }

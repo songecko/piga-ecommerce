@@ -3,27 +3,49 @@
 {% block content %}
 <div class="collection">
 	<div class="container">
-		<h3 class="titleSection">Colecciones / <small>Otoño - Invierno 2013</small></h3>
+		<h3 class="titleSection">Colecciones / <small>{{ season.name }}</small></h3>
 		
-		<div class="filters">
+		<div class="filters clearfix">
 			<form method="get">
 				{% for taxonomy in taxonomies %}
-				{% if taxonomy.name != 'Temporada' %}
 				<div class="filter filterAccordion">
 					<a class="accordionHeader collapsed" data-toggle="collapse" href="#filterAccordionBody{{ loop.index }}">{{ taxonomy.name }}</a>
 					<ul id="filterAccordionBody{{ loop.index }}" class="collapse">
-						<li><a href="{{ path('pigalle_product_index') }}">Todos</a></li>
+						{% if taxonomy.name != 'Temporada' %}
+						<li><a href="{{ path('pigalle_collection', { 's': season.permalink }) }}">Todos</a></li>
+						{% endif %}
 						{% for taxon in taxonomy.taxons %}
-						<li><a href="{{ path('pigalle_product_index_by_taxon', { 'permalink': taxon.permalink }) }}">{{ taxon.name }}</a></li>
+						{%   if taxonomy.name != 'Temporada' %}
+						<li><a href="{{ path('pigalle_collection', { 's': season.permalink, 't': taxon.permalink }) }}">{{ taxon.name }}</a></li>
+						{%   else %}
+						<li><a href="{{ path('pigalle_collection', { 's': taxon.permalink }) }}">{{ taxon.name }}</a></li>
+						{%   endif %}
 						{% endfor %}
 					</ul>
 				</div>
-				{% endif %}
 				{% endfor %}
 			</form>
 		</div>
 		
-		<div class="products">			
+		<div id="collectionSlider" class="products carousel slide">	
+			<div class="carousel-inner">
+				{% for product in products %}
+				<div class="item{{ loop.first?' active':'' }}">
+					<div class="image">
+						<img src="{{ product.image.path|imagine_filter('pigalle_460x460') }}" />
+					</div>
+					<div class="socalo">
+						<p class="productName">{{ product.name }}</p>
+						<p>{{ season.name }}</p>
+					</div>
+				</div>
+				{% endfor %}		
+			</div>
+			<!-- Carousel nav -->
+			<div class="controls">			
+				<a class="carousel-control left" href="#collectionSlider" data-slide="prev">&lsaquo;</a>
+				<a class="carousel-control right" href="#collectionSlider" data-slide="next">&rsaquo;</a>
+			</div>
 		</div>
 	</div>
 </div>

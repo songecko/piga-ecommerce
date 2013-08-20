@@ -288,21 +288,21 @@ div.hr hr {
 #slider .controls {
 	position: relative;
 }
-#slider .controls .carousel-indicators {
+.carousel .controls .carousel-indicators {
 	cursor: pointer;
 }
-#slider .controls .carousel-control {
+.carousel .controls .carousel-control {
 	top: 162px;
 	background: none;
 	font-size: 94px;
 	border: none;
 }
 
-#slider .controls .carousel-control.left {
+.carousel .controls .carousel-control.left {
 	left: 0;
 }
 
-#slider .controls .carousel-control.right {
+.carousel .controls .carousel-control.right {
 	right: 0;
 }
 

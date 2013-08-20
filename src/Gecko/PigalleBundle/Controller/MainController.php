@@ -14,22 +14,51 @@ class MainController extends Controller
     
     public function collectionAction(Request $request)
     {
-    	$filters = $request->query->get('f');
-    	
+    	//Get all taxonomies    	
     	$taxonomyRepository = $this->get('sylius.repository.taxonomy');
     	$taxonomies = $taxonomyRepository->findAll();
     	
-    	$taxon = $this->get('sylius.repository.taxon')
-            ->findOneByPermalink('zapatos');
-
-        if (!isset($taxon)) {
-            $taxon = null;
-        }
+    	//Get the season taxon
+    	$seasonQuery = $request->query->get('s');
+    	$season = null;
+    	if($seasonQuery)
+    	{
+    		$season = $this->get('sylius.repository.taxon')
+            	->findOneByPermalink($seasonQuery);
+    	}    	
+    	if(!$season)
+    	{
+    		foreach ($taxonomies as $taxonomy)
+    		{
+    			if($taxonomy->getName() == 'Temporada')
+    				$season = $taxonomy->getTaxons()->first();
+    		}
+    	}
+    	
+    	//Get the shoe type taxon
+    	$typeQuery = $request->query->get('t');
+    	$type = null;
+    	if($typeQuery)
+    	{
+    		$type = $this->get('sylius.repository.taxon')
+    			->findOneByPermalink($typeQuery);
+    	}
+    	
+    	$queryBuilder = $this->get('sylius.repository.product')->getByTaxonQueryBuilder($season);
+    	
+    	if($type)
+    	{
+    		$queryBuilder->innerJoin('product.taxons', 'taxon2')
+				->andWhere('taxon2 = :taxon2')
+				->setParameter('taxon2', $type);
+    	}
+  
+    	$products =	$queryBuilder->getQuery()->getResult();
     	
     	return $this->render('PigalleBundle:Main:collection.html.twig', array(
     		'taxonomies' => $taxonomies,
-    		'filters' => $filters,
-    		'taxon' => $taxon
+    		'season' => $season,
+    		'products' => $products
     	));
     }
     
