@@ -333,44 +333,44 @@ input[type="radio"].toggle + label {
 	width: 100%;	
 }
 
-.shop .filter {
+.filter {
 	background: #efeeee;
 	font-size: 14px;
 	margin-bottom: 10px;
 }
 
-.shop .filter a, .shop .filter p {
+.filter a, .shop .filter p {
 	padding: 6px 0;
 	text-decoration: none;
 	margin: 0 11px;
 	display: block;
 }
 
-.shop .filter label {
+.filter label {
 	float: left;
 	font-weight: bold;
 	margin-right: 15px;
 	color: #000000;
 }
 
-.shop .filter input[type="checkbox"] {
+.filter input[type="checkbox"] {
 	outline: 2px solid #000000;
 }
 
-.shop .filter a:hover {
+.filter a:hover {
 	color: #000000;
 }
 
-.shop .filterAccordion .accordionHeader
+.filterAccordion .accordionHeader
 {
 	font-weight: bold;
 	border-bottom: 1px solid #000000;	
 	background-image: url(../../../bundles/pigalle/images/arrow_down.png);
 	background-repeat: no-repeat;
-	background-position:  226px 11px;
+	background-position: 178px 11px;
 }
 
-.shop .filterAccordion .accordionHeader.collapsed {
+.filterAccordion .accordionHeader.collapsed {
 	background-image: url(../../../bundles/pigalle/images/arrow_up.png);
 }
 
@@ -789,4 +789,15 @@ input[type="radio"].toggle + label {
 
 .locales .list .local p.name {
 	font-weight: bold;
+}
+
+
+/*** COLECCIONES ***/
+.collection {  
+	background-color:#efeeee;
+}
+
+.collection .titleSection {
+	border-bottom: 1px solid #000000;
+	padding-bottom: 10px;
 }

@@ -205,7 +205,11 @@ div.hr hr {
 .titleSection {
 	font-family: 'Croissant One';
 	font-size: 16px;
-	padding-top: 25px;
+	padding-top: 10px;
+}
+.titleSection small {
+	font-family: 'Lato', sans-serif;
+	color: #000000;
 }
 .contentTitle {
 	background-color: #efeeee;

@@ -169,7 +169,7 @@ class MenuBuilder extends ContainerAware
     	))->setLabel('Marca');
     
     	$menu->addChild('colecciones', array(
-    			//'route' => 'sylius_backend_taxonomy_index',
+    		'route' => 'pigalle_collection',
     	))->setLabel('Colecciones');
     
     	$menu->addChild('online_store', array(
@@ -215,7 +215,7 @@ class MenuBuilder extends ContainerAware
         ))->setLabel('LA MARCA');
         
         $menu->addChild('colecciones', array(
-        	//'route' => 'sylius_backend_taxonomy_index',
+        	'route' => 'pigalle_collection',
         ))->setLabel('COLECCIONES');
         
         $menu->addChild('online_store', array(

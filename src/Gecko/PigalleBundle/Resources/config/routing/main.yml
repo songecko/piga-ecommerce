@@ -30,6 +30,10 @@ sylius_province_choice_form:
     defaults:
         _controller: sylius.controller.province:choiceFormAction
 
+pigalle_collection:
+    pattern:     /colecciones
+    defaults:    { _controller: PigalleBundle:Main:collection }
+              
 #sylius_partial:
 #    resource: @SyliusWebBundle/Resources/config/routing/partial/main.yml
 #    prefix: /_partial

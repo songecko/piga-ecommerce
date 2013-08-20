@@ -1,0 +1,34 @@
+{% extends 'PigalleBundle::layout.html.twig' %}
+
+{% block content %}
+<div class="collection">
+	<div class="container">
+		<h3 class="titleSection">Colecciones / <small>Otoño - Invierno 2013</small></h3>
+		
+		<div class="filters">
+			<form method="get">
+				{% for taxonomy in taxonomies %}
+				{% if taxonomy.name != 'Temporada' %}
+				<div class="filter filterAccordion">
+					<a class="accordionHeader collapsed" data-toggle="collapse" href="#filterAccordionBody{{ loop.index }}">{{ taxonomy.name }}</a>
+					<ul id="filterAccordionBody{{ loop.index }}" class="collapse">
+						<li><a href="{{ path('pigalle_product_index') }}">Todos</a></li>
+						{% for taxon in taxonomy.taxons %}
+						<li><a href="{{ path('pigalle_product_index_by_taxon', { 'permalink': taxon.permalink }) }}">{{ taxon.name }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% endif %}
+				{% endfor %}
+			</form>
+		</div>
+		
+		<div class="products">			
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block featured_products %}
+{{ render(controller('PigalleBundle:Product:featuredProducts')) }}
+{% endblock %}
