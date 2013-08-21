@@ -52,6 +52,13 @@ class Product extends BaseProduct implements TaxableInterface
     protected $isFeatured;
     
     /**
+     * if is a only mayorista product
+     *
+     * @var boolean
+     */
+    protected $isOnlyMayorista;
+    
+    /**
      * Price without discount (offer).
      *
      * @var float
@@ -99,6 +106,7 @@ class Product extends BaseProduct implements TaxableInterface
         $this->variantSelectionMethod = self::VARIANT_SELECTION_CHOICE;
         
         $this->isFeatured = false;
+        $this->isOnlyMayorista = false;
     }
 
     /**
@@ -232,6 +240,29 @@ class Product extends BaseProduct implements TaxableInterface
     public function getIsFeatured()
     {
     	return $this->isFeatured();
+    }
+    
+    /**
+     * Set if is only mayorista product
+     *
+     * @param boolean $isOnlyMayorista
+     * @return Product
+     */
+    public function setIsOnlyMayorista($isOnlyMayorista)
+    {
+    	$this->isOnlyMayorista = $isOnlyMayorista;
+    	 
+    	return $this;
+    }
+    
+    /**
+     * Get if is a only mayorista product
+     *
+     * @return boolean
+     */
+    public function getIsOnlyMayorista()
+    {
+    	return $this->isOnlyMayorista;
     }
     
     /**

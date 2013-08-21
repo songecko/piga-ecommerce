@@ -245,7 +245,7 @@ class MenuBuilder extends ContainerAware
     	))->setLabel('LOCALES');
     
     	$menu->addChild('mayorista', array(
-    		//'route' => 'pigalle_product_index',
+    		'route' => 'pigalle_mayorista_index',
     	))->setLabel('MAYORISTA');
     }
    

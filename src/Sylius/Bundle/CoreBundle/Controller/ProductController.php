@@ -83,33 +83,11 @@ class ProductController extends ResourceController
 	 */
 	public function indexAction(Request $request)
 	{
-		$config = $this->getConfiguration();
-	
-		$filter = $request->query->get('f');
-		if (!$filter)
-			$filter = array();
-	
-		 
-		$paginator = $this
-		->getRepository()
-		->createFilterPaginator($filter)
-		;
-	
-		$paginator->setMaxPerPage($config->getPaginationMaxPerPage());
-		$paginator->setCurrentPage($request->query->get('page', 1));
-	
-		$params = array(
-			'products' => $paginator,
+		$filterDefaults = array(
+			'is_only_mayorista' => false
 		);
 		
-		if($request->isXmlHttpRequest())
-		{
-			$arguments = $config->getArguments();
-			$spPageTemplate = $arguments['spPageTemplate'];
-			return $this->render($spPageTemplate, $params);
-		}
-		
-		return $this->renderResponse('index.html', $params);
+		return $this->renderResponse('index.html', $this->getViewParams($request, null, $filterDefaults));;
 	}
 	
     /**
@@ -122,43 +100,72 @@ class ProductController extends ResourceController
      */
     public function indexByTaxonAction(Request $request, $permalink)
     {
-        $config = $this->getConfiguration();
-
-        $taxon = $this->get('sylius.repository.taxon')
-            ->findOneByPermalink($permalink);
-
-        if (!isset($taxon)) {
-            throw new NotFoundHttpException('Requested taxon does not exist');
-        }
-
-        $filter = $request->query->get('f');
-        if (!$filter)
-        	$filter = array();
-        
-         
-        $paginator = $this
-            ->getRepository()
-            ->createByTaxonPaginator($taxon, $filter)
-        ;
-
-        $paginator->setMaxPerPage($config->getPaginationMaxPerPage());
-        $paginator->setCurrentPage($request->query->get('page', 1));
-		
-        $params = array(
-        	'taxon'    => $taxon,
-        	'products' => $paginator,
-        );
-        
-        if($request->isXmlHttpRequest())
-        {
-        	$arguments = $config->getArguments();
-        	$spPageTemplate = $arguments['spPageTemplate'];
-        	return $this->render($spPageTemplate, $params);
-        }
-        
-        return $this->renderResponse('indexByTaxon.html', $params);
+        $filterDefaults = array(
+    		'is_only_mayorista' => false
+    	);
+    	
+        return $this->renderResponse('indexByTaxon.html', $this->getViewParams($request, $permalink, $filterDefaults));
     }
 
+    protected function getViewParams($request, $permalink = null, $filterDefaults = array())
+    {
+    	$config = $this->getConfiguration();
+    	
+    	$params = array(); //Empty array by default
+    	
+    	$filter = $request->query->get('f');
+    	if (!$filter)
+    		$filter = array();    	
+    	$filter = array_merge($filter, $filterDefaults);
+    	
+    	if($permalink)
+    	{
+    		$taxon = $this->get('sylius.repository.taxon')
+    			->findOneByPermalink($permalink);
+    	
+    		if (!isset($taxon)) {
+	    		throw new NotFoundHttpException('Requested taxon does not exist');
+    		}
+    	 
+	    	$paginator = $this
+    			->getRepository()
+    			->createByTaxonPaginator($taxon, $filter)
+    		;
+	    	
+	    	$params['taxon'] = $taxon;
+    	}else 
+    	{
+    		$paginator = $this
+    			->getRepository()
+    			->createFilterPaginator($filter)
+    		;
+    	}
+    	
+    	$paginator->setMaxPerPage($config->getPaginationMaxPerPage());
+    	$paginator->setCurrentPage($request->query->get('page', 1));
+    	
+    	$params['products'] = $paginator;
+    	
+    	return $params;
+    }
+    
+    public function renderResponse($templateName, array $parameters = array())
+    {
+    	$request = $this->getRequest();
+    	$config = $this->getConfiguration();
+    	
+    	if($request->isXmlHttpRequest())
+    	{
+    		$arguments = $config->getArguments();
+    		$templateName = $arguments['spPageTemplate'];
+    	}else 
+    	{
+    		$templateName = $this->getConfiguration()->getTemplate($templateName);
+    	}
+    	
+    	return $this->render($templateName, $parameters);
+    }
+    
     /**
      * Render product filter form.
      *

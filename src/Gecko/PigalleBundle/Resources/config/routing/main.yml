@@ -33,7 +33,11 @@ sylius_province_choice_form:
 pigalle_collection:
     pattern:     /colecciones
     defaults:    { _controller: PigalleBundle:Main:collection }
-              
+         
+pigalle_mayorista:
+    resource: @PigalleBundle/Resources/config/routing/mayorista.yml
+    prefix:   /mayorista
+         
 #sylius_partial:
 #    resource: @SyliusWebBundle/Resources/config/routing/partial/main.yml
 #    prefix: /_partial

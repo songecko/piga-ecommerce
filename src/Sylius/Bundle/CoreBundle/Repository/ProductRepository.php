@@ -21,7 +21,7 @@ use Doctrine\ORM\QueryBuilder;
  * @author Paweł Jędrzejewski <pjedrzejewski@diweb.pl>
  */
 class ProductRepository extends CustomizableProductRepository
-{
+{	
 	/**
 	 * Find for featured products
 	 * 
@@ -30,12 +30,11 @@ class ProductRepository extends CustomizableProductRepository
 	 */
 	public function findFeaturedProducts($max = null)
 	{
-		$qb =  $this->getQueryBuilder()
-			->andWhere('variant.master = 1')
-			->andWhere('variant.onHand > 0')
-			->andWhere('product.isFeatured = 1')
-			->groupBy('product.id')			
-			->orderBy('product.updatedAt', 'DESC');
+		$criteria = array(
+			'only_with_stock' => true,
+			'is_featured' => true
+		);
+		$qb =  $this->createFilterQueryBuilder($criteria);
 		
 		if($max)
 		{
@@ -46,7 +45,7 @@ class ProductRepository extends CustomizableProductRepository
 	}
 	
 	public function getByTaxonQueryBuilder(TaxonInterface $taxon, $criteria = array(), $sorting = array())
-	{
+	{			
 		$queryBuilder = $this->createFilterQueryBuilder($criteria, $sorting);
 		
 		$queryBuilder
@@ -68,6 +67,7 @@ class ProductRepository extends CustomizableProductRepository
      */
     public function createByTaxonPaginator(TaxonInterface $taxon, $criteria = array(), $sorting = array())
     {
+    	$criteria['only_with_stock'] = true;
         $queryBuilder = $this->getByTaxonQueryBuilder($taxon, $criteria, $sorting);
 
         return $this->getPaginator($queryBuilder);
@@ -83,6 +83,7 @@ class ProductRepository extends CustomizableProductRepository
      */
     public function createFilterPaginator($criteria = array(), $sorting = array())
     {
+    	$criteria['only_with_stock'] = true;    	
         return $this->getPaginator($this->createFilterQueryBuilder($criteria, $sorting));
     }
 
@@ -96,29 +97,49 @@ class ProductRepository extends CustomizableProductRepository
      */
     public function createFilterQueryBuilder($criteria = array(), $sorting = array())
     {
-    	$queryBuilder = $this->getCollectionQueryBuilder()
-    		->select('product, variant')
-    		->leftJoin('product.variants', 'variant')
-    	;
+    	$queryBuilder = $this->getQueryBuilder()
+			->andWhere('variant.master = 1')
+			->groupBy('product.id')	;
     
-    	if (!empty($criteria['name'])) {
+    	if (!empty($criteria['name'])) 
+    	{
     		$queryBuilder
     		->andWhere('product.name LIKE :name')
     		->setParameter('name', '%'.$criteria['name'].'%')
     		;
     	}
-    	if (!empty($criteria['sku'])) {
+    	if (!empty($criteria['sku'])) 
+    	{
     		$queryBuilder
     		->andWhere('variant.sku = :sku')
     		->setParameter('sku', $criteria['sku'])
     		;
     	}
-    	if (!empty($criteria['only_offer']) && $criteria['only_offer'] == true) {
+    	if (isset($criteria['only_offer']) && $criteria['only_offer'] == true) 
+    	{
     		$queryBuilder
-    		->andWhere('product.priceWithoutDiscount > 0')
+    			->andWhere('product.priceWithoutDiscount > 0')
     		;
     	}
+    	
+    	if (isset($criteria['only_with_stock']) && $criteria['only_with_stock'] == true) 
+    	{
+    		$queryBuilder->andWhere('variant.onHand > 0');
+    	}
+    	
+    	if (isset($criteria['is_featured']))
+    	{
+    		$queryBuilder
+    			->andWhere('product.isFeatured = :isFeatured')
+    			->setParameter('isFeatured', $criteria['is_featured']);
+    	}
     
+    	if (isset($criteria['is_only_mayorista']) && $criteria['is_only_mayorista'] === false)
+    	{
+    		$queryBuilder
+    			->andWhere('product.isOnlyMayorista = false');
+    	}
+    	
     	if (empty($sorting)) {
     		if (!is_array($sorting)) {
     			$sorting = array();

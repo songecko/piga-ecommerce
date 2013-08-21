@@ -17,7 +17,7 @@ class ProductController extends Controller
         ));
     }
     
-    public function filtersAction(Request $request)
+    public function filtersAction(Request $request, $route = 'pigalle_product_index', $routeByTaxon = 'pigalle_product_index_by_taxon')
 	{
 		$filters = $request->query->get('f');
 		
@@ -26,7 +26,9 @@ class ProductController extends Controller
     	
     	return $this->render('PigalleBundle:Product:filters.html.twig', array(
     			'filters' => $filters,
-    			'taxonomies' => $taxonomies
+    			'taxonomies' => $taxonomies, 
+    			'route' => $route, 
+    			'routeByTaxon' => $routeByTaxon
     	));
     }
 }

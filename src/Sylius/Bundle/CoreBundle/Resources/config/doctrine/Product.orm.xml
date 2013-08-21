@@ -11,6 +11,7 @@
         </id>
         <field name="shortDescription" column="short_description" type="string" nullable="true" />
         <field name="isFeatured" column="is_featured" type="boolean" nullable="false" default="false" />
+        <field name="isOnlyMayorista" column="is_only_mayorista" type="boolean" nullable="false" default="false" />
         <field name="priceWithoutDiscount" column="price_without_discount" type="float" nullable="true" />
         <field name="variantSelectionMethod" column="variant_selection_method" type="string" nullable="false" />
         <one-to-many field="variants" target-entity="Sylius\Bundle\AssortmentBundle\Model\Variant\VariantInterface" mapped-by="product">

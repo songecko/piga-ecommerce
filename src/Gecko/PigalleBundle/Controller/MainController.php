@@ -44,7 +44,7 @@ class MainController extends Controller
     			->findOneByPermalink($typeQuery);
     	}
     	
-    	$queryBuilder = $this->get('sylius.repository.product')->getByTaxonQueryBuilder($season);
+    	$queryBuilder = $this->get('sylius.repository.product')->getByTaxonQueryBuilder($season, array('only_with_stock' => false));
     	
     	if($type)
     	{

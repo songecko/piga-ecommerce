@@ -12,7 +12,13 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: sylius_user_profile }
-                        
+    
+    pigalle.controller.mayorista:
+        class: Gecko\PigalleBundle\Controller\MayoristaController
+        arguments: [sylius, product, SyliusAssortmentBundle:Product]
+        calls:
+          - [ setContainer, ["@service_container"] ]
+          
     pigalle.menu_builder:
         class: %pigalle.menu_builder.class%
         arguments: [@knp_menu.factory, @security.context, @translator]

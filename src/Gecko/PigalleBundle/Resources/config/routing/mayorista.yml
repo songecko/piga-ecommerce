@@ -1,0 +1,19 @@
+pigalle_mayorista_index:
+    pattern: /
+    defaults:
+        _controller: pigalle.controller.mayorista:indexAction
+        _sylius:
+            paginate: 9
+            template: PigalleBundle:Mayorista:index.html.twig
+            arguments: 
+              spPageTemplate: PigalleBundle:Product:indexSpPage.html.twig
+            
+pigalle_mayorista_index_by_taxon:
+    pattern: /t/{permalink}
+    defaults:
+        _controller: pigalle.controller.mayorista:indexByTaxonAction
+        _sylius:
+            paginate: 9
+            template: PigalleBundle:Mayorista:index.html.twig
+            arguments: 
+              spPageTemplate: PigalleBundle:Product:indexSpPage.html.twig

@@ -4,9 +4,9 @@
 	<div class="filter filterAccordion">
 		<a class="accordionHeader collapsed" data-toggle="collapse" href="#filterAccordionBody{{ loop.index }}">{{ taxonomy.name }}</a>
 		<ul id="filterAccordionBody{{ loop.index }}" class="collapse">
-			<li><a href="{{ path('pigalle_product_index') }}">Todos</a></li>
+			<li><a href="{{ path(route) }}">Todos</a></li>
 			{% for taxon in taxonomy.taxons %}
-			<li><a href="{{ path('pigalle_product_index_by_taxon', { 'permalink': taxon.permalink }) }}">{{ taxon.name }}</a></li>
+			<li><a href="{{ path(routeByTaxon, { 'permalink': taxon.permalink }) }}">{{ taxon.name }}</a></li>
 			{% endfor %}
 		</ul>
 	</div>

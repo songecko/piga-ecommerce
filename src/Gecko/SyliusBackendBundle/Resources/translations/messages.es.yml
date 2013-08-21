@@ -33,6 +33,7 @@ sylius:
             short_description: "Descripción corta"
             price_without_discount: "Precio sin oferta"
             is_featured: "Es destacado?"
+            is_only_mayorista: "Solo para mayoristas?"
         user:
             first_name: "Nombre" 
             email:    "Email"
@@ -53,6 +54,7 @@ sylius:
         name:         "Nombre"
         price:        "Precio"
         is_featured:  "Es destacado?"
+        is_only_mayorista: "Solo para mayoristas?"
         updated_at:   "Actualizado el"
         create:       "Nuevo producto"
         no_results:   "No hay productos"
