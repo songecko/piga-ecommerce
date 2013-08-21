@@ -181,23 +181,23 @@ class MenuBuilder extends ContainerAware
     	))->setLabel('Locales');
     	 
     	$menu->addChild('cart', array(
-    			'route' => 'sylius_cart_summary',
+    		'route' => 'sylius_cart_summary',
     	))->setLabel('Bolsa de compras');
     	 
     	if($this->securityContext->isGranted('ROLE_USER'))
     	{
     		$menu->addChild('account', array(
-    				'route' => 'sylius_account_profile',
+    			'route' => 'sylius_account_profile',
     		))->setLabel('Mi cuenta');
     	}else
     	{
     		$menu->addChild('login', array(
-    				'route' => 'fos_user_security_login',
+    			'route' => 'fos_user_security_login',
     		))->setLabel('Login');
     	}
     
     	$menu->addChild('contacto', array(
-    			//'route' => 'sylius_backend_taxonomy_index',
+    		'route' => 'pigalle_contact',
     	))->setLabel('Contacto');
     	 
     	return $menu;
@@ -237,7 +237,7 @@ class MenuBuilder extends ContainerAware
     	->setLabel('<img src="'.$this->container->get('templating.helper.assets')->getUrl('bundles/pigalle/images/ico-facebook.png').'" alt="Facebook" />');
     	
     	$menu->addChild('contacto', array(
-    		//'route' => 'sylius_backend_taxonomy_index',
+    		'route' => 'pigalle_contact',
     	))->setLabel('CONTACTO');
     
     	$menu->addChild('locales', array(

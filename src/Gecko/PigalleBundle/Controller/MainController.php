@@ -4,6 +4,7 @@ namespace Gecko\PigalleBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Gecko\PigalleBundle\Form\Type\ContactType;
 
 class MainController extends Controller
 {
@@ -15,6 +16,41 @@ class MainController extends Controller
     public function faqAction()
     {
     	return $this->render('PigalleBundle:Main:faq.html.twig');
+    }
+    
+    public function contactAction(Request $request)
+    {
+    	$form = $this->createForm(new ContactType());
+    	
+    	if ($request->isMethod('POST')) 
+    	{
+    		$form->bind($request);
+    		
+    		if ($form->isValid()) {
+    			$message = \Swift_Message::newInstance()
+    			->setSubject("[Pigalle] Nuevo contacto desde la web")
+    			->setFrom($form->get('email')->getData())
+    			->setTo('songecko@gmail.com')
+    			->setBody(
+    					$this->renderView(
+    						'PigalleBundle:Main:contact_mail.html.twig',
+    						array(
+    							'values' => $form->getData(),
+    						)
+    					)
+    			);
+    	
+    			$this->get('mailer')->send($message);
+    	
+    			$request->getSession()->getFlashBag()->add('success', 'Su consulta fué enviada correctamente. Le responderemos a la brevedad');
+    	
+    			return $this->redirect($this->generateUrl('pigalle_contact'));
+    		}
+    	}
+    	
+    	return $this->render('PigalleBundle:Main:contact.html.twig', array(
+    		'form' => $form->createView()
+    	));
     }
     
     public function collectionAction(Request $request)
