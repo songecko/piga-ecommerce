@@ -862,3 +862,43 @@ input[type="radio"].toggle + label {
 	border-top: 1px solid #000000;
 	padding: 10px 0;
 }
+
+/*** CONTACT ***/
+.contact .row-fluid {
+	margin-top: 45px;
+}
+.contact .span6 {
+	min-height: 480px;
+}
+.contact .form fieldset 
+{
+	width: 300px;
+}
+.contact .form input, .contact .form textarea {
+	width: 300px;
+}
+.contact .form textarea {
+	height: 135px;
+}
+.contact .form label {
+	font-weight: bold;
+}
+.contact .data {
+	border-left: 1px solid #000000;
+	padding-left: 90px;
+}
+.contact .data p {
+	font-size: 14px;
+	line-height: 12px;
+}
+.contact .data p.name {
+	font-weight: bold;
+}
+.contact .data .map {
+	margin-top: 10px;
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
