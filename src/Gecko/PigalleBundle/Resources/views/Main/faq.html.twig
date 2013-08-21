@@ -1,0 +1,29 @@
+{% extends 'PigalleBundle::layout.html.twig' %}
+
+{% block content %}
+<div class="faq">
+	<div class="contentTitle"><h3 class="titleSection container">Preguntas Frecuentes (F.A.Q.)</h3></div>
+	<div class="container content">
+		<div id="faqs">
+			{% for i in 1..7 %}
+  			<div class="faqItem">
+    			<div class="question">
+      				<a data-toggle="collapse" data-parent="#faqs" href="#faq{{ loop.index }}">
+      					{{ loop.index }}. Lorem ipsum dolor sit?
+      				</a>
+    			</div>
+    			<div id="faq{{ loop.index }}" class="answer collapse">
+    				<div class="answer-content">
+	        			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eu ultrices odio, elementum feugiat ante. Suspendisse condimentum dolor nec arcu mattis 
+						tincidunt. Curabitur lobortis scelerisque dictum. Ut vestibulum ante risus, ultrices porttitor ipsum mattis bibendum. Donec et massa et eros gravida vehicula 
+						non ac sem. Duis laoreet sapien sit amet orci tincidunt suscipit. Aliquam ut erat justo. Quisque molestie arcu at dui imperdiet tincidunt. Nunc quis consectetur 
+						lectus, vel molestie eros. Praesent in mauris sed nibh porta blandit quis at sapien. Sed quam ligula, auctor viverra suscipit ut, elementum eget leo. Etiam 
+						volutpat massa vitae lectus suscipit posuere. Phasellus sit amet tortor ut nisl volutpat tristique.
+    				</div>
+    			</div>
+  			</div>
+  			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock %}

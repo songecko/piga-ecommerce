@@ -842,3 +842,23 @@ input[type="radio"].toggle + label {
 	color: #000000;
 	top: 43%;
 }
+
+/*** FAQ ***/
+.faq #faqs {
+	margin-top: 20px;
+	min-height: 300px;
+}
+.faq .faqItem {
+	margin-bottom: 10px;
+}
+.faq .question {
+	font-size: 16px;
+	text-transform: uppercase;
+}
+.faq .answer .answer-content {
+	font-size: 14px;
+	border-bottom: 1px solid #000000;
+	margin: 10px 0;
+	border-top: 1px solid #000000;
+	padding: 10px 0;
+}

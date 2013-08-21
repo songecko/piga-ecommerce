@@ -37,7 +37,11 @@ pigalle_collection:
 pigalle_mayorista:
     resource: @PigalleBundle/Resources/config/routing/mayorista.yml
     prefix:   /mayorista
-         
+
+pigalle_faq:
+    pattern:     /faq
+    defaults:    { _controller: PigalleBundle:Main:faq }
+             
 #sylius_partial:
 #    resource: @SyliusWebBundle/Resources/config/routing/partial/main.yml
 #    prefix: /_partial

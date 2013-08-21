@@ -12,6 +12,11 @@ class MainController extends Controller
         return $this->render('PigalleBundle:Main:index.html.twig');
     }
     
+    public function faqAction()
+    {
+    	return $this->render('PigalleBundle:Main:faq.html.twig');
+    }
+    
     public function collectionAction(Request $request)
     {
     	//Get all taxonomies    	

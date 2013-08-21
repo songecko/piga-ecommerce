@@ -84,4 +84,10 @@ $(document).ready(function()
 			setupQuickviewButtons();
 		}
 	});
+	
+	//Check if we have a faq hash
+	if(location.hash.indexOf('#faq') > -1)
+	{
+		$(location.hash).collapse('show');
+	}
 });
