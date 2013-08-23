@@ -12,6 +12,7 @@
 				{{ render(controller('PigalleBundle:Product:filters', { 'request' : app.request, 'route': 'pigalle_mayorista_index', 'routeByTaxon': 'pigalle_mayorista_index_by_taxon' } )) }}
 			</div>
 			<div class="products scrollPagination span9" data-sp-total-pages="{{ products.getNbPages }}" data-sp-load-url="{{ app.request.getUri }}">
+				{{ pagination(products) }}
 				<div class="grid spContent">			
 					{{ grid(products) }}
 				</div>

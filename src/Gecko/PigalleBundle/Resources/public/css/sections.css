@@ -374,6 +374,29 @@ input[type="radio"].toggle + label {
 	background-image: url(../../../bundles/pigalle/images/arrow_up.png);
 }
 
+.products .pagination ul>li>a, .products .pagination ul>li>span {
+	border: none;
+	padding: 4px 10px;
+}
+
+.products .pagination ul>.active>a, .products .pagination ul>.active>span {
+	color: #000000;
+	cursor: default;
+	font-weight: bold;
+}
+
+.products .pagination  {
+	margin-top: 0;
+	text-align: right;
+}
+
+.products .pagination ul {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+
 .shop .products .spLoadMoreButton {
 	width: 100%;
 }
@@ -725,12 +748,12 @@ input[type="radio"].toggle + label {
  /*** LA MARCA ***/
  .laMarca .description {
  	font-size: 14px;
- 	margin: 40px 0;
+ 	margin: 25px 0;
  	line-height: 20px;
  }
  
  .laMarca ul {
- 	margin-top: 50px;
+ 	margin-top: 35px;
  }
  
  .laMarca ul li {
@@ -802,7 +825,7 @@ input[type="radio"].toggle + label {
 	padding-bottom: 10px;
 }
 .collection .filters {
-	margin-bottom: 20px;
+	margin-bottom: 0px;
 }
 .collection .filter {
 	float: left;
@@ -813,6 +836,10 @@ input[type="radio"].toggle + label {
 	position: absolute;
 	background-color: #efeeee;
 	width: 225px;
+}
+.collection .products .facebookLike {
+	text-align: right;
+	margin-bottom: 7px;
 }
 .collection .image {
 	width: 100%;

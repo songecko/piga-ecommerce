@@ -31,6 +31,9 @@
 			<div class="carousel-inner">
 				{% for product in products %}
 				<div class="item{{ loop.first?' active':'' }}">
+					<div class="facebookLike">
+						<div class="fb-like" data-href="{{ url('pigalle_product_show', {'slug': product.slug}) }}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
+					</div>
 					<div class="image">
 						<img src="{{ product.image.path|imagine_filter('pigalle_460x460') }}" />
 					</div>

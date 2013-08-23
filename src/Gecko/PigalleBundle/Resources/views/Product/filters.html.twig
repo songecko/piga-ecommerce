@@ -1,6 +1,6 @@
 <form method="get">
 	{% for taxonomy in taxonomies %}
-	{% if taxonomy.name != 'Temporada' %}
+	{% if route == 'pigalle_mayorista_index' or taxonomy.name != 'Temporada' %}
 	<div class="filter filterAccordion">
 		<a class="accordionHeader collapsed" data-toggle="collapse" href="#filterAccordionBody{{ loop.index }}">{{ taxonomy.name }}</a>
 		<ul id="filterAccordionBody{{ loop.index }}" class="collapse">
