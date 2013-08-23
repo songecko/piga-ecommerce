@@ -462,12 +462,12 @@ div.hr hr {
 }
 #footer .footerContent { 
 	background: #000000;
-	padding: 10px 0 15px
+	padding: 20px 0 15px
 }
 #footer h3, #footer p, #footer a, #footer span { 
 	color: #FFF;
 	font-size: 11px;
-	line-height: 19px;
+	line-height: 18px;
 }
 #footer h3 {
 	font-weight:700;
@@ -476,13 +476,19 @@ div.hr hr {
 #footer p a {
 	text-decoration:underline;
 }
-#footer li { list-style: none; }
+#footer li { 
+	list-style: none;
+	line-height: 18px; 
+}
 
 #footer .dataFiscal {
 	text-align:center;
 }
+#footer .dataFiscal img {
+	height: 154px;
+}
 #footer .logo {
-	padding-top: 46px;
+	padding-top: 35px;
 	text-align:center;
 }
 

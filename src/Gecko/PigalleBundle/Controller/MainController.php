@@ -42,7 +42,7 @@ class MainController extends Controller
     	
     			$this->get('mailer')->send($message);
     	
-    			$request->getSession()->getFlashBag()->add('success', 'Su consulta fué enviada correctamente. Le responderemos a la brevedad');
+    			$request->getSession()->getFlashBag()->add('sended', 'Su consulta fué enviada correctamente. Le responderemos a la brevedad');
     	
     			return $this->redirect($this->generateUrl('pigalle_contact'));
     		}

@@ -9,7 +9,7 @@
     		Verifique los datos ingresados. Todos los campos son obligatorios.
 		</div>
 		{% endif %}
-		{% for message in app.session.flashbag.get('success') %}
+		{% for message in app.session.flashbag.get('sended') %}
 		<div class="success">
     		{{ message }}
 		</div>
