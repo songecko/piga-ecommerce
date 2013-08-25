@@ -382,6 +382,15 @@ div.hr hr {
 	filter: alpha(opacity=100);
 }
 
+.sectionMessage {
+	text-align:center;
+}
+.sectionMessage h2 {
+	font-family: 'Croissant One';
+	font-size: 24px;	
+	margin: 60px 0 35px 0;
+}
+
 #quickviewCart {
 	position: absolute;
 	top: 36px;

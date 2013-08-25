@@ -4,16 +4,18 @@
 <div class="contact">
 	<div class="contentTitle"><h3 class="titleSection container">Contacto</h3></div>
 	<div class="container content">
+	{% if app.session.flashbag.has('sended') %}
+	{%   for message in app.session.flashbag.get('sended') %}
+		<div class="sectionMessage">
+    		<h2>{{ message|raw }}</h2>
+    	</div>
+    {%   endfor %}
+	{% else %}
 		{% if form.vars.errors|length %}
 		<div class="alert alert-error">
     		Verifique los datos ingresados. Todos los campos son obligatorios.
 		</div>
 		{% endif %}
-		{% for message in app.session.flashbag.get('sended') %}
-		<div class="success">
-    		{{ message }}
-		</div>
-		{% endfor %}
 		
 		<div class="row-fluid">
 			<div class="span6 form">
@@ -58,6 +60,7 @@
 				<iframe class="map"width="380" height="440" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com.ar/maps?f=q&amp;source=s_q&amp;hl=es-419&amp;geocode=&amp;q=Las+Heras+674,+Ramos+Mej%C3%ADa,+Buenos+Aires&amp;aq=0&amp;oq=las&amp;sll=-34.615853,-58.433299&amp;sspn=0.49672,1.056747&amp;ie=UTF8&amp;hq=&amp;hnear=Las+Heras+674,+Ramos+Mej%C3%ADa,+Buenos+Aires&amp;t=m&amp;ll=-34.64027,-58.553009&amp;spn=0.031071,0.03253&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe>
 			</div>
 		</div>
+	{% endif %}
 	</div>
 </div>
 {% endblock %}

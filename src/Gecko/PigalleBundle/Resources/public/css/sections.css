@@ -304,21 +304,13 @@ input[type="radio"].toggle + label {
 	padding: 0 16px;
 	background: #de1b37;
 }
-.cart .emptyCart {
-	text-align:center;
-}
-.cart .emptyCart h2 {
-	font-family: 'Croissant One';
-	font-size: 24px;	
-	margin: 90px 0 50px 0;
-}
 .cart .emptyCart div.hr {
 	width: 480px;
 	margin: 0 auto;
 }
 .cart .emptyCart p {
 	font-size: 16px;	
-	margin: 60px 0 300px 0;
+	margin: 35px 0 100px 0;
 }
 .cart .emptyCart a {
 	text-decoration:underline;
