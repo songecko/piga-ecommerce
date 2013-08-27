@@ -42,8 +42,7 @@ class FinalizeStep extends CheckoutStep
         $this->saveOrder($order);
         $this->getCartProvider()->abandonCart();
 
-        $translator = $this->get('translator');
-        $this->get('session')->getFlashBag()->add('success', $translator->trans('sylius.checkout.success', array(), 'flashes'));
+        $this->get('session')->set('order_number', $order->getNumber());
 
         return $this->complete();
     }

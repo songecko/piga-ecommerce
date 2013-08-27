@@ -1,0 +1,17 @@
+{% extends 'PigalleBundle::layout.html.twig' %}
+
+{% block content %}
+<div class="checkout success">
+	<div class="contentTitle"><h3 class="titleSection container">Proceso de compra - Éxito</h3></div>
+	<div class="container content">
+		<div class="sectionMessage">
+    		<h2>¡Muchas gracias por tu compra! <br> Tu pedido será realizado en 48hs.</h2>
+    		<div class="hr"><hr /></div>
+    		<div class="orderInfo">
+	    		<p>Tu número de pedido es: <span>{{ app.session.get('order_number') }}</span>.</p>
+	    		<p>Podés usar el sistema de tracking desde tu perfil.</p>
+    		</div>
+    	</div>
+	</div>
+</div>
+{% endblock %}

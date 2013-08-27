@@ -850,6 +850,28 @@ input[type="radio"].toggle + label {
 	border: 1px solid #000000;
 }
 
+.checkout.success .content {
+	margin-top: 0;
+}
+
+.checkout.success .hr {
+	width: 448px;
+	margin: 0 auto;
+}
+
+.checkout.success .orderInfo {
+	margin: 35px 0 80px 0;
+}
+
+.checkout.success .orderInfo p {
+	font-size: 14px;
+	margin: 0;
+}
+
+.checkout.success .orderInfo p span {
+	font-weight: bold;
+}
+
  /*** LA MARCA ***/
 .laMarca .description {
 	font-size: 14px;

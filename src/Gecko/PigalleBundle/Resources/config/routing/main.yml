@@ -21,10 +21,14 @@ sylius_account:
     resource: @PigalleBundle/Resources/config/routing/account.yml
     prefix: /mi-cuenta
     
+pigalle_checkout_success:
+    pattern:     /checkout/gracias
+    defaults:    { _controller: PigalleBundle:Main:checkoutSuccess }
+    
 sylius_checkout:
     resource: @PigalleBundle/Resources/config/routing/checkout.yml
     prefix: /checkout
-
+    
 sylius_province_choice_form:
     pattern: /province/choice-form
     defaults:

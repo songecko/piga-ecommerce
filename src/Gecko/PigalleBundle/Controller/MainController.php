@@ -103,6 +103,11 @@ class MainController extends Controller
     	));
     }
     
+    public function checkoutSuccessAction()
+    {
+    	return $this->render('PigalleBundle:Main:checkoutSuccess.html.twig');
+    }
+    
     public function laMarcaAction()
     {
     	return $this->render('PigalleBundle:Main:laMarca.html.twig');

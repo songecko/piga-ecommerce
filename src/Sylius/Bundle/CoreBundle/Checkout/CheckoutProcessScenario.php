@@ -57,7 +57,7 @@ class CheckoutProcessScenario implements ProcessScenarioInterface
         $builder
             ->setDisplayRoute('sylius_checkout_display')
             ->setForwardRoute('sylius_checkout_forward')
-            ->setRedirect('pigalle_homepage')
+            ->setRedirect('pigalle_checkout_success')
             ->validate(function () use ($cart) {
                 return !$cart->isEmpty();
             })
