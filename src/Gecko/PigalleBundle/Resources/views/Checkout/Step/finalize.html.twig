@@ -14,16 +14,16 @@
 			</div>
 			<div class="span8 finalizeData">
 				<h2>Resumen de tu compra</h2>
-				<div class="addresses">
-					<div>
-						<p>Dirección de envio</p>
+				<div class="addresses clearfix">
+					<div class="address">
+						<p class="title">Dirección de envio:</p>
 						<p>{{ order.shippingAddress.firstname }}</p>
 						<p>{{ order.shippingAddress.street }}</p>
 						<p>{{ order.shippingAddress.postcode }}, {{ order.shippingAddress.city }}</p>
 						<p>{{ order.shippingAddress.province }}</p>						
 					</div>
-					<div>
-						<p>Dirección de facturación</p>
+					<div class="address">
+						<p class="title">Dirección de facturación:</p>
 						<p>{{ order.billingAddress.firstname }}</p>
 						<p>{{ order.billingAddress.street }}</p>
 						<p>{{ order.billingAddress.postcode }}, {{ order.billingAddress.city }}</p>
@@ -31,32 +31,32 @@
 					</div>
 				</div>
 				<div class="products">
-					<h3>Productos elegidos</h3>
-					<table>						
+					<h3 class="title">Productos elegidos:</h3>
+					<table class="list">						
 						{% for item in order.items %}
             			{% include 'PigalleBundle:Checkout/Step/Finalize:_item.html.twig' %}
         				{% endfor %}
 					</table>
 				</div>
 				
-				<ul>
+				{#<ul>
 					{% for taxAdjustment in order.taxAdjustments %}
 	                <li>{{ taxAdjustment.description }} {{ taxAdjustment.amount|price }} </li>
 	            	{% else %}
 	                <li><span class="label label-info">{{ 'sylius.checkout.finalize.order.no_taxes'|trans }}</span></li>
 	            	{% endfor %}
-            	</ul>
+            	</ul>#}
             	
-            	<ul>
-            		{% for adjustment in order.shippingAdjustments %}
-                	<li>{{ adjustment.description }} {{ adjustment.amount|price }} </li>
-            		{% else %}
-                	<li><span class="label label-info">{{ 'sylius.checkout.finalize.order.no_shipping_charges'|trans }}</span></li>
+            	<div class="shipping">
+					<h3 class="title">Método de envio:</h3>
+					{% for adjustment in order.shippingAdjustments %}
+                	<p>{{ adjustment.description }}: <span>{{ adjustment.amount|price }}</span></p>
             		{% endfor %}
-            	</ul>
-            	<strong>{{ 'sylius.checkout.finalize.order.tax_total'|trans }}</strong>: {{ order.taxTotal|price }}
+				</div>
+				
+            	{#<strong>{{ 'sylius.checkout.finalize.order.tax_total'|trans }}</strong>: {{ order.taxTotal|price }}#}
             	
-            	{% if order.promotionAdjustments|length > 0 %}
+            	{# {% if order.promotionAdjustments|length > 0 %}
 	            <p><strong>Descuentos</strong></p>
 	            <ul>
 	            	{% for adjustment in order.promotionAdjustments %}
@@ -64,14 +64,17 @@
 	                {% endfor %}
 	            </ul>
 				<strong>{{ 'sylius.checkout.finalize.order.promotion_total'|trans }}</strong>: {{ order.promotionTotal|price }}
-		        {% endif %}
+		        {% endif %}#}
 		        
-		        <strong>Total</strong>: {{ order.total|price }}
+		        <div class="total">
+					<p class="title">TOTAL:</p>
+					<div class="flag">
+						<p>{{ order.total|price }}</p>
+						<div class="tail">&nbsp;</div>
+					</div>
+					<a href="{{ path('sylius_checkout_forward', {'stepName': context.currentStep.name}) }}" class="button checkoutButton">Finzalizar compra</a>
+				</div>
 			</div>
-		</div>
-		
-		<div class="stepActions">
-			<a href="{{ path('sylius_checkout_forward', {'stepName': context.currentStep.name}) }}" class="button">Finzalizar compra</button>
 		</div>
 	</div>
 </div>

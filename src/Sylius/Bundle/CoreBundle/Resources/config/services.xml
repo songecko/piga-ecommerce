@@ -42,6 +42,7 @@
 
         <parameter key="sylius.promotion_action.fixed_discount.class">Sylius\Bundle\CoreBundle\Promotion\Action\FixedDiscountAction</parameter>
         <parameter key="sylius.promotion_action.percentage_discount.class">Sylius\Bundle\CoreBundle\Promotion\Action\PercentageDiscountAction</parameter>
+        <parameter key="sylius.shipping_calculator.oca.class">Sylius\Bundle\CoreBundle\Shipping\OcaCalculator</parameter>
     </parameters>
 
     <services>
@@ -137,6 +138,10 @@
         <service id="sylius.order_processing.shipping_processor" class="%sylius.order_processing.shipping_processor.class%">
             <argument type="service" id="sylius.repository.adjustment" />
             <argument type="service" id="sylius.shipping_calculator" />
+        </service>
+        
+        <service id="sylius.shipping_calculator.oca" class="%sylius.shipping_calculator.oca.class%">
+            <tag name="sylius.shipping_calculator" calculator="oca" label="Oca" />
         </service>
 
         <!-- order listeners -->

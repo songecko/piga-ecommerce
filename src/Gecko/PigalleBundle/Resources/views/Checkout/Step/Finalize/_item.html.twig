@@ -1,19 +1,21 @@
 {% set variant = item.sellable %}
 {% set product = variant.product %}
 <tr>
-	<td class="detalle">
+	<td class="detalles">
 		<div class="photo">
-			<a href="{{ path('pigalle_product_show', {'slug': product.slug}) }}">
-            	<img src="{{ product.image.path|imagine_filter('sylius_138x138') }}" alt="" />
+			<a href="{{ path('pigalle_product_show', {'slug': product.slug}) }}" target="_blank">
+            	<img src="{{ product.image.path|imagine_filter('sylius_60x60') }}" alt="" />
         	</a>
 		</div>
-		<div class="datosProducto">
-			<h3 class="productName"><a href="{{ path('pigalle_product_show', {'slug': product.slug}) }}">{{ product.name }}</a></h3>
-			<p class="productDescription">{{ product.description|default('')|raw }}</p>
-			<p class="talle">Talle: <span>{{ variant.options|first.value }}</span></p>
-		</div>
+		<h3 class="productName"><a href="{{ path('pigalle_product_show', {'slug': product.slug}) }}"  target="_blank">{{ product.name }}</a></h3>
 	</td>
-	<td class="quantity">{{ item.quantity }}</td>
-	<td class="unitPrice">{{ item.unitPrice|price }}</td>
-	<td class="totalPrice">{{ item.total|price }}</td>
+	<td class="talle">
+		<p>Talle: <span>{{ variant.options|first.value }}</span></p>
+	</td>
+	<td class="total">
+		<p class="quantity">Cantidad: <span>{{ item.quantity }}</span></p>
+		<p class="unitPrice">Precio Unitario: <span>{{ item.unitPrice|price }}</span></p>
+		<p class="totalPrice">Total: <span>{{ item.total|price }}</span></p>
+	</td>
 </tr>
+<tr class="separator"><td colspan="3">&nbsp;</td><tr>

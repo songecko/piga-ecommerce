@@ -688,7 +688,7 @@ input[type="radio"].toggle + label {
 }
 
 /*** SHIPPING AND PAYMENT ***/
-.shipping h2, .payment h2 {
+.shipping h2, .payment h2, .finalize h2 {
 	font-size: 16px;
 	text-align: center;
 	margin-bottom: 36px;
@@ -737,23 +737,136 @@ input[type="radio"].toggle + label {
 	border-left: 1px solid #000000;
  }
  
+.finalize .finalizeData {
+	border-left: 1px solid #000000;
+	padding-left: 50px;
+}
+
+.finalize .finalizeData h2 {
+	text-align: left !important;
+	margin-bottom: 10px;
+}
+ 
+.finalize .addresses .address {
+ 	float: left;
+ 	margin-right: 115px;
+ }
+ 
+.finalize .finalizeData p {
+	margin-bottom: 4px;
+}
+
+.finalize .finalizeData .title {
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.finalize .finalizeData p span {
+	font-weight: bold;
+}
+
+.finalize .products {
+	margin-top: 40px;
+}
+
+.finalize .products .list {
+	width: 100%
+}
+
+.finalize .products .list tr.separator {
+	height: 20px;
+}
+
+.finalize .products .list td {
+	padding: 0 10px;
+}
+
+.finalize .products .list td {
+	padding: 0 10px;
+}
+
+
+
+.finalize .products .list .detalles {
+	width: 40%;
+}
+
+.finalize .products .list .detalles .photo {
+	float: left;
+}
+
+.finalize .products .list .detalles .productName {
+	float: left;
+	line-height: 60px;
+	margin: 0 0 0 10px;
+	font-family: 'Croissant One';
+	font-size: 14px;
+}
+
+.finalize .products .list .talle {
+	width: 25%;
+	border-left: 1px solid black;
+	text-align: center;
+}
+
+.finalize .products .list .total {
+	width: 35%;
+	border-left: 1px solid black;
+}
+
+.finalize .finalizeData .shipping {
+	margin-top: 40px;
+}
+
+.finalize .finalizeData div.total {
+	width: 100%;
+	border-top: 1px solid black;
+	margin-top: 40px;
+}
+
+.finalize .finalizeData div.total p.title {
+	float: left;
+	margin-left: 240px;
+	line-height: 50px;
+}
+
+.finalize .finalizeData div.total .flag {
+	margin-left: 25px;
+	float: left;
+	position: static;
+}
+
+.finalize .finalizeData div.total .flag p {
+	margin: 0;
+}
+
+.finalize .finalizeData div.total .button {
+	margin: 10px 0px 0px 12px;
+	float: right;
+	padding: 0 16px;
+	color: #000000;
+	font-weight: bold;
+	background: #ffdaca;
+	border: 1px solid #000000;
+}
+
  /*** LA MARCA ***/
- .laMarca .description {
- 	font-size: 14px;
+.laMarca .description {
+	font-size: 14px;
  	margin: 25px 0;
  	line-height: 20px;
- }
+}
  
- .laMarca ul {
+.laMarca ul {
  	margin-top: 35px;
- }
+}
  
- .laMarca ul li {
+.laMarca ul li {
  	float: left;
 	list-style: none;
 	width: 25%;
 	text-align: center;
- }
+}
  
 .laMarca ul li h3 {
 	font-size: 14px;

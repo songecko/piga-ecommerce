@@ -14,6 +14,7 @@ namespace Sylius\Bundle\CoreBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sylius\Bundle\ShippingBundle\Calculator\DefaultCalculators;
 use Sylius\Bundle\ShippingBundle\Model\ShippingCategoryInterface;
+use Sylius\Bundle\CoreBundle\Shipping\OcaCalculator;
 
 /**
  * Default shipping fixtures.
@@ -33,8 +34,8 @@ class LoadShippingData extends DataFixture
         
         //$config = array('first_item_cost' => 1000, 'additional_item_cost' => 500, 'additional_item_limit' => 0);
         $config = array('amount' => 0);
-        $manager->persist($this->createShippingMethod('Correo "Puerta a Puerta"', 'Argentina', DefaultCalculators::FLAT_RATE, $config));
-        $manager->persist($this->createShippingMethod('Retiro por sucursal oca', 'Argentina', DefaultCalculators::FLAT_RATE, $config));
+        $manager->persist($this->createShippingMethod('Correo "Puerta a Puerta"', 'Argentina', OcaCalculator::OCA, array('Operativa' => '78128')));
+        $manager->persist($this->createShippingMethod('Retiro por sucursal oca', 'Argentina', OcaCalculator::OCA, array('Operativa' => '78129')));
         $manager->persist($this->createShippingMethod('Retiro personalmente', 'Argentina', DefaultCalculators::FLAT_RATE, $config));
         
         $manager->flush();
