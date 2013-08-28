@@ -23,11 +23,11 @@ class OrderFilterType extends AbstractType
                 'required' => false,
                 'label'    => 'sylius.form.order_filter.number'
             ))
-            ->add('totalFrom', 'money', array(
+            ->add('totalFrom', 'text', array(
                 'required' => false,
                 'label'    => 'sylius.form.order_filter.total_from'
             ))
-            ->add('totalTo', 'money', array(
+            ->add('totalTo', 'text', array(
                 'required' => false,
                 'label'    => 'sylius.form.order_filter.total_to'
             ))

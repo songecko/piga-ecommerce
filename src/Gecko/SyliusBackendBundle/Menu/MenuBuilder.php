@@ -88,7 +88,7 @@ class MenuBuilder
 
         $this->addAssortmentMenu($menu, $childOptions, 'main');
         $this->addCustomersMenu($menu, $childOptions, 'main');
-        //$this->addSalesMenu($menu, $childOptions, 'main');
+        $this->addSalesMenu($menu, $childOptions, 'main');
         //$this->addConfigurationMenu($menu, $childOptions, 'main');
 
         return $menu;
@@ -146,8 +146,8 @@ class MenuBuilder
     
     	$this->addAssortmentMenu($menu, $childOptions, 'main');
     	$this->addCustomersMenu($menu, $childOptions, 'main');
-    	//$this->addSalesMenu($menu, $childOptions, 'sidebar');
-    	//$this->addConfigurationMenu($menu, $childOptions, 'sidebar');
+    	$this->addSalesMenu($menu, $childOptions, 'main');
+    	//$this->addConfigurationMenu($menu, $childOptions, 'main');
         $this->addAccountMenu($menu, $childOptions, 'main');
     
     	return $menu;
@@ -215,23 +215,23 @@ class MenuBuilder
             'route' => 'sylius_backend_order_index',
             'labelAttributes' => array('icon' => 'icon-shopping-cart'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.orders', $section)));
-        $child->addChild('new_order', array(
+        /*$child->addChild('new_order', array(
             'route' => 'sylius_backend_order_create',
             'labelAttributes' => array('icon' => 'icon-plus-sign'),
-        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.new_order', $section)));
+        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.new_order', $section)));*/
         $child->addChild('payments', array(
             'route' => 'sylius_backend_payment_index',
             'labelAttributes' => array('icon' => 'icon-money'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.payments', $section)));
 
-        $child->addChild('promotions', array(
+        /*$child->addChild('promotions', array(
             'route' => 'sylius_backend_promotion_index',
             'labelAttributes' => array('icon' => 'icon-bullhorn'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.promotions', $section)));
         $child->addChild('new_promotion', array(
             'route' => 'sylius_backend_promotion_create',
             'labelAttributes' => array('icon' => 'icon-plus-sign'),
-        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.new_promotion', $section)));
+        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.new_promotion', $section)));*/
     }
 
     /**
@@ -266,7 +266,7 @@ class MenuBuilder
             ->setLabel($this->translate(sprintf('sylius.backend.menu.%s.configuration', $section)))
         ;
 
-        $child->addChild('general_settings', array(
+        /*$child->addChild('general_settings', array(
             'route' => 'sylius_backend_general_settings',
             'labelAttributes' => array('icon' => 'icon-cog'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.general_settings', $section)));
@@ -300,13 +300,13 @@ class MenuBuilder
             'route' => 'sylius_backend_shipping_method_index',
             'labelAttributes' => array('icon' => 'icon-truck'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.shipping_methods', $section)));
-
+*/
         $child->addChild('shipments', array(
             'route' => 'sylius_backend_shipment_index',
             'labelAttributes' => array('icon' => 'icon-plane'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.shipments', $section)));
 
-        $child->addChild('countries', array(
+        /*$child->addChild('countries', array(
             'route' => 'sylius_backend_country_index',
             'labelAttributes' => array('icon' => 'icon-flag'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.countries', $section)));
@@ -314,7 +314,7 @@ class MenuBuilder
         $child->addChild('zones', array(
             'route' => 'sylius_backend_zone_index',
             'labelAttributes' => array('icon' => 'icon-globe'),
-        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.zones', $section)));
+        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.zones', $section)));*/
     }
     
     /**

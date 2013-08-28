@@ -38,9 +38,9 @@ sylius_backend_taxon:
     resource: @SyliusBackendBundle/Resources/config/routing/taxon.yml
     prefix: /taxonomies/{taxonomyId}/taxon
 
-#sylius_backend_order:
-#    resource: @SyliusWebBundle/Resources/config/routing/backend/order.yml
-#    prefix: /orders
+sylius_backend_order:
+    resource: @SyliusBackendBundle/Resources/config/routing/order.yml
+    prefix: /orders
 
 #sylius_backend_promotion:
 #    resource: @SyliusWebBundle/Resources/config/routing/backend/promotion.yml
@@ -70,17 +70,17 @@ sylius_backend_taxon:
 #    resource: @SyliusWebBundle/Resources/config/routing/backend/shipping_method.yml
 #    prefix: /shipping-methods
 
-#sylius_backend_shipment:
-#    resource: @SyliusWebBundle/Resources/config/routing/backend/shipment.yml
-#    prefix: /shipments
+sylius_backend_shipment:
+    resource: @SyliusBackendBundle/Resources/config/routing/shipment.yml
+    prefix: /shipments
 
 #sylius_backend_payment_method:
 #    resource: @SyliusWebBundle/Resources/config/routing/backend/payment_method.yml
 #    prefix: /payment-methods
 
-#sylius_backend_payment:
-#    resource: @SyliusWebBundle/Resources/config/routing/backend/payment.yml
-#    prefix: /payments
+sylius_backend_payment:
+    resource: @SyliusBackendBundle/Resources/config/routing/payment.yml
+    prefix: /payments
 
 #sylius_backend_country:
 #    resource: @SyliusWebBundle/Resources/config/routing/backend/country.yml

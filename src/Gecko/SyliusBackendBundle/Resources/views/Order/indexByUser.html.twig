@@ -1,0 +1,5 @@
+{% from 'SyliusBackendBundle:Macros:misc.html.twig' import pagination %}
+{% from 'SyliusBackendBundle:Order:macros.html.twig' import list %}
+
+{{ list(orders, user) }}
+{{ pagination(orders, {'routeName' : 'sylius_backend_user_show', 'routeParams' : {'id' : user.id} }) }}

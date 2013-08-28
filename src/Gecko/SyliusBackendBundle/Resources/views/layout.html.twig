@@ -49,7 +49,7 @@
 		</div>#}
 		
 		<div id="content" class="container-fluid">
-			{% for type in ['success', 'error'] %}
+			{#% for type in ['success', 'error'] %}
 				{% for message in app.session.flashbag.get(type) %}
 				<div class="alert alert-{{ type }}">
 					{% if type == 'success' %}
@@ -60,7 +60,7 @@
 					<a class="close" data-dismiss="alert" href="#">&times;</a>
 				</div>
 				{% endfor %}
-			{% endfor %}
+			{% endfor %#}
 
 	        {% block content %}{% endblock %}
 		</div>

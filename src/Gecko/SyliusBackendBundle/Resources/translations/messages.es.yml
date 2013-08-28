@@ -44,6 +44,12 @@ sylius:
             price:    "Precio"
         taxon:
             parent:        "Categoría padre"
+        order_filter:
+            number:     "N° de pedido"
+            total_from: "Precio desde"
+            total_to:   "Precio hasta"
+            created_at_from: "Fecha desde"
+            created_at_to:   "Fecha hasta"
       
     product:
         index_header: "Productos"
@@ -84,6 +90,68 @@ sylius:
         general_info:  "Información general"
         orders:        "Pedidos realizados"
         manage:        "Administrar usuarios"
+    
+    order:
+        index_header:   "Pedidos"
+        show_header:    "Vista del pedido"
+        update_header:  "Editar pedido"
+        manage:         "Administrar Pedidos"
+        created_at:     "Fecha del pedido"
+        number:         "N° de pedido"
+        payment_state:  "Estado del pago"
+        payment_states:
+            balance_due: "Impago"
+        shipment_states:
+            pending:     "Pendiente"
+        shipment_state: "Estado del envio"
+        user:           "Usuario"
+        total:          "Total"       
+        general_info:   "Información general"
+        id:             "ID"
+        items_total:    "Total de productos"
+        shipping_total: "Envio"
+        tax_total:      "Impuestos"
+        promotion_total: "Descuentos"
+        shipments:       "Envios"
+        shipping_address: "Dirección de envio"
+        billing_address: "Dirección de facturación"
+        taxes:           "Impuestos"
+        no_taxes:        "Sin impuestos"
+        shipping_charges: "Cargos por envio"
+        promotion_discount: "Descuentos"
+        promotion_total:  "Total descuentos"
+    
+    order_item:
+        sellable:        "Producto"
+        quantity:        "Cantidad"
+        unit_price:      "Precio unitario"
+        total:           "Total"
+        
+    shipment:
+        index_header:    "Envios"
+        show_header:     "Vista del envio"
+        manage:          "Administrar envios"
+        id:              "ID"
+        order:           "Pedido"
+        method:          "Método"
+        state:           "Estado"
+        updated_at:      "Actualizado el"
+        name:            "Producto"
+        created_at:      "Fecha de alta"
+        modified:      "Fecha de modificacion"
+    
+    payment:
+        index_header:    "Pagos"
+        show_header:     "Vista del pago"
+        no_results:      "No hay pagos hasta el momento"
+            
+    address:
+        firstname:      "Nombre"
+        country:        "Pais"
+        province:       "Provincia"
+        street:         "Dirección"
+        city:           "Localidad"
+        postcode:       "Código postal"
         
     variant:
         create_header: "Crear talle de producto"
