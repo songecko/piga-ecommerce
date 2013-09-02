@@ -1,13 +1,4 @@
-<?php
-
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
+ <?php
 
 namespace Sylius\Bundle\CoreBundle\Checkout\Step;
 
@@ -29,6 +20,20 @@ class FinalizeStep extends CheckoutStep
     {
         $order = $this->createOrder($context);
 
+        /*$preference_data = array(
+        	"items" => array(
+        		array(
+        			"title" => "Barrilete multicolor",
+        			"quantity" => 1,
+        			"currency_id" => "ARS",
+        			"unit_price" => 10.00
+        		)
+        	)
+        );
+        
+        $mp = new MP('2941808958589998', 'OR3cdSuXJfS4tZlI0N5emDcuyhUXgeRn');
+        $preference = $mp->create_preference($preference_data);
+        ldd($preference['response']['init_point']);*/
         return $this->renderStep($context, $order);
     }
 
