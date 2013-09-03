@@ -17,7 +17,7 @@ class LoadOrdersData extends DataFixture
 {
     public function load(ObjectManager $manager)
     {
-        /*$orderBuilder = $this->get('sylius.builder.order');
+        $orderBuilder = $this->get('sylius.builder.order');
 
         for ($i = 1; $i <= 50; $i++) {
             $orderBuilder->create();
@@ -31,7 +31,7 @@ class LoadOrdersData extends DataFixture
             $order = $orderBuilder->getOrder();
 
             $shipment = $this->getShipmentRepository()->createNew();
-            $shipment->setMethod($this->getReference('Sylius.ShippingMethod.UPS Ground'));
+            $shipment->setMethod($this->getReference('Sylius.ShippingMethod.Correo "Puerta a Puerta"'));
 
             foreach ($order->getInventoryUnits() as $item) {
                 $shipment->addItem($item);
@@ -52,7 +52,7 @@ class LoadOrdersData extends DataFixture
             $manager->persist($order);
         }
 
-        $manager->flush();*/
+        $manager->flush();
     }
 
     private function createAddress()
@@ -60,16 +60,12 @@ class LoadOrdersData extends DataFixture
         $address = $this->getAddressRepository()->createNew();
 
         $address->setFirstname($this->faker->firstName);
-        $address->setLastname($this->faker->lastName);
         $address->setCity($this->faker->city);
         $address->setStreet($this->faker->streetAddress);
+        $address->setFloor("-");
         $address->setPostcode($this->faker->postcode);
 
-        do {
-            $isoName = $this->faker->countryCode;
-        } while ('UK' === $isoName);
-
-        $country = $this->getReference('Sylius.Country.'.$isoName);
+        $country = $this->getReference('Sylius.Country.AR');
         $province = $country->hasProvinces() ? $this->faker->randomElement($country->getProvinces()->toArray()) : null;
 
         $address->setCountry($country);

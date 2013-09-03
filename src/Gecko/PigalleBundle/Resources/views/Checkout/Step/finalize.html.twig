@@ -72,7 +72,7 @@
 						<p>{{ order.total|price }}</p>
 						<div class="tail">&nbsp;</div>
 					</div>
-					<a href="{{ path('sylius_checkout_forward', {'stepName': context.currentStep.name}) }}" class="button checkoutButton">Finzalizar compra</a>
+					<a href="{{ paylink }}" class="button checkoutButton">Finzalizar compra</a>
 				</div>
 			</div>
 		</div>

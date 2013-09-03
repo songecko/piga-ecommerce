@@ -274,7 +274,7 @@
             {% for adjustment in order.shippingAdjustments %}
                 <li>{{ adjustment.description }} {{ adjustment.amount|price }} </li>
             {% else %}
-                <li><span class="label label-info">{{ 'sylius.order.no_shipping_charges'|trans }}</span></li>
+                <li><span class="label label-info">{{ 'No hay cargos por envios' }}</span></li>
             {% endfor %}
             </ul>
             </td>

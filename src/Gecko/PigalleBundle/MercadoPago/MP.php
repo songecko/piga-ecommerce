@@ -7,6 +7,9 @@
  * @author hcasatti
  *
  */
+
+namespace Gecko\PigalleBundle\MercadoPago;
+
 $GLOBALS["LIB_LOCATION"] = dirname(__FILE__);
 
 class MP {
@@ -199,7 +202,7 @@ class MPRestClient {
             if(function_exists('json_last_error')) {
                 $json_error = json_last_error();
                 if ($json_error != JSON_ERROR_NONE) {
-                    throw new Exception("JSON Error [{$json_error}] - Data: {$data}");
+                    throw new \Exception("JSON Error [{$json_error}] - Data: {$data}");
                 }
             }
         }
@@ -222,7 +225,7 @@ class MPRestClient {
         );
 
         if ($response['status'] >= 400) {
-            throw new Exception ($response['response']['message'], $response['status']);
+            throw new \Exception ($response['response']['message'], $response['status']);
         }
 
         curl_close($connect);

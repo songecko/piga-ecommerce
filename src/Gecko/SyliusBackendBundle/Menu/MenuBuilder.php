@@ -219,10 +219,10 @@ class MenuBuilder
             'route' => 'sylius_backend_order_create',
             'labelAttributes' => array('icon' => 'icon-plus-sign'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.new_order', $section)));*/
-        $child->addChild('payments', array(
+        /*$child->addChild('payments', array(
             'route' => 'sylius_backend_payment_index',
             'labelAttributes' => array('icon' => 'icon-money'),
-        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.payments', $section)));
+        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.payments', $section)));*/
 
         /*$child->addChild('promotions', array(
             'route' => 'sylius_backend_promotion_index',

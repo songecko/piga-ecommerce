@@ -1,10 +1,11 @@
- <?php
+<?php
 
 namespace Sylius\Bundle\CoreBundle\Checkout\Step;
 
 use Sylius\Bundle\FlowBundle\Process\Context\ProcessContextInterface;
 use Sylius\Bundle\SalesBundle\Model\OrderInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
+use Gecko\PigalleBundle\MercadoPago\MP;
 
 /**
  * Final checkout step.
@@ -18,22 +19,8 @@ class FinalizeStep extends CheckoutStep
      */
     public function displayAction(ProcessContextInterface $context)
     {
-        $order = $this->createOrder($context);
-
-        /*$preference_data = array(
-        	"items" => array(
-        		array(
-        			"title" => "Barrilete multicolor",
-        			"quantity" => 1,
-        			"currency_id" => "ARS",
-        			"unit_price" => 10.00
-        		)
-        	)
-        );
+        $order = $this->createOrder($context);       
         
-        $mp = new MP('2941808958589998', 'OR3cdSuXJfS4tZlI0N5emDcuyhUXgeRn');
-        $preference = $mp->create_preference($preference_data);
-        ldd($preference['response']['init_point']);*/
         return $this->renderStep($context, $order);
     }
 
@@ -54,9 +41,50 @@ class FinalizeStep extends CheckoutStep
 
     private function renderStep(ProcessContextInterface $context, OrderInterface $order)
     {
+    	$user = $this->getUser();
+    	$preferenceData = array(
+    		"payer" => array(
+    			"name" => $user->getShortedName(),
+    			"email" => $user->getEmail()
+    		),
+    		"back_urls" => array(
+    			"success" => $this->get('router')->generate('sylius_checkout_forward', array('stepName' => $context->getCurrentStep()->getName()), true),
+    			"failure" => $this->get('router')->generate('pigalle_homepage', array(), true),
+    			"pending" => $this->get('router')->generate('pigalle_homepage', array(), true)
+    		), 
+    		"items" => array()    		
+    	);
+    	
+    	foreach ($order->getItems() as $item)
+    	{
+    		$product = $item->getSellable()->getProduct();
+    		 
+    		$preferenceData["items"][] = array(
+    				"title" => "Productos Pigalle",
+    				"quantity" => intval($item->getQuantity()),
+    				"currency_id" => "ARS",
+    				"unit_price" => floatval($item->getUnitPrice()/100)
+    		);
+    	}
+    	
+    	foreach ($order->getAdjustments() as $adjustment)
+    	{
+    		$preferenceData["items"][] = array(
+    				"title" => "Productos Pigalle",
+    				"quantity" => 1,
+    				"currency_id" => "ARS",
+    				"unit_price" => floatval($adjustment->getAmount()/100)
+    		);
+    	}
+    	
+    	//var_dump($preferenceData);die;
+    	$mp = new MP('2941808958589998', 'OR3cdSuXJfS4tZlI0N5emDcuyhUXgeRn');
+    	$preference = $mp->create_preference($preferenceData);
+    	
         return $this->render('PigalleBundle:Checkout/Step:finalize.html.twig', array(
             'context' => $context,
-            'order'   => $order
+            'order'   => $order,
+        	'paylink' => $preference['response']['sandbox_init_point']
         ));
     }
 
