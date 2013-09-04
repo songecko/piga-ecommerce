@@ -1,10 +1,62 @@
 {% extends 'SyliusBackendBundle::layout.html.twig' %}
 
+{% from 'SyliusBackendBundle:Order:macros.html.twig' import list as listOrders %}
+{% from 'SyliusBackendBundle:User:macros.html.twig' import list as listUsers %}
+
+{% block javascripts %}
+{{ parent() }}
+{% javascripts
+    'https://raw.github.com/nnnick/Chart.js/master/Chart.min.js'
+%}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            {% for id, chart in charts %}
+                new Chart($('#{{ id }}').get(0).getContext('2d')).{{ chart.type }}({{ chart.data|json_encode()|raw }});
+            {% endfor %}
+        });
+    </script>
+{% endjavascripts %}
+{% endblock %}
+
 {% block content %}
 <div class="page-header">
-	<h1>Dashboard</h1>
+	<h1>Pigalle Administración - Dashboard <small> Resumen de la tienda</small></h1>
 </div>
 
-{{ knp_menu_render('sylius_backend.menu.dashboard', {'template': 'SyliusBackendBundle::menu_dashboard.html.twig', 'currentClass': 'active'}) }}
+{#<div class="alert alert-info">
+    <h4 class="alert-heading">{{ "Información" }}</h4>
+    No hay nuevas notificaciones.
+</div>#}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>{{ "Ingresos de la última semana" }}</th>
+            <th>{{ "Pedidos realizados en la última semana" }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ revenue|price }}</td>
+            <td>{{ ordersCount }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="row-fluid">
+    {% for id, chart in charts %}
+        <div class="span6">
+            <h3>{{ chart.label|trans }}</h3>
+            <canvas id="{{ id }}" width="600" height="400"></canvas>
+        </div>
+    {% endfor %}
+</div>
+
+<h3>{{ "Últimos pedidos" }}</h3>
+{{ listOrders(orders)  }}
+
+<h3>{{ "Últimos usuarios registrados" }}</h3>
+{{ listUsers(users)  }}
 
 {% endblock %}

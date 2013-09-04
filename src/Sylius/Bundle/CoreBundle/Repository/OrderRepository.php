@@ -148,7 +148,7 @@ class OrderRepository extends EntityRepository
         $queryBuilder = $this->getCollectionQueryBuilderBetweenDates($from, $to);
 
         return $queryBuilder
-            ->select('sum(o.total)')
+            ->select('sum(o.total)')            
             ->getQuery()
             ->getSingleScalarResult()
         ;
@@ -163,6 +163,7 @@ class OrderRepository extends EntityRepository
             ->andWhere($queryBuilder->expr()->lte('o.createdAt', ':to'))
             ->setParameter('from', $from)
             ->setParameter('to', $to)
+            ->orderBy('o.createdAt', 'DESC')
         ;
     }
 }

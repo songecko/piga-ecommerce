@@ -49,20 +49,27 @@
 		</div>#}
 		
 		<div id="content" class="container-fluid">
-			{#% for type in ['success', 'error'] %}
-				{% for message in app.session.flashbag.get(type) %}
-				<div class="alert alert-{{ type }}">
-					{% if type == 'success' %}
-					Operación realizada con éxito
-					{% else %}
-					{{ message }}
-					{% endif %}
-					<a class="close" data-dismiss="alert" href="#">&times;</a>
+			<div class="row-fluid">
+                <div class="span2">
+                	{{ knp_menu_render('sylius_backend.menu.dashboard', {'template': 'SyliusBackendBundle::menu_dashboard.html.twig', 'currentClass': 'active'}) }}
+                </div>
+                <div class="span10">                
+					{#% for type in ['success', 'error'] %}
+						{% for message in app.session.flashbag.get(type) %}
+						<div class="alert alert-{{ type }}">
+							{% if type == 'success' %}
+							Operación realizada con éxito
+							{% else %}
+							{{ message }}
+							{% endif %}
+							<a class="close" data-dismiss="alert" href="#">&times;</a>
+						</div>
+						{% endfor %}
+					{% endfor %#}
+		
+			        {% block content %}{% endblock %}
 				</div>
-				{% endfor %}
-			{% endfor %#}
-
-	        {% block content %}{% endblock %}
+			</div>
 		</div>
 
 		<div class="container-fluid">
