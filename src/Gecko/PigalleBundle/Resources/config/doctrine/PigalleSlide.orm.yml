@@ -1,0 +1,46 @@
+Gecko\PigalleBundle\Entity\PigalleSlide:
+    type: entity
+    table: pigalle_slide
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        path:
+            column: path
+            type: string
+        title:
+            column: title
+            type: string
+            nullable: true
+        text:
+            column: text
+            type: string
+            nullable: true
+        linkText:
+            column: link_text
+            type: string
+            nullable: true
+        linkUrl:
+            column: link_url
+            type: string
+            nullable: true
+        isActive:
+            column: is_active
+            type: boolean
+            nullable: false
+            default: true
+        createdAt:
+            column: created_at
+            type: datetime
+            gedmo:
+              timestampable:
+                on: create
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: true
+            gedmo:
+              timestampable:
+                on: update

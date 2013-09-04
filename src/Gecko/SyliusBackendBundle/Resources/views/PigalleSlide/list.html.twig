@@ -1,0 +1,52 @@
+{% macro list(pigalleSlides) %}
+
+{% import 'SyliusBackendBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'SyliusBackendBundle:Macros:alerts.html.twig' as alerts %}
+
+{% if pigalleSlides|length > 0 %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Imagen</th>
+            <th>Título</th>
+            <th>Texto</th>
+            <th>Texto del Link</th>
+            <th>Activo?</th>
+            <th>{{ sylius_resource_sort('updatedAt', 'sylius.product.updated_at'|trans) }}</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for slide in pigalleSlides %}
+        <tr>
+            <td>
+                <a href="{{ path('sylius_backend_pigalle_slide_update', {'id': slide.id}) }}" class="btn btn-link">
+                    {{ slide.id }}
+                </a>
+            </td>
+            <td><img class="img-polaroid" src="{{ slide.path|imagine_filter('sylius_60x60') }}" alt="" /></td>
+            <td>{{ slide.getTitle }}</td>
+            <td>{{ slide.getText }}</td>
+            <td>{{ slide.getLinkText }}</td>
+            <td>
+                <span class="label label-{{ slide.isActive ? 'success' : 'important'}}">
+                    {{ slide.isActive ? 'sylius.yes'|trans : 'sylius.no'|trans }}
+                </span>
+            </td>
+            <td><span class="label label-info">{{ slide.updatedAt|date("d/m/Y g:ia") }}</span></td>
+            <td>
+                <div class="pull-right">
+                {{ buttons.edit(path('sylius_backend_pigalle_slide_update', {'id': slide.id})) }}
+                {{ buttons.delete(path('sylius_backend_pigalle_slide_delete', {'id': slide.id})) }}
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+{{ alerts.info('sylius.no_results'|trans) }}
+{% endif %}
+
+{% endmacro %}

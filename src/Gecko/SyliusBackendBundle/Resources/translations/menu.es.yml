@@ -10,6 +10,8 @@ sylius.backend:
       sales:        "Ventas"
       orders:       "Pedidos"
       payments:     "Pagos"
+      configuration: "Configuración"
+      pigalle_slide: "Slider"
       account:      "Cuenta"
       account_edit: "Editar"
       view_site:    "Ver Sitio"

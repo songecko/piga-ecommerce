@@ -1,0 +1,33 @@
+sylius_backend_pigalle_slide_index:
+    pattern: /
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.pigalle_slide:indexAction
+        _sylius:
+            template: SyliusBackendBundle:PigalleSlide:index.html.twig
+
+sylius_backend_pigalle_slide_create:
+    pattern: /new
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.pigalle_slide:createAction
+        _sylius:
+            template: SyliusBackendBundle:PigalleSlide:create.html.twig
+            redirect: sylius_backend_pigalle_slide_index
+
+sylius_backend_pigalle_slide_update:
+    pattern: /{id}/edit
+    methods: [GET, PUT, POST]
+    defaults:
+        _controller: sylius.controller.pigalle_slide:updateAction
+        _sylius:
+            template: SyliusBackendBundle:PigalleSlide:update.html.twig
+            redirect: sylius_backend_pigalle_slide_index
+
+sylius_backend_pigalle_slide_delete:
+    pattern: /{id}
+    methods: [DELETE]
+    defaults:
+        _controller: sylius.controller.pigalle_slide:deleteAction
+        _sylius:
+            redirect: sylius_backend_pigalle_slide_index

@@ -12,6 +12,11 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: sylius_user_profile }
+            
+    pigalle.pigalle_slide.form.type:
+        class: Gecko\PigalleBundle\Form\Type\PigalleSlideType
+        tags:
+            - { name: form.type, alias: sylius_pigalle_slide }
     
     pigalle.controller.mayorista:
         class: Gecko\PigalleBundle\Controller\MayoristaController

@@ -2,6 +2,10 @@ sylius_backend_dashboard:
     pattern: /dashboard
     defaults: { _controller: sylius_backend.controller.dashboard:mainAction }
 
+sylius_backend_pigalle_slide:
+    resource: @SyliusBackendBundle/Resources/config/routing/pigalle_slide.yml
+    prefix: /slider
+    
 sylius_backend_user:
     resource: @SyliusBackendBundle/Resources/config/routing/user.yml
     prefix: /users

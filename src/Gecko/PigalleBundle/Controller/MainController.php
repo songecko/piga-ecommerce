@@ -10,7 +10,17 @@ class MainController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('PigalleBundle:Main:index.html.twig');
+    	$repository = $this->getDoctrine()->getRepository('PigalleBundle:PigalleSlide');
+    	$query = $repository->createQueryBuilder('ps')
+	    	->where('ps.isActive = :isActive')
+	    	->setParameter('isActive', true)
+	    	->orderBy('ps.updatedAt', 'DESC')
+    		->getQuery();    	
+    	$pigalleSlides = $query->getResult();
+    	
+        return $this->render('PigalleBundle:Main:index.html.twig', array(
+        	'pigalleSlides' => $pigalleSlides
+        ));
     }
     
     public function faqAction()

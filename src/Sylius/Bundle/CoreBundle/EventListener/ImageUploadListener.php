@@ -17,6 +17,7 @@ use Sylius\Bundle\TaxonomiesBundle\Model\TaxonomyInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Sylius\Bundle\AssortmentBundle\Model\CustomizableProductInterface;
 use Sylius\Bundle\AssortmentBundle\Model\Variant\VariantInterface;
+use Sylius\Bundle\CoreBundle\Model\ImageInterface;
 
 class ImageUploadListener
 {
@@ -69,5 +70,19 @@ class ImageUploadListener
             $this->uploader->upload($subject->getRoot());
         }
 
+    }
+    
+    public function uploadPigalleSlideImage(GenericEvent $event)
+    {
+    	$subject = $event->getSubject();
+    
+    	if (!$subject instanceof ImageInterface){
+    		throw new \InvalidArgumentException('TaxonInterface expected.');
+    	}
+    
+    	if ($subject->hasFile()) {
+    		$this->uploader->upload($subject);
+    	}
+    
     }
 }

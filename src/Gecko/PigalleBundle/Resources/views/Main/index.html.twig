@@ -4,24 +4,32 @@
 <div id="slider" class="carousel slide">
 	<!-- Carousel items -->
 	<div class="carousel-inner">
-		<div class="item active" style="background-image:url({{ asset('bundles/pigalle/images/slider1.jpg') }});">
+		{% for slide in pigalleSlides %}
+		<div class="item{{ (loop.first)?' active':'' }}" style="background-image:url({{ asset('media/image/'~slide.path) }});">
+			{% if slide.hasBox %}
 			<div class="container">					
 				<div class="box">
-					<h3>Descubrí la nueva colección!</h3>
-					<p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem. lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem. lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem. lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem.</p>
-					<a href="#" class="btn">Descubrila acá!</a>
+					{% if slide.hasTitle %}
+					<h3>{{ slide.getTitle }}</h3>
+					{% endif %}
+					{% if slide.hasText %}
+					<p>{{ slide.getText }}</p>
+					{% endif %}
+					{% if slide.hasLink %}
+					<a href="{{ slide.getLinkUrl }}" class="btn">{{ slide.getLinkText }}</a>
+					{% endif %}
 				</div>
 			</div>
+			{% endif %}
 		</div>
-		<div class="item" style="background-image:url({{ asset('bundles/pigalle/images/slider2.jpg') }});"></div>
-		<div class="item" style="background-image:url({{ asset('bundles/pigalle/images/slider3.jpg') }});"></div>
+		{% endfor %}
 	</div>
 	<!-- Carousel nav -->
 	<div class="container controls">
 		<ol class="carousel-indicators">
-			<li data-target="#slider" data-slide-to="0" class="active"></li>
-			<li data-target="#slider" data-slide-to="1"></li>
-			<li data-target="#slider" data-slide-to="2"></li>
+			{% for i in 0..(pigalleSlides|length)-1 %}
+			<li data-target="#slider" data-slide-to="{{ i }}"{{ (loop.first)?' class="active"':'' }} ></li>
+			{% endfor %}
 		</ol>
 			
 		<a class="carousel-control left" href="#slider" data-slide="prev">&lsaquo;</a>

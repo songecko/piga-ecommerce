@@ -76,6 +76,12 @@ sylius:
           categorization: "Categorías"
           properties: "Propiedades"
           images:     "Imágenes"
+       
+    pigalle_slide:
+        index_header: "Slider"
+        update_header: "Editar slide"
+        create_header: "Nuevo slide"
+        create: "Nuevo slide"
         
     user:
         index_header:  "Usuarios"

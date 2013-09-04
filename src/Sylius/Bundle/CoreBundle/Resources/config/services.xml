@@ -176,6 +176,8 @@
             <tag name="kernel.event_listener" event="sylius.taxon.pre_update" method="uploadTaxonImage" />
             <tag name="kernel.event_listener" event="sylius.taxonomy.pre_create" method="uploadTaxonomyImage" />
             <tag name="kernel.event_listener" event="sylius.taxonomy.pre_update" method="uploadTaxonomyImage" />
+            <tag name="kernel.event_listener" event="sylius.pigalle_slide.pre_create" method="uploadPigalleSlideImage" />
+            <tag name="kernel.event_listener" event="sylius.pigalle_slide.pre_update" method="uploadPigalleSlideImage" />
         </service>
 
         <service id="sylius.image_uploader" class="%sylius.image_uploader.class%">

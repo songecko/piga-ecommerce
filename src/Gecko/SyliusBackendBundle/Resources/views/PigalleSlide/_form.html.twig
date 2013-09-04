@@ -1,0 +1,22 @@
+<div class="form-container">
+<fieldset>
+    {{ form_errors(form) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.text) }}
+    <div class="control-group">
+    	<label for="sylius_pigalle_slide_file" class=" control-label optional">Imagen</label>
+		<div class="controls">
+			{% if pigalle_slide.hasPath %}
+			<img class="img-polaroid" src="{{ pigalle_slide.path|imagine_filter('sylius_60x60') }}" alt="" />
+			{% endif %}
+            &nbsp;
+			{{ form_widget(form.file) }}
+			&nbsp;
+		</div>
+	</div>
+    {{ form_row(form.linkText) }}
+    {{ form_row(form.linkUrl) }}
+    {{ form_row(form.isActive) }}
+</fieldset>
+{{ form_widget(form._token) }}
+</div>
