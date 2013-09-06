@@ -17,3 +17,8 @@ pigalle_mayorista_index_by_taxon:
             template: PigalleBundle:Mayorista:index.html.twig
             arguments: 
               spPageTemplate: PigalleBundle:Product:indexSpPage.html.twig
+              
+pigalle_mayorista_register_success:
+    pattern: /registro/completo
+    defaults:
+        _controller: pigalle.controller.mayorista:registerSuccessAction

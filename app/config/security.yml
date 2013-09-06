@@ -8,6 +8,15 @@ security:
     encoders:
         FOS\UserBundle\Model\UserInterface: sha512
     firewalls:
+        mayorista:
+            pattern:    /mayorista/.*
+            form_login:
+                provider: fos_userbundle
+                login_path: /mayorista/login
+                check_path: /mayorista/login_check
+                use_referer: true
+            anonymous: true
+            context: pigalle_context
         main:
             form_login:
                 provider: fos_userbundle
@@ -25,12 +34,15 @@ security:
                 target: /
                 invalidate_session: false
             anonymous: true
+            context: pigalle_context
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/registro, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/mayorista/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/mayorista/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/mayorista/registro/completo$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: /mayorista/.*, role: ROLE_USER_MAYORISTA }
         - { path: "/admin.*", role: ROLE_SYLIUS_ADMIN }
         - { path: "/cuenta.*", role: ROLE_USER }
         - { path: "/_partial.*", ip: 127.0.0.1 }

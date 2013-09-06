@@ -8,7 +8,17 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class RegistrationController extends BaseController
 {
-    public function registerAction()
+	public function registerAction()
+	{
+		return $this->getRegisterResponse(false);
+	}
+	
+	public function registerMayoristaAction()
+	{
+		return $this->getRegisterResponse(true);
+	}
+	
+    public function getRegisterResponse($isMayorista = false)
     {
         $request = $this->container->get('request');
         /* @var $request \Symfony\Component\HttpFoundation\Request */
@@ -43,23 +53,36 @@ class RegistrationController extends BaseController
         if ($process) {
         	$user = $form->getData();
         
-        	$authUser = false;
-        	if ($confirmationEnabled) {
-        		$this->container->get('session')->set('fos_user_send_confirmation_email/email', $user->getEmail());
-        		$route = 'fos_user_registration_check_email';
-        	} else {
-        		$authUser = true;
-        		$route = 'fos_user_registration_confirmed';
+        	if($isMayorista)
+        	{
+        		$user->setRoles(array('ROLE_USER_MAYORISTA'));
+        		$user->setEnabled(false);
+        		
+        		$manager = $this->container->get('doctrine')->getManager();
+        		$manager->persist($user);
+        		$manager->flush();
+        		
+        		$url = $this->container->get('router')->generate("pigalle_mayorista_register_success");
+        		$response = new RedirectResponse($url);
+        	}else {
+	        	$authUser = false;
+	        	if ($confirmationEnabled) {
+	        		$this->container->get('session')->set('fos_user_send_confirmation_email/email', $user->getEmail());
+	        		$route = 'fos_user_registration_check_email';
+	        	} else {
+	        		$authUser = true;
+	        		$route = 'fos_user_registration_confirmed';
+	        	}
+	        
+	        	$this->setFlash('fos_user_success', 'registration.flash.user_created');
+	        	$url = $this->container->get('router')->generate($route);
+	        	$response = new RedirectResponse($url);
+	        
+	        	if ($authUser) {
+	        		$this->authenticateUser($user, $response);
+	        	}
         	}
-        
-        	$this->setFlash('fos_user_success', 'registration.flash.user_created');
-        	$url = $this->container->get('router')->generate($route);
-        	$response = new RedirectResponse($url);
-        
-        	if ($authUser) {
-        		$this->authenticateUser($user, $response);
-        	}
-        
+        	
         	return $response;
         }
         
@@ -68,6 +91,9 @@ class RegistrationController extends BaseController
         	'error'         => $error,
         	'csrf_token' => $csrfToken,
         	'form' => $form->createView(),
+        	'isMayorista' => $isMayorista
         ));
     }
+    
+    
 }

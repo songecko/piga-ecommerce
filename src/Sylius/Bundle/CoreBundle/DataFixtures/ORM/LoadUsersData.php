@@ -26,8 +26,8 @@ class LoadUsersData extends DataFixture
      */
     public function load(ObjectManager $manager)
     {
+        //administrator
         $user = new User();
-
         $user->setUsername('admin');
         $user->setEmail('admin@pigalle.com.ar');
         $user->setPlainPassword('123456');
@@ -39,6 +39,20 @@ class LoadUsersData extends DataFixture
 
         $this->setReference('User-Administrator', $user);
 
+        //mayorista
+        $user = new User();
+        $user->setUsername('mayorista');
+        $user->setEmail('mayorista@pigalle.com.ar');
+        $user->setPlainPassword('123456');
+        $user->setEnabled(true);
+        $user->setRoles(array('ROLE_USER_MAYORISTA'));
+        
+        $manager->persist($user);
+        $manager->flush();
+        
+        $this->setReference('User-Administrator', $user);
+        
+        //Normal users
         for ($i = 1; $i <= 15; $i++) {
             $user = new User();
 

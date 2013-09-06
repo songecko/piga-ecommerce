@@ -36,4 +36,9 @@ class MayoristaController extends ProductController
     {
         return $this->renderResponse('indexByTaxon.html', $this->getViewParams($request, $permalink));
     }
+    
+    public function registerSuccessAction(Request $request)
+    {
+    	return $this->render("PigalleBundle:Mayorista:registerSuccess.html.twig");
+    }
 }

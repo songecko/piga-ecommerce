@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="security">
-	<div class="contentTitle"><h3 class="titleSection container">Login</h3></div>
+	<div class="contentTitle"><h3 class="titleSection container">{{ (isMayorista)?'Login Mayorista':'Login' }}</h3></div>
 	<div class="container content">
 		{% if error or form.email.vars.errors|length or form.plainPassword.vars.errors|length %}
 		<div class="alert alert-error">
@@ -14,7 +14,7 @@
 				{% include 'GeckoUserBundle:Security:_loginForm.html.twig' with {'last_username': last_username} %}
 			</div>
 			<div class="span6 register">
-				{% include 'GeckoUserBundle:Registration:_registerForm.html.twig' with {'form': form} %}
+				{% include 'GeckoUserBundle:Registration:_registerForm.html.twig' with {'form': form, 'isMayorista': isMayorista} %}
 			</div>
 		</div>
 	</div>

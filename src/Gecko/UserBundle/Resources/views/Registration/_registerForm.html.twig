@@ -1,9 +1,9 @@
 {% if(route is defined and stepName is defined) %}
 <form action="{{ path(route, { 'stepName': stepName }) }}" method="post" novalidate {{ form_enctype(form) }}>
 {% else %}
-<form action="{{ path('fos_user_registration_register') }}" method="post" novalidate {{ form_enctype(form) }}>
+<form action="{{ (isMayorista)?path('fos_user_mayorista_security_login'):path('fos_user_registration_register') }}" method="post" novalidate {{ form_enctype(form) }}>
 {% endif %}
-	<h2>NUEVO CLIENTE</h2>			
+	<h2>{{ (isMayorista)?'NUEVO MAYORISTA':'NUEVO CLIENTE' }}</h2>			
 				
 	<fieldset>
 		<div class="control-group">
