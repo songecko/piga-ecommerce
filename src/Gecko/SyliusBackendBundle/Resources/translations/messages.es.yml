@@ -8,6 +8,7 @@ sylius:
     cancel:           "Cancelar"
     yes:              "Si"
     no:               "No"
+    no_results:       "Sin resultados"
     
     alert:
         success:      "Exito"
@@ -96,6 +97,7 @@ sylius:
         general_info:  "Información general"
         orders:        "Pedidos realizados"
         manage:        "Administrar usuarios"
+        no_results:    "Sin usuarios"
     
     order:
         index_header:   "Pedidos"
@@ -126,6 +128,7 @@ sylius:
         shipping_charges: "Cargos por envio"
         promotion_discount: "Descuentos"
         promotion_total:  "Total descuentos"
+        no_results:       "Sin pedidos"
     
     order_item:
         sellable:        "Producto"
