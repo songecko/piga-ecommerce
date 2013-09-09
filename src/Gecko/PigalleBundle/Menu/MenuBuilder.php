@@ -231,7 +231,10 @@ class MenuBuilder extends ContainerAware
     protected function addMainMenuRight(ItemInterface $menu)
     {
     	$menu->addChild('facebook', array(
-    		'uri' => '#'
+    		'uri' => 'https://www.facebook.com/pages/PIGALLE/166228950080',
+    		'linkAttributes' => array(
+	    		'target' => '_blank'
+	    	)
     	))
     	->setExtra('safe_label', true)
     	->setLabel('<img src="'.$this->container->get('templating.helper.assets')->getUrl('bundles/pigalle/images/ico-facebook.png').'" alt="Facebook" />');
