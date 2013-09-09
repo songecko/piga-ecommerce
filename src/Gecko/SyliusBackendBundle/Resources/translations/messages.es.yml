@@ -65,6 +65,7 @@ sylius:
         updated_at:   "Actualizado el"
         create:       "Nuevo producto"
         no_results:   "No hay productos"
+        no_images:    "Sin imagenes"
         manage:       "Administrar productos"
         categorization: "Categorías"
         stock:        "Stock"
