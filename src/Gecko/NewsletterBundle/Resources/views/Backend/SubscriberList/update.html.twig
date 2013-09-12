@@ -1,0 +1,15 @@
+{% extends 'SyliusBackendBundle::layout.html.twig' %}
+
+{% from 'SyliusBackendBundle:Macros:actions.html.twig' import update %}
+
+{% block content %}
+<div class="page-header">
+<h1>Editar lista de envio</h1>
+</div>
+
+<form action="{{ path('gecko_newsletter_backend_subscriber_list_update', {'id': subscriber_list.id}) }}" method="post" class="form-horizontal" {{ form_enctype(form) }} novalidate>
+    <input type="hidden" name="_method" value="PUT">
+    {% include 'GeckoNewsletterBundle:Backend/SubscriberList:_form.html.twig' %}
+    {{ update() }}
+</form>
+{% endblock %}

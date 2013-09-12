@@ -1,0 +1,45 @@
+{% macro list(items) %}
+
+{% import 'SyliusBackendBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'SyliusBackendBundle:Macros:alerts.html.twig' as alerts %}
+
+{% if items|length > 0 %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Suscriptores</th>
+            <th>Ultima actualización</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in items %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.getName() }}</td>
+            <td>
+            {% for subscriber in item.subscribers %}
+            	<span class="label">{{ subscriber.email }}</span>
+            	{% if loop.index % 3 == 0 %}
+            	<br>
+            	{% endif %}
+            {% endfor %}
+            </td>
+            <td><span class="label label-info">{{ item.updatedAt|date("d/m/Y g:ia") }}</span></td>
+            <td>
+                <div class="pull-right">
+                {{ buttons.edit(path('gecko_newsletter_backend_subscriber_list_update', {'id': item.id})) }}
+                {{ buttons.delete(path('gecko_newsletter_backend_subscriber_list_delete', {'id': item.id})) }}
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+{{ alerts.info('sylius.no_results'|trans) }}
+{% endif %}
+
+{% endmacro %}

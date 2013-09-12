@@ -1,0 +1,40 @@
+gecko_newsletter_backend_newsletter_index:
+    pattern: /
+    methods: [GET]
+    defaults:
+        _controller: gecko_newsletter.controller.newsletter:indexAction
+        _sylius:
+            template: GeckoNewsletterBundle:Backend/Newsletter:index.html.twig
+
+gecko_newsletter_backend_newsletter_create:
+    pattern: /new
+    methods: [GET, POST]
+    defaults:
+        _controller: gecko_newsletter.controller.newsletter:createAction
+        _sylius:
+            template: GeckoNewsletterBundle:Backend/Newsletter:create.html.twig
+            redirect: gecko_newsletter_backend_newsletter_index
+
+gecko_newsletter_backend_newsletter_update:
+    pattern: /{id}/edit
+    methods: [GET, PUT, POST]
+    defaults:
+        _controller: gecko_newsletter.controller.newsletter:updateAction
+        _sylius:
+            template: GeckoNewsletterBundle:Backend/Newsletter:update.html.twig
+            redirect: gecko_newsletter_backend_newsletter_index
+
+gecko_newsletter_backend_newsletter_delete:
+    pattern: /{id}
+    methods: [DELETE]
+    defaults:
+        _controller: gecko_newsletter.controller.newsletter:deleteAction
+        _sylius:
+            redirect: gecko_newsletter_backend_newsletter_index
+            
+gecko_newsletter_backend_newsletter_send:
+    pattern:        /{id}/send
+    defaults:
+        _controller:    gecko_newsletter.controller.newsletter:sendAction
+    requirements:
+        id:  \d+

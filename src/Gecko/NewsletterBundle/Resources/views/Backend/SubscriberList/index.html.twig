@@ -1,0 +1,20 @@
+{% extends 'SyliusBackendBundle::layout.html.twig' %}
+
+{% import 'SyliusBackendBundle:Macros:buttons.html.twig' as buttons %}
+{% from 'SyliusBackendBundle:Macros:misc.html.twig' import pagination %}
+{% from 'GeckoNewsletterBundle:Backend/SubscriberList:list.html.twig' import list %}
+  				
+{% block content %}
+<div class="page-header">
+    <h1>Listas de envio</h1>
+</div>
+
+<div class="well well-small">
+    {{ buttons.create(path('gecko_newsletter_backend_subscriber_list_create'), "Nueva lista") }}
+</div>
+
+{{ pagination(subscriber_lists) }}
+{{ list(subscriber_lists) }}
+{{ pagination(subscriber_lists) }}
+
+{% endblock %}

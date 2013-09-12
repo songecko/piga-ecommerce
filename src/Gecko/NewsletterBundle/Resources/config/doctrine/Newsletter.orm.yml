@@ -1,0 +1,37 @@
+Gecko\NewsletterBundle\Entity\Newsletter:
+    type: entity
+    table: gecko_newsletter
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            column: title
+            type: string
+        templateName:
+            column: template_name
+            type: string
+        sent:
+            column: sent
+            type: boolean
+        createdAt:
+            column: created_at
+            type: datetime
+            gedmo:
+              timestampable:
+                on: create
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: true
+            gedmo:
+              timestampable:
+                on: update
+    manyToOne:
+        subscriberList:
+            targetEntity: Gecko\NewsletterBundle\Entity\SubscriberList
+            joinColumn:
+                name: subcriber_list_id
+                referencedColumnName: id

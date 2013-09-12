@@ -1,0 +1,44 @@
+{% macro list(subscribers) %}
+
+{% import 'SyliusBackendBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'SyliusBackendBundle:Macros:alerts.html.twig' as alerts %}
+
+{% if subscribers|length > 0 %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Nombre</th>
+            <th>Activo?</th>
+            <th>Ultima actualización</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for subscriber in subscribers %}
+        <tr>
+            <td>{{ subscriber.id }}</td>
+            <td>{{ subscriber.getEmail() }}</td>
+            <td>{{ subscriber.getFullname() }}</td>
+            <td>
+                <span class="label label-{{ subscriber.isEnabled ? 'success' : 'important'}}">
+                    {{ subscriber.isEnabled ? 'sylius.yes'|trans : 'sylius.no'|trans }}
+                </span>
+            </td>            
+            <td><span class="label label-info">{{ subscriber.updatedAt|date("d/m/Y g:ia") }}</span></td>
+            <td>
+                <div class="pull-right">
+                {{ buttons.edit(path('gecko_newsletter_backend_subscriber_update', {'id': subscriber.id})) }}
+                {{ buttons.delete(path('gecko_newsletter_backend_subscriber_delete', {'id': subscriber.id})) }}
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+{{ alerts.info('sylius.no_results'|trans) }}
+{% endif %}
+
+{% endmacro %}

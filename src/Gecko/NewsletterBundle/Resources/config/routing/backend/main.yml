@@ -1,0 +1,11 @@
+gecko_newsletter_backend_subscriber:
+    resource: @GeckoNewsletterBundle/Resources/config/routing/backend/subscriber.yml
+    prefix: /subscriber
+    
+gecko_newsletter_backend_subscriber_list:
+    resource: @GeckoNewsletterBundle/Resources/config/routing/backend/subscriber_list.yml
+    prefix: /subscriber-list
+    
+gecko_newsletter_backend_newsletter:
+    resource: @GeckoNewsletterBundle/Resources/config/routing/backend/newsletter.yml
+    prefix: /newsletter

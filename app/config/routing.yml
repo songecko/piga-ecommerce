@@ -2,6 +2,10 @@ pigalle:
     resource: "@PigalleBundle/Resources/config/routing/main.yml"
     prefix:   /
 
+gecko_newsletter:
+    resource: "@GeckoNewsletterBundle/Resources/config/routing/main.yml"
+    prefix:   /
+    
 sylius_backend_index:
     path:     /admin
     defaults:

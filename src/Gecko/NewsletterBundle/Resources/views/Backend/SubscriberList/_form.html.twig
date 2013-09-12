@@ -1,0 +1,8 @@
+<div class="form-container">
+<fieldset>
+    {{ form_errors(form) }}
+    {{ form_row(form.name) }}
+	{{ form_row(form.subscribers, {'attr': {'class': 'input-xlarge'}}) }}
+</fieldset>
+{{ form_widget(form._token) }}
+</div>

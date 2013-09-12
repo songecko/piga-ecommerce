@@ -1,0 +1,3 @@
+gecko_newsletter_frontend_subscriber:
+    resource: @GeckoNewsletterBundle/Resources/config/routing/frontend/subscriber.yml
+    prefix: /suscriptor

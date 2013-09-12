@@ -112,4 +112,17 @@ sylius_resource:
         sylius.pigalle_slide:
             driver: doctrine/orm
             classes:
-                model: Gecko\PigalleBundle\Entity\PigalleSlide
+                model: Gecko\PigalleBundle\Entity\PigalleSlide                
+        gecko_newsletter.subscriber:
+            driver: doctrine/orm
+            classes:
+                model: Gecko\NewsletterBundle\Entity\Subscriber
+        gecko_newsletter.subscriber_list:
+            driver: doctrine/orm
+            classes:
+                model: Gecko\NewsletterBundle\Entity\SubscriberList
+        gecko_newsletter.newsletter:
+            driver: doctrine/orm
+            classes:
+                model: Gecko\NewsletterBundle\Entity\Newsletter
+                controller: Gecko\NewsletterBundle\Controller\NewsletterController

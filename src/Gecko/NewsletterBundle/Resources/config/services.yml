@@ -1,0 +1,23 @@
+parameters:
+    gecko_newsletter.sender.class:                Gecko\NewsletterBundle\Sender\BasicSender
+
+services:  
+    ## SENDER ##
+    gecko_newsletter.sender:
+        class: %gecko_newsletter.sender.class%
+        
+    ## FORMS ##
+    gecko_newsletter.subscriber.form.type:
+        class: Gecko\NewsletterBundle\Form\Type\SubscriberType
+        tags:
+            - { name: form.type, alias: gecko_newsletter_subscriber }
+    
+    gecko_newsletter.subscriber_list.form.type:
+        class: Gecko\NewsletterBundle\Form\Type\SubscriberListType
+        tags:
+            - { name: form.type, alias: gecko_newsletter_subscriber_list }
+    
+    gecko_newsletter.newsletter.form.type:
+        class: Gecko\NewsletterBundle\Form\Type\NewsletterType
+        tags:
+            - { name: form.type, alias: gecko_newsletter_newsletter }

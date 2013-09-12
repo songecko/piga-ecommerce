@@ -1,0 +1,7 @@
+gecko_newsletter_frontend:
+    resource: @GeckoNewsletterBundle/Resources/config/routing/frontend/main.yml
+    prefix: /newsletter
+
+gecko_newsletter_backend:
+    resource: @GeckoNewsletterBundle/Resources/config/routing/backend/main.yml
+    prefix: /newsletter

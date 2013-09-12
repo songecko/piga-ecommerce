@@ -1,0 +1,49 @@
+{% macro list(items) %}
+
+{% import 'SyliusBackendBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'SyliusBackendBundle:Macros:alerts.html.twig' as alerts %}
+
+{% if items|length > 0 %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Lista de envio</th>
+            <th>Template</th>
+            <th>Enviado?</th>
+            <th>Ultima actualización</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in items %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.subscriberList.name }}</td>
+            <td>{{ item.templateName == 'basic'?'Basico':'Destacados' }}</td>
+            <td>
+                <span class="label label-{{ item.isSent ? 'success' : 'important'}}">
+                    {{ item.isSent ? 'sylius.yes'|trans : 'sylius.no'|trans }}
+                </span>
+            </td>   
+            <td><span class="label label-info">{{ item.updatedAt|date("d/m/Y g:ia") }}</span></td>
+            <td>
+                <div class="pull-right">
+                <a href="{{ path('gecko_newsletter_backend_newsletter_send', {'id': item.id}) }}" class="btn">
+                	<i class="icon-share-alt"></i> Enviar
+                </a>
+                {{ buttons.edit(path('gecko_newsletter_backend_newsletter_update', {'id': item.id})) }}
+                {{ buttons.delete(path('gecko_newsletter_backend_newsletter_delete', {'id': item.id})) }}
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+{{ alerts.info('sylius.no_results'|trans) }}
+{% endif %}
+
+{% endmacro %}

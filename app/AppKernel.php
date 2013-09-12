@@ -75,6 +75,7 @@ class AppKernel extends Kernel
             new Gecko\PigalleBundle\PigalleBundle(),
             new Gecko\SyliusBackendBundle\SyliusBackendBundle(),
             new Gecko\UserBundle\GeckoUserBundle(),
+            new Gecko\NewsletterBundle\GeckoNewsletterBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

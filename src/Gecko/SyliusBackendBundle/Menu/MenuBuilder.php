@@ -89,6 +89,7 @@ class MenuBuilder
         $this->addAssortmentMenu($menu, $childOptions, 'main');
         $this->addCustomersMenu($menu, $childOptions, 'main');
         $this->addSalesMenu($menu, $childOptions, 'main');
+        $this->addNewsletterMenu($menu, $childOptions, 'main');
         $this->addConfigurationMenu($menu, $childOptions, 'main');
 
         return $menu;
@@ -147,6 +148,7 @@ class MenuBuilder
     	$this->addAssortmentMenu($menu, $childOptions, 'main');
     	$this->addCustomersMenu($menu, $childOptions, 'main');
     	$this->addSalesMenu($menu, $childOptions, 'main');
+    	$this->addNewsletterMenu($menu, $childOptions, 'main');
     	$this->addConfigurationMenu($menu, $childOptions, 'main');
         $this->addAccountMenu($menu, $childOptions, 'main');
     
@@ -234,6 +236,35 @@ class MenuBuilder
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.new_promotion', $section)));*/
     }
 
+    /**
+     * Add newsletter menu.
+     *
+     * @param ItemInterface $menu
+     * @param array         $childOptions
+     */
+    protected function addNewsletterMenu(ItemInterface $menu, array $childOptions, $section)
+    {
+    	$child = $menu
+    	->addChild('newsletter', $childOptions)
+    	->setLabel($this->translate(sprintf('sylius.backend.menu.%s.newsletter', $section)))
+    	;
+    
+    	$child->addChild('subscribers', array(
+    			'route' => 'gecko_newsletter_backend_subscriber_index',
+    			'labelAttributes' => array('icon' => 'icon-user'),
+    	))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.newsletter_subscriber', $section)));
+    	
+    	$child->addChild('subscriber_lists', array(
+    			'route' => 'gecko_newsletter_backend_subscriber_list_index',
+    			'labelAttributes' => array('icon' => 'icon-list'),
+    	))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.newsletter_subscriber_list', $section)));
+    	
+    	$child->addChild('newsletters', array(
+    			'route' => 'gecko_newsletter_backend_newsletter_index',
+    			'labelAttributes' => array('icon' => 'icon-envelope'),
+    	))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.newsletter_newsletter', $section)));
+    }
+    
     /**
      * Add customers menu.
      *

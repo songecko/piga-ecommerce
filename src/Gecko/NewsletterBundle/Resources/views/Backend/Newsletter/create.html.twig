@@ -1,0 +1,14 @@
+{% extends 'SyliusBackendBundle::layout.html.twig' %}
+
+{% from 'SyliusBackendBundle:Macros:actions.html.twig' import create %}
+
+{% block content %}
+<div class="page-header">
+<h1>Nuevo newsletter</h1>
+</div>
+
+<form action="{{ path('gecko_newsletter_backend_newsletter_create') }}" method="post" class="form-horizontal" {{ form_enctype(form) }} novalidate>
+    {% include 'GeckoNewsletterBundle:Backend/Newsletter:_form.html.twig' %}
+    {{ create() }}
+</form>
+{% endblock %}

@@ -1,0 +1,39 @@
+Gecko\NewsletterBundle\Entity\SubscriberList:
+    type: entity
+    table: gecko_subscriber_list
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            column: name
+            type: string
+        createdAt:
+            column: created_at
+            type: datetime
+            gedmo:
+              timestampable:
+                on: create
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: true
+            gedmo:
+              timestampable:
+                on: update
+                
+    manyToMany:
+        subscribers:
+            targetEntity: Gecko\NewsletterBundle\Entity\Subscriber
+            joinTable:
+                name: gecko_subscriber_list_subscriber
+                joinColumns:
+                    subscriber_list_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE                        
+                inverseJoinColumns:
+                    subscriber_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE
