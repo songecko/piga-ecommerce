@@ -1,11 +1,11 @@
-sylius_newsletter_subscriber_subscribe:
-    pattern: /subscribe
-    defaults: { _controller: sylius_newsletter.controller.frontend.subscriber:subscribeAction }
+gecko_newsletter_subscriber_subscribe:
+    pattern: /suscribirse
+    defaults: { _controller: gecko_newsletter.controller.subscriber:subscribeAction }
     
-sylius_newsletter_subscriber_unsubscribe:
-    pattern: /unsubscribe/{token}
-    defaults: { _controller: sylius_newsletter.controller.frontend.subscriber:unsubscribeAction }
+gecko_newsletter_subscriber_confirm:
+    pattern: /suscribirse/confirmar/{token}
+    defaults: { _controller: gecko_newsletter.controller.subscriber:confirmAction }
     
-sylius_newsletter_subscriber_confirm:
-    pattern: /confirm/{token}
-    defaults: { _controller: sylius_newsletter.controller.frontend.subscriber:confirmAction }
+gecko_newsletter_subscriber_unsubscribe:
+    pattern: /desuscribirse/{token}
+    defaults: { _controller: gecko_newsletter.controller.subscriber:unsubscribeAction }  

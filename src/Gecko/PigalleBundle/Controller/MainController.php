@@ -127,4 +127,13 @@ class MainController extends Controller
     {
     	return $this->render('PigalleBundle:Main:locales.html.twig');
     }
+    
+    public function newsletterSubscribeWidgetAction()
+    {
+    	$form = $this->container->get('form.factory')->create($this->container->get('gecko_newsletter.subscriber.form.type'));
+    
+    	return $this->render('PigalleBundle:Main:newsletter_subscribe_widget.html.twig', array(
+    			'form'  => $form->createView()
+    	));
+    }
 }

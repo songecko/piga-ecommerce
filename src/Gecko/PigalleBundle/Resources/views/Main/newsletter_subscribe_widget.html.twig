@@ -1,0 +1,6 @@
+<form class="newsletter" action="{{ path('gecko_newsletter_subscriber_subscribe') }}" method="post">
+	<span class="title">NEWSLETTER:</span> 
+	{{ form_widget(form.email, {'attr': {'placeholder': 'INGRESA E-MAIL'}}) }}
+	{{ form_widget(form._token) }} 
+	<button type="submit">ENVIAR</button>
+</form>

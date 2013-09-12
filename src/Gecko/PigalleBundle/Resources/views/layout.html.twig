@@ -40,11 +40,7 @@
 		
 		<div id="header">
 			<div class="container">
-				<p class="newsletter">
-					<span class="title">NEWSLETTER:</span> 
-					<input type="text" placeholder="INGRESA E-MAIL" /> 
-					<button>ENVIAR</button>
-				</p>
+				{{ render(controller('PigalleBundle:Main:newsletterSubscribeWidget')) }}
 				<div class="pull-right">
 					{{ knp_menu_render('pigalle.menu.user') }}
 					<div class="cartItems">

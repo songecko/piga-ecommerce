@@ -1,0 +1,9 @@
+{% extends 'GeckoNewsletterBundle::email_layout.html.twig' %}
+
+{% block content %}
+<h4>Haga click en el enlace de abajo para finalizar el proceso de adhesion:</h4>
+
+<a href="{{ path('gecko_newsletter_subscriber_confirm', {'token' => subscriber.confirmationToken}, true) }}">
+	{{ path('gecko_newsletter_subscriber_confirm', {'token' => subscriber.confirmationToken}, true) }}
+</a>
+{% endblock %}

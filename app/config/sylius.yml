@@ -117,6 +117,7 @@ sylius_resource:
             driver: doctrine/orm
             classes:
                 model: Gecko\NewsletterBundle\Entity\Subscriber
+                controller: Gecko\NewsletterBundle\Controller\SubscriberController
         gecko_newsletter.subscriber_list:
             driver: doctrine/orm
             classes:
