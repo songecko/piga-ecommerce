@@ -202,7 +202,7 @@
         </service>
         <service id="sylius.promotion_action.percentage_discount" class="%sylius.promotion_action.percentage_discount.class%">
             <argument type="service" id="sylius.repository.adjustment" />
-            <tag name="sylius.promotion_action" type="Percentage_discount" label="Percentage discount" />
+            <tag name="sylius.promotion_action" type="percentage_discount" label="Percentage discount" />
         </service>
     </services>
 

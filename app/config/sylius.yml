@@ -17,6 +17,7 @@ sylius_cart:
     classes:
         cart:
             model: Sylius\Bundle\CoreBundle\Entity\Cart
+            form: Sylius\Bundle\CoreBundle\Form\Type\CartType
         item:
             model: Sylius\Bundle\CoreBundle\Entity\CartItem
             form: Sylius\Bundle\CoreBundle\Form\Type\CartItemType

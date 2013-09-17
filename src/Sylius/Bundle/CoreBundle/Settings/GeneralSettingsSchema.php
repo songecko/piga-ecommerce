@@ -30,9 +30,9 @@ class GeneralSettingsSchema implements SchemaInterface
     {
         $builder
             ->setDefaults(array(
-                'title'            => 'Sylius - Modern ecommerce for Symfony2',
-                'meta_keywords'    => 'symfony, sylius, ecommerce, webshop, shopping cart',
-                'meta_description' => 'Sylius is modern ecommerce solution for PHP. Based on the Symfony2 framework.'
+                'title'            => 'Pigalle',
+                'meta_keywords'    => 'pigalle, calzados, shop, tienda',
+                'meta_description' => 'Pigalle - Venta de calzados online'
             ))
             ->setAllowedTypes(array(
                 'title'            => array('string'),

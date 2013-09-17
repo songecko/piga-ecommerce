@@ -226,11 +226,11 @@ class MenuBuilder
             'labelAttributes' => array('icon' => 'icon-money'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.payments', $section)));*/
 
-        /*$child->addChild('promotions', array(
+        $child->addChild('promotions', array(
             'route' => 'sylius_backend_promotion_index',
             'labelAttributes' => array('icon' => 'icon-bullhorn'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.promotions', $section)));
-        $child->addChild('new_promotion', array(
+        /*$child->addChild('new_promotion', array(
             'route' => 'sylius_backend_promotion_create',
             'labelAttributes' => array('icon' => 'icon-plus-sign'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.new_promotion', $section)));*/
@@ -297,17 +297,17 @@ class MenuBuilder
             ->setLabel($this->translate(sprintf('sylius.backend.menu.%s.configuration', $section)))
         ;
 
-        $child->addChild('pigalle_slide', array(
-        		'route' => 'sylius_backend_pigalle_slide_index',
-        		'labelAttributes' => array('icon' => 'icon-picture'),
-        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.pigalle_slide', $section)));
-        
-        /*$child->addChild('general_settings', array(
+        $child->addChild('general_settings', array(
             'route' => 'sylius_backend_general_settings',
             'labelAttributes' => array('icon' => 'icon-cog'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.general_settings', $section)));
+        
+        $child->addChild('pigalle_slide', array(
+        		'route' => 'sylius_backend_pigalle_slide_index',
+        		'labelAttributes' => array('icon' => 'icon-picture'),
+        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.pigalle_slide', $section)));        
 
-        $child->addChild('payment_methods', array(
+        /*$child->addChild('payment_methods', array(
             'route' => 'sylius_backend_payment_method_index',
             'labelAttributes' => array('icon' => 'icon-credit-card'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.payment_methods', $section)));

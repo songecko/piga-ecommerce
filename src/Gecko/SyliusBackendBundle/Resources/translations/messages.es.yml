@@ -3,6 +3,7 @@ sylius:
     edit:             "Editar"
     create:           "Crear"
     delete:           "Eliminar"
+    generate:         "Generar"
     filter:           "Filtrar"
     save_changes:     "Guardar"
     cancel:           "Cancelar"
@@ -35,6 +36,38 @@ sylius:
             price_without_discount: "Precio sin oferta"
             is_featured: "Es destacado?"
             is_only_mayorista: "Solo para mayoristas?"
+        settings:
+            general:
+                title:  "Titulo del sitio"
+                meta_keywords: "Meta Keywords"
+                meta_description: "Meta Description"                               
+        promotion:
+            name:         "Nombre"
+            description:  "Descripción"
+            usage_limit:  "Límite de uso"
+            starts_at:    "Empieza el"
+            ends_at:      "Finaliza el"
+            coupon_based: "Basado en cupón?"
+        coupon_generate_instruction:
+            amount:       "Cupones a crear"
+            usage_limit:  "Limite de uso"                    
+        rule:
+            type:         "Tipo"
+            item_count_configuration:
+                count:    "Cantidad"
+                equal:    "Igual?"
+            item_total_configuration:
+                amount:   "Cantidad"                
+                equal:    "Igual?"            
+        action:
+            type:         "Tipo"
+            fixed_discount_configuration:
+                amount:   "Monto"
+            percentage_discount_configuration:
+                percentage: "Porcentaje"
+        coupon:
+            code:  "Código"
+            usage_limit: "Límite de uso"                    
         user:
             first_name: "Nombre" 
             email:    "Email"
@@ -78,7 +111,10 @@ sylius:
           categorization: "Categorías"
           properties: "Propiedades"
           images:     "Imágenes"
-       
+    
+    settings:
+        general_header: "Configuración general"
+           
     pigalle_slide:
         index_header: "Slider"
         update_header: "Editar slide"
@@ -100,6 +136,56 @@ sylius:
         manage:        "Administrar usuarios"
         no_results:    "Sin usuarios"
     
+    promotion:
+        index_header:   "Descuentos / Giftcards"
+        show_header:    "Vista del descuento"
+        update_header:  "Editar descuento"
+        manage:         "Administrar descuentos"
+        create:         "Nuevo descuento"
+        name:           "Nombre"
+        description:    "Descripción"
+        coupon_based:   "Basado en cupón?"
+        usage_limit:    "Límite de uso"
+        used:           "Usado"
+        starts_at:      "Empieza el"
+        ends_at:        "Finaliza el"
+        created_at:     "Creado el"
+        updated_at:     "Actualizado el"
+        rules:          "Reglas"
+        actions:        "Acciones"
+        add_rule:       "Agregar regla"
+        add_action:     "Agregar acción"
+        configuration:
+            count:      "Cantidad"
+            equal:      "Igual?"
+            amount:     "Monto"
+            percentage: "Porcentaje"       
+    
+    promotion_rule:
+        type:           "Tipo de regla"
+        configuration:  "Configuración"
+        type:           "Tipo"
+        rule_type:
+            item_count: "Por cantidad de items"
+            item_total: "Por precio total"
+    
+    promotion_action:
+        type:           "Tipo de regla"
+        configuration:  "Configuración"
+        type:           "Tipo"
+        action_type:
+            fixed_discount: "Descuento fijo"
+            percentage_discount: "Descuento porcentual"
+            
+    promotion_coupon:
+        index:          "Ver cupones"
+        create:         "Nuevo cupón"
+        generate:       "Generar cupones"
+        index_header:   "Cupones del descuento"
+        update_header:  "Editar cupón"
+        create_header:  "Crear cupon"
+        generate_header: "Generar cupón para el descuento"
+                    
     order:
         index_header:   "Pedidos"
         show_header:    "Vista del pedido"

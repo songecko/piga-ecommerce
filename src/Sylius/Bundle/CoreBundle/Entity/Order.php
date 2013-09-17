@@ -63,6 +63,8 @@ class Order extends BaseOrder implements OrderInterface
      */
     protected $inventoryUnits;
 
+    protected $promotionCoupon;
+    
     /**
      * Constructor.
      */
@@ -72,6 +74,7 @@ class Order extends BaseOrder implements OrderInterface
 
         $this->inventoryUnits = new ArrayCollection();
         $this->shipments = new ArrayCollection();
+        $this->promotionCoupon = null;
     }
 
     /**
@@ -304,12 +307,17 @@ class Order extends BaseOrder implements OrderInterface
         return $this->shipments->contains($shipment);
     }
 
+    public function setPromotionCoupon($promotionCoupon)
+    {
+    	$this->promotionCoupon = $promotionCoupon;
+    }
+    
     /**
      * {@inheritdoc}
      */
     public function getPromotionCoupon()
     {
-        return null;
+        return $this->promotionCoupon;
     }
 
     /**

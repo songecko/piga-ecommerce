@@ -56,15 +56,14 @@
 				
             	{#<strong>{{ 'sylius.checkout.finalize.order.tax_total'|trans }}</strong>: {{ order.taxTotal|price }}#}
             	
-            	{# {% if order.promotionAdjustments|length > 0 %}
-	            <p><strong>Descuentos</strong></p>
-	            <ul>
-	            	{% for adjustment in order.promotionAdjustments %}
-	                <li>{{ adjustment.description }} {{ adjustment.amount|price }} </li>
-	                {% endfor %}
-	            </ul>
-				<strong>{{ 'sylius.checkout.finalize.order.promotion_total'|trans }}</strong>: {{ order.promotionTotal|price }}
-		        {% endif %}#}
+            	{% if order.promotionAdjustments|length > 0 %}
+            	<div class="promotions">
+					<h3 class="title">Descuentos:</h3>
+					{% for adjustment in order.promotionAdjustments %}
+                	<p>Cupón: <span>{{ adjustment.amount|price }}</span></p>
+            		{% endfor %}
+				</div>
+		        {% endif %}
 		        
 		        <div class="total">
 					<p class="title">TOTAL:</p>

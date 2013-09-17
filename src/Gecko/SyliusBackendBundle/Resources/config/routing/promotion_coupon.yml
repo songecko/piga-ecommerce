@@ -1,0 +1,49 @@
+sylius_backend_promotion_coupon_index:
+    pattern: /
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.promotion_coupon:indexAction
+        _sylius:
+            template: SyliusBackendBundle:Coupon:index.html.twig
+            criteria: { promotion: $promotionId }
+
+sylius_backend_promotion_coupon_create:
+    pattern: /new
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.promotion_coupon:createAction
+        _sylius:
+            template: SyliusBackendBundle:Coupon:create.html.twig
+            redirect:
+                route: sylius_backend_promotion_show
+                parameters: {'id': $promotionId}
+
+sylius_backend_promotion_coupon_update:
+    pattern: /edit
+    methods: [GET, PUT]
+    defaults:
+        _controller: sylius.controller.promotion_coupon:updateAction
+        _sylius:
+            template: SyliusBackendBundle:Coupon:update.html.twig
+            redirect:
+                route: sylius_backend_promotion_show
+                parameters: {'id': $promotionId}
+
+sylius_backend_promotion_coupon_delete:
+    pattern: /{id}
+    methods: [DELETE]
+    defaults:
+        _controller: sylius.controller.promotion_coupon:deleteAction
+        _sylius:
+            redirect: referer
+
+sylius_backend_promotion_coupon_generate:
+    pattern: /generate
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.promotion_coupon:generateAction
+        _sylius:
+            template: SyliusBackendBundle:Coupon:generate.html.twig
+            redirect:
+                route: sylius_backend_promotion_coupon_index
+                parameters: {'promotionId': $promotionId}

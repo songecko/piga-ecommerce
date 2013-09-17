@@ -26,7 +26,7 @@
 		        {% endfor %}
 				</tbody>
 			</table>
-			{{ form_rest(form) }}
+			{{ form_widget(form._token) }}
 			<div class="cartActions">
 				<a href="{{ path('pigalle_product_index') }}" class="button clearCartButton">SEGUIR COMPRANDO</a>
 				<a href="{{ path('sylius_cart_clear') }}" class="button grayButton clearCartButton">VACIAR COMPRAS</a>
@@ -35,7 +35,7 @@
 			<div class="cartTotal">
 				<div class="cartCoupon clearfix">
 					<p>TENGO CUPON:</p>
-					<input type="text" class="coupon">
+					<input type="text" id="sylius_cart_couponCode" name="sylius_cart[couponCode]" class="coupon" value="{{ form.vars.value.couponCode }}">
 				</div>
 				<div class="total">
 					<p class="title">TOTAL:</p>

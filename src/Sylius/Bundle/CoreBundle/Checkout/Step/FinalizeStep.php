@@ -55,19 +55,19 @@ class FinalizeStep extends CheckoutStep
     		"items" => array()    		
     	);
     	
-    	foreach ($order->getItems() as $item)
+    	/*foreach ($order->getItems() as $item)
     	{
-    		$product = $item->getSellable()->getProduct();
+    	$product = $item->getSellable()->getProduct();*/
     		 
-    		$preferenceData["items"][] = array(
-    				"title" => "Productos Pigalle",
-    				"quantity" => intval($item->getQuantity()),
-    				"currency_id" => "ARS",
-    				"unit_price" => floatval($item->getUnitPrice()/100)
-    		);
-    	}
+    	$preferenceData["items"][] = array(
+    			"title" => "Productos Pigalle",
+    			"quantity" => 1,
+    			"currency_id" => "ARS",
+    			"unit_price" => floatval($order->getTotal()/100)
+    	);
+    	//}
     	
-    	foreach ($order->getAdjustments() as $adjustment)
+    	/*foreach ($order->getAdjustments() as $adjustment)
     	{
     		$preferenceData["items"][] = array(
     				"title" => "Productos Pigalle",
@@ -75,9 +75,8 @@ class FinalizeStep extends CheckoutStep
     				"currency_id" => "ARS",
     				"unit_price" => floatval($adjustment->getAmount()/100)
     		);
-    	}
+    	}*/
     	
-    	//var_dump($preferenceData);die;
     	$mp = new MP('2941808958589998', 'OR3cdSuXJfS4tZlI0N5emDcuyhUXgeRn');
     	$preference = $mp->create_preference($preferenceData);
     	
@@ -122,6 +121,14 @@ class FinalizeStep extends CheckoutStep
             ->getShipmentFactory()
             ->createShipment($order, $cart->getShippingMethod())
         ;
+        
+        $coupon = $this->getDoctrine()->getRepository('SyliusPromotionsBundle:Coupon')->findOneByCode($cart->getCouponCode());
+        if($coupon && $coupon->isValid())
+        {
+        	$order->setPromotionCoupon($coupon);
+        	$coupon->incrementUsed();
+        	$this->getDoctrine()->getManager()->flush($coupon);
+        }
 
         $order->calculateTotal();
         $this->get('event_dispatcher')->dispatch('sylius.order.pre_create', new GenericEvent($order));

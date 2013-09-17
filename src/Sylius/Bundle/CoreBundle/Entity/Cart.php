@@ -53,6 +53,8 @@ class Cart extends BaseCart implements CartInterface
      */
     protected $paymentMethod;
 
+    protected $couponCode;
+    
     /**
      * {@inheritdoc}
      */
@@ -137,5 +139,15 @@ class Cart extends BaseCart implements CartInterface
         $this->paymentMethod = $method;
 
         return $this;
+    }
+    
+    public function setCouponCode($couponCode)
+    {
+    	$this->couponCode = $couponCode;
+    }
+    
+    public function getCouponCode()
+    {
+    	return $this->couponCode;	
     }
 }
