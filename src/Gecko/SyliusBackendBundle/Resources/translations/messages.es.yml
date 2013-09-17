@@ -138,6 +138,7 @@ sylius:
     
     promotion:
         index_header:   "Descuentos / Giftcards"
+        create_header:  "Crear descuento"
         show_header:    "Vista del descuento"
         update_header:  "Editar descuento"
         manage:         "Administrar descuentos"
