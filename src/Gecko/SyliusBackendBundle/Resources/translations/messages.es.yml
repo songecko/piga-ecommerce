@@ -155,6 +155,7 @@ sylius:
         actions:        "Acciones"
         add_rule:       "Agregar regla"
         add_action:     "Agregar acción"
+        no_results:     "Sin descuentos"
         configuration:
             count:      "Cantidad"
             equal:      "Igual?"
