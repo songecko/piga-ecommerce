@@ -1,7 +1,7 @@
 {% extends 'PigalleBundle::layout.html.twig' %}
 
 {% from 'PigalleBundle:Macros:misc.html.twig' import pagination %}
-{% from 'PigalleBundle:Product:macros.html.twig' import grid %}
+{% from 'PigalleBundle:Mayorista:macros.html.twig' import grid %}
 
 {% block content %}
 <div class="shop">
@@ -9,7 +9,7 @@
 	<div class="container content">
 		<div class="row-fluid">
 			<div class="filters span3">
-				{{ render(controller('PigalleBundle:Product:filters', { 'request' : app.request, 'route': 'pigalle_mayorista_index', 'routeByTaxon': 'pigalle_mayorista_index_by_taxon' } )) }}
+				{{ render(controller('PigalleBundle:Product:filtersMayorista', { 'request' : app.request, 'route': 'pigalle_mayorista_index', 'routeByTaxon': 'pigalle_mayorista_index_by_taxon' } )) }}
 			</div>
 			<div class="products scrollPagination span9" data-sp-total-pages="{{ products.getNbPages }}" data-sp-load-url="{{ app.request.getUri }}">
 				{{ pagination(products) }}

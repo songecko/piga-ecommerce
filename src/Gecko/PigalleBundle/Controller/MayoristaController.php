@@ -6,6 +6,7 @@ use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sylius\Bundle\CoreBundle\Controller\ProductController;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Mayorista controller.
@@ -21,7 +22,19 @@ class MayoristaController extends ProductController
 	 */
 	public function indexAction(Request $request)
 	{
-		return $this->renderResponse('index.html', $this->getViewParams($request));
+		$taxons = new ArrayCollection();
+		
+		$taxonomyRepository = $this->get('sylius.repository.taxonomy');
+		$taxonomies = $taxonomyRepository->findAll();
+		foreach ($taxonomies as $taxonomy)
+		{
+			foreach($taxonomy->getTaxonsForMayoristas() as $taxon)
+			{
+				$taxons->add($taxon);
+			}
+		}
+		
+		return $this->renderResponse('index.html', $this->getViewParams($request, null, array('taxons' => $taxons)));
 	}
 	
     /**

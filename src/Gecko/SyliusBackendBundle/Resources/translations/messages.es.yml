@@ -112,6 +112,9 @@ sylius:
           properties: "Propiedades"
           images:     "Imágenes"
     
+    product_collection:
+        index_header: "Productos de Colleciones / Mayoristas"
+        
     settings:
         general_header: "Configuración general"
            

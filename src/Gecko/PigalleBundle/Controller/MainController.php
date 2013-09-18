@@ -82,7 +82,7 @@ class MainController extends Controller
     		foreach ($taxonomies as $taxonomy)
     		{
     			if($taxonomy->getName() == 'Temporada')
-    				$season = $taxonomy->getTaxons()->first();
+    				$season = $taxonomy->getTaxonsForColecciones()->last();
     		}
     	}
     	
@@ -95,11 +95,11 @@ class MainController extends Controller
     			->findOneByPermalink($typeQuery);
     	}
     	
-    	$queryBuilder = $this->get('sylius.repository.product')->getByTaxonQueryBuilder($season, array('only_with_stock' => false));
+    	$queryBuilder = $this->get('sylius.repository.product_collection')->getByTaxonQueryBuilder($season, array());
     	
     	if($type)
     	{
-    		$queryBuilder->innerJoin('product.taxons', 'taxon2')
+    		$queryBuilder->innerJoin('product_collection.taxons', 'taxon2')
 				->andWhere('taxon2 = :taxon2')
 				->setParameter('taxon2', $type);
     	}

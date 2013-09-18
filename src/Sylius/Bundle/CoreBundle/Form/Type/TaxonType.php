@@ -19,7 +19,14 @@ class TaxonType extends BaseTaxonType
     {
         parent::buildForm($builder, $options);
 
-        $builder->remove('description');
+        $builder
+        	->remove('description')
+        	->add('visibleColecciones', null, array(
+        		'label' => 'Visible en Colecciones?'
+        	))
+        	->add('visibleMayoristas', null, array(
+        			'label' => 'Visible en Mayoristas?'
+        	));
         /*$builder->add(
             'file',
             'file',

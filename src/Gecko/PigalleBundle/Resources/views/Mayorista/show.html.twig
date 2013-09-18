@@ -1,0 +1,20 @@
+{% extends 'PigalleBundle::layout.html.twig' %}
+
+{% from 'PigalleBundle:Mayorista:macros.html.twig' import productDetails %}
+
+{% block content %}
+<div class="detalleProducto">
+	<div class="container">
+		<h3 class="titleSection">Online Store</h3>
+		<div class="direction">
+			<a class="pull-left" onclick="history.back();">VOLVER</a>
+			<!-- <a class="pull-right">ANTERIOR / SIGUIENTE</a>  -->
+		</div>
+		{{ productDetails(product_collection) }}
+	</div>
+</div>
+{% endblock %}
+
+{% block featured_products %}
+{{ render(controller('PigalleBundle:Product:featuredProducts')) }}
+{% endblock %}

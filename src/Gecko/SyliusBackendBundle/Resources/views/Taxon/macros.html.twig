@@ -8,6 +8,8 @@
         <tr>
             <th>{{ 'sylius.taxon.name'|trans }}</th>
             <th>{{ 'sylius.taxon.permalink'|trans }}</th>
+            <th>Visible en Coleciones?</th>
+            <th>Visible en Mayoristas?</th>
             <th></th>
         </tr>
     </thead>
@@ -32,6 +34,16 @@
         {{ taxon.name }}
     </td>
     <td>{{ taxon.permalink }}</td>
+    <td>
+    	<span class="label label-{{ taxon.isVisibleColecciones ? 'success' : 'important'}}">
+			{{ taxon.isVisibleColecciones ? 'sylius.yes'|trans : 'sylius.no'|trans }}
+		</span>
+    </td>
+    <td>
+    	<span class="label label-{{ taxon.isVisibleMayoristas ? 'success' : 'important'}}">
+			{{ taxon.isVisibleMayoristas ? 'sylius.yes'|trans : 'sylius.no'|trans }}
+		</span>
+    </td>
     <td>
         <div class="pull-right">
         {{ buttons.edit(path('sylius_backend_taxon_update', {'taxonomyId': taxonomy.id, 'id': taxon.id})) }}

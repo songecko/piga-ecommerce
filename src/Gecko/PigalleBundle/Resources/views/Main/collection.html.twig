@@ -14,7 +14,7 @@
 						{% if taxonomy.name != 'Temporada' %}
 						<li><a href="{{ path('pigalle_collection', { 's': season.permalink }) }}">Todos</a></li>
 						{% endif %}
-						{% for taxon in taxonomy.taxons %}
+						{% for taxon in taxonomy.getTaxonsForColecciones %}
 						{%   if taxonomy.name != 'Temporada' %}
 						<li><a href="{{ path('pigalle_collection', { 's': season.permalink, 't': taxon.permalink }) }}">{{ taxon.name }}</a></li>
 						{%   else %}

@@ -1,0 +1,33 @@
+Gecko\PigalleBundle\Entity\ProductCollectionImage:
+    type: entity
+    table: pigalle_product_collection_image
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        path:
+            column: path
+            type: string
+        createdAt:
+            column: created_at
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: true
+            gedmo:
+                timestampable:
+                    on: update
+    manyToOne:
+        productCollection:
+            targetEntity: Gecko\PigalleBundle\Entity\ProductCollection
+            inversedBy: images
+            joinColumn:
+                name: product_collection_id
+                referencedColumnName: id
+                onDelete: CASCADE

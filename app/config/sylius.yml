@@ -113,7 +113,16 @@ sylius_resource:
         sylius.pigalle_slide:
             driver: doctrine/orm
             classes:
-                model: Gecko\PigalleBundle\Entity\PigalleSlide                
+                model: Gecko\PigalleBundle\Entity\PigalleSlide    
+        sylius.product_collection:
+            driver: doctrine/orm
+            classes:
+                model: Gecko\PigalleBundle\Entity\ProductCollection
+                repository: Gecko\PigalleBundle\Repository\ProductCollectionRepository
+        sylius.product_collection_image:
+            driver: doctrine/orm
+            classes:
+                model: Gecko\PigalleBundle\Entity\ProductCollectionImage
         gecko_newsletter.subscriber:
             driver: doctrine/orm
             classes:

@@ -18,9 +18,20 @@ services:
         tags:
             - { name: form.type, alias: sylius_pigalle_slide }
     
+    pigalle.product_collection.form.type:
+        class: Gecko\PigalleBundle\Form\Type\ProductCollectionType
+        tags:
+            - { name: form.type, alias: sylius_product_collection }
+            
+    pigalle.product_collection_image.form.type:
+        class: Gecko\PigalleBundle\Form\Type\ProductCollectionImageType
+        arguments: [Gecko\PigalleBundle\Entity\ProductCollectionImage]
+        tags:
+            - { name: form.type, alias: sylius_product_collection_image }
+            
     pigalle.controller.mayorista:
         class: Gecko\PigalleBundle\Controller\MayoristaController
-        arguments: [sylius, product, SyliusAssortmentBundle:Product]
+        arguments: [sylius, product_collection, PigalleBundle:ProductCollection]
         calls:
           - [ setContainer, ["@service_container"] ]
           

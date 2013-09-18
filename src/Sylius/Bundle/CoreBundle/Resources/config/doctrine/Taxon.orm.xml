@@ -21,6 +21,8 @@
             </cascade>
         </one-to-many>
         <field name="path" nullable="true"/>
+        <field name="visibleColecciones" column="visible_colecciones" type="boolean" />
+        <field name="visibleMayoristas" column="visible_mayoristas" type="boolean" />
         <field name="createdAt" column="created_at" type="datetime">
             <gedmo:timestampable on="create"/>
         </field>

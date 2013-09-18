@@ -24,6 +24,9 @@ class Taxon extends BaseTaxon implements ImageInterface
      */
     protected $path;
 
+    protected $visibleColecciones;
+    protected $visibleMayoristas;
+    
     /**
      * @var \DateTime
      */
@@ -41,6 +44,8 @@ class Taxon extends BaseTaxon implements ImageInterface
     {
         parent::__construct();
 
+        $this->visibleColecciones = false;
+        $this->visibleMayoristas = true;
         $this->createdAt = new DateTime();
     }
 
@@ -74,6 +79,36 @@ class Taxon extends BaseTaxon implements ImageInterface
         $this->path = $path;
     }
 
+    public function isVisibleMayoristas()
+    {
+    	return $this->visibleMayoristas !== false;
+    }
+    
+    public function getVisibleMayoristas()
+    {
+    	return $this->visibleMayoristas;
+    }
+    
+    public function setVisibleMayoristas($visibleMayoristas)
+    {
+    	$this->visibleMayoristas = $visibleMayoristas;
+    }
+    
+    public function isVisibleColecciones()
+    {
+    	return $this->visibleColecciones !== false;
+    }
+    
+    public function getVisibleColecciones()
+    {
+    	return $this->visibleColecciones;
+    }
+    
+    public function setVisibleColecciones($visibleColecciones)
+    {
+    	$this->visibleColecciones = $visibleColecciones;
+    }
+    
     public function getCreatedAt()
     {
         return $this->createdAt;

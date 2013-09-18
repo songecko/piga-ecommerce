@@ -31,4 +31,19 @@ class ProductController extends Controller
     			'routeByTaxon' => $routeByTaxon
     	));
     }
+    
+    public function filtersMayoristaAction(Request $request, $route = 'pigalle_product_index', $routeByTaxon = 'pigalle_product_index_by_taxon')
+    {
+    	$filters = $request->query->get('f');
+    
+    	$taxonomyRepository = $this->get('sylius.repository.taxonomy');
+    	$taxonomies = $taxonomyRepository->findAll();
+    
+    	return $this->render('PigalleBundle:Mayorista:filters.html.twig', array(
+    			'filters' => $filters,
+    			'taxonomies' => $taxonomies,
+    			'route' => $route,
+    			'routeByTaxon' => $routeByTaxon
+    	));
+    }
 }

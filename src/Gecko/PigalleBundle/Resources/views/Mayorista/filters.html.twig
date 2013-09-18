@@ -1,0 +1,19 @@
+<form method="get">
+	{% for taxonomy in taxonomies %}
+	{% if route == 'pigalle_mayorista_index' or taxonomy.name != 'Temporada' %}
+	<div class="filter filterAccordion">
+		<a class="accordionHeader collapsed" data-toggle="collapse" href="#filterAccordionBody{{ loop.index }}">{{ taxonomy.name }}</a>
+		<ul id="filterAccordionBody{{ loop.index }}" class="collapse">
+			<li><a href="{{ path(route) }}">Todos</a></li>
+			{% for taxon in taxonomy.taxons %}
+			{%   if taxon.isVisibleMayoristas %}
+			<li><a href="{{ path(routeByTaxon, { 'permalink': taxon.permalink }) }}">{{ taxon.name }}</a></li>
+			{%   endif %}
+			{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+	{% endfor %}
+	
+	<button type="submit" class="button">Buscar</button>
+</form>

@@ -5,6 +5,7 @@ sylius.backend:
       taxonomies:   "Categorización"
       options:      "Opciones"
       products:     "Productos"
+      product_collections:     "Colecciones / Mayorista"
       customer:     "Clientes"
       users:        "Usuarios"
       sales:        "Ventas"

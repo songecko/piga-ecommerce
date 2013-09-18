@@ -178,6 +178,8 @@
             <tag name="kernel.event_listener" event="sylius.taxonomy.pre_update" method="uploadTaxonomyImage" />
             <tag name="kernel.event_listener" event="sylius.pigalle_slide.pre_create" method="uploadPigalleSlideImage" />
             <tag name="kernel.event_listener" event="sylius.pigalle_slide.pre_update" method="uploadPigalleSlideImage" />
+            <tag name="kernel.event_listener" event="sylius.product_collection.pre_create" method="uploadProductCollectionImage" />
+            <tag name="kernel.event_listener" event="sylius.product_collection.pre_update" method="uploadProductCollectionImage" />
         </service>
 
         <service id="sylius.image_uploader" class="%sylius.image_uploader.class%">

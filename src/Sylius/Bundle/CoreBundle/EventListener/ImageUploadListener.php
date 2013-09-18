@@ -18,6 +18,8 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 use Sylius\Bundle\AssortmentBundle\Model\CustomizableProductInterface;
 use Sylius\Bundle\AssortmentBundle\Model\Variant\VariantInterface;
 use Sylius\Bundle\CoreBundle\Model\ImageInterface;
+use Gecko\PigalleBundle\Entity\ProductCollectionImage;
+use Gecko\PigalleBundle\Entity\ProductCollection;
 
 class ImageUploadListener
 {
@@ -77,12 +79,26 @@ class ImageUploadListener
     	$subject = $event->getSubject();
     
     	if (!$subject instanceof ImageInterface){
-    		throw new \InvalidArgumentException('TaxonInterface expected.');
+    		throw new \InvalidArgumentException('ImageInterface expected.');
     	}
     
     	if ($subject->hasFile()) {
     		$this->uploader->upload($subject);
     	}
+    }
     
+    public function uploadProductCollectionImage(GenericEvent $event)
+    {
+    	$subject = $event->getSubject();
+    
+    	if (!$subject instanceof ProductCollection){
+    		throw new \InvalidArgumentException('ProductCollection expected.');
+    	}
+    	
+    	foreach ($subject->getImages() as $image) {
+    		if (null === $image->getId()) {
+    			$this->uploader->upload($image);
+    		}
+    	}
     }
 }

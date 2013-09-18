@@ -1,0 +1,14 @@
+<div class="form-container">
+<fieldset>
+    {{ form_errors(form)  }}
+    {% include 'SyliusBackendBundle:ProductCollection/Form:_tabs.html.twig' %}
+    <div class="tab-content">
+        {% include 'SyliusBackendBundle:ProductCollection/Form:_main.html.twig' %}
+        {% include 'SyliusBackendBundle:ProductCollection/Form:_options.html.twig' %}
+        {% include 'SyliusBackendBundle:ProductCollection/Form:_categorization.html.twig' %}
+        {% include 'SyliusBackendBundle:ProductCollection/Form:_images.html.twig' %}
+    </div>
+</fieldset>
+</div>
+
+{{ form_widget(form._token) }}

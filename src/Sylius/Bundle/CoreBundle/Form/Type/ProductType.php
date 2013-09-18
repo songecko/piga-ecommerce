@@ -40,9 +40,6 @@ class ProductType extends BaseProductType
             ->add('isFeatured', null, array(
             	'label' => 'sylius.form.product.is_featured'		
         	))
-        	->add('isOnlyMayorista', null, array(
-        			'label' => 'sylius.form.product.is_only_mayorista'
-        	))
             /*->add('taxCategory', 'sylius_tax_category_choice', array(
                 'required'    => false,
                 'empty_value' => '---',

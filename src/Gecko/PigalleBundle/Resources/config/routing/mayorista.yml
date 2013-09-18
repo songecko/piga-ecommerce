@@ -6,7 +6,7 @@ pigalle_mayorista_index:
             paginate: 9
             template: PigalleBundle:Mayorista:index.html.twig
             arguments: 
-              spPageTemplate: PigalleBundle:Product:indexSpPage.html.twig
+              spPageTemplate: PigalleBundle:Mayorista:indexSpPage.html.twig
             
 pigalle_mayorista_index_by_taxon:
     pattern: /t/{permalink}
@@ -16,8 +16,25 @@ pigalle_mayorista_index_by_taxon:
             paginate: 9
             template: PigalleBundle:Mayorista:index.html.twig
             arguments: 
-              spPageTemplate: PigalleBundle:Product:indexSpPage.html.twig
-              
+              spPageTemplate: PigalleBundle:Mayorista:indexSpPage.html.twig
+
+pigalle_mayorista_show:
+    pattern:        /p/{slug}
+    defaults:
+        _controller:    pigalle.controller.mayorista:showAction
+        _sylius:
+            template: PigalleBundle:Mayorista:show.html.twig
+            criteria: {slug: $slug}
+            
+pigalle_mayorista_quickview:
+    pattern:        /p/quickview/id
+    defaults:
+        _controller:    pigalle.controller.mayorista:quickviewAction
+        _sylius:
+            template: PigalleBundle:Mayorista:quickview.html.twig
+    requirements:
+        id:  \d+
+                      
 pigalle_mayorista_register_success:
     pattern: /registro/completo
     defaults:

@@ -83,11 +83,9 @@ class ProductController extends ResourceController
 	 */
 	public function indexAction(Request $request)
 	{
-		$filterDefaults = array(
-			'is_only_mayorista' => false
-		);
+		$filterDefaults = array();
 		
-		return $this->renderResponse('index.html', $this->getViewParams($request, null, $filterDefaults));;
+		return $this->renderResponse('index.html', $this->getViewParams($request, null, $filterDefaults));
 	}
 	
     /**
@@ -100,9 +98,7 @@ class ProductController extends ResourceController
      */
     public function indexByTaxonAction(Request $request, $permalink)
     {
-        $filterDefaults = array(
-    		'is_only_mayorista' => false
-    	);
+        $filterDefaults = array();
     	
         return $this->renderResponse('indexByTaxon.html', $this->getViewParams($request, $permalink, $filterDefaults));
     }
@@ -137,8 +133,7 @@ class ProductController extends ResourceController
     	{
     		$paginator = $this
     			->getRepository()
-    			->createFilterPaginator($filter)
-    		;
+    			->createFilterPaginator($filter);
     	}
     	
     	$paginator->setMaxPerPage($config->getPaginationMaxPerPage());

@@ -1,47 +1,23 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
+namespace Gecko\PigalleBundle\Repository;
 
-namespace Sylius\Bundle\CoreBundle\Repository;
-
-use Sylius\Bundle\AssortmentBundle\Entity\CustomizableProductRepository;
+use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Bundle\TaxonomiesBundle\Model\TaxonInterface;
 use Doctrine\ORM\QueryBuilder;
 
 /**
  * Product repository.
- *
- * @author Paweł Jędrzejewski <pjedrzejewski@diweb.pl>
  */
-class ProductRepository extends CustomizableProductRepository
+class ProductCollectionRepository extends EntityRepository
 {	
-	/**
-	 * Find for featured products
-	 * 
-	 * @param number $max
-	 * @return array
-	 */
-	public function findFeaturedProducts($max = null)
+	protected function getQueryBuilder()
 	{
-		$criteria = array(
-			'only_with_stock' => true,
-			'is_featured' => true
-		);
-		$qb =  $this->createFilterQueryBuilder($criteria);
-		
-		if($max)
-		{
-			$qb->setMaxResults($max);
-		}
-			
-		return $qb->getQuery()->getResult();
+		return parent::getQueryBuilder()
+		->select('product_collection, image, option')
+		->leftJoin('product_collection.images', 'image')
+		->leftJoin('product_collection.options', 'option')
+		;
 	}
 	
 	public function getByTaxonQueryBuilder(TaxonInterface $taxon, $criteria = array(), $sorting = array())
@@ -49,7 +25,7 @@ class ProductRepository extends CustomizableProductRepository
 		$queryBuilder = $this->createFilterQueryBuilder($criteria, $sorting);
 		
 		$queryBuilder
-			->innerJoin('product.taxons', 'taxon')
+			->innerJoin('product_collection.taxons', 'taxon')
 			->andWhere('taxon = :taxon')
 			->setParameter('taxon', $taxon)
 		;
@@ -67,7 +43,6 @@ class ProductRepository extends CustomizableProductRepository
      */
     public function createByTaxonPaginator(TaxonInterface $taxon, $criteria = array(), $sorting = array())
     {
-    	$criteria['only_with_stock'] = true;
         $queryBuilder = $this->getByTaxonQueryBuilder($taxon, $criteria, $sorting);
 
         return $this->getPaginator($queryBuilder);
@@ -83,7 +58,6 @@ class ProductRepository extends CustomizableProductRepository
      */
     public function createFilterPaginator($criteria = array(), $sorting = array())
     {
-    	$criteria['only_with_stock'] = true;    	
         return $this->getPaginator($this->createFilterQueryBuilder($criteria, $sorting));
     }
 
@@ -98,42 +72,31 @@ class ProductRepository extends CustomizableProductRepository
     public function createFilterQueryBuilder($criteria = array(), $sorting = array())
     {
     	$queryBuilder = $this->getQueryBuilder()
-			->andWhere('variant.master = 1')
-			->groupBy('product.id')	;
+			->groupBy('product_collection.id')	;
     
     	if (!empty($criteria['name'])) 
     	{
     		$queryBuilder
-    		->andWhere('product.name LIKE :name')
+    		->andWhere('product_collection.name LIKE :name')
     		->setParameter('name', '%'.$criteria['name'].'%')
     		;
     	}
-    	if (!empty($criteria['sku'])) 
+
+    	if (!empty($criteria['taxons']))
     	{
+    		$taxonIds = array();
+    		foreach ($criteria['taxons'] as $taxon)
+    		{
+    			$taxonIds[] = $taxon->getId();
+    		}
+    		
     		$queryBuilder
-    		->andWhere('variant.sku = :sku')
-    		->setParameter('sku', $criteria['sku'])
-    		;
-    	}
-    	if (isset($criteria['only_offer']) && $criteria['only_offer'] == true) 
-    	{
-    		$queryBuilder
-    			->andWhere('product.priceWithoutDiscount > 0')
+    		->innerJoin('product_collection.taxons', 'taxon')
+    		->andWhere('taxon IN (:taxons)')
+    		->setParameter('taxons', $taxonIds)
     		;
     	}
     	
-    	if (isset($criteria['only_with_stock']) && $criteria['only_with_stock'] == true) 
-    	{
-    		$queryBuilder->andWhere('variant.onHand > 0');
-    	}
-    	
-    	if (isset($criteria['is_featured']))
-    	{
-    		$queryBuilder
-    			->andWhere('product.isFeatured = :isFeatured')
-    			->setParameter('isFeatured', $criteria['is_featured']);
-    	}
-   
     	if (empty($sorting)) {
     		if (!is_array($sorting)) {
     			$sorting = array();
@@ -156,5 +119,10 @@ class ProductRepository extends CustomizableProductRepository
     public function findLatest($limit = 10)
     {
         return $this->findBy(array(), array('createdAt' => 'desc'), $limit);
+    }
+    
+    protected function getAlias()
+    {
+    	return 'product_collection';
     }
 }
