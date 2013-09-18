@@ -1,0 +1,99 @@
+{% extends 'SyliusBackendBundle::layout.html.twig' %}
+
+{% from 'SyliusBackendBundle:Variant:list.html.twig' import list as list_variants %}
+{% import 'SyliusBackendBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'SyliusBackendBundle:Macros:alerts.html.twig' as alerts %}
+
+{% block content %}
+<div class="page-header">
+<h1>{{ 'sylius.product.show_header'|trans({'%product%': product.name})|raw }}</h1>
+</div>
+
+<div class="well well-small">
+    {{ buttons.manage(path('sylius_backend_product_index'), 'sylius.product.manage'|trans) }}
+    {{ buttons.edit(path('sylius_backend_product_update', {'id': product.id})) }}
+    {{ buttons.delete(path('sylius_backend_product_delete', {'id': product.id})) }}
+</div>
+
+<div class="well">
+    <h3>{{ product.name }}</h3>
+    <p>{{ product.description }}</p>
+</div>
+
+{% if product.images|length > 0 %}
+<div class="well" data-toggle="modal-gallery" data-target="#modal-gallery">
+	{% for image in product.images %}
+	<a href="{{ image.path|imagine_filter('sylius_gallery') }}" data-gallery="gallery" title="{{ product.name }}">
+		<img class="img-polaroid" src="{{ image.path|imagine_filter('pigalle_60x60') }}" alt="{{ product.name }}" />
+	</a>
+	{% endfor %}
+</div>
+{% else %}
+	{{ alerts.info('sylius.product.no_images'|trans) }}
+{% endif %}
+
+<hr>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>{{ 'sylius.product.name'|trans }}</th>
+            <th>{{ 'sylius.product.categorization'|trans }}</th>
+            <th>{{ 'sylius.product.stock'|trans }}</th>
+            <th>{{ 'sylius.product.price'|trans }}</th>
+            <th>{{ 'sylius.product.is_featured'|trans }}</th>
+            <th>{{ 'sylius.product.is_only_mayorista'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>
+                {% if product.taxons|length > 0 %}
+                <ul>
+                {% for taxon in product.taxons %}
+                    <li>{{ taxon.name }}</li>
+                {% endfor %}
+                </ul>
+                {% else %}
+                    <span class="label label-info">
+                        <i class="icon-list-alt icon-white"></i> {{ 'sylius.product.no_taxons'|trans }}
+                    </span>
+                {% endif %}
+            </td>
+            <td><span class="badge badge-{{ product.masterVariant.inStock ? 'success' : 'important' }}">{{ product.masterVariant.onHand }}</span></td>
+            <td>
+            	{%  if(product.isOffer) %}
+            	<span class="label label-warning">{{ product.masterVariant.price|sylius_money }}</span>
+            	<span class="label label-success linethrough">{{ product.getPriceWithoutDiscount|sylius_money }}</span>
+            	{% else %}
+            	<span class="label label-success">{{ product.masterVariant.price|sylius_money }}</span>
+            	{% endif %}
+            </td>
+            <td>
+                <span class="label label-{{ product.isFeatured ? 'success' : 'important'}}">
+                    {{ product.isFeatured ? 'sylius.yes'|trans : 'sylius.no'|trans }}
+                </span>
+            </td>
+            <td>
+                <span class="label label-{{ product.isOnlyMayorista ? 'success' : 'important'}}">
+                    {{ product.isOnlyMayorista ? 'sylius.yes'|trans : 'sylius.no'|trans }}
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+{% if product.hasOptions %}
+<hr>
+<h3>Talles del producto</h3>
+<div class="well well-small">
+    {{ buttons.create(path('sylius_backend_variant_create', {'productId': product.id}), 'sylius.variant.create'|trans) }}
+    {{ buttons.manage(path('sylius_backend_variant_generate', {'productId': product.id}), 'sylius.product.generate_variants'|trans) }}
+</div>
+
+{{ list_variants(product.variants) }}
+
+{% endif %}
+{% endblock %}

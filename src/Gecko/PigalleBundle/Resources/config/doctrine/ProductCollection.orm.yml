@@ -1,0 +1,73 @@
+Gecko\PigalleBundle\Entity\ProductCollection:
+    type: entity
+    table: pigalle_product_collection
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            column: name
+            type: string
+        slug:
+            column: slug
+            type: string
+            unique: true
+            gedmo:
+              slug:
+                fields: [ name ]                
+                unique: true
+        description:
+            column: description
+            type: string
+        shortDescription:
+            column: short_description
+            type: string
+            nullable: true
+        createdAt:
+            column: created_at
+            type: datetime
+            gedmo:
+              timestampable:
+                on: create
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: true
+            gedmo:
+              timestampable:
+                on: update
+    oneToMany:
+        images:
+            targetEntity: Gecko\PigalleBundle\Entity\ProductCollectionImage
+            mappedBy:     productCollection
+    manyToMany:
+        taxons:
+            targetEntity: Sylius\Bundle\TaxonomiesBundle\Model\TaxonInterface
+            joinTable:
+                name: pigalle_product_collection_taxon
+                joinColumns:
+                    product_collection_id:
+                        referencedColumnName: id
+                        nullable: false
+                        unique: false                        
+                inverseJoinColumns:
+                    taxon_id:
+                        referencedColumnName: id
+                        nullable: false
+                        unique: false
+        options:
+            targetEntity: Sylius\Bundle\AssortmentBundle\Model\Option\OptionInterface
+            joinTable:
+                name: pigalle_product_collection_option
+                joinColumns:
+                    product_collection_id:
+                        referencedColumnName: id
+                        nullable: false
+                        unique: false                        
+                inverseJoinColumns:
+                    option_id:
+                        referencedColumnName: id
+                        nullable: false
+                        unique: false

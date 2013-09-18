@@ -182,6 +182,11 @@ class MenuBuilder
             'route' => 'sylius_backend_product_index',
             'labelAttributes' => array('icon' => 'icon-certificate'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.products', $section)));
+        
+        $child->addChild('product_collections', array(
+        		'route' => 'sylius_backend_product_collection_index',
+        		'labelAttributes' => array('icon' => 'icon-certificate'),
+        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.product_collections', $section)));        
 
         /*$child->addChild('stockables', array(
             'route' => 'sylius_backend_stockable_index',

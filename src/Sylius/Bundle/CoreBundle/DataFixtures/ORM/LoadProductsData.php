@@ -125,12 +125,7 @@ class LoadProductsData extends DataFixture
     	{
     		$product->setIsFeatured(true);
     	}
-    	
-    	if($i % 8 == 0)
-    	{
-    		$product->setIsOnlyMayorista(true);
-    	}
-    	
+    	    	
     	$product->addOption($this->getReference('Sylius.Option.Talle'));
     	
     	$this->generateVariants($product);

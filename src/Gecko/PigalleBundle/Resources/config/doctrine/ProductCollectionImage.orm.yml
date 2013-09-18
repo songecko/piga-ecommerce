@@ -1,0 +1,15 @@
+Gecko\PigalleBundle\Entity\ProductCollectionImage:
+    type: entity
+    table: pigalle_product_collection_image
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    manyToOne:
+        productCollection:
+            targetEntity: Gecko\PigalleBundle\Entity\ProductCollection
+            inversedBy: images
+            joinColumn:
+                name: product_collection_id
+                referencedColumnName: id
