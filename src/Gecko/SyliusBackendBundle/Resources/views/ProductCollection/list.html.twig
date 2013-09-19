@@ -37,9 +37,15 @@
             <td><span class="label label-info">{{ product.updatedAt|date("d/m/Y g:ia") }}</span></td>
             <td>
                 <div class="pull-right">
+<<<<<<< HEAD
                 {{ buttons.show(path('sylius_backend_product_collection_show', {'id': product.id})) }}
                 {{ buttons.edit(path('sylius_backend_product_collection_update', {'id': product.id})) }}
                 {{ buttons.delete(path('sylius_backend_product_collection_delete', {'id': product.id})) }}
+=======
+                {{ buttons.show(path('sylius_backend_product_show', {'id': product.id})) }}
+                {{ buttons.edit(path('sylius_backend_product_update', {'id': product.id})) }}
+                {{ buttons.delete(path('sylius_backend_product_delete', {'id': product.id})) }}
+>>>>>>> branch 'master' of https://github.com/songecko/piga-ecommerce.git
                 </div>
             </td>
         </tr>

@@ -81,7 +81,7 @@ class ProductCollectionRepository extends EntityRepository
     		->setParameter('name', '%'.$criteria['name'].'%')
     		;
     	}
-
+    	
     	if (!empty($criteria['taxons']))
     	{
     		$taxonIds = array();
