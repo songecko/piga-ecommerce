@@ -11,7 +11,7 @@ use DateTime;
  * Sylius core taxon entity.
  *
  */
-class Taxon extends BaseTaxon implements ImageInterface
+class Taxon extends BaseTaxon
 {
 
     /**
