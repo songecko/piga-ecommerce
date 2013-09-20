@@ -42,7 +42,7 @@ Gecko\PigalleBundle\Entity\ProductCollection:
         images:
             targetEntity: Gecko\PigalleBundle\Entity\ProductCollectionImage
             mappedBy:     productCollection
-            cascade: ["persist"]
+            cascade: ["persist", "remove"]
     manyToMany:
         taxons:
             targetEntity: Sylius\Bundle\TaxonomiesBundle\Model\TaxonInterface
