@@ -31,10 +31,3 @@ Gecko\PigalleBundle\Entity\ProductCollectionImage:
                 name: product_collection_id
                 referencedColumnName: id
                 onDelete: CASCADE
-    manyToOne:
-        productCollection:
-            targetEntity: Gecko\PigalleBundle\Entity\ProductCollection
-            inversedBy: images
-            joinColumn:
-                name: product_collection_id
-                referencedColumnName: id

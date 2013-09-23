@@ -52,7 +52,8 @@ Gecko\PigalleBundle\Entity\ProductCollection:
                     product_collection_id:
                         referencedColumnName: id
                         nullable: false
-                        unique: false                        
+                        unique: false 
+                        onDelete: CASCADE                       
                 inverseJoinColumns:
                     taxon_id:
                         referencedColumnName: id
@@ -66,7 +67,8 @@ Gecko\PigalleBundle\Entity\ProductCollection:
                     product_collection_id:
                         referencedColumnName: id
                         nullable: false
-                        unique: false                        
+                        unique: false         
+                        onDelete: CASCADE               
                 inverseJoinColumns:
                     option_id:
                         referencedColumnName: id
