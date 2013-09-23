@@ -35,6 +35,7 @@ security:
                 invalidate_session: false
             anonymous: true
             context: pigalle_context
+    access_denied_url: /sin-autorizacion
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/registro, role: IS_AUTHENTICATED_ANONYMOUSLY }

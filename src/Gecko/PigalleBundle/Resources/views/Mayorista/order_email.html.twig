@@ -1,0 +1,8 @@
+{% extends 'GeckoNewsletterBundle::email_layout.html.twig' %}
+
+{% block content %}
+<h3>Nuevo pedido mayorista</h3>
+
+<p>El mayorista con email "{{ user.email }}" quiere realizar el pedido del siguiente producto:</p>
+<p>{{ product.name }}</p>
+{% endblock %}

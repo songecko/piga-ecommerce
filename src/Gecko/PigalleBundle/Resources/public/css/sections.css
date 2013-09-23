@@ -149,7 +149,7 @@ input[type="radio"].toggle + label {
 	-moz-border-radius: 0px;
 	border-radius: 0px;
 }
-.productDetails .datos .addToCartButton {
+.productDetails .datos .addToCartButton, .productDetails .datos .mayoristaOrderButton {
 	width: 100%;
 }
 

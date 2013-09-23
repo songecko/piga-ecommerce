@@ -49,6 +49,35 @@ class MayoristaController extends ProductController
     {
         return $this->renderResponse('indexByTaxon.html', $this->getViewParams($request, $permalink));
     }
+       
+    public function orderAction(Request $request)
+    {
+    	$product = $this->findOr404();
+    	$user = $this->get('security.context')->getToken()->getUser();
+    	
+    	try {
+    		$message = \Swift_Message::newInstance()
+    		->setContentType("text/html")
+    		->setSubject('Pigalle - Pedido mayorista')
+    		->setFrom($user->getEmail())
+    		->setTo('info@pigalle.com.ar')
+    		->setBody(
+    				$this->renderView(
+    						'PigalleBundle:Mayorista:order_email.html.twig',
+    						array(
+    								'product'   => $product,
+    								'user'   => $user
+    						)
+    				)
+    		);
+    	
+    		$this->get('mailer')->send($message);
+    	}catch (Swift_SwiftException $e)
+    	{
+    	}
+    	
+    	return $this->render("PigalleBundle:Mayorista:ordered.html.twig");
+    }
     
     public function registerSuccessAction(Request $request)
     {

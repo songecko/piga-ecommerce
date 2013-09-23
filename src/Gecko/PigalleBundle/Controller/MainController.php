@@ -128,6 +128,11 @@ class MainController extends Controller
     	return $this->render('PigalleBundle:Main:locales.html.twig');
     }
     
+    public function unauthorizedAction()
+    {
+    	return $this->render('PigalleBundle:Main:unauthorized.html.twig');
+    }
+    
     public function newsletterSubscribeWidgetAction()
     {
     	$form = $this->container->get('form.factory')->create($this->container->get('gecko_newsletter.subscriber.form.type'));

@@ -24,7 +24,11 @@ sylius_account:
 pigalle_checkout_success:
     pattern:     /checkout/gracias
     defaults:    { _controller: PigalleBundle:Main:checkoutSuccess }
-    
+
+pigalle_unauthorized:
+    pattern:        /sin-autorizacion
+    defaults:       { _controller: PigalleBundle:Main:unauthorized }
+        
 sylius_checkout:
     resource: @PigalleBundle/Resources/config/routing/checkout.yml
     prefix: /checkout

@@ -25,6 +25,13 @@ class RegistrationController extends BaseController
         $session = $request->getSession();
         /* @var $session \Symfony\Component\HttpFoundation\Session */
 
+        $securityContext = $this->container->get('security.context');
+        if($isMayorista && $securityContext->isGranted('ROLE_USER_MAYORISTA'))
+        {
+        	$url = $this->container->get('router')->generate("pigalle_mayorista_index");
+        	return new RedirectResponse($url);
+        }
+        
         // get the error if any (works with forward and redirect -- see below)
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
             $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
