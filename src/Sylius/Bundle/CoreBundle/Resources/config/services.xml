@@ -180,6 +180,8 @@
             <tag name="kernel.event_listener" event="sylius.pigalle_slide.pre_update" method="uploadPigalleSlideImage" />
             <tag name="kernel.event_listener" event="sylius.product_collection.pre_create" method="uploadProductCollectionImage" />
             <tag name="kernel.event_listener" event="sylius.product_collection.pre_update" method="uploadProductCollectionImage" />
+            <tag name="kernel.event_listener" event="gecko_newsletter.newsletter.pre_create" method="uploadNewsletterImage" />
+            <tag name="kernel.event_listener" event="gecko_newsletter.newsletter.pre_update" method="uploadNewsletterImage" />
         </service>
 
         <service id="sylius.image_uploader" class="%sylius.image_uploader.class%">

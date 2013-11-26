@@ -5,7 +5,11 @@ sylius_backend_dashboard:
 sylius_backend_pigalle_slide:
     resource: @SyliusBackendBundle/Resources/config/routing/pigalle_slide.yml
     prefix: /slider
-    
+ 
+sylius_backend_pigalle_local:
+    resource: @SyliusBackendBundle/Resources/config/routing/pigalle_local.yml
+    prefix: /locales
+       
 sylius_backend_user:
     resource: @SyliusBackendBundle/Resources/config/routing/user.yml
     prefix: /users

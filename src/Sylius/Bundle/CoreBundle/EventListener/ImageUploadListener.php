@@ -20,6 +20,7 @@ use Sylius\Bundle\AssortmentBundle\Model\Variant\VariantInterface;
 use Sylius\Bundle\CoreBundle\Model\ImageInterface;
 use Gecko\PigalleBundle\Entity\ProductCollectionImage;
 use Gecko\PigalleBundle\Entity\ProductCollection;
+use Gecko\NewsletterBundle\Entity\Newsletter;
 
 class ImageUploadListener
 {
@@ -99,6 +100,19 @@ class ImageUploadListener
     		if (null === $image->getId()) {
     			$this->uploader->upload($image);
     		}
+    	}
+    }
+    
+    public function uploadNewsletterImage(GenericEvent $event)
+    {
+    	$subject = $event->getSubject();
+    
+    	if (!$subject instanceof Newsletter){
+    		throw new \InvalidArgumentException('Newsletter expected.');
+    	}
+    	 
+    	if ($subject->hasFile()) {
+    		$this->uploader->upload($subject);
     	}
     }
 }

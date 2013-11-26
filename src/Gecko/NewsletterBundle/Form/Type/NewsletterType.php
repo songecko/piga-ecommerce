@@ -19,6 +19,17 @@ class NewsletterType extends AbstractType
         	'required' => true,
         	'label'    => 'Titulo'
         ))
+        ->add('introText', 'text', array(
+        	'required' => false,
+        	'label'    => 'Texto introductorio'
+        ))
+        ->add('coupon', 'text', array(
+        	'required' => false,
+        	'label'    => 'Cupón'
+        ))
+        ->add('file', 'file', array(
+        	'label' => 'Imagen'
+        ))
         ->add('templateName', 'choice', array(
         	'choices'   => Newsletter::$NEWSLETTER_TEMPLATE_NAMES,
         	'required'  => true,
@@ -27,6 +38,8 @@ class NewsletterType extends AbstractType
         ->add('subscriberList', 'entity', array(
         	'class' => 'Gecko\NewsletterBundle\Entity\SubscriberList',
         	'property'  => 'name',
+        	'required' => false,
+        	'empty_value' => 'Todos',
         	'multiple'  => false,
         	'label'     => 'Lista de envio'
         ));

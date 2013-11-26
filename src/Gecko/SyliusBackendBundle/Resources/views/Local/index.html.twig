@@ -1,0 +1,23 @@
+{% extends 'SyliusBackendBundle::layout.html.twig' %}
+
+{% import 'SyliusBackendBundle:Macros:buttons.html.twig' as buttons %}
+{% from 'SyliusBackendBundle:Macros:misc.html.twig' import pagination %}
+{% from 'SyliusBackendBundle:Local:list.html.twig' import list %}
+  				
+{% block content %}
+<div class="page-header">
+    <h1>{{ 'sylius.pigalle_local.index_header'|trans|raw }}</h1>
+</div>
+
+<div class="well well-small">
+    {{ buttons.create(path('sylius_backend_pigalle_local_create'), 'sylius.pigalle_local.create'|trans) }}
+</div>
+
+<div class="row-fluid">
+	{{ pagination(locals) }}
+</div>
+
+{{ list(locals) }}
+{{ pagination(locals) }}
+
+{% endblock %}

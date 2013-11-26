@@ -1,0 +1,19 @@
+{% extends 'GeckoNewsletterBundle::email_layout.html.twig' %}
+
+{% block content %}
+<h4>Newsletter de Pigalle special: {{ newsletter.title }}</h4>
+
+<p>Hola {{ subscriber.fullname }}</p>
+
+{% if(newsletter.introText) %}
+<p>{{ newsletter.introText }}</p>
+{% endif %}
+
+{% if(newsletter.coupon) %}
+<p>{{ newsletter.coupon }}</p>
+{% endif %}
+
+{% if(newsletter.hasPath) %}
+<img src="{{ newsletter.path|imagine_filter('pigalle_220x220') }}" alt="" />
+{% endif %}
+{% endblock %}

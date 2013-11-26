@@ -7,9 +7,12 @@ namespace Gecko\NewsletterBundle\Model;
  */
 interface NewsletterInterface
 {
-    function getId();
     function getTitle();
     function setTitle($title);
+    function getIntroText();
+    function setIntroText($introText);
+    function getCoupon();
+    function setCoupon($coupon);
     function getTemplateName();
     function setTemplateName($templateName);
     function getSubscriberList();
@@ -17,6 +20,5 @@ interface NewsletterInterface
     function isSent();
     function setSent($sent);
     function incrementCreatedAt();
-    function getUpdatedAt();
     function incrementUpdatedAt();
 }

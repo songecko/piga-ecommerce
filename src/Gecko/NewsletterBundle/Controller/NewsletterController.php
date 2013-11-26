@@ -21,9 +21,19 @@ class NewsletterController extends ResourceController
 		 
 		$toList = array();
 		
+		if($newsletter->getSubscriberList())
+		{
+			$subscribers = $newsletter->getSubscriberList()->getSubscribers();
+		}else
+		{
+			$subscribers = $this->getDoctrine()
+				->getRepository('GeckoNewsletterBundle:Subscriber')
+				->findAll();
+		}
+		
 		//Try send the emails
 		$numSent = 0;
-		foreach ($newsletter->getSubscriberList()->getSubscribers() as $subscriber)
+		foreach ($subscribers as $subscriber)
 		{
 			if($subscriber->isEnabled())
 			{

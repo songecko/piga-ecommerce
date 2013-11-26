@@ -1,0 +1,33 @@
+sylius_backend_pigalle_local_index:
+    pattern: /
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.local:indexAction
+        _sylius:
+            template: SyliusBackendBundle:Local:index.html.twig
+
+sylius_backend_pigalle_local_create:
+    pattern: /new
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.local:createAction
+        _sylius:
+            template: SyliusBackendBundle:Local:create.html.twig
+            redirect: sylius_backend_pigalle_local_index
+
+sylius_backend_pigalle_local_update:
+    pattern: /{id}/edit
+    methods: [GET, PUT, POST]
+    defaults:
+        _controller: sylius.controller.local:updateAction
+        _sylius:
+            template: SyliusBackendBundle:Local:update.html.twig
+            redirect: sylius_backend_pigalle_local_index
+
+sylius_backend_pigalle_local_delete:
+    pattern: /{id}
+    methods: [DELETE]
+    defaults:
+        _controller: sylius.controller.local:deleteAction
+        _sylius:
+            redirect: sylius_backend_pigalle_local_index

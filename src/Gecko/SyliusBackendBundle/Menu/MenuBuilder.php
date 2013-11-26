@@ -312,6 +312,11 @@ class MenuBuilder
         		'labelAttributes' => array('icon' => 'icon-picture'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.pigalle_slide', $section)));        
 
+        $child->addChild('pigalle_local', array(
+        		'route' => 'sylius_backend_pigalle_local_index',
+        		'labelAttributes' => array('icon' => 'icon-home'),
+        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.pigalle_local', $section)));
+        
         /*$child->addChild('payment_methods', array(
             'route' => 'sylius_backend_payment_method_index',
             'labelAttributes' => array('icon' => 'icon-credit-card'),

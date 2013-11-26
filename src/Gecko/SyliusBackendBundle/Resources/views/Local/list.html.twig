@@ -1,0 +1,44 @@
+{% macro list(locals) %}
+
+{% import 'SyliusBackendBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'SyliusBackendBundle:Macros:alerts.html.twig' as alerts %}
+
+{% if locals|length > 0 %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for local in locals %}
+        <tr>
+            <td>
+                <a href="{{ path('sylius_backend_pigalle_local_update', {'id': local.id}) }}" class="btn btn-link">
+                    {{ local.id }}
+                </a>
+            </td>
+            <td>{{ local.name }}</td>
+            <td>{{ local.address~' '~local.address2 }}</td>
+            <td>{{ local.phone }}</td>
+            <td>{{ local.email }}</td>
+            <td>
+                <div class="pull-right">
+                {{ buttons.edit(path('sylius_backend_pigalle_local_update', {'id': local.id})) }}
+                {{ buttons.delete(path('sylius_backend_pigalle_local_delete', {'id': local.id})) }}
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+{{ alerts.info('sylius.no_results'|trans) }}
+{% endif %}
+
+{% endmacro %}

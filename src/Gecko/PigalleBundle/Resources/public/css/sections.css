@@ -906,6 +906,7 @@ input[type="radio"].toggle + label {
 	-webkit-column-count: 4;
 	column-count: 4;
 	margin-top: 20px;
+	padding-bottom: 30px;
 }
 
 .locales .list h2 {

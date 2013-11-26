@@ -21,7 +21,7 @@
         <tr>
             <td>{{ item.id }}</td>
             <td>{{ item.title }}</td>
-            <td>{{ item.subscriberList.name }}</td>
+            <td>{{ item.subscriberList?item.subscriberList.name:'Todos' }}</td>
             <td>{{ item.templateName == 'basic'?'Basico':'Destacados' }}</td>
             <td>
                 <span class="label label-{{ item.isSent ? 'success' : 'important'}}">

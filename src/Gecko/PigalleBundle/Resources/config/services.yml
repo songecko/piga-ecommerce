@@ -18,6 +18,11 @@ services:
         tags:
             - { name: form.type, alias: sylius_pigalle_slide }
     
+    pigalle.pigalle_local.form.type:
+        class: Gecko\PigalleBundle\Form\Type\LocalType
+        tags:
+            - { name: form.type, alias: sylius_local }
+            
     pigalle.product_collection.form.type:
         class: Gecko\PigalleBundle\Form\Type\ProductCollectionType
         tags:

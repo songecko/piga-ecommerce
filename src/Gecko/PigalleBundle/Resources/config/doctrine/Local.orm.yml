@@ -1,0 +1,46 @@
+Gecko\PigalleBundle\Entity\Local:
+    type: entity
+    table: pigalle_local
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            column: name
+            type: string
+        address:
+            column: address
+            type: string
+        address2:
+            column: address2
+            type: string
+            nullable: true
+        location:
+            column: location
+            type: string
+        phone:
+            column: phone
+            type: string
+        email:
+            column: email
+            type: string
+        isFeatured:
+            column: is_featured
+            type: boolean
+            nullable: false
+            default: false
+        createdAt:
+            column: created_at
+            type: datetime
+            gedmo:
+              timestampable:
+                on: create
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: true
+            gedmo:
+              timestampable:
+                on: update

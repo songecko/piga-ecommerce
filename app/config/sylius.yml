@@ -113,7 +113,11 @@ sylius_resource:
         sylius.pigalle_slide:
             driver: doctrine/orm
             classes:
-                model: Gecko\PigalleBundle\Entity\PigalleSlide    
+                model: Gecko\PigalleBundle\Entity\PigalleSlide
+        sylius.local:
+            driver: doctrine/orm
+            classes:
+                model: Gecko\PigalleBundle\Entity\Local
         sylius.product_collection:
             driver: doctrine/orm
             classes:

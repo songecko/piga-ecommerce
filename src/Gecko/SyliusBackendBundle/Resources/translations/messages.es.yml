@@ -123,7 +123,13 @@ sylius:
         update_header: "Editar slide"
         create_header: "Nuevo slide"
         create: "Nuevo slide"
-        
+    
+    pigalle_local:
+        index_header: "Locales"
+        update_header: "Editar local"
+        create_header: "Nuevo local"
+        create: "Nuevo local"
+            
     user:
         index_header:  "Usuarios"
         show_header:   "Vista del usuario"

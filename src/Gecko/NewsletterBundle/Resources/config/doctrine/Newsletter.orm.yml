@@ -10,6 +10,18 @@ Gecko\NewsletterBundle\Entity\Newsletter:
         title:
             column: title
             type: string
+        introText:
+            column: intro_text
+            type: string
+            nullable: true
+        coupon:
+            column: coupon
+            type: string
+            nullable: true
+        path:
+            column: path
+            type: string
+            nullable: true
         templateName:
             column: template_name
             type: string

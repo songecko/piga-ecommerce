@@ -19,6 +19,7 @@ sylius.backend:
       configuration: "Configuración"
       general_settings: "Configuración general"
       pigalle_slide: "Slider"
+      pigalle_local: "Locales"
       account:      "Cuenta"
       account_edit: "Editar"
       view_site:    "Ver Sitio"

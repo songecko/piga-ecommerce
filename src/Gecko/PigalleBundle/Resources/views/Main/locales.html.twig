@@ -11,41 +11,23 @@
 <div class="container locales">
 	<div class="tab">Locales</div>
 	<div class="list">
-		<h2>Gran Buenos Aires</h2>
-		<div class="local featured">
-			<p class="name">Showroom y local Pigalle</p>
-			<p>Las Heras 674, Ramos Mejía</p>
-			<p>011 4658 5137</p>
-			<p><a href="mailto:ventas@pigalle.com.ar">ventas@pigalle.com.ar</a></p>
+		{% for location, locals in localsLocation %}
+		{%   if locals|length > 0 %}
+		{%     for local in locals %}
+		{%         if loop.first %}
+		<h2>{{ local.getLocationName }}</h2>
+		{%         endif %}
+		<div class="local{{ local.getIsFeatured == true?' featured':'' }}">
+			<p class="name">{{ local.getName }}</p>
+			<p>{{ local.getAddress }}</p>
+			{% if local.getAddress2 is defined %}
+			<p>{{ local.getAddress2 }}</p>
+			{% endif %}
+			<p>{{ local.getPhone }}</p>
+			<p><a href="mailto:{{ local.getEmail }}">{{ local.getEmail }}</a></p>
 		</div>
-		{% for i in 1..10 %}
-		<div class="local">
-			<p class="name">Ornella costani</p>
-			<p>Hidalgo 26-C1405BBB</p>
-			<p>Caballito - CABA</p>
-			<p>011 4567 6789</p>
-			<p><a href="mailto:ventas@pigalle.com.ar">ventas@pigalle.com.ar</a></p>
-		</div>
-		{% endfor %}
-		<h2>Provincias</h2>
-		{% for i in 1..10 %}
-		<div class="local">
-			<p class="name">Ornella costani</p>
-			<p>Hidalgo 26-C1405BBB</p>
-			<p>Caballito - CABA</p>
-			<p>011 4567 6789</p>
-			<p><a href="mailto:ventas@pigalle.com.ar">ventas@pigalle.com.ar</a></p>
-		</div>
-		{% endfor %}
-		<h2>Paises limítrofes</h2>
-		{% for i in 1..2 %}
-		<div class="local">
-			<p class="name">Ornella costani</p>
-			<p>Hidalgo 26-C1405BBB</p>
-			<p>Caballito - CABA</p>
-			<p>011 4567 6789</p>
-			<p><a href="mailto:ventas@pigalle.com.ar">ventas@pigalle.com.ar</a></p>
-		</div>
+		{%     endfor %}
+		{%   endif %}
 		{% endfor %}
 	</div>	
 </div>

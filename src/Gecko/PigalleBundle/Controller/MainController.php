@@ -5,6 +5,7 @@ namespace Gecko\PigalleBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Gecko\PigalleBundle\Form\Type\ContactType;
+use Gecko\PigalleBundle\Entity\Local;
 
 class MainController extends Controller
 {
@@ -125,7 +126,23 @@ class MainController extends Controller
     
     public function localesAction()
     {
-    	return $this->render('PigalleBundle:Main:locales.html.twig');
+    	$dbLocals = $this->getDoctrine()->getRepository('PigalleBundle:Local')->findAll();
+    	
+	    $localsLocation = array();
+	    
+    	foreach (array_keys(Local::$LOCATIONS) as $location)
+    	{
+    		$localsLocation[$location] = array();
+    	}
+    	
+    	foreach ($dbLocals as $dbLocal)
+    	{
+    		$localsLocation[$dbLocal->getLocation()][] = $dbLocal; 	
+    	}
+    	
+    	return $this->render('PigalleBundle:Main:locales.html.twig', array(
+    		'localsLocation' => $localsLocation    		
+    	));
     }
     
     public function unauthorizedAction()

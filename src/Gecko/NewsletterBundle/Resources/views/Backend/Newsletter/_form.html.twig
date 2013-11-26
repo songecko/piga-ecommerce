@@ -2,6 +2,19 @@
 <fieldset>
     {{ form_errors(form) }}
     {{ form_row(form.title) }}
+    {{ form_row(form.introText) }}
+    {{ form_row(form.coupon) }}
+    <div class="control-group">
+    	<label for="sylius_pigalle_slide_file" class=" control-label optional">Imagen</label>
+		<div class="controls">
+			{% if newsletter.hasPath %}
+			<img class="img-polaroid" src="{{ newsletter.path|imagine_filter('sylius_60x60') }}" alt="" />
+			{% endif %}
+            &nbsp;
+			{{ form_widget(form.file) }}
+			&nbsp;
+		</div>
+	</div>
     {{ form_row(form.templateName, {'attr': {'class': 'input-xlarge'}}) }}
 	{{ form_row(form.subscriberList, {'attr': {'class': 'input-xlarge'}}) }}
 </fieldset>
