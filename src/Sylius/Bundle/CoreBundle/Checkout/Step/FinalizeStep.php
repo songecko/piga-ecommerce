@@ -30,7 +30,10 @@ class FinalizeStep extends CheckoutStep
     public function forwardAction(ProcessContextInterface $context)
     {
         $order = $this->createOrder($context);
-
+        
+        //Save the stock
+        $this->getDoctrine()->getManager()->flush();
+        
         $this->saveOrder($order);
         $this->getCartProvider()->abandonCart();
 

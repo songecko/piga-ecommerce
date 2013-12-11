@@ -102,7 +102,7 @@ class ItemResolver implements ItemResolverInterface
         }
 
         $variant = $item->getVariant();
-
+		
         // If all is ok with form, quantity and other stuff, simply return the item.
         if (!$form->isValid() || null === $variant) {
             throw new ItemResolvingException('Submitted form is invalid');
@@ -112,6 +112,10 @@ class ItemResolver implements ItemResolverInterface
             throw new ItemResolvingException('Selected item is out of stock');
         }
 
+        if ($variant->getOnHand() < $item->getQuantity()) {
+        	throw new ItemResolvingException('Selected item is out of stock');
+        }
+        
         $item->setUnitPrice($variant->getPrice());
 
         return $item;

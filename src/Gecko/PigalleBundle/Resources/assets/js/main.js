@@ -7,7 +7,7 @@ var setupProductDetails = function(withZoom)
 		gallery:'productGallery', 
 		cursor: 'pointer', 
 		galleryActiveClass: 'active',
-		zoomLevel: 0.5,
+		zoomLevel: 0.8,
 		scrollZoom: true
 	};
 	
