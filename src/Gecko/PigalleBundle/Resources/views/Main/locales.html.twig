@@ -23,8 +23,12 @@
 			{% if local.getAddress2 is defined %}
 			<p>{{ local.getAddress2 }}</p>
 			{% endif %}
+			{% if local.getPhone is defined %}
 			<p>{{ local.getPhone }}</p>
+			{% endif %}
+			{% if local.getEmail is defined %}
 			<p><a href="mailto:{{ local.getEmail }}">{{ local.getEmail }}</a></p>
+			{% endif %}
 		</div>
 		{%     endfor %}
 		{%   endif %}

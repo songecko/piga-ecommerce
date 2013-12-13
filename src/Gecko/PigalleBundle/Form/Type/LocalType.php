@@ -35,11 +35,11 @@ class LocalType extends AbstractType
 	        	'label'     => 'Lugar'
         	))
 			->add('phone', 'text', array(
-        		'required' => true,
+        		'required' => false,
         		'label'    => 'Teléfono'
         	))
 			->add('email', 'text', array(
-        		'required' => true,
+        		'required' => false,
         		'label'    => 'Email'
         	))
         	->add('isFeatured', null, array(

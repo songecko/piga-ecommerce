@@ -23,9 +23,11 @@ Gecko\PigalleBundle\Entity\Local:
         phone:
             column: phone
             type: string
+            nullable: true
         email:
             column: email
             type: string
+            nullable: true
         isFeatured:
             column: is_featured
             type: boolean
