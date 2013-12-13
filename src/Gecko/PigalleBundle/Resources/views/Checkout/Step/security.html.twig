@@ -22,7 +22,7 @@
 				{% include 'GeckoUserBundle:Security:_loginForm.html.twig' %}
 			</div>
 			<div class="span4 register">
-				{% include 'GeckoUserBundle:Registration:_registerForm.html.twig' with {'form': registration_form, 'route': 'sylius_checkout_forward', 'stepName': context.currentStep.name} %}
+				{% include 'GeckoUserBundle:Registration:_registerForm.html.twig' with {'form': registration_form, 'route': 'sylius_checkout_forward', 'stepName': context.currentStep.name, 'isMayorista': false } %}
 			</div>
 		</div>
 	</div>

@@ -1,9 +1,14 @@
 /*** BASE STYLES ***/
+html {
+	height: 100%;
+}
 body { 
 	font-family: 'Lato', sans-serif;
 	font-weight:400;
 	color: #000000;
 	font-size: 12px;
+	position: relative;
+	min-height: 100%;
 }
 ul { 
 	margin:0px;
@@ -202,6 +207,11 @@ div.hr hr {
 	left: 30px;
 	top: 5px;
 }
+/*** CONTENT ***/
+#content {
+	padding-bottom: 235px;	
+}
+
 .titleSection {
 	font-family: 'Croissant One';
 	font-size: 16px;
@@ -464,6 +474,9 @@ div.hr hr {
 /***** FOOTER *****/
 #footer {
 	margin-top: 70px;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 }
 #footer .socaloFooter { 
 	background:url(../images/bg-footer.png) repeat-x;

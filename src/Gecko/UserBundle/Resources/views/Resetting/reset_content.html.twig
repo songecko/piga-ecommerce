@@ -1,0 +1,12 @@
+<div class="security">
+	<div class="contentTitle"><h3 class="titleSection container">Recuperar contraseña</h3></div>
+	<div class="container content">
+		<p>Ingrese su nueva contraseña:</p>
+		<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
+			<fieldset>
+			    {{ form_widget(form) }}
+			</fieldset>
+	    	<button type="submit" class="button" name="login">Enviar</button>
+		</form>
+	</div>
+</div>

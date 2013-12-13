@@ -1,0 +1,14 @@
+{% block subject %}
+{% autoescape false %}
+[Pigalle] Recuperación de contraseña
+{% endautoescape %}
+{% endblock %}
+{% block body_text %}
+{% autoescape false %}
+Para completar la recuperación de su contraseña, por favor visite el siguiente link: {{ confirmationUrl }}
+
+
+Pigalle - 2014
+{% endautoescape %}
+{% endblock %}
+{% block body_html %}{% endblock %}

@@ -68,7 +68,7 @@ fos_user:
             type: sylius_user_profile
     registration:
         confirmation:
-            enabled: false
+            enabled: true
             
 swiftmailer:
     transport: %sylius.mailer.transport%

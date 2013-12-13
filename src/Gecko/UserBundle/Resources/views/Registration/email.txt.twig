@@ -1,0 +1,14 @@
+{% block subject %}
+{% autoescape false %}
+[Pigalle] Validación de la cuenta {{ user.username }}
+{% endautoescape %}
+{% endblock %}
+{% block body_text %}
+{% autoescape false %}
+Para completar la validación de la cuenta, por favor visite el siguiente link: {{ confirmationUrl }}
+
+
+Pigalle - 2014
+{% endautoescape %}
+{% endblock %}
+{% block body_html %}{% endblock %}

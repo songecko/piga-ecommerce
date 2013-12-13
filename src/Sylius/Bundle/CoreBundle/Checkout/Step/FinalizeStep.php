@@ -38,6 +38,7 @@ class FinalizeStep extends CheckoutStep
         $this->getCartProvider()->abandonCart();
 
         $this->get('session')->set('order_number', $order->getNumber());
+        $this->get('session')->set('order_id', $order->getId());
 
         return $this->complete();
     }

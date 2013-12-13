@@ -1,0 +1,18 @@
+<div class="security">
+	<div class="contentTitle"><h3 class="titleSection container">Recuperar contraseña</h3></div>
+	<div class="container content">
+		<p>Ingrese su email para poder enviarle los pasos para recuperar su contraseña:</p>
+		<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+			<fieldset>
+			    <div class="form-group">
+			    	{% if invalid_username is defined %}
+			            <p>El email es inválido</p>
+			        {% endif %}
+	    			<label for="username" class="control-label">EMAIL</label>
+	    			<input type="text" id="username" name="username" required="required">
+				</div>
+			</fieldset>
+	    	<button type="submit" class="button" name="login">Recuperar</button>
+		</form>
+	</div>
+</div>

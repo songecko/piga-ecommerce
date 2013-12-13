@@ -1,0 +1,32 @@
+{% extends 'GeckoNewsletterBundle::email_layout.html.twig' %}
+
+{% block content %}
+Hola {{ user.getShortedName }},
+
+Tu número de pedido es: {{ order.getNumber }}.
+
+Detalle de tu compra
+PRODUCTOS ELEGIDOS:
+<table class="list">
+{% for item in order.items %}
+	{% include 'PigalleBundle:Checkout/Step/Finalize:_item.html.twig' %}
+{% endfor %}
+</table>
+
+<div class="addresses">
+	<div class="address" style="float: left;">
+		<p class="title">Dirección de envio:</p>
+		<p>{{ order.shippingAddress.firstname }}</p>
+		<p>{{ order.shippingAddress.street }}</p>
+		<p>{{ order.shippingAddress.postcode }}, {{ order.shippingAddress.city }}</p>
+		<p>{{ order.shippingAddress.province }}</p>						
+	</div>
+	<div class="address" style="float: left;">
+		<p class="title">Dirección de facturación:</p>
+		<p>{{ order.billingAddress.firstname }}</p>
+		<p>{{ order.billingAddress.street }}</p>
+		<p>{{ order.billingAddress.postcode }}, {{ order.billingAddress.city }}</p>
+		<p>{{ order.billingAddress.province }}</p>						
+	</div>
+</div>
+{% endblock %}

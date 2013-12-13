@@ -37,21 +37,28 @@ class MainController extends Controller
     	{
     		$form->bind($request);
     		
-    		if ($form->isValid()) {
-    			$message = \Swift_Message::newInstance()
-    			->setSubject("[Pigalle] Nuevo contacto desde la web")
-    			->setFrom($form->get('email')->getData())
-    			->setTo('songecko@gmail.com')
-    			->setBody(
-    					$this->renderView(
-    						'PigalleBundle:Main:contact_mail.html.twig',
-    						array(
-    							'values' => $form->getData(),
-    						)
-    					)
-    			);
-    	
-    			$this->get('mailer')->send($message);
+    		if ($form->isValid()) 
+    		{
+    			try 
+    			{
+	    			$message = \Swift_Message::newInstance()
+	    			->setContentType("text/html")
+	    			->setSubject("[Pigalle] Nuevo contacto desde la web")
+	    			->setFrom($form->get('email')->getData())
+	    			->setTo('ventas@pigalle.com.ar')
+	    			->setBody(
+	    					$this->renderView(
+	    						'PigalleBundle:Main:contact_mail.html.twig',
+	    						array(
+	    							'values' => $form->getData(),
+	    						)
+	    					)
+	    			);
+	    	
+	    			$this->get('mailer')->send($message);
+    			}catch (Swift_SwiftException $e)
+    			{
+    			}
     	
     			$request->getSession()->getFlashBag()->add('sended', 'Su consulta fué enviada correctamente.<br>Le responderemos a la brevedad.');
     	
@@ -116,6 +123,34 @@ class MainController extends Controller
     
     public function checkoutSuccessAction()
     {
+    	$user = $this->get('security.context')->getToken()->getUser();
+    	
+    	$orderId = $this->get('session')->get('order_id');
+    	$orderRepository = $this->get('sylius.repository.order');    	
+    	$order = $orderRepository->find($orderId);
+	
+    	try 
+    	{
+	    	$message = \Swift_Message::newInstance()
+	    	->setContentType("text/html")
+	    	->setSubject("[Pigalle] Compra realizada correctamente")
+	    	->setFrom('ventas@pigalle.com.ar')
+	    	->setTo($user->getEmail())
+	    	->setBody(
+	    			$this->renderView(
+	    					'PigalleBundle:Main:checkout_success_mail.html.twig',
+	    					array(
+	    						'user' => $user,
+	    						'order' => $order
+	    					)
+	    			)
+	    	);
+	    	
+	    	$this->get('mailer')->send($message);
+    	}catch (Swift_SwiftException $e)
+    	{
+    	}
+    	
     	return $this->render('PigalleBundle:Main:checkoutSuccess.html.twig');
     }
     
