@@ -1,12 +1,13 @@
 {% extends 'GeckoNewsletterBundle::email_layout.html.twig' %}
 
 {% block content %}
-Hola {{ user.getShortedName }},
+<h3>Hola {{ user.getShortedName }},</h3>
 
-Tu número de pedido es: {{ order.getNumber }}.
+<p>Tu número de pedido es: {{ order.getNumber }}.</p>
 
-Detalle de tu compra
-PRODUCTOS ELEGIDOS:
+<p>Detalle de tu compra</p>
+<p>PRODUCTOS ELEGIDOS:</p>
+
 <table class="list">
 {% for item in order.items %}
 	{% include 'PigalleBundle:Checkout/Step/Finalize:_item.html.twig' %}
