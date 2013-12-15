@@ -26,8 +26,7 @@ class MainController extends Controller
     
     public function faqAction()
     {
-    	return $this->render('PigalleBundle:Main:contact_mail.html.twig');
-    	//return $this->render('PigalleBundle:Main:faq.html.twig');
+    	return $this->render('PigalleBundle:Main:faq.html.twig');
     }
     
     public function contactAction(Request $request)

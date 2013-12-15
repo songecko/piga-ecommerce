@@ -1,3 +1,4 @@
+{% set hostUrl = app.request.scheme ~  '://' ~  app.request.host %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -5,26 +6,30 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700" type="text/css" />
 		<style type="text/css">
-		body { font-family: 'Lato', sans-serif; margin: 0; }
-		p { font-size: 12px; font-weight:400; }
-		#footer a { color: #FFFFFF; }
+		p { font-size: 12px; font-weight:400; margin: 0; }
 		</style>
 	</head>
-	<body>
-		<div id="header" style="background: url({{ app.request.scheme ~  '://' ~  app.request.host ~ asset('bundles/pigalle/images/mailing/headerBackground.png') }}) no-repeat; width: 610px; height: 133px; position:relative;">
-			<p style="position: absolute; left: 20px; top: 40px; font-weight:700;">{% block header_title %}<!-- NEWSLETTER PIGALLE -->{% endblock %}</p>
-			<p style="position: absolute; left: 20px; top: 70px;">{{ "now"|date("d/m/Y") }}</p>
+	<body style="font-family: 'Lato', sans-serif; margin: 0;">
+		<div id="header" style="background: url({{ hostUrl ~ asset('bundles/pigalle/images/mailing/headerBackground.png') }}) no-repeat; width: 610px; height: 133px;">
+			<div style="float:left;margin-left: 20px;">
+				<p style="font-weight:700;margin: 50px 0 0 0;min-height: 30px;">{% block header_title %}<!-- NEWSLETTER PIGALLE <br> - -->{% endblock %}</p>
+				<p style="margin: 0;">{{ "now"|date("d/m/Y") }}</p>
+			</div>
+			<div style="float: right;margin: 54px 32px 0 0;">
+				<a href="https://www.facebook.com/pages/PIGALLE/166228950080" style="margin-right: 10px;"><img src="{{ hostUrl ~ asset('bundles/pigalle/images/mailing/fb.png') }}" /></a>
+				<a href="#"><img src="{{ hostUrl ~ asset('bundles/pigalle/images/mailing/pinterest.png') }}" /></a>
+			</div>
 		</div>
 		<div id="content" style="margin-left: 15px;">
 			{% block content %}{% endblock %}
 		</div>
-		<div id="footer" style="background: url({{ app.request.scheme ~  '://' ~  app.request.host ~ asset('bundles/pigalle/images/mailing/footerBackground.png') }}) no-repeat; width: 610px; height: 80px; position:relative;">
-			<div class="block1" style="position: absolute; top: 22px; left: 15px;">
-				<p>Si tenés preguntas visitá nuestra página <a href="http://www.pìgalle.com.ar">www.pìgalle.com.ar</a></p>
-				<p>o conectate a través de nuestro e-mail <a href="mailto:ventas@pigalle.com.ar">ventas@pigalle.com.ar</a>.</p>
-				<p>Para renunciar a nuestro newsletter haz <a href="#">click acá</a>.</p>
+		<div id="footer" style="background: url({{ hostUrl ~ asset('bundles/pigalle/images/mailing/footerBackground.png') }}) no-repeat; width: 610px; height: 80px;">
+			<div class="block1" style="float: left;width: 300px;margin: 26px 0 0 6px;">
+				<p style="margin: 0;color: #FFFFFF;font-size: 10px;">Si tenés preguntas visitá nuestra página <a href="http://www.pigalle.com.ar" style="color: #FFFFFF;">www.pigalle.com.ar</a></p>
+				<p style="margin: 0;color: #FFFFFF;font-size: 10px;">o conectate a través de nuestro e-mail <a href="mailto:ventas@pigalle.com.ar" style="color: #FFFFFF;">ventas@pigalle.com.ar</a>.</p>
+				{% block unsuscribe %}{#<p style="margin: 0;color: #FFFFFF;font-size: 10px;">Para renunciar a nuestro newsletter haz <a href="#" style="color: #FFFFFF;">click acá</a>.</p>#}{% endblock %}
 			</div>
-			<div class="block2" style="position: absolute; top: 28px; left: 330px;">
+			<div class="block2" style="float: left;width: 151px;margin: 26px 0 0 22px;">
 				<p style="margin: 0; font-size: 10px; color: #FFFFFF;font-weight:700;">Copyright © 2014 PIGALLE</p>
 				<p style="margin: 0; font-size: 10px; color: #FFFFFF;">Las Heras 674, Ramos Mejia</p>
 			</div>

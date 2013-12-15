@@ -81,12 +81,23 @@ class FinalizeStep extends CheckoutStep
     		);
     	}*/
     	
+    	$showShipping = true;
+    	$cart = $this->getCurrentCart();
+    	if($shippingMethod = $cart->getShippingMethod())
+    	{
+    		if($shippingMethod->getId() != 1)
+    		{
+    			$showShipping = false;
+    		}
+    	}
+    	
     	$mp = new MP('2941808958589998', 'OR3cdSuXJfS4tZlI0N5emDcuyhUXgeRn');
     	$preference = $mp->create_preference($preferenceData);
     	
         return $this->render('PigalleBundle:Checkout/Step:finalize.html.twig', array(
             'context' => $context,
             'order'   => $order,
+        	'showShipping' => $showShipping,
         	'paylink' => $preference['response']['sandbox_init_point']
         ));
     }

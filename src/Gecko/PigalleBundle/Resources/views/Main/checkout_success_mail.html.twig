@@ -1,33 +1,82 @@
 {% extends 'GeckoNewsletterBundle::email_layout.html.twig' %}
 
+{% block header_title %}
+CONFIRMACIÓN DEL PEDIDO <br> -
+{% endblock %}
+
 {% block content %}
 <h3>Hola {{ user.getShortedName }},</h3>
 
 <p>Tu número de pedido es: {{ order.getNumber }}.</p>
+<br />
 
-<p>Detalle de tu compra</p>
-<p>PRODUCTOS ELEGIDOS:</p>
+<p style="font-weight: 700; text-decoration:underline;">DETALLE DE TU COMPRA:</p>
+<br />
 
 <table class="list">
 {% for item in order.items %}
-	{% include 'PigalleBundle:Checkout/Step/Finalize:_item.html.twig' %}
+	{% set variant = item.sellable %}
+	{% set product = variant.product %}
+	<tr>
+		<td style="width: 130px;text-align: center;">
+			<p style="text-transform:uppercase; text-decoration:underline;"><a href="{{ url('pigalle_product_show', {'slug': product.slug}) }}" target="_blank" style="color:#000000;">{{ product.name }}</a></p>
+		</td>
+		<td>
+			<a href="{{ url('pigalle_product_show', {'slug': product.slug}) }}" target="_blank">
+				<img src="{{ app.request.scheme ~  '://' ~  app.request.host ~ (product.image.path|imagine_filter('sylius_60x60')) }}" alt="" />
+			</a>
+		</td>
+		<td style="width: 80px;text-align: center;">
+			<p>Talle: <span>{{ variant.options|first.value }}</span></p>
+		</td>
+		<td style="width: 200px;">
+			<p class="quantity">Cantidad: <span>{{ item.quantity }}</span></p>
+			<p class="unitPrice">Precio Unitario: <span>{{ item.unitPrice|price }}</span></p>
+			<p class="totalPrice">Total: <span>{{ item.total|price }}</span></p>
+		</td>
+	</tr>
+	<tr><td colspan="4">&nbsp;</td><tr>
 {% endfor %}
 </table>
 
-<div class="addresses">
-	<div class="address" style="float: left;">
-		<p class="title">Dirección de envio:</p>
+<div style="display: inline-table;">
+	<div style="float: left;margin-right: 90px;">
+		<p style="font-weight: 700;">DIRECCIÓN DE ENVIO:</p>
 		<p>{{ order.shippingAddress.firstname }}</p>
 		<p>{{ order.shippingAddress.street }}</p>
 		<p>{{ order.shippingAddress.postcode }}, {{ order.shippingAddress.city }}</p>
 		<p>{{ order.shippingAddress.province }}</p>						
 	</div>
-	<div class="address" style="float: left;">
-		<p class="title">Dirección de facturación:</p>
+	<div style="float: left;">
+		<p style="font-weight: 700;">DIRECCIÓN DE FACTURACIÓN:</p>
 		<p>{{ order.billingAddress.firstname }}</p>
 		<p>{{ order.billingAddress.street }}</p>
 		<p>{{ order.billingAddress.postcode }}, {{ order.billingAddress.city }}</p>
 		<p>{{ order.billingAddress.province }}</p>						
 	</div>
 </div>
+<br /><br />
+
+<div>
+	<p style="font-weight: 700;">MÉTODO DE ENVIO:</h3>
+	{% for adjustment in order.shippingAdjustments %}
+	<p>{{ adjustment.description }}: <span>{{ adjustment.amount|price }}</span></p>
+	{% endfor %}
+</div>
+<br /><br />
+            	
+{% if order.promotionAdjustments|length > 0 %}
+<div>
+	<h3 style="font-weight: 700;">DESCUENTOS:</h3>
+	{% for adjustment in order.promotionAdjustments %}
+	<p>Cupón: <span>{{ adjustment.amount|price }}</span></p>
+	{% endfor %}
+</div>
+<br /><br />
+{% endif %}
+		        
+<div>
+	<p style="font-weight: 700;">TOTAL: <span>{{ order.total|price }}</span></p>
+</div>
+<br /><br />
 {% endblock %}

@@ -1,11 +1,14 @@
 {% extends 'GeckoNewsletterBundle::email_layout.html.twig' %}
 
+{% block header_title %}
+NUEVO CONTACTO <br> -
+{% endblock %}
+
 {% block content %}
 <h3>Has recibido un nuevo mensaje desde la web:</h3>
-{#
+
 <p>Nombre y Apellido: {{ values.name }}</p>
 <p>Email: {{ values.email }}</p>
 <p>Teléfono: {{ values.phone }}</p>
 <p>Mensaje: {{ values.message }}</p>
-#}
 {% endblock %}

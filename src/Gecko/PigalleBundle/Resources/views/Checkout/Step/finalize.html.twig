@@ -15,6 +15,7 @@
 			<div class="span8 finalizeData">
 				<h2>Resumen de tu compra</h2>
 				<div class="addresses clearfix">
+					{% if(showShipping) %}
 					<div class="address">
 						<p class="title">Dirección de envio:</p>
 						<p>{{ order.shippingAddress.firstname }}</p>
@@ -22,6 +23,7 @@
 						<p>{{ order.shippingAddress.postcode }}, {{ order.shippingAddress.city }}</p>
 						<p>{{ order.shippingAddress.province }}</p>						
 					</div>
+					{% endif %}
 					<div class="address">
 						<p class="title">Dirección de facturación:</p>
 						<p>{{ order.billingAddress.firstname }}</p>

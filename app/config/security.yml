@@ -43,7 +43,7 @@ security:
         - { path: ^/mayorista/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/mayorista/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/mayorista/registro/completo$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: /mayorista/.*, role: ROLE_USER_MAYORISTA }
+        - { path: /mayorista/.*, roles: [ROLE_USER_MAYORISTA, ROLE_SYLIUS_ADMIN] }
         - { path: "/admin.*", role: ROLE_SYLIUS_ADMIN }
         - { path: "/cuenta.*", role: ROLE_USER }
         - { path: "/_partial.*", ip: 127.0.0.1 }
