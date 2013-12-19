@@ -1,3 +1,4 @@
+{% if item.variant %}
 {% set product = item.variant.product %}
 <tr>
 	<td><p class="circle">{{ loop.index }}</p></td>
@@ -16,5 +17,26 @@
 	<td class="quantity">{{ form_row(form.items[loop.index0].quantity, {'attr': {'class': 'input-small'}, 'label': false}) }}</td>
 	<td class="unitPrice">{{ item.unitPrice|price }}</td>
 	<td class="totalPrice">{{ item.total|price }}</td>
+	<td class="remove"><a href="{{ path('sylius_cart_item_remove', {'id': item.id}) }}">X</a></td>
+</tr>
+{% else %}
+{% set product = item.productCollection %}
+{% endif %}
+<tr>
+	<td><p class="circle">{{ loop.index }}</p></td>
+	<td class="detalle">
+		<div class="photo">
+			<a href="{{ path('pigalle_product_show', {'slug': product.slug}) }}">
+            	<img src="{{ product.image.path|imagine_filter('sylius_138x138') }}" alt="" />
+        	</a>
+		</div>
+		<div class="datosProducto">
+			<h3 class="productName"><a href="{{ path('pigalle_product_show', {'slug': product.slug}) }}">{{ product.name }}</a></h3>
+			<p class="productDescription">{{ product.description|default('')|raw }}</p>
+		</div>
+	</td>
+	<td class="quantity">-</td>
+	<td class="unitPrice">-</td>
+	<td class="totalPrice">-</td>
 	<td class="remove"><a href="{{ path('sylius_cart_item_remove', {'id': item.id}) }}">X</a></td>
 </tr>

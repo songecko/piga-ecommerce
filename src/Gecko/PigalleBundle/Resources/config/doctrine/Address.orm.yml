@@ -16,6 +16,7 @@ Gecko\PigalleBundle\Entity\Address:
         floor:
             column: floor
             type: string
+            nullable: true
         department:
             column: department
             type: string

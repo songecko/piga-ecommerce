@@ -1,8 +1,31 @@
 {% extends 'GeckoNewsletterBundle::email_layout.html.twig' %}
 
-{% block content %}
-<h3>Nuevo pedido mayorista</h3>
+{% block header_title %}
+PEDIDO MAYORISTA <br> -
+{% endblock %}
 
-<p>El mayorista con email "{{ user.email }}" quiere realizar el pedido del siguiente producto:</p>
-<p>{{ product.name }}</p>
+{% block content %}
+<p>Has recibido un nuevo pedido del mayorista con email: {{ user.email }}</p>
+
+<br />
+<p style="font-weight: 700; text-decoration:underline;">DETALLE DEL PEDIDO:</p>
+<br />
+
+<table class="list">
+{% for item in order.items %}
+	{% set product = item.productCollection %}
+	<tr>
+		<td style="width: 130px;text-align: center;">
+			<p style="text-transform:uppercase; text-decoration:underline;"><a href="{{ url('pigalle_mayorista_show', {'slug': product.slug}) }}" target="_blank" style="color:#000000;">{{ product.name }}</a></p>
+		</td>
+		<td>
+			<a href="{{ url('pigalle_mayorista_show', {'slug': product.slug}) }}" target="_blank">
+				<img src="{{ app.request.scheme ~  '://' ~  app.request.host ~ (product.image.path|imagine_filter('sylius_60x60')) }}" alt="" />
+			</a>
+		</td>
+	</tr>
+	<tr><td colspan="2">&nbsp;</td><tr>
+{% endfor %}
+</table>
+<br /><br />
 {% endblock %}

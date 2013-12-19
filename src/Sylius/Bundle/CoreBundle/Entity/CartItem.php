@@ -14,6 +14,7 @@ namespace Sylius\Bundle\CoreBundle\Entity;
 use Sylius\Bundle\AssortmentBundle\Model\Variant\VariantInterface;
 use Sylius\Bundle\CartBundle\Entity\CartItem as BaseCartItem;
 use Sylius\Bundle\CartBundle\Model\CartItemInterface;
+use Gecko\PigalleBundle\Entity\ProductCollection;
 
 /**
  * Cart item with the product variant attached.
@@ -28,6 +29,7 @@ class CartItem extends BaseCartItem
      * @var VariantInterface
      */
     protected $variant;
+    protected $productCollection;
 
     /**
      * Get variant.
@@ -51,6 +53,28 @@ class CartItem extends BaseCartItem
         return $this;
     }
 
+    /**
+     * Get variant.
+     *
+     * @return ProductCollection
+     */
+    public function getProductCollection()
+    {
+    	return $this->productCollection;
+    }
+    
+    /**
+     * Set product collection.
+     *
+     * @param ProductCollection $productCollection
+     */
+    public function setProductCollection(ProductCollection $productCollection)
+    {
+    	$this->productCollection = $productCollection;
+    
+    	return $this;
+    }
+    
     /**
      * {@inheritdoc}
      */

@@ -19,6 +19,7 @@ use Sylius\Bundle\InventoryBundle\Checker\AvailabilityCheckerInterface;
 use Sylius\Bundle\ResourceBundle\Model\RepositoryInterface;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
+use Sylius\Bundle\CoreBundle\Entity\CartItem;
 
 /**
  * Item resolver for cart bundle.
@@ -35,6 +36,8 @@ class ItemResolver implements ItemResolverInterface
      */
     private $productRepository;
 
+    private $productCollectionRepository;
+    
     /**
      * Form factory.
      *
@@ -58,11 +61,13 @@ class ItemResolver implements ItemResolverInterface
      */
     public function __construct(
         RepositoryInterface          $productRepository,
+    	RepositoryInterface          $productCollectionRepository,
         FormFactory                  $formFactory,
         AvailabilityCheckerInterface $availabilityChecker
     )
     {
         $this->productRepository = $productRepository;
+        $this->productCollectionRepository = $productCollectionRepository;
         $this->formFactory = $formFactory;
         $this->availabilityChecker = $availabilityChecker;
     }
@@ -86,8 +91,18 @@ class ItemResolver implements ItemResolverInterface
             throw new ItemResolvingException('Error while trying to add item to cart');
         }
 
-        if (!$product = $this->productRepository->find($id)) {
-            throw new ItemResolvingException('Requested product was not found');
+        if (!$product = $this->productRepository->find($id)) 
+        {
+        	//Maybe is a product collection
+        	if(!$productCollection = $this->productCollectionRepository->find($id))
+        	{
+	            throw new ItemResolvingException('Requested product was not found');
+        	}
+        	
+        	$item = new CartItem();
+        	$item->setProductCollection($productCollection);
+        	
+        	return $item;
         }
 
         // We use forms to easily set the quantity and pick variant but you can do here whatever is required to create the item.

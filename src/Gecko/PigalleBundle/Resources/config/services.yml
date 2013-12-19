@@ -6,6 +6,10 @@ services:
         class: Gecko\PigalleBundle\Twig\PriceExtension
         tags:
             - { name: twig.extension }
+    pigalle.twig.ceil_extension:
+        class: Gecko\PigalleBundle\Twig\CeilExtension
+        tags:
+            - { name: twig.extension }
 
     pigalle.profile.form.type:
         class: Gecko\PigalleBundle\Form\Type\ProfileFormType

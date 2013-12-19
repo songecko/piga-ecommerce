@@ -910,9 +910,6 @@ input[type="radio"].toggle + label {
 }
 
 .locales .list {
-	-moz-column-count: 4;
-	-webkit-column-count: 4;
-	column-count: 4;
 	margin-top: 20px;
 	padding-bottom: 30px;
 }

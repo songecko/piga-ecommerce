@@ -19,7 +19,7 @@
 	<div class="span6 fotoDetalle"><img src="{{ product.image.path|imagine_filter('pigalle_460x460') }}" data-zoom-image="{{ product.image.path|imagine_filter('pigalle_900x900') }}" /></div>
 	<div class="span6 datos">
 		<div id="productGalleryZoomContainer"></div>
-		<form action="{{ path('pigalle_mayorista_order', {'id': product.id}) }}" method="post">
+		<form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post">
 			<div class="datosProducto">
 				<h3 class="productName">{{ product.name }}</h3>
 				<p class="description">{{ product.description|default('')|raw }}</p>
@@ -57,7 +57,7 @@
 					</div>
 				</div>
 			</div>		#}
-			<button type="submit" class="button mayoristaOrderButton">REALIZAR PEDIDO MAYORISTA</button>
+			<button type="submit" class="button mayoristaOrderButton">AGREGAR A LA BOLSA DE COMPRAS</button>
 		</form>
 	</div>
 </div>	

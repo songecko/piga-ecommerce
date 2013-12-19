@@ -36,13 +36,11 @@ pigalle_mayorista_quickview:
         id:  \d+
 
 pigalle_mayorista_order:
-    pattern: /realizar-pedido/id
+    pattern: /realizar-pedido
     defaults:
         _controller:    pigalle.controller.mayorista:orderAction
         _sylius:
             template: PigalleBundle:Mayorista:ordered.html.twig
-    requirements:
-        id:  \d+
                               
 pigalle_mayorista_register_success:
     pattern: /registro/completo

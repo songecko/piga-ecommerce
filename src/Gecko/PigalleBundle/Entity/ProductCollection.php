@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Gecko\PigalleBundle\Entity\ProductCollectionInterface;
 use Sylius\Bundle\CoreBundle\Model\ImageInterface;
 use Sylius\Bundle\AssortmentBundle\Model\Option\OptionInterface;
+use Sylius\Bundle\CoreBundle\Model\VariantInterface;
 
 /**
  * Product collection

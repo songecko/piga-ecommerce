@@ -2,6 +2,7 @@
 	{% if not cart.empty %}
 	<div class="products clearfix">
 		{% for item in cart.getItems() %}
+		{% if item.variant %}
 		{% set productCart = item.variant.product %}
 		<div class="product">
 			<div class="photo">
@@ -16,15 +17,32 @@
 				<p class="quantity">Cantidad: <span>{{ item.quantity }}</span></p>
 			</div>
 		</div>
+		{% else %}
+		{% set productCart = item.productCollection %}
+		<div class="product">
+			<div class="photo">
+				<a href="{{ path('pigalle_product_show', {'slug': productCart.slug}) }}">
+					<img src="{{ productCart.image.path|imagine_filter('pigalle_60x60') }}" alt="" />
+				</a>
+			</div>
+			<div class="datosProducto">
+				<h3 class="productName"><a href="{{ path('pigalle_product_show', {'slug': productCart.slug}) }}">{{ productCart.name }}</a></h3>
+			</div>
+		</div>
+		{% endif %}
 		{% endfor %}
 	</div>
 	<div class="foot clearfix">
+		{% if is_granted('ROLE_USER_MAYORISTA') %}
+		<a href="{{ path('pigalle_mayorista_order') }}" class="button checkoutButton">REALIZAR PEDIDO</a>
+		{% else %}
 		<p class="title">TOTAL:</p>
 		<div class="flag">
 			<p>{{ cart.total|price }}</p>
 			<div class="tail">&nbsp;</div>
 		</div>
 		<a href="{{ path('sylius_checkout_start') }}" class="button checkoutButton">REALIZAR COMPRA</a>
+		{% endif %}
 	</div>
 	{% else %}
 	<div class="emptyCart">

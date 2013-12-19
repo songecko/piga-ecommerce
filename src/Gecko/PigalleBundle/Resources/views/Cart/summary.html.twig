@@ -33,6 +33,9 @@
 				<button type="submit" class="button grayButton saveCartButton">GUARDAR CAMBIOS</button>
 			</div>
 			<div class="cartTotal">
+				{% if is_granted('ROLE_USER_MAYORISTA') %}
+				<a href="{{ path('pigalle_mayorista_order') }}" class="button checkoutButton">REALIZAR PEDIDO MAYORISTA</a>
+				{% else %}
 				<div class="cartCoupon clearfix">
 					<p>TENGO CUPON:</p>
 					<input type="text" id="sylius_cart_couponCode" name="sylius_cart[couponCode]" class="coupon" value="{{ form.vars.value.couponCode }}">
@@ -45,6 +48,7 @@
 					</div>
 					<a href="{{ path('sylius_checkout_start') }}" class="button checkoutButton">REALIZAR COMPRA</a>
 				</div>
+				{% endif %}
 			</div>
 		</form>
 	{% else %}

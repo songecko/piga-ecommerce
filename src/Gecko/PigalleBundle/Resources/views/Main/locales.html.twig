@@ -10,7 +10,8 @@
 <div class="socaloGris"></div>
 <div class="container locales">
 	<div class="tab">Locales</div>
-	<div class="list">
+	<div class="list row">
+		<div class="span3">		
 		{% for location, locals in localsLocation %}
 		{%   if locals|length > 0 %}
 		{%     for local in locals %}
@@ -30,9 +31,14 @@
 			<p><a href="mailto:{{ local.getEmail }}">{{ local.getEmail }}</a></p>
 			{% endif %}
 		</div>
+		{%         if (loop.index % (totalLocals / 4)|ceil) == 0 %}
+		</div>
+		<div class="span3">		
+		{%         endif %}
 		{%     endfor %}
 		{%   endif %}
 		{% endfor %}
+		</div>
 	</div>	
 </div>
 {% endblock %}

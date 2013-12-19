@@ -170,13 +170,16 @@ class MainController extends Controller
     		$localsLocation[$location] = array();
     	}
     	
+    	$totalLocals = 0;
     	foreach ($dbLocals as $dbLocal)
     	{
-    		$localsLocation[$dbLocal->getLocation()][] = $dbLocal; 	
+    		$localsLocation[$dbLocal->getLocation()][] = $dbLocal;
+    		$totalLocals++; 	
     	}
     	
     	return $this->render('PigalleBundle:Main:locales.html.twig', array(
-    		'localsLocation' => $localsLocation    		
+    		'localsLocation' => $localsLocation,
+    		'totalLocals' => $totalLocals   		
     	));
     }
     

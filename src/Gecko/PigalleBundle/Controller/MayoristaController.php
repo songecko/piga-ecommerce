@@ -52,21 +52,21 @@ class MayoristaController extends ProductController
        
     public function orderAction(Request $request)
     {
-    	$product = $this->findOr404();
     	$user = $this->get('security.context')->getToken()->getUser();
+    	$cart = $this->get('sylius.cart_provider')->getCart();
     	
     	try {
     		$message = \Swift_Message::newInstance()
     		->setContentType("text/html")
     		->setSubject('Pigalle - Pedido mayorista')
     		->setFrom($user->getEmail())
-    		->setTo('info@pigalle.com.ar')
+    		->setTo('ventas@pigalle.com.ar')
     		->setBody(
     				$this->renderView(
     						'PigalleBundle:Mayorista:order_email.html.twig',
     						array(
-    								'product'   => $product,
-    								'user'   => $user
+    							'cart'   => $cart,
+    							'user'   => $user
     						)
     				)
     		);
