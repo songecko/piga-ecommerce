@@ -24,9 +24,11 @@
                 </span>
             </td>
             <td>
+            	<a href="{{ path('sylius_backend_user_toggle_mayorista', {'id': user.id}) }}">
             	<span class="label label-{{ user.hasRole('ROLE_USER_MAYORISTA') ? 'success' : 'important'}}">
                     {{ user.hasRole('ROLE_USER_MAYORISTA') ? 'sylius.yes'|trans : 'sylius.no'|trans }}
                 </span>
+                </a>
             </td>
             <td>
                 <div class="btn-group pull-right">

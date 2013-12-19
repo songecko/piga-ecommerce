@@ -80,6 +80,14 @@ class CartItem extends BaseCartItem
      */
     public function equals(CartItemInterface $item)
     {
-        return $this->getVariant()->getId() === $item->getVariant()->getId();
+    	if($this->getVariant())
+    	{
+	        return $this->getVariant()->getId() === $item->getVariant()->getId();
+    	}else if($this->getProductCollection()) 
+    	{
+    		return $this->getProductCollection()->getId() === $item->getProductCollection()->getId();
+    	}
+    	
+    	return false;
     }
 }

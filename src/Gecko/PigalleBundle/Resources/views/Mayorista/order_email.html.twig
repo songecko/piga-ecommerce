@@ -5,6 +5,7 @@ PEDIDO MAYORISTA <br> -
 {% endblock %}
 
 {% block content %}
+<br />
 <p>Has recibido un nuevo pedido del mayorista con email: {{ user.email }}</p>
 
 <br />
@@ -12,7 +13,7 @@ PEDIDO MAYORISTA <br> -
 <br />
 
 <table class="list">
-{% for item in order.items %}
+{% for item in cart.items %}
 	{% set product = item.productCollection %}
 	<tr>
 		<td style="width: 130px;text-align: center;">

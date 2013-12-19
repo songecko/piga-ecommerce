@@ -76,6 +76,8 @@ class MayoristaController extends ProductController
     	{
     	}
     	
+    	$this->get('sylius.cart_provider')->abandonCart();
+    	
     	return $this->render("PigalleBundle:Mayorista:ordered.html.twig");
     }
     

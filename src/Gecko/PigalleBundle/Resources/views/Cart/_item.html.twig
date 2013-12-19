@@ -21,7 +21,6 @@
 </tr>
 {% else %}
 {% set product = item.productCollection %}
-{% endif %}
 <tr>
 	<td><p class="circle">{{ loop.index }}</p></td>
 	<td class="detalle">
@@ -40,3 +39,4 @@
 	<td class="totalPrice">-</td>
 	<td class="remove"><a href="{{ path('sylius_cart_item_remove', {'id': item.id}) }}">X</a></td>
 </tr>
+{% endif %}

@@ -35,3 +35,11 @@ sylius_backend_user_show:
         _controller: sylius.controller.user:showAction
         _sylius:
             template: SyliusBackendBundle:User:show.html.twig
+
+sylius_backend_user_toggle_mayorista:
+    pattern: /{id}/toogle-mayorista
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.user:toggleMayoristaAction
+        _sylius:
+            redirect: sylius_backend_user_index

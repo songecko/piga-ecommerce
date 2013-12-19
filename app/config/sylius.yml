@@ -110,6 +110,7 @@ sylius_resource:
             driver: doctrine/orm
             classes:
                 model: Sylius\Bundle\CoreBundle\Entity\User
+                controller: Gecko\UserBundle\Controller\UserController
         sylius.pigalle_slide:
             driver: doctrine/orm
             classes:
