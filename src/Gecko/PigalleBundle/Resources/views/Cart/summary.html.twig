@@ -28,7 +28,11 @@
 			</table>
 			{{ form_widget(form._token) }}
 			<div class="cartActions">
+				{% if is_granted('ROLE_USER_MAYORISTA') %}
+    			<a href="{{ path('pigalle_mayorista_index') }}" class="button clearCartButton">SEGUIR COMPRANDO</a>
+    			{% else %}
 				<a href="{{ path('pigalle_product_index') }}" class="button clearCartButton">SEGUIR COMPRANDO</a>
+				{% endif %}
 				<a href="{{ path('sylius_cart_clear') }}" class="button grayButton clearCartButton">VACIAR COMPRAS</a>
 				<button type="submit" class="button grayButton saveCartButton">GUARDAR CAMBIOS</button>
 			</div>
@@ -55,7 +59,11 @@
 		<div class="sectionMessage emptyCart">
     		<h2>&iexcl;Tu bolsa de compras se encuentra vacia!</h2>
     		<div class="hr"><hr /></div>
+    		{% if is_granted('ROLE_USER_MAYORISTA') %}
+    		<p>Visita nuestra seccion de <a href="{{ path('pigalle_mayorista_index') }}">Mayoristas</a>.</p>
+    		{% else %}
     		<p>Visita nuestro <a href="{{ path('pigalle_product_index') }}">online store</a>.</p>
+    		{% endif %}
     	</div>
 	{% endif %}
 	</div>
