@@ -25,7 +25,7 @@ class NewsletterType extends AbstractType
         ))
         ->add('coupon', 'text', array(
         	'required' => false,
-        	'label'    => 'Cupón'
+        	'label'    => 'Cupon'
         ))
         ->add('file', 'file', array(
         	'label' => 'Imagen'

@@ -31,6 +31,9 @@ class NewsletterController extends ResourceController
 				->findAll();
 		}
 		
+		$productRepository = $this->get('sylius.repository.product');
+		$featuredProducts = $productRepository->findFeaturedProducts(3);
+		
 		//Try send the emails
 		$numSent = 0;
 		foreach ($subscribers as $subscriber)
@@ -54,6 +57,7 @@ class NewsletterController extends ResourceController
 							array(
 								'newsletter'  => $newsletter,
 								'subscriber'   => $subscriber,
+								'featuredProducts'   => $featuredProducts,
 								'confirmationToken'   => $subscriber->generateConfirmationToken()
 							)
 						)
@@ -72,7 +76,7 @@ class NewsletterController extends ResourceController
 				//Save every transaction
 				$em->flush();
 				$toList[] = $to;
-			}
+			}			
 		}
 		 
 		if($numSent > 1)
@@ -80,7 +84,7 @@ class NewsletterController extends ResourceController
 			$newsletter->setSent(true);
 			$em->flush();
 		}
-		 
+		
 		return $this->render('GeckoNewsletterBundle:Backend/Newsletter:send.html.twig', array(
 				'newsletter'  => $newsletter,
 				'toList'       => $toList,

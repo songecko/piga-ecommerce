@@ -23,7 +23,7 @@ abstract class Newsletter implements NewsletterInterface, ImageInterface
 	
 	public static $NEWSLETTER_TEMPLATE_FILES = array(
 		self::NEWSLETTER_TEMPLATE_NAME_BASIC =>  "basic.html.twig",
-		self::NEWSLETTER_TEMPLATE_NAME_FEATURED => "featuredProducts.html.twig",
+		self::NEWSLETTER_TEMPLATE_NAME_FEATURED => "featured.html.twig",
 		self::NEWSLETTER_TEMPLATE_NAME_SPECIAL => "special.html.twig"
 	);
 	

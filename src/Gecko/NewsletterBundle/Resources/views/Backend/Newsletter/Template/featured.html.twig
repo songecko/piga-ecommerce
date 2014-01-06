@@ -1,7 +1,40 @@
 {% extends 'GeckoNewsletterBundle::email_layout.html.twig' %}
 
-{% block content %}
-<h4>Newsletter de Pigalle con Destacados: {{ newsletter.title }}</h4>
+{% set hostUrl = app.request.scheme ~  '://' ~  app.request.host %}
 
-<p>Hola {{ subscriber.fullname }}</p>
+{% block header_title %}NEWSLETTER PIGALLE <br>{% endblock %}
+
+{% block content %}
+<h4>{{ newsletter.title }}</h4>
+
+<p>Hola {{ subscriber.getSomeName }},</p>
+<br>
+
+{% if(newsletter.introText) %}
+<p>{{ newsletter.introText }}</p>
+{% endif %}
+<br>
+
+<br style="clear:both" />
+{% for product in featuredProducts %}
+<div style="float:left;width: 180px;margin-right: 20px;">
+	<div style="border-bottom: 1px solid #000000;">
+		<img src="{{ hostUrl ~ product.image.path|imagine_filter('sylius_138x138') }}" alt="Producto" style="margin-left: 31px;" />
+	</div>
+	<div>
+		<h3 style="margin: 10px 0 10px 0;font-size: 12px;text-transform: uppercase;">
+			<a href="{{ url('pigalle_product_show', {'slug': product.slug}) }}" style="color: #000000;text-decoration: none;">{{ product.name }}</a>
+		</h3>
+		<p style="margin: 0 0 10px 0;">{{ product.shortDescription|truncate(50)  }}</p>
+		{% if(product.isOffer) %}
+		<p><span style="text-decoration:line-through;">{{ product.masterVariant.price|price}}</span> {{ product.priceWithoutDiscount|price}}</p>
+		{% else %}
+		<p>{{ product.masterVariant.price|price}}</p>
+		{% endif %}
+	</div>
+</div>
+{% endfor %}
+<br style="clear:both" />
+<br>
+
 {% endblock %}

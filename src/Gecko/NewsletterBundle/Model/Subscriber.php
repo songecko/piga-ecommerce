@@ -123,4 +123,17 @@ abstract class Subscriber implements SubscriberInterface
     {
     	return $this->getEmail();
     }
+    
+    public function getSomeName()
+    {
+    	$name = $this->getFullname();
+    	 
+    	if(!$name)
+    	{
+    		$arr = explode("@", $this->getEmail());
+    		$name = $arr[0];
+    	}
+    	 
+    	return $name;
+    }
 }

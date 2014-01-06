@@ -1,19 +1,27 @@
 {% extends 'GeckoNewsletterBundle::email_layout.html.twig' %}
 
-{% block content %}
-<h4>Newsletter de Pigalle special: {{ newsletter.title }}</h4>
+{% set hostUrl = app.request.scheme ~  '://' ~  app.request.host %}
 
-<p>Hola {{ subscriber.fullname }}</p>
+{% block header_title %}NEWSLETTER PIGALLE <br>{% endblock %}
+
+{% block content %}
+<h4>{{ newsletter.title }}</h4>
+
+<p>Hola {{ subscriber.getSomeName }},</p>
+<br>
 
 {% if(newsletter.introText) %}
 <p>{{ newsletter.introText }}</p>
 {% endif %}
+<br>
 
 {% if(newsletter.coupon) %}
-<p>{{ newsletter.coupon }}</p>
+<p style="font-weight:bold;">{{ newsletter.coupon }}</p>
 {% endif %}
+<br><br>
 
 {% if(newsletter.hasPath) %}
-<img src="{{ newsletter.path|imagine_filter('pigalle_220x220') }}" alt="" />
+<a href="{{ hostUrl ~ "/web/media/image/" ~ newsletter.path }}"><img src="{{ hostUrl ~ newsletter.path|imagine_filter('pigalle_220x220') }}" alt="" /></a>
 {% endif %}
+
 {% endblock %}

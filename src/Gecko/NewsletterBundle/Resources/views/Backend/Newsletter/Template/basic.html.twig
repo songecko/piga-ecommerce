@@ -1,7 +1,16 @@
 {% extends 'GeckoNewsletterBundle::email_layout.html.twig' %}
 
-{% block content %}
-<h4>Newsletter de Pigalle Basico: {{ newsletter.title }}</h4>
+{% block header_title %}NEWSLETTER PIGALLE <br>{% endblock %}
 
-<p>Hola {{ subscriber.fullname }}</p>
+{% block content %}
+<h4>{{ newsletter.title }}</h4>
+
+<p>Hola {{ subscriber.getSomeName }},</p>
+<br>
+
+{% if(newsletter.introText) %}
+<p>{{ newsletter.introText }}</p>
+{% endif %}
+<br><br>
+
 {% endblock %}
