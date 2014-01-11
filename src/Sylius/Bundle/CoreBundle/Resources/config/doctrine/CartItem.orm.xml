@@ -10,10 +10,10 @@
             <generator strategy="AUTO" />
         </id>
         <many-to-one field="variant" target-entity="Sylius\Bundle\AssortmentBundle\Model\Variant\VariantInterface">
-            <join-column name="variant_id" referenced-column-name="id" nullable="true" />
+            <join-column name="variant_id" referenced-column-name="id" nullable="true" on-delete="CASCADE" />
         </many-to-one>
         <many-to-one field="productCollection" target-entity="Gecko\PigalleBundle\Entity\ProductCollection">
-            <join-column name="product_collection_id" referenced-column-name="id" nullable="true" />
+            <join-column name="product_collection_id" referenced-column-name="id" nullable="true" on-delete="CASCADE" />
         </many-to-one>
     </entity>
 
