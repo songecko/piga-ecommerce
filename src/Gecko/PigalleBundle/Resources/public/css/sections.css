@@ -958,7 +958,7 @@ input[type="radio"].toggle + label {
 	padding-bottom: 10px;
 }
 .collection .filters {
-	margin-bottom: 0px;
+	margin-bottom: 10px;
 }
 .collection .filter {
 	float: left;
@@ -971,8 +971,18 @@ input[type="radio"].toggle + label {
 	width: 225px;
 }
 .collection .products .facebookLike {
-	text-align: right;
+	text-align: left;
 	margin-bottom: 7px;
+	width: 100%;
+}
+.collection .products .facebookLike .fb-like,
+.collection .products .facebookLike .fb-like > span {
+	height: 22px !important;
+	width: 100% !important;
+}
+.collection .products .facebookLike .fb-like > span > iframe {
+	height: 1000px !important;
+	width: 450px !important;
 }
 .collection .image {
 	width: 100%;
