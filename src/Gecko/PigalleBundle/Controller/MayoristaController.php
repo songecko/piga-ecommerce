@@ -23,18 +23,25 @@ class MayoristaController extends ProductController
 	public function indexAction(Request $request)
 	{
 		$taxons = new ArrayCollection();
+		$noTaxons = new ArrayCollection();
 		
 		$taxonomyRepository = $this->get('sylius.repository.taxonomy');
 		$taxonomies = $taxonomyRepository->findAll();
 		foreach ($taxonomies as $taxonomy)
 		{
-			foreach($taxonomy->getTaxonsForMayoristas() as $taxon)
+			foreach($taxonomy->getTaxons() as $taxon)
 			{
-				$taxons->add($taxon);
+				if($taxon->isVisibleMayoristas())
+				{
+					$taxons->add($taxon);
+				}else
+				{
+					$noTaxons->add($taxon);
+				}
 			}
 		}
 		
-		return $this->renderResponse('index.html', $this->getViewParams($request, null, array('taxons' => $taxons)));
+		return $this->renderResponse('index.html', $this->getViewParams($request, null, array('taxons' => $taxons, 'noTaxons' => $noTaxons)));
 	}
 	
     /**
@@ -47,7 +54,22 @@ class MayoristaController extends ProductController
      */
     public function indexByTaxonAction(Request $request, $permalink)
     {
-        return $this->renderResponse('indexByTaxon.html', $this->getViewParams($request, $permalink));
+    	$noTaxons = new ArrayCollection();
+    	
+    	$taxonomyRepository = $this->get('sylius.repository.taxonomy');
+    	$taxonomies = $taxonomyRepository->findAll();
+    	foreach ($taxonomies as $taxonomy)
+    	{
+    		foreach($taxonomy->getTaxons() as $taxon)
+    		{
+    			if(!$taxon->isVisibleMayoristas())
+    			{
+    				$noTaxons->add($taxon);
+    			}
+    		}
+    	}
+    	
+        return $this->renderResponse('indexByTaxon.html', $this->getViewParams($request, $permalink, array('noTaxons' => $noTaxons)));
     }
        
     public function orderAction(Request $request)

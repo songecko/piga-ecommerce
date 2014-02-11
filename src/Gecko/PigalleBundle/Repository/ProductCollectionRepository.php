@@ -72,7 +72,7 @@ class ProductCollectionRepository extends EntityRepository
     public function createFilterQueryBuilder($criteria = array(), $sorting = array())
     {
     	$queryBuilder = $this->getQueryBuilder()
-			->groupBy('product_collection.id')	;
+			->groupBy('product_collection.id');
     
     	if (!empty($criteria['name'])) 
     	{
@@ -91,10 +91,35 @@ class ProductCollectionRepository extends EntityRepository
     		}
     		
     		$queryBuilder
+	    		->innerJoin('product_collection.taxons', 'taxon')
+	    		->andWhere('taxon IN (:taxons)')
+	    		->setParameter('taxons', $taxonIds)
+    		;
+    	}
+    	
+    	if (!empty($criteria['noTaxons']))
+    	{
+    		$noTaxonIds = array();
+    		foreach ($criteria['noTaxons'] as $noTaxon)
+    		{
+    			$noTaxonIds[] = $noTaxon->getId();
+    		}
+    		 
+    		$productsWithNoTaxons = $this->createQueryBuilder($this->getAlias())
+    		->groupBy('product_collection.id')
     		->innerJoin('product_collection.taxons', 'taxon')
     		->andWhere('taxon IN (:taxons)')
-    		->setParameter('taxons', $taxonIds)
-    		;
+    		->setParameter('taxons', $noTaxonIds)
+    		->getQuery()->getResult();
+    		 
+    		$noProductIds = array();
+    		foreach ($productsWithNoTaxons as $productWithNoTaxons)
+    		{
+    			$noProductIds[] = $productWithNoTaxons->getId();
+    		}
+    	
+    		$queryBuilder->andWhere('product_collection.id NOT IN (:noProducts)')
+    		->setParameter('noProducts', $noProductIds);
     	}
     	
     	if (empty($sorting)) {
