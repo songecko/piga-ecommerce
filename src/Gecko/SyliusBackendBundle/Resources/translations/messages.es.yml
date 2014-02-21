@@ -215,7 +215,7 @@ sylius:
         general_info:   "Información general"
         id:             "ID"
         items_total:    "Total de productos"
-        shipping_total: "Envio"
+        shipping_total: "Total por envios"
         tax_total:      "Impuestos"
         promotion_total: "Descuentos"
         shipments:       "Envios"
@@ -226,6 +226,7 @@ sylius:
         shipping_charges: "Cargos por envio"
         promotion_discount: "Descuentos"
         promotion_total:  "Total descuentos"
+        no_promotion:     "Sin descuentos"
         no_results:       "Sin pedidos"
     
     order_item:
