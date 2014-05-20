@@ -30,6 +30,9 @@ class ProductType extends BaseProductType
         parent::buildForm($builder, $options);
 
         $builder
+        	->add('slug', 'text', array(
+        		'label' => 'Url única'
+        	))
             ->add('shortDescription', 'textarea', array(
                 'required' => false,
                 'label'    => 'sylius.form.product.short_description'
